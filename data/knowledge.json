@@ -1,0 +1,367 @@
+[
+  {
+    "id": "FAQ-001",
+    "category": "overview",
+    "question": "What is the meaning of CCIT?",
+    "answer": "FAITH- College of Computer and Information Technology",
+    "keywords": [
+      "meaning",
+      "name",
+      "stands"
+    ],
+    "source": "About CCIT.pdf",
+    "verification_status": "verified",
+    "verification_scope": "Faithfully extracted from user-supplied source; institutional accuracy and currency not independently verified",
+    "reviewed_at": "2026-11-04",
+    "currency_status": "unconfirmed",
+    "source_url": "https://docs.google.com/document/d/1AgLIpg1OMLHTReXRoG1btxJmhxBxaaWv2SMVWitTHqc/edit"
+  },
+  {
+    "id": "FAQ-002",
+    "category": "overview",
+    "question": "What is CCIT all about?",
+    "answer": "The College of Computing and Information Technology (CCIT) of First Asia Institute of Technology and Humanities recently restructured its academic philosophy to reflect what students should learn upon completing a program, and what they should attain a few years after graduation.",
+    "keywords": [
+      "about",
+      "overview"
+    ],
+    "source": "About CCIT.pdf",
+    "verification_status": "verified",
+    "verification_scope": "Faithfully extracted from user-supplied source; institutional accuracy and currency not independently verified",
+    "reviewed_at": "2026-11-04",
+    "currency_status": "unconfirmed",
+    "source_url": "https://docs.google.com/document/d/1AgLIpg1OMLHTReXRoG1btxJmhxBxaaWv2SMVWitTHqc/edit"
+  },
+  {
+    "id": "FAQ-003",
+    "category": "vision",
+    "question": "What is the Vision of CCIT?",
+    "answer": "CCIT's vision is to be a Center of Excellence in Information Technology Education with a strong passion to uplift lives and society.",
+    "keywords": [
+      "vision"
+    ],
+    "source": "About CCIT.pdf",
+    "verification_status": "verified",
+    "verification_scope": "Faithfully extracted from user-supplied source; institutional accuracy and currency not independently verified",
+    "reviewed_at": "2026-11-04",
+    "currency_status": "unconfirmed",
+    "source_url": "https://docs.google.com/document/d/1AgLIpg1OMLHTReXRoG1btxJmhxBxaaWv2SMVWitTHqc/edit"
+  },
+  {
+    "id": "FAQ-004",
+    "category": "mission",
+    "question": "What is the Mission of CCIT?",
+    "answer": "CCIT’s mission is to produce globally competent, committed and compassionate IT professionals transforming society through Innovative teaching-learning approaches, Technology-advanced breakthroughs and Enabling extension endeavors.",
+    "keywords": [
+      "mission"
+    ],
+    "source": "About CCIT.pdf",
+    "verification_status": "verified",
+    "verification_scope": "Faithfully extracted from user-supplied source; institutional accuracy and currency not independently verified",
+    "reviewed_at": "2026-11-04",
+    "currency_status": "unconfirmed",
+    "source_url": "https://docs.google.com/document/d/1AgLIpg1OMLHTReXRoG1btxJmhxBxaaWv2SMVWitTHqc/edit"
+  },
+  {
+    "id": "FAQ-005",
+    "category": "goals",
+    "question": "What are the goals of CCIT?",
+    "answer": "The goal of CCIT is represented by the acronym CCITITE, which consists of seven key objectives: 1. Create a learning environment that uses outcomes-based education aligned with industry needs and practices. 2. Cultivate a research culture that promotes technological innovation and commercialization. 3. Integrate professional programs and alternative learning systems in the field of Information and Communications Technology (ICT). 4. Transform and empower communities through sustainable ICT extension programs and services. 5. Imbibe the value of collaboration in achieving industry-driven research and innovative solutions across various fields. 6. Transcend in digital humanities by upholding professionalism, ethical practices, and social and environmental responsibility. 7. Encourage lifelong learning, a positive work attitude, and effective communication in the workplace.",
+    "keywords": [
+      "goals",
+      "objectives"
+    ],
+    "source": "About CCIT.pdf",
+    "verification_status": "verified",
+    "verification_scope": "Faithfully extracted from user-supplied source; institutional accuracy and currency not independently verified",
+    "reviewed_at": "2026-11-04",
+    "currency_status": "unconfirmed",
+    "source_url": "https://docs.google.com/document/d/1AgLIpg1OMLHTReXRoG1btxJmhxBxaaWv2SMVWitTHqc/edit"
+  },
+  {
+    "id": "FAQ-006",
+    "category": "academic_programs",
+    "question": "What programs does CCIT offer?",
+    "answer": "CCIT offers three undergraduate programs: Bachelor of Science in Information Technology (BSIT), Bachelor of Science in Computer Science (BSCS), and Bachelor of Science in Entertainment and Multimedia Computing (BSEMC). It also provides graduate programs, including a Master’s and Doctorate degree in Information Technology, to support advanced learning, research, and professional development in the field of technology.",
+    "keywords": [
+      "programs",
+      "courses",
+      "degrees",
+      "graduate",
+      "masters",
+      "doctorate"
+    ],
+    "source": "About CCIT.pdf",
+    "verification_status": "verified",
+    "verification_scope": "Faithfully extracted from user-supplied source; institutional accuracy and currency not independently verified",
+    "reviewed_at": "2026-11-04",
+    "currency_status": "unconfirmed",
+    "source_url": "https://docs.google.com/document/d/1AgLIpg1OMLHTReXRoG1btxJmhxBxaaWv2SMVWitTHqc/edit"
+  },
+  {
+    "id": "FAQ-007",
+    "category": "bsit",
+    "question": "What is the program BS Information Technology?",
+    "answer": "Information Technology (IT) is the field of study that focuses on using computers, software, networks, and databases to store, process, manage, and protect information. It involves developing and maintaining technological systems that help individuals, businesses, and organizations work efficiently and solve real-world problems.",
+    "keywords": [
+      "bsit",
+      "information technology"
+    ],
+    "source": "About CCIT.pdf",
+    "verification_status": "verified",
+    "verification_scope": "Faithfully extracted from user-supplied source; institutional accuracy and currency not independently verified",
+    "reviewed_at": "2026-11-04",
+    "currency_status": "unconfirmed",
+    "source_url": "https://docs.google.com/document/d/1AgLIpg1OMLHTReXRoG1btxJmhxBxaaWv2SMVWitTHqc/edit"
+  },
+  {
+    "id": "FAQ-008",
+    "category": "bscs",
+    "question": "What is the program BS Computer Science?",
+    "answer": "Computer Science (CS) is the field of study that focuses on computing, programming, algorithms, data structures, and the development of software and computer systems. It involves understanding how computers solve problems, designing efficient solutions, and exploring advanced technologies such as artificial intelligence and machine learning.",
+    "keywords": [
+      "bscs",
+      "computer science"
+    ],
+    "source": "About CCIT.pdf",
+    "verification_status": "verified",
+    "verification_scope": "Faithfully extracted from user-supplied source; institutional accuracy and currency not independently verified",
+    "reviewed_at": "2026-11-04",
+    "currency_status": "unconfirmed",
+    "source_url": "https://docs.google.com/document/d/1AgLIpg1OMLHTReXRoG1btxJmhxBxaaWv2SMVWitTHqc/edit"
+  },
+  {
+    "id": "FAQ-009",
+    "category": "bsemc",
+    "question": "What is the program BS Entertainment and Multimedia Computing?",
+    "answer": "Entertainment and Multimedia Computing (BSEMC) is the field of study that focuses on the use of technology in creating digital entertainment and multimedia content. It covers areas such as game development, animation, digital arts, interactive media, and multimedia design. The program combines creativity and technical skills to prepare students for careers in the entertainment, gaming, and digital media industries.",
+    "keywords": [
+      "bsemc",
+      "entertainment",
+      "multimedia"
+    ],
+    "source": "About CCIT.pdf",
+    "verification_status": "verified",
+    "verification_scope": "Faithfully extracted from user-supplied source; institutional accuracy and currency not independently verified",
+    "reviewed_at": "2026-11-04",
+    "currency_status": "unconfirmed",
+    "source_url": "https://docs.google.com/document/d/1AgLIpg1OMLHTReXRoG1btxJmhxBxaaWv2SMVWitTHqc/edit"
+  },
+  {
+    "id": "FAQ-010",
+    "category": "accreditation",
+    "question": "Does CCIT have any academic accreditation?",
+    "answer": "Yes, the College of Computing and Information Technology (CCIT) has achieved Level IV accreditation from the Philippine Association of Colleges and Universities Commission on Accreditation (PACUCOA) for its Bachelor of Science in Information Technology (BSIT) and Bachelor of Science in Computer Science (BSCS) programs. Meanwhile, the Bachelor of Science in Entertainment and Multimedia Computing (BSEMC) program is currently undergoing the process of achieving Level I accreditation.",
+    "keywords": [
+      "accreditation",
+      "pacucoa",
+      "level"
+    ],
+    "source": "About CCIT.pdf",
+    "verification_status": "verified",
+    "verification_scope": "Faithfully extracted from user-supplied source; institutional accuracy and currency not independently verified",
+    "reviewed_at": "2026-11-04",
+    "currency_status": "unconfirmed",
+    "source_url": "https://docs.google.com/document/d/1AgLIpg1OMLHTReXRoG1btxJmhxBxaaWv2SMVWitTHqc/edit"
+  },
+  {
+    "id": "FAQ-011",
+    "category": "scholarships",
+    "question": "Does CCIT offer scholarships?",
+    "answer": "Yes, aside from the academic scholarships offered by FAITH Colleges, students may also qualify for course-specific scholarships based on their academic performance in senior high school. These scholarships are granted to students who meet or exceed the requirements established by the dean of CCIT.",
+    "keywords": [
+      "scholarships",
+      "eligibility"
+    ],
+    "source": "About CCIT.pdf",
+    "verification_status": "verified",
+    "verification_scope": "Faithfully extracted from user-supplied source; institutional accuracy and currency not independently verified",
+    "reviewed_at": "2026-11-04",
+    "currency_status": "unconfirmed",
+    "source_url": "https://docs.google.com/document/d/1AgLIpg1OMLHTReXRoG1btxJmhxBxaaWv2SMVWitTHqc/edit"
+  },
+  {
+    "id": "FAQ-012",
+    "category": "scholarships",
+    "question": "What is the scholarship that CCIT offers?",
+    "answer": "CCIT offers two types of program-specific scholarships: the Course-Specific Scholarship and the 50-TAG Scholarship. The Course-Specific Scholarship provides qualified students with a 100% discount on tuition fees, while the 50-TAG Scholarship grants a 50% discount on tuition fees. Both scholarships aim to recognize students' academic achievements and provide financial support to qualified students pursuing their chosen programs.",
+    "keywords": [
+      "scholarships",
+      "discount",
+      "50-tag",
+      "tuition"
+    ],
+    "source": "About CCIT.pdf",
+    "verification_status": "verified",
+    "verification_scope": "Faithfully extracted from user-supplied source; institutional accuracy and currency not independently verified",
+    "reviewed_at": "2026-11-04",
+    "currency_status": "unconfirmed",
+    "source_url": "https://docs.google.com/document/d/1AgLIpg1OMLHTReXRoG1btxJmhxBxaaWv2SMVWitTHqc/edit"
+  },
+  {
+    "id": "FAQ-013",
+    "category": "careers",
+    "question": "What careers can I pursue after graduating from BSCS?",
+    "answer": "Graduates of Bachelor of Science in Computer Science (BSCS) can pursue various careers in the technology industry, depending on their skills, interests, and specialization including: - Software Developer - Web Developer - Mobile Application Developer - Data Scientist, - Artificial Intelligence (AI) Engineer - Machine Learning Engineer - Systems Analyst - Database Administrator - Game Developer",
+    "keywords": [
+      "careers",
+      "jobs",
+      "bscs"
+    ],
+    "source": "About CCIT.pdf",
+    "verification_status": "verified",
+    "verification_scope": "Faithfully extracted from user-supplied source; institutional accuracy and currency not independently verified",
+    "reviewed_at": "2026-11-04",
+    "currency_status": "unconfirmed",
+    "source_url": "https://docs.google.com/document/d/1AgLIpg1OMLHTReXRoG1btxJmhxBxaaWv2SMVWitTHqc/edit"
+  },
+  {
+    "id": "FAQ-014",
+    "category": "careers",
+    "question": "What careers can I pursue after graduating from BSIT?",
+    "answer": "Graduates of Bachelor of Science in Information Technology (BSIT) can pursue various careers in the technology industry, depending on their skills and areas of specialization including: - IT Support Specialist - Network Administrator - Systems Administrator - Web Developer - Database Administrator - Cybersecurity Analyst - IT Project Manager - Cloud Computing Specialist - Business Analyst - Software Developer",
+    "keywords": [
+      "careers",
+      "jobs",
+      "bsit"
+    ],
+    "source": "About CCIT.pdf",
+    "verification_status": "verified",
+    "verification_scope": "Faithfully extracted from user-supplied source; institutional accuracy and currency not independently verified",
+    "reviewed_at": "2026-11-04",
+    "currency_status": "unconfirmed",
+    "source_url": "https://docs.google.com/document/d/1AgLIpg1OMLHTReXRoG1btxJmhxBxaaWv2SMVWitTHqc/edit"
+  },
+  {
+    "id": "FAQ-015",
+    "category": "careers",
+    "question": "What careers can I pursue after graduating from BSEMC?",
+    "answer": "Graduates of Bachelor of Science in Entertainment and Multimedia Computing (BSEMC) can pursue careers in the entertainment, gaming, and digital media industries, including: - Game Developer - Game Designer - 2D and 3D Animator - Multimedia Artist - Graphic Designer - UI/UX Designer - Video Editor - Visual Effects (VFX) Artist - 3D Modeler",
+    "keywords": [
+      "careers",
+      "jobs",
+      "bsemc"
+    ],
+    "source": "About CCIT.pdf",
+    "verification_status": "verified",
+    "verification_scope": "Faithfully extracted from user-supplied source; institutional accuracy and currency not independently verified",
+    "reviewed_at": "2026-11-04",
+    "currency_status": "unconfirmed",
+    "source_url": "https://docs.google.com/document/d/1AgLIpg1OMLHTReXRoG1btxJmhxBxaaWv2SMVWitTHqc/edit"
+  },
+  {
+    "id": "FAQ-016",
+    "category": "dean",
+    "question": "Who is the dean of CCIT?",
+    "answer": "Dr. Maricel M. Gaspar is the current Dean of the College of Computing and Information Technology (CCIT) at FAITH Colleges.",
+    "keywords": [
+      "dean",
+      "head"
+    ],
+    "source": "About CCIT.pdf",
+    "verification_status": "verified",
+    "verification_scope": "Faithfully extracted from user-supplied source; institutional accuracy and currency not independently verified",
+    "reviewed_at": "2026-11-04",
+    "currency_status": "unconfirmed",
+    "source_url": "https://docs.google.com/document/d/1AgLIpg1OMLHTReXRoG1btxJmhxBxaaWv2SMVWitTHqc/edit"
+  },
+  {
+    "id": "FAQ-017",
+    "category": "faculty",
+    "question": "Who are the faculty members of the BS Information Technology program?",
+    "answer": "The Bachelor of Science in Information Technology (BSIT) program under the College of Computing and Information Technology (CCIT) at FAITH Colleges has the following faculty members: - Judith Elic - Angelica Evangelista - Vince Paulo Calanog - Joseph Malaluan - Roland Calderon - Carl Ade Salsona - Eubert Manalo",
+    "keywords": [
+      "faculty",
+      "bsit"
+    ],
+    "source": "About CCIT.pdf",
+    "verification_status": "verified",
+    "verification_scope": "Faithfully extracted from user-supplied source; institutional accuracy and currency not independently verified",
+    "reviewed_at": "2026-11-04",
+    "currency_status": "unconfirmed",
+    "source_url": "https://docs.google.com/document/d/1AgLIpg1OMLHTReXRoG1btxJmhxBxaaWv2SMVWitTHqc/edit"
+  },
+  {
+    "id": "FAQ-018",
+    "category": "faculty",
+    "question": "Who are the faculty members of the BS Computer Science program?",
+    "answer": "The Bachelor of Science in Computer Science (BSCS) program under the College of Computing and Information Technology (CCIT) at FAITH Colleges has the following faculty members: - Farley Abrigo - Bryan Christian Briones - Paul Domenic Trambulo",
+    "keywords": [
+      "faculty",
+      "bscs"
+    ],
+    "source": "About CCIT.pdf",
+    "verification_status": "verified",
+    "verification_scope": "Faithfully extracted from user-supplied source; institutional accuracy and currency not independently verified",
+    "reviewed_at": "2026-11-04",
+    "currency_status": "unconfirmed",
+    "source_url": "https://docs.google.com/document/d/1AgLIpg1OMLHTReXRoG1btxJmhxBxaaWv2SMVWitTHqc/edit"
+  },
+  {
+    "id": "FAQ-019",
+    "category": "faculty",
+    "question": "Who are the faculty members of the BS Entertainment and Multimedia program?",
+    "answer": "The Bachelor of Science in Entertainment and Multimedia Computing (BSEMC) program under the College of Computing and Information Technology (CCIT) at FAITH Colleges has the following faculty members, based on the provided organizational chart: - John Benedict Palomeno - Joshua O. Orlondo - Rafael Isidro - Gerlie Mae Orpilla",
+    "keywords": [
+      "faculty",
+      "bsemc"
+    ],
+    "source": "About CCIT.pdf",
+    "verification_status": "verified",
+    "verification_scope": "Faithfully extracted from user-supplied source; institutional accuracy and currency not independently verified",
+    "reviewed_at": "2026-11-04",
+    "currency_status": "unconfirmed",
+    "source_url": "https://docs.google.com/document/d/1AgLIpg1OMLHTReXRoG1btxJmhxBxaaWv2SMVWitTHqc/edit"
+  },
+  {
+    "id": "FAQ-020",
+    "category": "facilities",
+    "question": "What facilities are available for CCIT students?",
+    "answer": "CCIT provides a variety of computer laboratories to support students in their academic studies and practical learning activities. These include the Programming Laboratory, which supports programming and software development activities; the Multimedia Laboratory, which is intended for multimedia design and digital content creation; the 316 Laboratory, which serves as an additional learning space for computing-related activities; and the AI Laboratory, which supports learning and exploration in artificial intelligence and related technologies. These facilities help students develop their technical skills and apply their knowledge through hands-on learning experiences.",
+    "keywords": [
+      "facilities",
+      "laboratories",
+      "labs"
+    ],
+    "source": "About CCIT.pdf",
+    "verification_status": "verified",
+    "verification_scope": "Faithfully extracted from user-supplied source; institutional accuracy and currency not independently verified",
+    "reviewed_at": "2026-11-04",
+    "currency_status": "unconfirmed",
+    "source_url": "https://docs.google.com/document/d/1AgLIpg1OMLHTReXRoG1btxJmhxBxaaWv2SMVWitTHqc/edit"
+  },
+  {
+    "id": "FAQ-021",
+    "category": "dost",
+    "question": "Does CCIT accept students who have DOST Scholarship?",
+    "answer": "Yes, CCIT accepts students who have qualified for the DOST Scholarship and wish to pursue either the Bachelor of Science in Information Technology (BSIT) or the Bachelor of Science in Computer Science (BSCS) program. Students should also ensure that they meet the admission requirements of FAITH Colleges and the terms and conditions of their DOST scholarship.",
+    "keywords": [
+      "dost",
+      "scholarships"
+    ],
+    "source": "About CCIT.pdf",
+    "verification_status": "verified",
+    "verification_scope": "Faithfully extracted from user-supplied source; institutional accuracy and currency not independently verified",
+    "reviewed_at": "2026-11-04",
+    "currency_status": "unconfirmed",
+    "source_url": "https://docs.google.com/document/d/1AgLIpg1OMLHTReXRoG1btxJmhxBxaaWv2SMVWitTHqc/edit"
+  },
+  {
+    "id": "FAQ-022",
+    "category": "activities",
+    "question": "Does CCIT offer any non-academic programs, activities for students?",
+    "answer": "Yes, CCIT organizes various non-academic activities to support students' overall well-being and promote camaraderie, personal growth, and spiritual development. These activities include CCIT Camp, which is held every other year, CCIT Night, and spiritual activities. These events provide students with opportunities to build stronger relationships with their peers, take a break from academic responsibilities, and strengthen their sense of community within CCIT.",
+    "keywords": [
+      "activities",
+      "camp",
+      "night",
+      "non-academic"
+    ],
+    "source": "About CCIT.pdf",
+    "verification_status": "verified",
+    "verification_scope": "Faithfully extracted from user-supplied source; institutional accuracy and currency not independently verified",
+    "reviewed_at": "2026-11-04",
+    "currency_status": "unconfirmed",
+    "source_url": "https://docs.google.com/document/d/1AgLIpg1OMLHTReXRoG1btxJmhxBxaaWv2SMVWitTHqc/edit"
+  }
+]

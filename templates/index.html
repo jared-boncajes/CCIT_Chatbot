@@ -1,0 +1,8 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CCITthink — CCIT Assistant</title><link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}"><script defer src="{{ url_for('static',filename='js/script.js') }}"></script></head>
+<body><header><a class="brand" href="/" aria-label="CCITthink home">❋ <strong>CCITthink</strong></a><button id="clear" type="button">＋ New chat</button></header>
+<main><section id="welcome"><h1><span>Hello!</span><br>What’s on your mind today?</h1><p>Ready to assist you with anything CCIT.</p></section>
+<p id="status" role="status">Checking availability…</p>
+<section id="messages" aria-label="Conversation" role="log" aria-live="polite"></section>
+<form id="chat"><label class="sr-only" for="question">Ask CCITthink</label><span aria-hidden="true">＋</span><textarea id="question" placeholder="Ask CCITthink" maxlength="1000" rows="1" required></textarea><button id="send" aria-label="Send message" type="submit">➤</button></form>
+<section id="suggestions" aria-label="Suggested questions"></section><p class="footnote">Answers depend on reviewed department information. No private student records are accessible.</p></main></body></html>

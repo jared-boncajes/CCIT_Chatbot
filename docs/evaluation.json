@@ -1,0 +1,311 @@
+{
+  "mode": "FAQ retrieval only; no live AI request",
+  "results": [
+    {
+      "question": "What is the meaning of CCIT?",
+      "expected": "FAQ-001",
+      "actual": "FAQ-001",
+      "answer": "According to the supplied About CCIT document (current details have not been independently confirmed):\n\nFAITH- College of Computer and Information Technology\n\nSource note: the document uses both “College of Computer” and “College of Computing” in the college name. Please confirm the official wording with CCIT.",
+      "passed": true,
+      "elapsed_ms": 1.66,
+      "mode": "faq"
+    },
+    {
+      "question": "What is CCIT all about?",
+      "expected": "FAQ-002",
+      "actual": "FAQ-002",
+      "answer": "According to the supplied About CCIT document (current details have not been independently confirmed):\n\nThe College of Computing and Information Technology (CCIT) of First Asia Institute of Technology and Humanities recently restructured its academic philosophy to reflect what students should learn upon completing a program, and what they should attain a few years after graduation.\n\nSource note: the document uses both “College of Computer” and “College of Computing” in the college name. Please confirm the official wording with CCIT.",
+      "passed": true,
+      "elapsed_ms": 0.52,
+      "mode": "faq"
+    },
+    {
+      "question": "What is the vision?",
+      "expected": "FAQ-003",
+      "actual": "FAQ-003",
+      "answer": "According to the supplied About CCIT document (current details have not been independently confirmed):\n\nCCIT's vision is to be a Center of Excellence in Information Technology Education with a strong passion to uplift lives and society.",
+      "passed": true,
+      "elapsed_ms": 0.38,
+      "mode": "faq"
+    },
+    {
+      "question": "MISSION",
+      "expected": "FAQ-004",
+      "actual": "FAQ-004",
+      "answer": "According to the supplied About CCIT document (current details have not been independently confirmed):\n\nCCIT’s mission is to produce globally competent, committed and compassionate IT professionals transforming society through Innovative teaching-learning approaches, Technology-advanced breakthroughs and Enabling extension endeavors.",
+      "passed": true,
+      "elapsed_ms": 0.32,
+      "mode": "faq"
+    },
+    {
+      "question": "What are the goals?",
+      "expected": "FAQ-005",
+      "actual": "FAQ-005",
+      "answer": "According to the supplied About CCIT document (current details have not been independently confirmed):\n\nThe goal of CCIT is represented by the acronym CCITITE, which consists of seven key objectives: 1. Create a learning environment that uses outcomes-based education aligned with industry needs and practices. 2. Cultivate a research culture that promotes technological innovation and commercialization. 3. Integrate professional programs and alternative learning systems in the field of Information and Communications Technology (ICT). 4. Transform and empower communities through sustainable ICT extension programs and services. 5. Imbibe the value of collaboration in achieving industry-driven research and innovative solutions across various fields. 6. Transcend in digital humanities by upholding professionalism, ethical practices, and social and environmental responsibility. 7. Encourage lifelong learning, a positive work attitude, and effective communication in the workplace.",
+      "passed": true,
+      "elapsed_ms": 0.35,
+      "mode": "faq"
+    },
+    {
+      "question": "What programs are available?",
+      "expected": "FAQ-006",
+      "actual": "FAQ-006",
+      "answer": "According to the supplied About CCIT document (current details have not been independently confirmed):\n\nCCIT offers three undergraduate programs: Bachelor of Science in Information Technology (BSIT), Bachelor of Science in Computer Science (BSCS), and Bachelor of Science in Entertainment and Multimedia Computing (BSEMC). It also provides graduate programs, including a Master’s and Doctorate degree in Information Technology, to support advanced learning, research, and professional development in the field of technology.",
+      "passed": true,
+      "elapsed_ms": 0.25,
+      "mode": "faq"
+    },
+    {
+      "question": "Ano mga kurso sa CCIT?",
+      "expected": "FAQ-006",
+      "actual": "FAQ-006",
+      "answer": "According to the supplied About CCIT document (current details have not been independently confirmed):\n\nCCIT offers three undergraduate programs: Bachelor of Science in Information Technology (BSIT), Bachelor of Science in Computer Science (BSCS), and Bachelor of Science in Entertainment and Multimedia Computing (BSEMC). It also provides graduate programs, including a Master’s and Doctorate degree in Information Technology, to support advanced learning, research, and professional development in the field of technology.",
+      "passed": true,
+      "elapsed_ms": 0.19,
+      "mode": "faq"
+    },
+    {
+      "question": "courses",
+      "expected": "FAQ-006",
+      "actual": "FAQ-006",
+      "answer": "According to the supplied About CCIT document (current details have not been independently confirmed):\n\nCCIT offers three undergraduate programs: Bachelor of Science in Information Technology (BSIT), Bachelor of Science in Computer Science (BSCS), and Bachelor of Science in Entertainment and Multimedia Computing (BSEMC). It also provides graduate programs, including a Master’s and Doctorate degree in Information Technology, to support advanced learning, research, and professional development in the field of technology.",
+      "passed": true,
+      "elapsed_ms": 0.17,
+      "mode": "faq"
+    },
+    {
+      "question": "What graduate degrees are available?",
+      "expected": "FAQ-006",
+      "actual": "FAQ-006",
+      "answer": "According to the supplied About CCIT document (current details have not been independently confirmed):\n\nCCIT offers three undergraduate programs: Bachelor of Science in Information Technology (BSIT), Bachelor of Science in Computer Science (BSCS), and Bachelor of Science in Entertainment and Multimedia Computing (BSEMC). It also provides graduate programs, including a Master’s and Doctorate degree in Information Technology, to support advanced learning, research, and professional development in the field of technology.",
+      "passed": true,
+      "elapsed_ms": 0.24,
+      "mode": "faq"
+    },
+    {
+      "question": "What is BSIT?",
+      "expected": "FAQ-007",
+      "actual": "FAQ-007",
+      "answer": "According to the supplied About CCIT document (current details have not been independently confirmed):\n\nInformation Technology (IT) is the field of study that focuses on using computers, software, networks, and databases to store, process, manage, and protect information. It involves developing and maintaining technological systems that help individuals, businesses, and organizations work efficiently and solve real-world problems.\n\nGraduates of Bachelor of Science in Information Technology (BSIT) can pursue various careers in the technology industry, depending on their skills and areas of specialization including: - IT Support Specialist - Network Administrator - Systems Administrator - Web Developer - Database Administrator - Cybersecurity Analyst - IT Project Manager - Cloud Computing Specialist - Business Analyst - Software Developer\n\nThe Bachelor of Science in Information Technology (BSIT) program under the College of Computing and Information Technology (CCIT) at FAITH Colleges has the following faculty members: - Judith Elic - Angelica Evangelista - Vince Paulo Calanog - Joseph Malaluan - Roland Calderon - Carl Ade Salsona - Eubert Manalo",
+      "passed": true,
+      "elapsed_ms": 0.31,
+      "mode": "faq"
+    },
+    {
+      "question": "What is Computer Science?",
+      "expected": "FAQ-008",
+      "actual": "FAQ-008",
+      "answer": "According to the supplied About CCIT document (current details have not been independently confirmed):\n\nComputer Science (CS) is the field of study that focuses on computing, programming, algorithms, data structures, and the development of software and computer systems. It involves understanding how computers solve problems, designing efficient solutions, and exploring advanced technologies such as artificial intelligence and machine learning.\n\nGraduates of Bachelor of Science in Computer Science (BSCS) can pursue various careers in the technology industry, depending on their skills, interests, and specialization including: - Software Developer - Web Developer - Mobile Application Developer - Data Scientist, - Artificial Intelligence (AI) Engineer - Machine Learning Engineer - Systems Analyst - Database Administrator - Game Developer\n\nThe Bachelor of Science in Computer Science (BSCS) program under the College of Computing and Information Technology (CCIT) at FAITH Colleges has the following faculty members: - Farley Abrigo - Bryan Christian Briones - Paul Domenic Trambulo",
+      "passed": true,
+      "elapsed_ms": 0.3,
+      "mode": "faq"
+    },
+    {
+      "question": "What is BSEMC?",
+      "expected": "FAQ-009",
+      "actual": "FAQ-009",
+      "answer": "According to the supplied About CCIT document (current details have not been independently confirmed):\n\nEntertainment and Multimedia Computing (BSEMC) is the field of study that focuses on the use of technology in creating digital entertainment and multimedia content. It covers areas such as game development, animation, digital arts, interactive media, and multimedia design. The program combines creativity and technical skills to prepare students for careers in the entertainment, gaming, and digital media industries.\n\nGraduates of Bachelor of Science in Entertainment and Multimedia Computing (BSEMC) can pursue careers in the entertainment, gaming, and digital media industries, including: - Game Developer - Game Designer - 2D and 3D Animator - Multimedia Artist - Graphic Designer - UI/UX Designer - Video Editor - Visual Effects (VFX) Artist - 3D Modeler\n\nThe Bachelor of Science in Entertainment and Multimedia Computing (BSEMC) program under the College of Computing and Information Technology (CCIT) at FAITH Colleges has the following faculty members, based on the provided organizational chart: - John Benedict Palomeno - Joshua O. Orlondo - Rafael Isidro - Gerlie Mae Orpilla",
+      "passed": true,
+      "elapsed_ms": 0.47,
+      "mode": "faq"
+    },
+    {
+      "question": "Does CCIT have academic accreditation?",
+      "expected": "FAQ-010",
+      "actual": "FAQ-010",
+      "answer": "According to the supplied About CCIT document (current details have not been independently confirmed):\n\nYes, the College of Computing and Information Technology (CCIT) has achieved Level IV accreditation from the Philippine Association of Colleges and Universities Commission on Accreditation (PACUCOA) for its Bachelor of Science in Information Technology (BSIT) and Bachelor of Science in Computer Science (BSCS) programs. Meanwhile, the Bachelor of Science in Entertainment and Multimedia Computing (BSEMC) program is currently undergoing the process of achieving Level I accreditation.",
+      "passed": true,
+      "elapsed_ms": 0.3,
+      "mode": "faq"
+    },
+    {
+      "question": "PACUCOA accreditation",
+      "expected": "FAQ-010",
+      "actual": "FAQ-010",
+      "answer": "According to the supplied About CCIT document (current details have not been independently confirmed):\n\nYes, the College of Computing and Information Technology (CCIT) has achieved Level IV accreditation from the Philippine Association of Colleges and Universities Commission on Accreditation (PACUCOA) for its Bachelor of Science in Information Technology (BSIT) and Bachelor of Science in Computer Science (BSCS) programs. Meanwhile, the Bachelor of Science in Entertainment and Multimedia Computing (BSEMC) program is currently undergoing the process of achieving Level I accreditation.",
+      "passed": true,
+      "elapsed_ms": 0.28,
+      "mode": "faq"
+    },
+    {
+      "question": "Does CCIT offer scholarships?",
+      "expected": "FAQ-011",
+      "actual": "FAQ-011",
+      "answer": "According to the supplied About CCIT document (current details have not been independently confirmed):\n\nYes, aside from the academic scholarships offered by FAITH Colleges, students may also qualify for course-specific scholarships based on their academic performance in senior high school. These scholarships are granted to students who meet or exceed the requirements established by the dean of CCIT.\n\nCCIT offers two types of program-specific scholarships: the Course-Specific Scholarship and the 50-TAG Scholarship. The Course-Specific Scholarship provides qualified students with a 100% discount on tuition fees, while the 50-TAG Scholarship grants a 50% discount on tuition fees. Both scholarships aim to recognize students' academic achievements and provide financial support to qualified students pursuing their chosen programs.\n\nYes, CCIT accepts students who have qualified for the DOST Scholarship and wish to pursue either the Bachelor of Science in Information Technology (BSIT) or the Bachelor of Science in Computer Science (BSCS) program. Students should also ensure that they meet the admission requirements of FAITH Colleges and the terms and conditions of their DOST scholarship.",
+      "passed": true,
+      "elapsed_ms": 0.41,
+      "mode": "faq"
+    },
+    {
+      "question": "50-TAG tuition discount",
+      "expected": "FAQ-012",
+      "actual": "FAQ-012",
+      "answer": "According to the supplied About CCIT document (current details have not been independently confirmed):\n\nCCIT offers two types of program-specific scholarships: the Course-Specific Scholarship and the 50-TAG Scholarship. The Course-Specific Scholarship provides qualified students with a 100% discount on tuition fees, while the 50-TAG Scholarship grants a 50% discount on tuition fees. Both scholarships aim to recognize students' academic achievements and provide financial support to qualified students pursuing their chosen programs.",
+      "passed": true,
+      "elapsed_ms": 0.67,
+      "mode": "faq"
+    },
+    {
+      "question": "What careers after BSCS?",
+      "expected": "FAQ-013",
+      "actual": "FAQ-013",
+      "answer": "According to the supplied About CCIT document (current details have not been independently confirmed):\n\nGraduates of Bachelor of Science in Computer Science (BSCS) can pursue various careers in the technology industry, depending on their skills, interests, and specialization including: - Software Developer - Web Developer - Mobile Application Developer - Data Scientist, - Artificial Intelligence (AI) Engineer - Machine Learning Engineer - Systems Analyst - Database Administrator - Game Developer",
+      "passed": true,
+      "elapsed_ms": 0.38,
+      "mode": "faq"
+    },
+    {
+      "question": "BSIT jobs",
+      "expected": "FAQ-014",
+      "actual": "FAQ-014",
+      "answer": "According to the supplied About CCIT document (current details have not been independently confirmed):\n\nGraduates of Bachelor of Science in Information Technology (BSIT) can pursue various careers in the technology industry, depending on their skills and areas of specialization including: - IT Support Specialist - Network Administrator - Systems Administrator - Web Developer - Database Administrator - Cybersecurity Analyst - IT Project Manager - Cloud Computing Specialist - Business Analyst - Software Developer",
+      "passed": true,
+      "elapsed_ms": 0.3,
+      "mode": "faq"
+    },
+    {
+      "question": "BSEMC careers",
+      "expected": "FAQ-015",
+      "actual": "FAQ-015",
+      "answer": "According to the supplied About CCIT document (current details have not been independently confirmed):\n\nGraduates of Bachelor of Science in Entertainment and Multimedia Computing (BSEMC) can pursue careers in the entertainment, gaming, and digital media industries, including: - Game Developer - Game Designer - 2D and 3D Animator - Multimedia Artist - Graphic Designer - UI/UX Designer - Video Editor - Visual Effects (VFX) Artist - 3D Modeler",
+      "passed": true,
+      "elapsed_ms": 0.58,
+      "mode": "faq"
+    },
+    {
+      "question": "Who is the dean?",
+      "expected": "FAQ-016",
+      "actual": "FAQ-016",
+      "answer": "According to the supplied About CCIT document (current details have not been independently confirmed):\n\nDr. Maricel M. Gaspar is the current Dean of the College of Computing and Information Technology (CCIT) at FAITH Colleges.",
+      "passed": true,
+      "elapsed_ms": 0.33,
+      "mode": "faq"
+    },
+    {
+      "question": "Sino ang dean?",
+      "expected": "FAQ-016",
+      "actual": "FAQ-016",
+      "answer": "According to the supplied About CCIT document (current details have not been independently confirmed):\n\nDr. Maricel M. Gaspar is the current Dean of the College of Computing and Information Technology (CCIT) at FAITH Colleges.",
+      "passed": true,
+      "elapsed_ms": 0.29,
+      "mode": "faq"
+    },
+    {
+      "question": "BSIT faculty",
+      "expected": "FAQ-017",
+      "actual": "FAQ-017",
+      "answer": "According to the supplied About CCIT document (current details have not been independently confirmed):\n\nThe Bachelor of Science in Information Technology (BSIT) program under the College of Computing and Information Technology (CCIT) at FAITH Colleges has the following faculty members: - Judith Elic - Angelica Evangelista - Vince Paulo Calanog - Joseph Malaluan - Roland Calderon - Carl Ade Salsona - Eubert Manalo",
+      "passed": true,
+      "elapsed_ms": 0.34,
+      "mode": "faq"
+    },
+    {
+      "question": "Computer Science teachers",
+      "expected": "FAQ-018",
+      "actual": "FAQ-018",
+      "answer": "According to the supplied About CCIT document (current details have not been independently confirmed):\n\nThe Bachelor of Science in Computer Science (BSCS) program under the College of Computing and Information Technology (CCIT) at FAITH Colleges has the following faculty members: - Farley Abrigo - Bryan Christian Briones - Paul Domenic Trambulo",
+      "passed": true,
+      "elapsed_ms": 0.28,
+      "mode": "faq"
+    },
+    {
+      "question": "BSEMC faculty members",
+      "expected": "FAQ-019",
+      "actual": "FAQ-019",
+      "answer": "According to the supplied About CCIT document (current details have not been independently confirmed):\n\nThe Bachelor of Science in Entertainment and Multimedia Computing (BSEMC) program under the College of Computing and Information Technology (CCIT) at FAITH Colleges has the following faculty members, based on the provided organizational chart: - John Benedict Palomeno - Joshua O. Orlondo - Rafael Isidro - Gerlie Mae Orpilla",
+      "passed": true,
+      "elapsed_ms": 0.27,
+      "mode": "faq"
+    },
+    {
+      "question": "What facilities are available?",
+      "expected": "FAQ-020",
+      "actual": "FAQ-020",
+      "answer": "According to the supplied About CCIT document (current details have not been independently confirmed):\n\nCCIT provides a variety of computer laboratories to support students in their academic studies and practical learning activities. These include the Programming Laboratory, which supports programming and software development activities; the Multimedia Laboratory, which is intended for multimedia design and digital content creation; the 316 Laboratory, which serves as an additional learning space for computing-related activities; and the AI Laboratory, which supports learning and exploration in artificial intelligence and related technologies. These facilities help students develop their technical skills and apply their knowledge through hands-on learning experiences.",
+      "passed": true,
+      "elapsed_ms": 0.27,
+      "mode": "faq"
+    },
+    {
+      "question": "laboratories",
+      "expected": "FAQ-020",
+      "actual": "FAQ-020",
+      "answer": "According to the supplied About CCIT document (current details have not been independently confirmed):\n\nCCIT provides a variety of computer laboratories to support students in their academic studies and practical learning activities. These include the Programming Laboratory, which supports programming and software development activities; the Multimedia Laboratory, which is intended for multimedia design and digital content creation; the 316 Laboratory, which serves as an additional learning space for computing-related activities; and the AI Laboratory, which supports learning and exploration in artificial intelligence and related technologies. These facilities help students develop their technical skills and apply their knowledge through hands-on learning experiences.",
+      "passed": true,
+      "elapsed_ms": 0.3,
+      "mode": "faq"
+    },
+    {
+      "question": "DOST scholarships",
+      "expected": "FAQ-021",
+      "actual": "FAQ-021",
+      "answer": "According to the supplied About CCIT document (current details have not been independently confirmed):\n\nYes, CCIT accepts students who have qualified for the DOST Scholarship and wish to pursue either the Bachelor of Science in Information Technology (BSIT) or the Bachelor of Science in Computer Science (BSCS) program. Students should also ensure that they meet the admission requirements of FAITH Colleges and the terms and conditions of their DOST scholarship.",
+      "passed": true,
+      "elapsed_ms": 0.31,
+      "mode": "faq"
+    },
+    {
+      "question": "non-academic activities",
+      "expected": "FAQ-022",
+      "actual": "FAQ-022",
+      "answer": "According to the supplied About CCIT document (current details have not been independently confirmed):\n\nYes, CCIT organizes various non-academic activities to support students' overall well-being and promote camaraderie, personal growth, and spiritual development. These activities include CCIT Camp, which is held every other year, CCIT Night, and spiritual activities. These events provide students with opportunities to build stronger relationships with their peers, take a break from academic responsibilities, and strengthen their sense of community within CCIT.",
+      "passed": true,
+      "elapsed_ms": 0.28,
+      "mode": "faq"
+    },
+    {
+      "question": "What is the misson?",
+      "expected": "FAQ-004",
+      "actual": "FAQ-004",
+      "answer": "According to the supplied About CCIT document (current details have not been independently confirmed):\n\nCCIT’s mission is to produce globally competent, committed and compassionate IT professionals transforming society through Innovative teaching-learning approaches, Technology-advanced breakthroughs and Enabling extension endeavors.",
+      "passed": true,
+      "elapsed_ms": 0.46,
+      "mode": "faq"
+    },
+    {
+      "question": "What are my grades?",
+      "expected": "privacy",
+      "actual": "privacy",
+      "answer": "I cannot access private student records. Please use the official student services channels.",
+      "passed": true,
+      "elapsed_ms": 0.23,
+      "mode": "privacy"
+    },
+    {
+      "question": "When is tomorrow meeting?",
+      "expected": "fallback",
+      "actual": "fallback",
+      "answer": "I don't currently have verified information about that. Please contact the CCIT department office for assistance.",
+      "passed": true,
+      "elapsed_ms": 0.65,
+      "mode": "fallback"
+    },
+    {
+      "question": "How do I bake bread?",
+      "expected": "fallback",
+      "actual": "fallback",
+      "answer": "I don't currently have verified information about that. Please contact the CCIT department office for assistance.",
+      "passed": true,
+      "elapsed_ms": 0.54,
+      "mode": "fallback"
+    },
+    {
+      "question": "What is the tuition amount?",
+      "expected": "fallback",
+      "actual": "fallback",
+      "answer": "I don't currently have verified information about that. Please contact the CCIT department office for assistance.",
+      "passed": true,
+      "elapsed_ms": 0.5,
+      "mode": "fallback"
+    },
+    {
+      "question": "What is the dean phone number?",
+      "expected": "fallback",
+      "actual": "fallback",
+      "answer": "I don't currently have verified information about that. Please contact the CCIT department office for assistance.",
+      "passed": true,
+      "elapsed_ms": 0.3,
+      "mode": "fallback"
+    }
+  ]
+}
