@@ -1,8 +1,102 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CCITthink — CCIT Assistant</title><link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}"><script defer src="{{ url_for('static',filename='js/script.js') }}"></script></head>
-<body><header><a class="brand" href="/" aria-label="CCITthink home">❋ <strong>CCITthink</strong></a><button id="clear" type="button">＋ New chat</button></header>
-<main><section id="welcome"><h1><span>Hello!</span><br>What’s on your mind today?</h1><p>Ready to assist you with anything CCIT.</p></section>
-<p id="status" role="status">Checking availability…</p>
-<section id="messages" aria-label="Conversation" role="log" aria-live="polite"></section>
-<form id="chat"><label class="sr-only" for="question">Ask CCITthink</label><span aria-hidden="true">＋</span><textarea id="question" placeholder="Ask CCITthink" maxlength="1000" rows="1" required></textarea><button id="send" aria-label="Send message" type="submit">➤</button></form>
-<section id="suggestions" aria-label="Suggested questions"></section><p class="footnote">Answers depend on reviewed department information. No private student records are accessible.</p></main></body></html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#c91b17">
+    <title>CCIThink — CCIT Assistant</title>
+    <link rel="icon" href="{{ url_for('static', filename='assets/ccit-logo.png') }}">
+    <link rel="preload" href="{{ url_for('static', filename='assets/fonts/inter-latin-500.woff2') }}" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script defer src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#question">Skip to question</a>
+    <header class="topbar">
+      <div class="topbar-content">
+        <a class="brand" href="/" aria-label="CCIThink home">
+          <img src="{{ url_for('static', filename='assets/ccit-logo.png') }}" width="38" height="38" alt="">
+          <span>CCIThink</span>
+        </a>
+        <button class="profile" id="profile" type="button" aria-haspopup="dialog" aria-label="Personalize your greeting">
+          <img src="{{ url_for('static', filename='assets/sample-avatar.png') }}" width="43" height="43" alt="">
+          <span class="profile-text">
+            <span id="profile-name">Guest</span>
+            <span class="profile-caption">Personalize your greeting</span>
+          </span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section id="welcome" class="welcome" aria-label="Welcome to CCIThink">
+        <h1>
+          <span id="greeting" class="greeting">Hello, there!</span>
+          <span class="welcome-question">What’s on your mind today?</span>
+        </h1>
+        <p>Ready to assist you with anything CCIT.</p>
+      </section>
+
+      <div class="chat-area">
+        <section id="messages" class="messages" aria-label="Conversation" role="log" aria-live="polite" aria-relevant="additions text" hidden></section>
+
+        <form id="chat" class="composer">
+          <button id="clear" class="new-chat" type="button" aria-label="New chat" title="New chat">
+            <img src="{{ url_for('static', filename='assets/icons/plus.svg') }}" width="24" height="24" alt="">
+          </button>
+          <label class="sr-only" for="question">Ask CCIThink</label>
+          <textarea id="question" placeholder="Ask CCIThink" maxlength="1000" rows="1" required aria-describedby="input-help"></textarea>
+          <button id="send" class="send" aria-label="Send message" type="submit" disabled>
+            <img src="{{ url_for('static', filename='assets/icons/send.svg') }}" width="36" height="36" alt="">
+          </button>
+        </form>
+        <span id="input-help" class="sr-only">Up to 1,000 characters. Enter to send; Shift and Enter for a new line. Use the plus button to start a new chat.</span>
+
+        <section id="suggestions" class="topics" aria-label="Explore CCIT topics">
+          {% for topic in topics %}
+          <button class="topic-card" type="button" data-topic="{{ topic.id }}" aria-expanded="false" aria-controls="question-panel" disabled>
+            <span class="topic-heading">
+              <img src="{{ url_for('static', filename='assets/icons/bulb.svg') }}" width="29" height="29" alt="">
+              <span>{{ topic.title }}</span>
+            </span>
+            <span class="topic-description">{{ topic.description }}</span>
+          </button>
+          {% endfor %}
+        </section>
+
+        <section id="question-panel" class="question-panel" aria-labelledby="topic-title" hidden>
+          <h2 id="topic-title"></h2>
+          <p id="topic-note" class="topic-note"></p>
+          <div id="question-list" class="question-list"></div>
+        </section>
+
+        <p id="status" class="status" role="status">Checking availability…</p>
+        <p class="footnote">Department details may change. Confirm time-sensitive information with CCIT.</p>
+      </div>
+      <noscript><p class="status status-error">Please enable JavaScript to use the chatbot.</p></noscript>
+    </main>
+
+    <dialog id="name-dialog" class="dialog" aria-labelledby="name-title">
+      <form id="name-form">
+        <h2 id="name-title">Make yourself at home</h2>
+        <p>What should CCIThink call you?</p>
+        <label for="preferred-name">Preferred name</label>
+        <input id="preferred-name" name="preferred-name" maxlength="32" autocomplete="nickname" aria-describedby="name-help">
+        <p id="name-help" class="dialog-note">Optional. Kept only in this browser tab; no account is created.</p>
+        <div class="dialog-actions">
+          <button class="secondary-button" id="cancel-name" type="button">Cancel</button>
+          <button class="primary-button" type="submit">Save name</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="clear-dialog" class="dialog" aria-labelledby="clear-title">
+      <h2 id="clear-title">Start a new chat?</h2>
+      <p>Your current conversation will be cleared.</p>
+      <div class="dialog-actions">
+        <button class="secondary-button" id="cancel-clear" type="button" autofocus>Keep chatting</button>
+        <button class="primary-button" id="confirm-clear" type="button">New chat</button>
+      </div>
+    </dialog>
+  </body>
+</html>

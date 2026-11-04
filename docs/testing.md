@@ -1,9 +1,26 @@
 # Validation evidence
 
-Executed November 4, 2026: `.venv/bin/python -m pytest -q` — **53 passed**.
+Executed November 4, 2026: `.venv/bin/python -m pytest -q` — **54 passed**.
 
-19 implementation checks cover invalid input, synthetic retrieval variants, unknown questions, privacy, missing data/key, pending-record exclusion, simulated provider failure and frontend delivery. An additional 34 questions exercise the actual uploaded source with expected first source IDs or fallback/privacy behavior. All 34 passed. Actual returned answers, expected/actual IDs and elapsed times are recorded in `evaluation.json`. This is an automated retrieval evaluation in explicitly labeled FAQ mode, not an AI answer accuracy measurement or independent fact verification.
+20 implementation checks cover invalid input, synthetic retrieval variants, unknown questions, privacy, missing data/key, pending-record exclusion, simulated provider failure, frontend delivery and reviewed source-only topic suggestions. Another 34 questions exercise the actual uploaded source with expected first source IDs or fallback/privacy behavior. All 34 passed. Actual returned answers, expected/actual IDs and elapsed times are recorded in `evaluation.json`. This is retrieval evaluation in explicitly labeled FAQ mode, not a live AI answer evaluation or independent fact verification.
 
-The HTTP smoke test before import returned HTML 200, health 200 with ready=false and chat 503 for missing data. A subsequent FAQ-mode HTTP test is recorded below after restart. No live provider request or browser-responsive/screenshot check has been executed. Python dependency consistency and JavaScript syntax checks passed.
+## Browser validation
 
-After import and restart, live HTTP requests passed: health reported ready=true, 22 records and FAQ mode; a programs question returned HTTP 200 with FAQ-006; an unsupported meeting question returned HTTP 200 with a source-free fallback. Live AI remains untested.
+`python tests/browser_smoke.py` against the running FAQ-mode Flask server passed **14 browser scenarios** in system Chromium using Playwright. The script and its result JSON preserve the exact checks; related assertions are grouped within each scenario rather than counted as individual tests.
+
+- 1440×1024 desktop, 1280×800 laptop, 768×1024 tablet, 390×844 mobile, 320×568 small mobile and 844×390 landscape: no horizontal document overflow; all three topic selectors open/close; questions reach Flask and receive source FAQ-006.
+- Desktop composer geometry: 910×84 pixels, y≈516; self-hosted Inter loads.
+- Optional name personalization, tab persistence, Escape dismissal and clearing the preferred name.
+- Empty/whitespace send prevention and Shift+Enter multiline input.
+- A source question selected through the topic panel, actual source reply, FAQ disclosure, typing feedback and duplicate submission prevention while the real request is held pending.
+- New-chat confirmation, cancel and reset.
+- Real unknown-question fallback and private-record response.
+- Literal rendering of HTML-like user input without execution.
+- A simulated provider HTTP 502 followed by a successful real retry.
+- A simulated suggestions outage while typed questions still work.
+
+No JavaScript page errors occurred in the normal and interaction scenarios. The two intentional outage checks use mocked failures; they are not live provider tests. Screenshots of the actual application and the timestamped browser report are in `docs/screenshots/`. See `design.md` for the source-frame inspection, implementation details and acknowledged adaptations.
+
+## Other checks and limitations
+
+JavaScript syntax, Python dependency consistency and Git whitespace checks passed. HTTP smoke tests confirmed HTML/health delivery, missing-data errors before import, and sourced FAQ replies/fallback after import. No live provider request has succeeded because an API key has not been supplied. Firefox, Safari, real mobile devices, assistive technology and production deployment/load testing remain unrun.

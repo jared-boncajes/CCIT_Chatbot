@@ -12,6 +12,32 @@ ROOT = Path(__file__).parent
 load_dotenv(ROOT / '.env')
 FALLBACK = "I don't currently have verified information about that. Please contact the CCIT department office for assistance."
 
+# Titles and descriptions come from the revised Figma frame. Question choices
+# come only from the reviewed knowledge records, never from design sample text.
+TOPICS = [
+    {
+        'id': 'academics',
+        'title': 'Programs & Academics',
+        'description': 'Explore CCIT programs, subjects, and academic requirements.',
+        'categories': {'academic_programs', 'bsit', 'bscs', 'bsemc', 'accreditation', 'careers'},
+        'note': 'Choose a question from the department document. Subjects and detailed academic requirements are not documented yet.',
+    },
+    {
+        'id': 'services',
+        'title': 'Student Services',
+        'description': 'Find information on enrollment, forms, and department procedures.',
+        'categories': {'scholarships', 'dost', 'activities'},
+        'note': 'The document covers scholarships, DOST scholarship acceptance, and student activities. Enrollment forms and procedures are not documented yet.',
+    },
+    {
+        'id': 'directory',
+        'title': 'Department Directory',
+        'description': 'Find faculty contacts, offices, and facilities.',
+        'categories': {'dean', 'faculty', 'facilities'},
+        'note': 'The document lists the dean, faculty, and facilities. Contact details and office locations are not documented yet; current assignments need confirmation.',
+    },
+]
+
 def create_app(test_config=None):
     app = Flask(__name__)
     app.config.update(MAX_CONTENT_LENGTH=16384, CHAT_MODE=os.getenv('CHAT_MODE','ai'),
@@ -23,7 +49,7 @@ def create_app(test_config=None):
 
     @app.get('/')
     def index():
-        return render_template('index.html')
+        return render_template('index.html', topics=TOPICS)
 
     @app.get('/api/health')
     def health():
@@ -36,7 +62,17 @@ def create_app(test_config=None):
 
     @app.get('/api/suggestions')
     def suggestions():
-        return jsonify(success=True, questions=[r['question'] for r in app.config['KNOWLEDGE'] if r.get('verification_status')=='verified'][:6])
+        reviewed = [r for r in app.config['KNOWLEDGE'] if r.get('verification_status') == 'verified']
+        topics = [
+            {
+                'id': topic['id'],
+                'title': topic['title'],
+                'note': topic['note'],
+                'questions': [r['question'] for r in reviewed if r.get('category') in topic['categories']],
+            }
+            for topic in TOPICS
+        ]
+        return jsonify(success=True, questions=[r['question'] for r in reviewed][:6], topics=topics)
 
     @app.post('/api/chat')
     def chat():

@@ -1,0 +1,659 @@
+{
+  "source": "CSELEC CCIT Chatbot.fig",
+  "sha256": "902271576988c2cb31a2b3df70e4c382c910ae4e2cd5c6f28df33e461a29b987",
+  "target_frame": "34:2",
+  "frame_name": "Revised Version",
+  "width": 1440,
+  "height": 1024,
+  "nodes": [
+    {
+      "guid": {
+        "sessionID": 34,
+        "localID": 4
+      },
+      "name": "Top Bar",
+      "type": "ROUNDED_RECTANGLE",
+      "parentIndex": {
+        "guid": {
+          "sessionID": 34,
+          "localID": 2
+        },
+        "position": "'k4"
+      },
+      "size": {
+        "x": 1439.92041015625,
+        "y": 80
+      },
+      "transform": {
+        "m00": 1,
+        "m01": 0,
+        "m02": 0,
+        "m10": 0,
+        "m11": 1,
+        "m12": 0.25167083740234375
+      }
+    },
+    {
+      "guid": {
+        "sessionID": 34,
+        "localID": 40
+      },
+      "name": "Main",
+      "type": "FRAME",
+      "parentIndex": {
+        "guid": {
+          "sessionID": 34,
+          "localID": 2
+        },
+        "position": "'qhf"
+      },
+      "size": {
+        "x": 1341.039306640625,
+        "y": 516.2914428710938
+      },
+      "transform": {
+        "m00": 1,
+        "m01": 0,
+        "m02": 49.4405517578125,
+        "m10": 0,
+        "m11": 1,
+        "m12": 234.61151123046875
+      }
+    },
+    {
+      "guid": {
+        "sessionID": 34,
+        "localID": 41
+      },
+      "name": "Hello, Gehlee!",
+      "type": "TEXT",
+      "parentIndex": {
+        "guid": {
+          "sessionID": 34,
+          "localID": 40
+        },
+        "position": " }"
+      },
+      "size": {
+        "x": 1341.001708984375,
+        "y": 69.4498062133789
+      },
+      "transform": {
+        "m00": 1,
+        "m01": 0,
+        "m02": 0.03759765625,
+        "m10": 0,
+        "m11": 1,
+        "m12": 1.9073486328125e-06
+      },
+      "fontName": {
+        "family": "Inter",
+        "style": "Medium",
+        "postscript": "Inter-Medium"
+      },
+      "fontSize": 48,
+      "text": "Hello, Gehlee!"
+    },
+    {
+      "guid": {
+        "sessionID": 34,
+        "localID": 42
+      },
+      "name": "What’s on your mind today?",
+      "type": "TEXT",
+      "parentIndex": {
+        "guid": {
+          "sessionID": 34,
+          "localID": 40
+        },
+        "position": " }O"
+      },
+      "size": {
+        "x": 1341.001708984375,
+        "y": 69.4498062133789
+      },
+      "transform": {
+        "m00": 1,
+        "m01": 0,
+        "m02": 0,
+        "m10": 0,
+        "m11": 1,
+        "m12": 67.355224609375
+      },
+      "fontName": {
+        "family": "Inter",
+        "style": "Medium",
+        "postscript": "Inter-Medium"
+      },
+      "fontSize": 48,
+      "text": "What’s on your mind today?"
+    },
+    {
+      "guid": {
+        "sessionID": 34,
+        "localID": 43
+      },
+      "name": "Ready to assist you with anything CCIT.",
+      "type": "TEXT",
+      "parentIndex": {
+        "guid": {
+          "sessionID": 34,
+          "localID": 40
+        },
+        "position": " }f"
+      },
+      "size": {
+        "x": 1341.001708984375,
+        "y": 28.737852096557617
+      },
+      "transform": {
+        "m00": 1,
+        "m01": 0,
+        "m02": 0,
+        "m10": 0,
+        "m11": 1,
+        "m12": 159.02780151367188
+      },
+      "fontName": {
+        "family": "Inter",
+        "style": "Medium",
+        "postscript": "Inter-Medium"
+      },
+      "fontSize": 20,
+      "text": "Ready to assist you with anything CCIT."
+    },
+    {
+      "guid": {
+        "sessionID": 34,
+        "localID": 44
+      },
+      "name": "Main Chat",
+      "type": "ROUNDED_RECTANGLE",
+      "parentIndex": {
+        "guid": {
+          "sessionID": 34,
+          "localID": 40
+        },
+        "position": " }r"
+      },
+      "size": {
+        "x": 910.031982421875,
+        "y": 83.81873321533203
+      },
+      "transform": {
+        "m00": 1,
+        "m01": 0,
+        "m02": 215.48492431640625,
+        "m10": 0,
+        "m11": 1,
+        "m12": 281.28662109375
+      },
+      "cornerRadius": 10
+    },
+    {
+      "guid": {
+        "sessionID": 34,
+        "localID": 48
+      },
+      "name": "Ask CCIThink",
+      "type": "TEXT",
+      "parentIndex": {
+        "guid": {
+          "sessionID": 34,
+          "localID": 40
+        },
+        "position": " }{"
+      },
+      "size": {
+        "x": 322.9722595214844,
+        "y": 22.75079917907715
+      },
+      "transform": {
+        "m00": 1,
+        "m01": 0,
+        "m02": 286.5846862792969,
+        "m10": 0,
+        "m11": 1,
+        "m12": 312.4193115234375
+      },
+      "fontName": {
+        "family": "Inter",
+        "style": "Medium",
+        "postscript": "Inter-Medium"
+      },
+      "fontSize": 16,
+      "text": "Ask CCIThink"
+    },
+    {
+      "guid": {
+        "sessionID": 34,
+        "localID": 52
+      },
+      "name": "send bg",
+      "type": "ELLIPSE",
+      "parentIndex": {
+        "guid": {
+          "sessionID": 34,
+          "localID": 40
+        },
+        "position": " }}O"
+      },
+      "size": {
+        "x": 43.10677719116211,
+        "y": 43.10677719116211
+      },
+      "transform": {
+        "m00": 1,
+        "m01": 0,
+        "m02": 1045.8338623046875,
+        "m10": 0,
+        "m11": 1,
+        "m12": 301.5413818359375
+      }
+    },
+    {
+      "guid": {
+        "sessionID": 34,
+        "localID": 55
+      },
+      "name": "Feature 1",
+      "type": "ROUNDED_RECTANGLE",
+      "parentIndex": {
+        "guid": {
+          "sessionID": 34,
+          "localID": 40
+        },
+        "position": " }}f!"
+      },
+      "size": {
+        "x": 287.3785095214844,
+        "y": 128.96307373046875
+      },
+      "transform": {
+        "m00": 1,
+        "m01": 0,
+        "m02": 215.50384521484375,
+        "m10": 0,
+        "m11": 1,
+        "m12": 387.13946533203125
+      },
+      "cornerRadius": 10
+    },
+    {
+      "guid": {
+        "sessionID": 34,
+        "localID": 58
+      },
+      "name": "Programs & Academics",
+      "type": "TEXT",
+      "parentIndex": {
+        "guid": {
+          "sessionID": 34,
+          "localID": 40
+        },
+        "position": " }}f%"
+      },
+      "size": {
+        "x": 208.23365783691406,
+        "y": 21.553388595581055
+      },
+      "transform": {
+        "m00": 1,
+        "m01": 0,
+        "m02": 271.33599853515625,
+        "m10": 0,
+        "m11": 1,
+        "m12": 412.45587158203125
+      },
+      "fontName": {
+        "family": "Inter",
+        "style": "Semi Bold",
+        "postscript": "Inter-SemiBold"
+      },
+      "fontSize": 15,
+      "text": "Programs & Academics"
+    },
+    {
+      "guid": {
+        "sessionID": 34,
+        "localID": 59
+      },
+      "name": "Explore CCIT programs, subjects, and academic requirements.",
+      "type": "TEXT",
+      "parentIndex": {
+        "guid": {
+          "sessionID": 34,
+          "localID": 40
+        },
+        "position": " }}f+"
+      },
+      "size": {
+        "x": 248.51121520996094,
+        "y": 38.317134857177734
+      },
+      "transform": {
+        "m00": 1,
+        "m01": 0,
+        "m02": 238.24298095703125,
+        "m10": 0,
+        "m11": 1,
+        "m12": 458.6268310546875
+      },
+      "fontName": {
+        "family": "Inter",
+        "style": "Medium",
+        "postscript": "Inter-Medium"
+      },
+      "fontSize": 13,
+      "text": "Explore CCIT programs, subjects, and academic requirements."
+    },
+    {
+      "guid": {
+        "sessionID": 34,
+        "localID": 60
+      },
+      "name": "Feature 2",
+      "type": "ROUNDED_RECTANGLE",
+      "parentIndex": {
+        "guid": {
+          "sessionID": 34,
+          "localID": 40
+        },
+        "position": " }}f7"
+      },
+      "size": {
+        "x": 287.3785095214844,
+        "y": 128.96307373046875
+      },
+      "transform": {
+        "m00": 1,
+        "m01": 0,
+        "m02": 526.8305053710938,
+        "m10": 0,
+        "m11": 1,
+        "m12": 387.13946533203125
+      },
+      "cornerRadius": 10
+    },
+    {
+      "guid": {
+        "sessionID": 34,
+        "localID": 63
+      },
+      "name": "Student Services",
+      "type": "TEXT",
+      "parentIndex": {
+        "guid": {
+          "sessionID": 34,
+          "localID": 40
+        },
+        "position": " }}g"
+      },
+      "size": {
+        "x": 157.74859619140625,
+        "y": 21.553388595581055
+      },
+      "transform": {
+        "m00": 1,
+        "m01": 0,
+        "m02": 582.6627807617188,
+        "m10": 0,
+        "m11": 1,
+        "m12": 412.45587158203125
+      },
+      "fontName": {
+        "family": "Inter",
+        "style": "Semi Bold",
+        "postscript": "Inter-SemiBold"
+      },
+      "fontSize": 15,
+      "text": "Student Services"
+    },
+    {
+      "guid": {
+        "sessionID": 34,
+        "localID": 64
+      },
+      "name": "Find information on enrollment, forms, and department procedures.",
+      "type": "TEXT",
+      "parentIndex": {
+        "guid": {
+          "sessionID": 34,
+          "localID": 40
+        },
+        "position": " }}i"
+      },
+      "size": {
+        "x": 248.51121520996094,
+        "y": 57.475704193115234
+      },
+      "transform": {
+        "m00": 1,
+        "m01": 0,
+        "m02": 549.5695190429688,
+        "m10": 0,
+        "m11": 1,
+        "m12": 458.6268310546875
+      },
+      "fontName": {
+        "family": "Inter",
+        "style": "Medium",
+        "postscript": "Inter-Medium"
+      },
+      "fontSize": 13,
+      "text": "Find information on enrollment, forms, and department procedures."
+    },
+    {
+      "guid": {
+        "sessionID": 34,
+        "localID": 65
+      },
+      "name": "Feature 3",
+      "type": "ROUNDED_RECTANGLE",
+      "parentIndex": {
+        "guid": {
+          "sessionID": 34,
+          "localID": 40
+        },
+        "position": " }}l"
+      },
+      "size": {
+        "x": 287.3785095214844,
+        "y": 128.96307373046875
+      },
+      "transform": {
+        "m00": 1,
+        "m01": 0,
+        "m02": 838.1569213867188,
+        "m10": 0,
+        "m11": 1,
+        "m12": 387.328369140625
+      },
+      "cornerRadius": 10
+    },
+    {
+      "guid": {
+        "sessionID": 34,
+        "localID": 68
+      },
+      "name": "Department Directory",
+      "type": "TEXT",
+      "parentIndex": {
+        "guid": {
+          "sessionID": 34,
+          "localID": 40
+        },
+        "position": "!"
+      },
+      "size": {
+        "x": 202.56057739257812,
+        "y": 21.553388595581055
+      },
+      "transform": {
+        "m00": 1,
+        "m01": 0,
+        "m02": 893.9891967773438,
+        "m10": 0,
+        "m11": 1,
+        "m12": 412.644775390625
+      },
+      "fontName": {
+        "family": "Inter",
+        "style": "Semi Bold",
+        "postscript": "Inter-SemiBold"
+      },
+      "fontSize": 15,
+      "text": "Department Directory"
+    },
+    {
+      "guid": {
+        "sessionID": 34,
+        "localID": 69
+      },
+      "name": "Find faculty contacts, offices, and facilities.",
+      "type": "TEXT",
+      "parentIndex": {
+        "guid": {
+          "sessionID": 34,
+          "localID": 40
+        },
+        "position": "\""
+      },
+      "size": {
+        "x": 248.51121520996094,
+        "y": 38.317134857177734
+      },
+      "transform": {
+        "m00": 1,
+        "m01": 0,
+        "m02": 860.8961791992188,
+        "m10": 0,
+        "m11": 1,
+        "m12": 458.81573486328125
+      },
+      "fontName": {
+        "family": "Inter",
+        "style": "Medium",
+        "postscript": "Inter-Medium"
+      },
+      "fontSize": 13,
+      "text": "Find faculty contacts, offices, and facilities."
+    },
+    {
+      "guid": {
+        "sessionID": 57,
+        "localID": 14
+      },
+      "name": "Logo",
+      "type": "ROUNDED_RECTANGLE",
+      "parentIndex": {
+        "guid": {
+          "sessionID": 57,
+          "localID": 49
+        },
+        "position": "\""
+      },
+      "size": {
+        "x": 38,
+        "y": 38
+      },
+      "transform": {
+        "m00": 1,
+        "m01": 0,
+        "m02": 41.1256103515625,
+        "m10": 0,
+        "m11": 1,
+        "m12": 8.767623901367188
+      }
+    },
+    {
+      "guid": {
+        "sessionID": 57,
+        "localID": 15
+      },
+      "name": "CCIThink",
+      "type": "TEXT",
+      "parentIndex": {
+        "guid": {
+          "sessionID": 57,
+          "localID": 49
+        },
+        "position": "#"
+      },
+      "size": {
+        "x": 117,
+        "y": 31
+      },
+      "transform": {
+        "m00": 1,
+        "m01": 0,
+        "m02": 91.3438720703125,
+        "m10": 0,
+        "m11": 1,
+        "m12": 11.767623901367188
+      },
+      "fontName": {
+        "family": "Inter",
+        "style": "Semi Bold",
+        "postscript": "Inter-SemiBold"
+      },
+      "fontSize": 26,
+      "text": "CCIThink"
+    },
+    {
+      "guid": {
+        "sessionID": 57,
+        "localID": 44
+      },
+      "name": "User",
+      "type": "ROUNDED_RECTANGLE",
+      "parentIndex": {
+        "guid": {
+          "sessionID": 57,
+          "localID": 49
+        },
+        "position": "$"
+      },
+      "size": {
+        "x": 264.3981628417969,
+        "y": 52.53523254394531
+      },
+      "transform": {
+        "m00": 1,
+        "m01": 0,
+        "m02": 1063.6378173828125,
+        "m10": 0,
+        "m11": 1,
+        "m12": 0
+      },
+      "cornerRadius": 10
+    },
+    {
+      "guid": {
+        "sessionID": 57,
+        "localID": 49
+      },
+      "name": "Top Bar Content",
+      "type": "FRAME",
+      "parentIndex": {
+        "guid": {
+          "sessionID": 34,
+          "localID": 2
+        },
+        "position": "'n"
+      },
+      "size": {
+        "x": 1328.0360107421875,
+        "y": 52.53523254394531
+      },
+      "transform": {
+        "m00": 1,
+        "m01": 0,
+        "m02": 55.98199462890625,
+        "m10": 0,
+        "m11": 1,
+        "m12": 13.984054565429688
+      }
+    }
+  ]
+}

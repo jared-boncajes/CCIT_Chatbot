@@ -37,5 +37,22 @@ def test_provider_error(client,monkeypatch):
     assert response.status_code==502 and b'sensitive' not in response.data
 
 def test_frontend(client):
-    assert b'Ask CCITthink' in client.get('/').data
+    response = client.get('/')
+    assert response.status_code == 200
+    assert b'Ask CCIThink' in response.data
+    assert b'Programs &amp; Academics' in response.data
     assert client.get('/static/js/script.js').status_code==200
+
+
+def test_topics_use_reviewed_source_questions(client):
+    client.application.config['KNOWLEDGE'] = [
+        {**RECORD, 'id': 'PROGRAMS', 'category': 'academic_programs'},
+        {**RECORD, 'id': 'FACULTY', 'question': 'Faculty fixture?', 'category': 'faculty'},
+        {**RECORD, 'id': 'PENDING', 'question': 'Unreviewed fixture?', 'category': 'scholarships', 'verification_status': 'pending'},
+    ]
+    data = client.get('/api/suggestions').get_json()
+    topics = {topic['id']: topic for topic in data['topics']}
+    assert topics['academics']['questions'] == [RECORD['question']]
+    assert topics['directory']['questions'] == ['Faculty fixture?']
+    assert topics['services']['questions'] == []
+    assert 'Unreviewed fixture?' not in data['questions']
