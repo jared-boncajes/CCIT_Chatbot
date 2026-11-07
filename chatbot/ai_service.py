@@ -2,6 +2,7 @@ import json
 from google import genai
 from google.genai import types
 from openai import OpenAI
+from chatbot.errors import EmptyResponseError
 
 DEFAULT_MODELS = {'openai': 'gpt-4.1-mini', 'gemini': 'gemini-3.8-flash'}
 
@@ -31,5 +32,22 @@ def generate(question, records, key, model, provider='openai'):
     else:
         raise ValueError('Unsupported AI provider')
     if not text or not text.strip():
-        raise ValueError('Empty provider response')
+        raise EmptyResponseError('Empty provider response')
     return text.strip()
+
+
+def list_models(key, provider):
+    """List IDs through the configured provider; this does not generate text."""
+    if provider == 'gemini':
+        with genai.Client(api_key=key, enterprise=False, http_options=types.HttpOptions(
+            timeout=25000, retry_options=types.HttpRetryOptions(attempts=1),
+        )) as client:
+            return sorted({
+                model.name.removeprefix('models/')
+                for model in client.models.list()
+                if model.name and 'generateContent' in (model.supported_actions or [])
+            })
+    if provider == 'openai':
+        with OpenAI(api_key=key, timeout=25, max_retries=0) as client:
+            return sorted({model.id for model in client.models.list()})
+    raise ValueError('Unsupported AI provider')

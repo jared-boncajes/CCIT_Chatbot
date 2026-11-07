@@ -7,6 +7,7 @@ from flask import Flask, jsonify, render_template, request
 from werkzeug.exceptions import HTTPException
 from chatbot.retriever import retrieve
 from chatbot.ai_service import DEFAULT_MODELS, generate
+from chatbot.errors import diagnose
 
 ROOT = Path(__file__).parent
 load_dotenv(ROOT / '.env')
@@ -104,9 +105,13 @@ def create_app(test_config=None):
             return jsonify(success=True,reply=FALLBACK,sources=[],mode='fallback')
         try:
             reply='\n\n'.join(r['answer'] for r in records) if app.config['CHAT_MODE']=='faq' else generate(message,records,app.config['API_KEY'],app.config['MODEL'],app.config['AI_PROVIDER'])
-        except Exception:
-            app.logger.warning('AI response unavailable')
-            return jsonify(success=False,error='The AI service is unavailable. Please try again shortly.'),502
+        except Exception as error:
+            problem = diagnose(error, app.config['AI_PROVIDER'])
+            # Remote error bodies/URLs can contain credentials. Log only fixed
+            # classifications, numeric status and our own maintainer guidance.
+            app.logger.warning('AI request failed: provider=%s category=%s upstream_status=%s exception=%s. %s',
+                app.config['AI_PROVIDER'], problem.code, problem.upstream_status, type(error).__name__, problem.action)
+            return jsonify(success=False,error=problem.message,error_code=problem.code),502
         if any(r.get('currency_status') == 'unconfirmed' for r in records):
             reply = 'According to the supplied About CCIT document (current details have not been independently confirmed):\n\n' + reply
         if any(r['id'] in ('FAQ-001','FAQ-002') for r in records):

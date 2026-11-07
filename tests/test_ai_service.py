@@ -133,3 +133,64 @@ def test_invalid_provider_is_reported_without_calling_sdk(monkeypatch):
     client = application.test_client()
     assert not client.get('/api/health').get_json()['ready']
     assert client.post('/api/chat', json={'message': 'programs'}).status_code == 503
+
+
+@pytest.mark.parametrize('status,detail,expected', [
+    (400, {'reason': 'API_KEY_INVALID'}, 'ai_access_denied'),
+    (400, {}, 'ai_request_rejected'),
+    (403, {}, 'ai_access_denied'),
+    (404, {}, 'ai_model_unavailable'),
+    (429, {}, 'ai_quota_exceeded'),
+    (503, {}, 'ai_provider_unavailable'),
+])
+def test_provider_errors_have_specific_safe_messages(monkeypatch, caplog, status, detail, expected):
+    requests = gemini_transport(monkeypatch, status, {
+        'error': {'code': status, 'message': 'sensitive detail containing synthetic-test-key', 'details': [detail]},
+    })
+    client = create_app({'TESTING': True, 'CHAT_MODE': 'ai', 'AI_PROVIDER': 'gemini',
+                         'API_KEY': 'synthetic-test-key', 'MODEL': 'gemini-test-model', 'KNOWLEDGE': [RECORD]}).test_client()
+    response = client.post('/api/chat', json={'message': 'programs'})
+    assert response.status_code == 502
+    assert response.get_json()['error_code'] == expected
+    assert expected in caplog.text
+    assert f'upstream_status={status}' in caplog.text
+    for secret in ['synthetic-test-key', 'sensitive detail']:
+        assert secret not in response.get_data(as_text=True)
+        assert secret not in caplog.text
+    assert len(requests) == 1
+
+
+def test_model_listing_filters_compatible_models_without_generation(monkeypatch):
+    requests = gemini_transport(monkeypatch, 200, {'models': [
+        {'name': 'models/gemini-text-fixture', 'supportedGenerationMethods': ['generateContent', 'countTokens']},
+        {'name': 'models/embedding-fixture', 'supportedGenerationMethods': ['embedContent']},
+        {'name': 'models/metadata-only-fixture'},
+    ]})
+    assert ai_service.list_models('synthetic-test-key', 'gemini') == ['gemini-text-fixture']
+    assert len(requests) == 1
+    assert requests[0].method == 'GET'
+    assert requests[0].url.path.endswith('/models')
+
+
+@pytest.mark.parametrize('error_type,expected', [
+    (httpx.ReadTimeout, 'ai_timeout'),
+    (httpx.ConnectError, 'ai_connection_failed'),
+])
+def test_network_failures_are_classified_without_raw_errors(monkeypatch, caplog, error_type, expected):
+    original_client = genai.Client
+
+    def handle(request):
+        raise error_type('sensitive detail containing synthetic-test-key', request=request)
+
+    def client_factory(**kwargs):
+        transport = httpx.Client(transport=httpx.MockTransport(handle), trust_env=False)
+        kwargs['http_options'] = kwargs['http_options'].model_copy(update={'httpx_client': transport})
+        return original_client(**kwargs)
+
+    monkeypatch.setattr(ai_service.genai, 'Client', client_factory)
+    client = create_app({'TESTING': True, 'CHAT_MODE': 'ai', 'AI_PROVIDER': 'gemini',
+                         'API_KEY': 'synthetic-test-key', 'MODEL': 'gemini-test-model', 'KNOWLEDGE': [RECORD]}).test_client()
+    response = client.post('/api/chat', json={'message': 'programs'})
+    assert response.status_code == 502
+    assert response.get_json()['error_code'] == expected
+    assert 'synthetic-test-key' not in response.get_data(as_text=True) + caplog.text

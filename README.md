@@ -28,12 +28,18 @@ GEMINI_API_KEY=paste_your_gemini_key_here
 CCIT_MODEL=gemini-3.8-flash
 ```
 
-`CCIT_MODEL` is configurable. The default above follows the current Google SDK examples; select an available model API ID in AI Studio for your own project. Free-tier eligibility and quotas depend on the model/project. A key alone does not guarantee an available free quota.
+`CCIT_MODEL` is configurable. The name above is an SDK example, not a model verified for your own Google project. After adding your key, use `check_ai.py --list-models` to list compatible IDs, then replace `CCIT_MODEL` with a suitable available text model ID. Free-tier eligibility and quotas depend on the model/project. A listed model or an API key alone does not guarantee available free quota.
 
 Save `.env`, install the updated dependencies if you already had an earlier checkout, then start or restart Flask:
 
 ```powershell
 .venv\Scripts\python -m pip install -r requirements.txt
+.venv\Scripts\python check_ai.py --list-models
+```
+
+Choose a suitable model ID from the output, update `CCIT_MODEL` in `.env`, save, and start Flask:
+
+```powershell
 .venv\Scripts\python app.py
 ```
 
@@ -44,6 +50,28 @@ For OpenAI, set `CCIT_AI_PROVIDER=openai`, `CCIT_API_KEY` to your OpenAI key, an
 Alternatively set `CHAT_MODE=faq` to explicitly use retrieval-only responses, labeled in the UI. This mode still requires reviewed knowledge. Never treat it as AI generation. Process environment settings take precedence over `.env`; restart Flask after changing either.
 
 For Linux/cloud, use `python3 -m venv .venv`, `.venv/bin/python -m pip install -r requirements.txt`, then `.venv/bin/python app.py`. Run from this directory. Flask listens on port 5000 with debug disabled. This is a development server; public deployment requires a production WSGI server and deployment configuration.
+
+## AI troubleshooting
+
+If a chat answer fails, the interface now distinguishes key/project access, unavailable models, quota/rate limits, timeouts, connection failures, rejected requests and empty results. Flask logs contain a fixed diagnostic code and upstream status, not raw provider exceptions or credentials.
+
+Run diagnostics from the project root with the same virtual-environment Python that runs Flask:
+
+```powershell
+.venv\Scripts\python check_ai.py
+.venv\Scripts\python check_ai.py --list-models
+.venv\Scripts\python check_ai.py --test
+```
+
+The first command checks configuration without contacting an AI provider. Model listing uses your configured key for a read-only API request and prints compatible IDs (for Gemini, those supporting generateContent). `--test` makes one actual generation request with retrieved source context, even if normal chat is in FAQ mode. Neither command prints the key or a raw provider error. If the virtual environment folder has another name, such as `ccit_chatbot`, replace `.venv` in these commands with that folder name.
+
+- `ai_model_unavailable`: run `--list-models`, update `CCIT_MODEL`, save and restart Flask. An SDK example ID may not be available to your project.
+- `ai_access_denied`: check the private key and its project/API restrictions in the provider console.
+- `ai_quota_exceeded`: check the model/project allowance. Wait for an applicable rate-limit reset; model listing does not establish free quota.
+- `ai_sdk_configuration`: reinstall `requirements.txt` using the same virtual-environment Python, then restart Flask.
+- `ai_connection_failed` / `ai_timeout`: check server internet access, firewall/proxy settings, TLS trust and provider availability. Keep certificate verification enabled.
+
+Share only the diagnostic code/status or model IDs when requesting help. Keep the actual key in your private `.env`.
 
 ## Knowledge maintenance
 
