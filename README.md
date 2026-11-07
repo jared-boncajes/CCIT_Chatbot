@@ -1,6 +1,6 @@
 # CCIThink
 
-Flask and vanilla JavaScript foundation for the FAITH Colleges CCIT information assistant. Students ask questions, a conservative retriever selects reviewed JSON records, and the official OpenAI SDK generates a grounded answer. No database or frontend build is required.
+Flask and vanilla JavaScript foundation for the FAITH Colleges CCIT information assistant. Students ask questions, a conservative retriever selects reviewed JSON records, and the official Google Gen AI or OpenAI SDK generates a grounded answer. No database or frontend build is required.
 
 **Status: source-grounded FAQ mode and the revised Figma interface work; live AI remains untested.** All 22 FAQs from the uploaded About CCIT.pdf are imported. Source extraction is verified, but institutional currency is unconfirmed; see `docs/source-review.md`. This cloud checkout has an ignored `.env` explicitly selecting FAQ retrieval-only mode. Set `CHAT_MODE=ai` and a valid key to enable actual generation. Live AI has not been tested.
 
@@ -13,11 +13,35 @@ Open this folder in VS Code. In PowerShell:
 ```powershell
 py -3 -m venv .venv
 .venv\Scripts\python -m pip install -r requirements.txt
-Copy-Item .env.example .env
+if (!(Test-Path .env)) { Copy-Item .env.example .env }
+code .env
+```
+
+The private **`.env` file belongs in the project root, beside `app.py` and `requirements.txt`**. In VS Code's Explorer, right-click the `CCIT_Chatbot` folder and select **New File** if you need to create it. Name it exactly `.env`, including the leading dot and without `.txt`.
+
+For a Gemini key created in Google AI Studio, put these settings in `.env` (replace the placeholder privately):
+
+```dotenv
+CHAT_MODE=ai
+CCIT_AI_PROVIDER=gemini
+GEMINI_API_KEY=paste_your_gemini_key_here
+CCIT_MODEL=gemini-3.8-flash
+```
+
+`CCIT_MODEL` is configurable. The default above follows the current Google SDK examples; select an available model API ID in AI Studio for your own project. Free-tier eligibility and quotas depend on the model/project. A key alone does not guarantee an available free quota.
+
+Save `.env`, install the updated dependencies if you already had an earlier checkout, then start or restart Flask:
+
+```powershell
+.venv\Scripts\python -m pip install -r requirements.txt
 .venv\Scripts\python app.py
 ```
 
-Edit `.env` locally: set `CCIT_API_KEY` to your OpenAI key and `CCIT_MODEL` to a model available to your account. Never commit `.env`. Alternatively set `CHAT_MODE=faq` to explicitly use retrieval-only responses, labeled in the UI. This mode still requires reviewed knowledge. Never treat it as AI generation.
+Keep the key in `.env`, which is excluded by `.gitignore`; `.env.example` contains placeholders for sharing. If `.env` already exists, edit its matching entries instead of overwriting it or appending duplicate entries. Keep keys out of frontend JavaScript, chat and GitHub.
+
+For OpenAI, set `CCIT_AI_PROVIDER=openai`, `CCIT_API_KEY` to your OpenAI key, and `CCIT_MODEL` to a model available to your account (default `gpt-4.1-mini`). Existing OpenAI installations remain compatible when `CCIT_AI_PROVIDER` is omitted. A Gemini key is read only for the Gemini provider; an OpenAI key is read only for the OpenAI provider. For cloud tasks, use secure environment settings instead of chat; Gemini requests require `generativelanguage.googleapis.com` network access.
+
+Alternatively set `CHAT_MODE=faq` to explicitly use retrieval-only responses, labeled in the UI. This mode still requires reviewed knowledge. Never treat it as AI generation. Process environment settings take precedence over `.env`; restart Flask after changing either.
 
 For Linux/cloud, use `python3 -m venv .venv`, `.venv/bin/python -m pip install -r requirements.txt`, then `.venv/bin/python app.py`. Run from this directory. Flask listens on port 5000 with debug disabled. This is a development server; public deployment requires a production WSGI server and deployment configuration.
 
@@ -45,4 +69,4 @@ Linux: `.venv/bin/python -m pytest -q`. Optional browser checks use Playwright a
 
 ## Remaining work
 
-Confirm source currency with CCIT, review the recorded 34 source-question evaluation, and test live AI with valid credentials. Desktop, tablet and mobile Chromium checks and actual screenshots are complete; Safari, Firefox, real mobile devices and screen-reader behavior have not been tested. The supplied file contains no visible conversation/error/mobile frames; these states use the same design system. This is not a claim of an exact pixel match or independently verified answer accuracy. Provider selection currently supports OpenAI via the maintained SDK; Gemini is not implemented. Future improvements include stronger multilingual retrieval, review-date enforcement, deployment rate limits and contextual follow-ups.
+Confirm source currency with CCIT, review the recorded 34 source-question evaluation, and test live AI with valid credentials. Desktop, tablet and mobile Chromium checks and actual screenshots are complete; Safari, Firefox, real mobile devices and screen-reader behavior have not been tested. The supplied file contains no visible conversation/error/mobile frames; these states use the same design system. This is not a claim of an exact pixel match or independently verified answer accuracy. Gemini and OpenAI provider integrations have been tested with in-memory SDK transports, but neither has been verified with a live key. Future improvements include stronger multilingual retrieval, review-date enforcement, deployment rate limits and contextual follow-ups.

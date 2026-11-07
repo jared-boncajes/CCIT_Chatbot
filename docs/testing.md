@@ -1,12 +1,14 @@
 # Validation evidence
 
-Executed November 4, 2026: `.venv/bin/python -m pytest -q` — **54 passed**.
+Executed November 7, 2026: `.venv/bin/python -m pytest -q` — **66 passed**.
 
 20 implementation checks cover invalid input, synthetic retrieval variants, unknown questions, privacy, missing data/key, pending-record exclusion, simulated provider failure, frontend delivery and reviewed source-only topic suggestions. Another 34 questions exercise the actual uploaded source with expected first source IDs or fallback/privacy behavior. All 34 passed. Actual returned answers, expected/actual IDs and elapsed times are recorded in `evaluation.json`. This is retrieval evaluation in explicitly labeled FAQ mode, not a live AI answer evaluation or independent fact verification.
 
+12 additional provider checks use synthetic records and in-memory HTTP transports with the official SDKs. They verify Gemini request serialization, source/system instructions, response parsing and timeout; empty/blocked responses; quota errors without retry or secret disclosure; the existing OpenAI Responses API; provider-specific key selection/default models; and invalid-provider reporting. These are offline integration tests, not successful live AI calls.
+
 ## Browser validation
 
-`python tests/browser_smoke.py` against the running FAQ-mode Flask server passed **14 browser scenarios** in system Chromium using Playwright. The script and its result JSON preserve the exact checks; related assertions are grouped within each scenario rather than counted as individual tests.
+On November 4, `python tests/browser_smoke.py` against the running FAQ-mode Flask server passed **14 browser scenarios** in system Chromium using Playwright. The script and its result JSON preserve the exact checks; related assertions are grouped within each scenario rather than counted as individual tests. These checks were not repeated for the November 7 backend/provider change.
 
 - 1440×1024 desktop, 1280×800 laptop, 768×1024 tablet, 390×844 mobile, 320×568 small mobile and 844×390 landscape: no horizontal document overflow; all three topic selectors open/close; questions reach Flask and receive source FAQ-006.
 - Desktop composer geometry: 910×84 pixels, y≈516; self-hosted Inter loads.

@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from flask import Flask, jsonify, render_template, request
 from werkzeug.exceptions import HTTPException
 from chatbot.retriever import retrieve
-from chatbot.ai_service import generate
+from chatbot.ai_service import DEFAULT_MODELS, generate
 
 ROOT = Path(__file__).parent
 load_dotenv(ROOT / '.env')
@@ -40,9 +40,15 @@ TOPICS = [
 
 def create_app(test_config=None):
     app = Flask(__name__)
+    provider = os.getenv('CCIT_AI_PROVIDER', 'openai').strip().lower()
+    key_names = {
+        'openai': ('CCIT_API_KEY', 'OPENAI_API_KEY'),
+        'gemini': ('GEMINI_API_KEY', 'GOOGLE_API_KEY'),
+    }.get(provider, ())
     app.config.update(MAX_CONTENT_LENGTH=16384, CHAT_MODE=os.getenv('CHAT_MODE','ai'),
-        API_KEY=os.getenv('CCIT_API_KEY') or os.getenv('OPENAI_API_KEY'),
-        MODEL=os.getenv('CCIT_MODEL','gpt-4.1-mini'),
+        AI_PROVIDER=provider,
+        API_KEY=next((os.getenv(name) for name in key_names if os.getenv(name)), None),
+        MODEL=os.getenv('CCIT_MODEL') or DEFAULT_MODELS.get(provider, ''),
         KNOWLEDGE=json.loads((ROOT/'data/knowledge.json').read_text()))
     if test_config:
         app.config.update(test_config)
@@ -55,10 +61,11 @@ def create_app(test_config=None):
     def health():
         records=app.config['KNOWLEDGE']
         count=sum(r.get('verification_status')=='verified' for r in records)
-        ready=bool(count and (app.config['CHAT_MODE']=='faq' or app.config['API_KEY']))
+        ai_configured = bool(app.config['AI_PROVIDER'] in DEFAULT_MODELS and app.config['API_KEY'])
+        ready=bool(count and (app.config['CHAT_MODE']=='faq' or (app.config['CHAT_MODE']=='ai' and ai_configured)))
         return jsonify(success=True, ready=ready, mode=app.config['CHAT_MODE'],
             knowledge_records=len(records), verified_records=count,
-            ai_configured=bool(app.config['API_KEY']))
+            ai_configured=ai_configured, provider=app.config['AI_PROVIDER'])
 
     @app.get('/api/suggestions')
     def suggestions():
@@ -87,13 +94,16 @@ def create_app(test_config=None):
             return jsonify(success=False,error='The About CCIT knowledge document has not been imported yet. Department answers are unavailable.'),503
         if app.config['CHAT_MODE'] not in ('ai','faq'):
             return jsonify(success=False,error='The chatbot mode is not configured correctly.'),503
+        if app.config['CHAT_MODE']=='ai' and app.config['AI_PROVIDER'] not in DEFAULT_MODELS:
+            return jsonify(success=False,error='Set CCIT_AI_PROVIDER to gemini or openai in the backend configuration.'),503
         if app.config['CHAT_MODE']=='ai' and not app.config['API_KEY']:
-            return jsonify(success=False,error='AI service is not configured. The maintainer must add an API key, or explicitly enable FAQ retrieval mode.'),503
+            key_name = 'GEMINI_API_KEY' if app.config['AI_PROVIDER']=='gemini' else 'CCIT_API_KEY'
+            return jsonify(success=False,error=f'AI service is not configured. Add {key_name} to the backend .env file or environment settings, then restart the server. FAQ mode is also available.'),503
         records=retrieve(message, app.config['KNOWLEDGE'])
         if not records:
             return jsonify(success=True,reply=FALLBACK,sources=[],mode='fallback')
         try:
-            reply='\n\n'.join(r['answer'] for r in records) if app.config['CHAT_MODE']=='faq' else generate(message,records,app.config['API_KEY'],app.config['MODEL'])
+            reply='\n\n'.join(r['answer'] for r in records) if app.config['CHAT_MODE']=='faq' else generate(message,records,app.config['API_KEY'],app.config['MODEL'],app.config['AI_PROVIDER'])
         except Exception:
             app.logger.warning('AI response unavailable')
             return jsonify(success=False,error='The AI service is unavailable. Please try again shortly.'),502
