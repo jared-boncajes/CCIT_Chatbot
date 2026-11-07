@@ -28,16 +28,16 @@ GEMINI_API_KEY=paste_your_gemini_key_here
 CCIT_MODEL=gemini-3.8-flash
 ```
 
-`CCIT_MODEL` is configurable. The name above is an SDK example, not a model verified for your own Google project. After adding your key, use `check_ai.py --list-models` to list compatible IDs, then replace `CCIT_MODEL` with a suitable available text model ID. Free-tier eligibility and quotas depend on the model/project. A listed model or an API key alone does not guarantee available free quota.
+`CCIT_MODEL` is configurable. The name above is an SDK example, not a model verified for your own Google project. After adding your key, use `check_ai.py --find-model` to test up to three listed stable Flash/Flash-Lite text models and stop at the first usable response. It prints the exact `CCIT_MODEL` line to copy into `.env`; it never changes the file. Free-tier eligibility and quotas depend on the model/project. A listed model or an API key alone does not guarantee available free quota.
 
 Save `.env`, install the updated dependencies if you already had an earlier checkout, then start or restart Flask:
 
 ```powershell
 .venv\Scripts\python -m pip install -r requirements.txt
-.venv\Scripts\python check_ai.py --list-models
+.venv\Scripts\python check_ai.py --find-model
 ```
 
-Choose a suitable model ID from the output, update `CCIT_MODEL` in `.env`, save, and start Flask:
+If the test succeeds, copy its `CCIT_MODEL=...` line into `.env`, save, and start Flask. If all tested models fail, read the diagnostic codes before changing more settings:
 
 ```powershell
 .venv\Scripts\python app.py
@@ -61,11 +61,14 @@ Run diagnostics from the project root with the same virtual-environment Python t
 .venv\Scripts\python check_ai.py
 .venv\Scripts\python check_ai.py --list-models
 .venv\Scripts\python check_ai.py --test
+.venv\Scripts\python check_ai.py --find-model
 ```
 
-The first command checks configuration without contacting an AI provider. Model listing uses your configured key for a read-only API request and prints compatible IDs (for Gemini, those supporting generateContent). `--test` makes one actual generation request with retrieved source context, even if normal chat is in FAQ mode. Neither command prints the key or a raw provider error. If the virtual environment folder has another name, such as `ccit_chatbot`, replace `.venv` in these commands with that folder name.
+The first command checks configuration without contacting an AI provider. Model listing uses your configured key for a read-only API request and prints compatible IDs (for Gemini, those supporting generateContent). `--test` makes one actual generation request with retrieved source context, even if normal chat is in FAQ mode. None of the diagnostic commands prints the key or a raw provider error. If the virtual environment folder has another name, such as `ccit_chatbot`, replace `.venv` in these commands with that folder name.
 
-- `ai_model_unavailable`: run `--list-models`, update `CCIT_MODEL`, save and restart Flask. An SDK example ID may not be available to your project.
+`--find-model` is an explicit Gemini-only test that lists models, selects at most three stable Flash/Flash-Lite text IDs, prefers recent Flash-Lite versions, and tries one grounded request per candidate. It stops at the first success and prints the working ID without modifying `.env`. It continues to another model only after model absence, temporary provider unavailability or an empty response. It stops immediately on quota, key/access, request-configuration or connection failures. These requests consume API quota under the project's existing terms; the command does not enable billing or guarantee free usage. It excludes image, preview, research and Pro model IDs. The normal chatbot still uses the one explicitly configured model; it does not silently switch providers/models.
+
+- `ai_model_unavailable`: listing can include a model whose generation request fails. Run `--find-model` to test actual generation, then use its successful `CCIT_MODEL` line and restart Flask. An SDK example ID may not be available to your project.
 - `ai_access_denied`: check the private key and its project/API restrictions in the provider console.
 - `ai_quota_exceeded`: check the model/project allowance. Wait for an applicable rate-limit reset; model listing does not establish free quota.
 - `ai_sdk_configuration`: reinstall `requirements.txt` using the same virtual-environment Python, then restart Flask.

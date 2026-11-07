@@ -1,12 +1,14 @@
 # Validation evidence
 
-Executed November 7, 2026: `.venv/bin/python -m pytest -q` — **80 passed**.
+Executed November 7, 2026: `.venv/bin/python -m pytest -q` — **94 passed**.
 
 20 implementation checks cover invalid input, synthetic retrieval variants, unknown questions, privacy, missing data/key, pending-record exclusion, simulated provider failure, frontend delivery and reviewed source-only topic suggestions. Another 34 questions exercise the actual uploaded source with expected first source IDs or fallback/privacy behavior. All 34 passed. Actual returned answers, expected/actual IDs and elapsed times are recorded in `evaluation.json`. This is retrieval evaluation in explicitly labeled FAQ mode, not a live AI answer evaluation or independent fact verification.
 
 12 additional provider checks use synthetic records and in-memory HTTP transports with the official SDKs. They verify Gemini request serialization, source/system instructions, response parsing and timeout; empty/blocked responses; quota errors without retry or secret disclosure; the existing OpenAI Responses API; provider-specific key selection/default models; and invalid-provider reporting. These are offline integration tests, not successful live AI calls.
 
 14 diagnostic regression checks cover specific safe errors for invalid keys, access denial, unavailable models, quota/rate limits, rejected requests and upstream outages; compatible-model listing through the real SDK parser; transport timeouts/connections; and CLI output without credentials or raw exceptions. CLI tests also check missing credentials, accidental keys in the model field and malformed remote error details. The cloud checkout's diagnostic command reports that no API key is configured, so the user's local failure has not been reproduced with a live key.
+
+14 model-finder checks verify conservative candidate selection; a simulated 404 followed by 503 and success; stopping at first success; at most three generation requests; immediate stop on quota, access, request, SDK or connection problems; exclusion of media/preview/Pro models; reviewed source context before probing; refusal to automatically choose OpenAI models; and preservation of the private `.env` file and secret-free output. All finder responses in these tests are simulated. The user separately reported a live 503 for gemini-3.8-flash and a live 404 for the listed gemini-2.5-flash-lite. No successful live generation has yet been reported or reproduced in the cloud checkout.
 
 ## Browser validation
 

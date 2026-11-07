@@ -1,11 +1,60 @@
 """Check AI setup without printing credentials or raw provider errors."""
 import argparse
+import re
 from importlib.metadata import version
 
 from app import ROOT, create_app
 from chatbot.ai_service import DEFAULT_MODELS, generate, list_models
 from chatbot.errors import diagnose
 from chatbot.retriever import retrieve
+
+
+MAX_MODEL_TESTS = 3
+
+
+def model_candidates(models, configured):
+    """Prefer recent stable Flash-Lite IDs, then Flash; exclude media/probes."""
+    ranked = []
+    for model in set(models):
+        match = re.fullmatch(r'gemini-(\d+)\.(\d+)-(flash-lite|flash)', model)
+        if not match:
+            continue
+        major, minor, kind = match.groups()
+        rank = (model == configured.removeprefix('models/'), kind != 'flash-lite', -int(major), -int(minor))
+        ranked.append((rank, model))
+    return [model for _, model in sorted(ranked)[:MAX_MODEL_TESTS]]
+
+
+def find_working_model(config, question, records):
+    candidates = model_candidates(list_models(config['API_KEY'], 'gemini'), config['MODEL'])
+    if not candidates:
+        print('No stable Gemini Flash/Flash-Lite text model IDs were returned; no generation requests were made.')
+        return 1
+    print(f'Testing at most {len(candidates)} models with one grounded request each; this uses API quota.', flush=True)
+    print('This does not enable billing or guarantee free quota. The .env file will not be changed.', flush=True)
+    for index, model in enumerate(candidates, 1):
+        print(f'Testing {index}/{len(candidates)}: {model}', flush=True)
+        try:
+            generate(question, records, config['API_KEY'], model, 'gemini')
+        except Exception as error:
+            problem = diagnose(error, 'gemini')
+            print('Diagnostic code:', problem.code, flush=True)
+            if problem.upstream_status is not None:
+                print('Upstream HTTP status:', problem.upstream_status, flush=True)
+            # Only model-specific absence/availability/empty results justify
+            # trying another ID. Stop on quota, access or connection errors.
+            if problem.code in {'ai_model_unavailable', 'ai_provider_unavailable', 'ai_empty_response'}:
+                continue
+            print('Model search stopped:', problem.message)
+            print('Next step:', problem.action)
+            return 1
+        print('Live generation succeeded for this test. Copy this line into your private .env:')
+        print(f'CCIT_MODEL={model}')
+        print('Save .env and restart Flask. Keep the same API key. No further models were tested.')
+        return 0
+    print('None of the tested models returned a usable answer. The .env file was not changed.')
+    print('Share the tested model IDs, diagnostic codes and HTTP statuses only; keep your key private.')
+    return 1
 
 
 def run(args, application):
@@ -28,9 +77,13 @@ def run(args, application):
         name = 'GEMINI_API_KEY' if provider == 'gemini' else 'CCIT_API_KEY'
         print(f'Add {name} privately to .env beside app.py. Do not paste the key into chat or GitHub.')
         return 1
-    if not (args.list_models or args.test):
+    find_model = getattr(args, 'find_model', False)
+    if find_model and provider != 'gemini':
+        print('--find-model supports Gemini Flash/Flash-Lite text models only. Use --test for the configured OpenAI model.')
+        return 1
+    if not (args.list_models or args.test or find_model):
         print('Configuration only; the key has not been validated.')
-        print('Use --list-models to list model IDs, or --test for one grounded generation request.')
+        print('Use --list-models for model IDs, --test for the configured model, or --find-model to test up to three Gemini text models.')
         return 0
     try:
         if args.list_models:
@@ -49,6 +102,8 @@ def run(args, application):
         if not records:
             print('No reviewed knowledge was retrieved for the test; no provider request was made.')
             return 1
+        if find_model:
+            return find_working_model(config, question, records)
         generate(question, records, config['API_KEY'], model, provider)
         print('Live generation succeeded using the configured model and retrieved source context.')
         print('Response content is omitted. Review its factual accuracy through the chatbot.')
@@ -68,6 +123,7 @@ def main():
     action = parser.add_mutually_exclusive_group()
     action.add_argument('--list-models', action='store_true', help='List model IDs without generating an answer')
     action.add_argument('--test', action='store_true', help='Make one real, grounded generation request')
+    action.add_argument('--find-model', action='store_true', help='Test up to three listed stable Gemini Flash/Flash-Lite models; stop at first success or quota/access/connection error; never change .env')
     return run(parser.parse_args(), create_app())
 
 
