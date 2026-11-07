@@ -1,34 +1,42 @@
 # Validation evidence
 
-Executed November 7, 2026: `.venv/bin/python -m pytest -q` — **94 passed**.
+The latest automated run completed with **230 passed** (`.venv/bin/python -m pytest -q`). It covers the original 94 checks and 136 new regression checks for the reviewed question variants, additional English/Tagalog phrasing, unsupported facts, focused summaries, source warnings, context/clarification validation, explicit FAQ override, privacy handling and provider-free recovery. No test uses a real AI credential.
 
-20 implementation checks cover invalid input, synthetic retrieval variants, unknown questions, privacy, missing data/key, pending-record exclusion, simulated provider failure, frontend delivery and reviewed source-only topic suggestions. Another 34 questions exercise the actual uploaded source with expected first source IDs or fallback/privacy behavior. All 34 passed. Actual returned answers, expected/actual IDs and elapsed times are recorded in `evaluation.json`. This is retrieval evaluation in explicitly labeled FAQ mode, not a live AI answer evaluation or independent fact verification.
+## Actual HTTP question evaluation
 
-12 additional provider checks use synthetic records and in-memory HTTP transports with the official SDKs. They verify Gemini request serialization, source/system instructions, response parsing and timeout; empty/blocked responses; quota errors without retry or secret disclosure; the existing OpenAI Responses API; provider-specific key selection/default models; and invalid-provider reporting. These are offline integration tests, not successful live AI calls.
+`python tests/evaluate_questions.py --base-url <local FAQ server>` completed **95/95** expected source-support or mode checks:
 
-14 diagnostic regression checks cover specific safe errors for invalid keys, access denial, unavailable models, quota/rate limits, rejected requests and upstream outages; compatible-model listing through the real SDK parser; transport timeouts/connections; and CLI output without credentials or raw exceptions. CLI tests also check missing credentials, accidental keys in the model field and malformed remote error details. The cloud checkout's diagnostic command reports that no API key is configured, so the user's local failure has not been reproduced with a live key.
+| Group | Passed | Total |
+| --- | ---: | ---: |
+| Original source questions | 22 | 22 |
+| Review student phrasing/multi-topic requests | 33 | 33 |
+| Additional wording variations | 22 | 22 |
+| Unsupported questions | 12 | 12 |
+| Explicit privacy responses | 6 | 6 |
 
-14 model-finder checks verify conservative candidate selection; a simulated 404 followed by 503 and success; stopping at first success; at most three generation requests; immediate stop on quota, access, request, SDK or connection problems; exclusion of media/preview/Pro models; reviewed source context before probing; refusal to automatically choose OpenAI models; and preservation of the private `.env` file and secret-free output. All finder responses in these tests are simulated. The user separately reported a live 503 for gemini-3.8-flash and a live 404 for the listed gemini-2.5-flash-lite. No successful live generation has yet been reported or reproduced in the cloud checkout.
+Actual replies, selected source IDs, modes, warnings and timings are recorded in evaluation-improved.json. The review phrasing set improved from 8 expected-source matches to 33; it was used during development and is not an independent accuracy benchmark. These checks verify source support and handling, not current institutional accuracy or live AI response quality. Extra automated negative controls cover undocumented fees, online delivery, scholarship guarantees, dates, office details and unsupported programs.
 
 ## Browser validation
 
-On November 4, `python tests/browser_smoke.py` against the running FAQ-mode Flask server passed **14 browser scenarios** in system Chromium using Playwright. The script and its result JSON preserve the exact checks; related assertions are grouped within each scenario rather than counted as individual tests. These checks were not repeated for the November 7 backend/provider change.
+`python tests/browser_smoke.py` passed **14 scenarios** in Chromium at desktop 1440×1024, laptop 1280×800, tablet 768×1024, mobile 390×844, small mobile 320×568 and landscape 844×390. Checks include geometry, font loading, no horizontal document overflow, all topic selectors, actual sourced replies, personalization/dialogs, empty-input and duplicate protection, loading, clear-chat confirmation, private/unknown questions, literal HTML-like user text, and simulated outages/retry.
 
-- 1440×1024 desktop, 1280×800 laptop, 768×1024 tablet, 390×844 mobile, 320×568 small mobile and 844×390 landscape: no horizontal document overflow; all three topic selectors open/close; questions reach Flask and receive source FAQ-006.
-- Desktop composer geometry: 910×84 pixels, y≈516; self-hosted Inter loads.
-- Optional name personalization, tab persistence, Escape dismissal and clearing the preferred name.
-- Empty/whitespace send prevention and Shift+Enter multiline input.
-- A source question selected through the topic panel, actual source reply, FAQ disclosure, typing feedback and duplicate submission prevention while the real request is held pending.
-- New-chat confirmation, cancel and reset.
-- Real unknown-question fallback and private-record response.
-- Literal rendering of HTML-like user input without execution.
-- A simulated provider HTTP 502 followed by a successful real retry.
-- A simulated suggestions outage while typed questions still work.
+`python tests/browser_improvements.py` passed **6 additional scenarios**:
 
-No JavaScript page errors occurred in the normal and interaction scenarios. The two intentional outage checks use mocked failures; they are not live provider tests. Screenshots of the actual application and the timestamped browser report are in `docs/screenshots/`. See `design.md` for the source-frame inspection, implementation details and acknowledged adaptations.
+1. Focused answer, visible source-currency warning, expandable full source and actual clipboard copy.
+2. Program follow-up, New chat context reset and completing a program clarification.
+3. Retry with original request/context, no duplicate user message and preservation of an unsent draft.
+4. Explicit mode=faq fallback, labeled source answer and replacement of the error.
+5. Retrying an older turn while preserving the newer program context.
+6. Safe plain-text rendering of reply, warning and original-source content.
 
-## Other checks and limitations
+Successful source replies come from the actual local Flask server in FAQ mode. Provider failures and safety payloads are deliberately simulated; they are not live AI responses. No unexpected JavaScript page errors occurred. Current screenshots and timestamped reports are in screenshots/ and screenshots/improvements/.
 
-JavaScript syntax, Python dependency consistency and Git whitespace checks passed. HTTP smoke tests confirmed HTML/health delivery, missing-data errors before import, and sourced FAQ replies/fallback after import. No live provider request has succeeded because an API key has not been supplied. Firefox, Safari, real mobile devices, assistive technology and production deployment/load testing remain unrun.
+## Provider and diagnostic coverage
 
-A targeted November 7 Chromium check simulated a Gemini HTTP 404 through the Flask handler and confirmed the mobile UI displays the specific model-unavailable message. It checked removal of the typing indicator, absence of a test key in page text, no horizontal overflow and no JavaScript page errors. This verifies the new error path; it does not establish that the user's live failure is a 404 or that generation succeeds with their local key.
+SDK tests use real SDK serialization/parsing with in-memory HTTP transports. They exercise Gemini/OpenAI grounding payloads, default models/key selection, source-only replies, empty/blocked results, quotas without retries, safe classification/logging of 400/403/404/429/503 and connection/timeout errors, model listing and secret-free CLI output. Model-finder tests cover the three-request cap, early success, exclusion of media/preview/Pro IDs, immediate stop on quota/access/connection errors and preservation of .env.
+
+No successful live generation has been confirmed here. The user separately reported a live 503 for gemini-3.8-flash and 404 for the listed gemini-2.5-flash-lite. The model finder remains available to test actual per-project generation access locally.
+
+## Limits
+
+Source transcription is checked against the supplied PDF; current department facts remain unconfirmed. Firefox, Safari, actual mobile devices, screen readers, deployment/load testing and broad held-out language evaluation remain unrun. JavaScript syntax and Git whitespace checks passed. No application dependencies or lockfiles were changed by the improvements.

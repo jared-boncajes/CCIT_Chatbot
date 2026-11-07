@@ -8,6 +8,8 @@ from werkzeug.exceptions import HTTPException
 from chatbot.retriever import retrieve
 from chatbot.ai_service import DEFAULT_MODELS, generate
 from chatbot.errors import diagnose
+from chatbot.answers import format_faq, source_metadata
+from chatbot.conversation import is_private_question, read_context, resolve_question
 
 ROOT = Path(__file__).parent
 load_dotenv(ROOT / '.env')
@@ -89,34 +91,44 @@ def create_app(test_config=None):
         if not isinstance(message,str) or not message.strip() or len(message)>1000:
             return jsonify(success=False,error='Enter a question between 1 and 1,000 characters.'),400
         message=message.strip()
-        if re.search(r'\b(my|his|her|student|aking)\b.*\b(grades?|records?|password|address)\b',message,re.I):
-            return jsonify(success=True,reply='I cannot access private student records. Please use the official student services channels.',sources=[],mode='privacy')
+        if body.get('mode') not in (None, 'faq'):
+            return jsonify(success=False,error='The requested answer mode is not supported.'),400
+        try:
+            context = read_context(body.get('context'))
+        except ValueError:
+            return jsonify(success=False,error='The conversation context is not valid. Please start a new chat.'),400
+        if is_private_question(message):
+            return jsonify(success=True,reply='I cannot access private student records. Please use the official student services channels.',sources=[],mode='privacy',context=context)
+        if re.fullmatch(r'(?:hi|hello|hey|kumusta|magandang araw|thanks|thank you|salamat)[ !.]*', message, re.I):
+            return jsonify(success=True,reply='Hello! Ask me about CCIT programs, scholarships, faculty, or facilities.',sources=[],mode='greeting',context=context)
         if not app.config['KNOWLEDGE']:
             return jsonify(success=False,error='The About CCIT knowledge document has not been imported yet. Department answers are unavailable.'),503
-        if app.config['CHAT_MODE'] not in ('ai','faq'):
+        mode = body.get('mode') or app.config['CHAT_MODE']
+        if mode not in ('ai','faq'):
             return jsonify(success=False,error='The chatbot mode is not configured correctly.'),503
-        if app.config['CHAT_MODE']=='ai' and app.config['AI_PROVIDER'] not in DEFAULT_MODELS:
-            return jsonify(success=False,error='Set CCIT_AI_PROVIDER to gemini or openai in the backend configuration.'),503
-        if app.config['CHAT_MODE']=='ai' and not app.config['API_KEY']:
-            key_name = 'GEMINI_API_KEY' if app.config['AI_PROVIDER']=='gemini' else 'CCIT_API_KEY'
-            return jsonify(success=False,error=f'AI service is not configured. Add {key_name} to the backend .env file or environment settings, then restart the server. FAQ mode is also available.'),503
-        records=retrieve(message, app.config['KNOWLEDGE'])
+        resolved, next_context, needs_program = resolve_question(message, context)
+        if needs_program:
+            return jsonify(success=True,reply='Which program do you mean: BSCS, BSIT, or BSEMC?',sources=[],mode='clarification',context=next_context)
+        records=retrieve(resolved, app.config['KNOWLEDGE'])
         if not records:
-            return jsonify(success=True,reply=FALLBACK,sources=[],mode='fallback')
+            return jsonify(success=True,reply=FALLBACK,sources=[],mode='fallback',context=next_context)
+        if mode=='ai' and app.config['AI_PROVIDER'] not in DEFAULT_MODELS:
+            return jsonify(success=False,error='AI answers are not configured. You can read the source-based FAQ answer instead.',error_code='ai_not_configured',can_use_faq=True),503
+        if mode=='ai' and not app.config['API_KEY']:
+            key_name = 'GEMINI_API_KEY' if app.config['AI_PROVIDER']=='gemini' else 'CCIT_API_KEY'
+            app.logger.warning('AI key is missing for provider=%s. Configure %s in the private backend environment and restart Flask.',app.config['AI_PROVIDER'],key_name)
+            return jsonify(success=False,error='AI answers are not configured yet. You can read the source-based FAQ answer instead.',error_code='ai_not_configured',can_use_faq=True),503
         try:
-            reply='\n\n'.join(r['answer'] for r in records) if app.config['CHAT_MODE']=='faq' else generate(message,records,app.config['API_KEY'],app.config['MODEL'],app.config['AI_PROVIDER'])
+            reply=format_faq(records, resolved) if mode=='faq' else generate(resolved,records,app.config['API_KEY'],app.config['MODEL'],app.config['AI_PROVIDER'])
         except Exception as error:
             problem = diagnose(error, app.config['AI_PROVIDER'])
             # Remote error bodies/URLs can contain credentials. Log only fixed
             # classifications, numeric status and our own maintainer guidance.
             app.logger.warning('AI request failed: provider=%s category=%s upstream_status=%s exception=%s. %s',
                 app.config['AI_PROVIDER'], problem.code, problem.upstream_status, type(error).__name__, problem.action)
-            return jsonify(success=False,error=problem.message,error_code=problem.code),502
-        if any(r.get('currency_status') == 'unconfirmed' for r in records):
-            reply = 'According to the supplied About CCIT document (current details have not been independently confirmed):\n\n' + reply
-        if any(r['id'] in ('FAQ-001','FAQ-002') for r in records):
-            reply += '\n\nSource note: the document uses both “College of Computer” and “College of Computing” in the college name. Please confirm the official wording with CCIT.'
-        return jsonify(success=True,reply=reply,mode=app.config['CHAT_MODE'],sources=[{'id':r['id'],'title':r['question'],'source':r.get('source','About CCIT')} for r in records])
+            return jsonify(success=False,error=problem.message,error_code=problem.code,can_use_faq=True),502
+        sources, details, warnings = source_metadata(records, app.config['KNOWLEDGE'])
+        return jsonify(success=True,reply=reply,mode=mode,sources=sources,details=details,warnings=warnings,context=next_context)
 
     @app.errorhandler(HTTPException)
     def http_error(error):

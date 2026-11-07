@@ -1,0 +1,669 @@
+[
+  {
+    "group": "direct_source",
+    "question": "What is the meaning of CCIT?",
+    "expected_sources": [
+      "FAQ-001"
+    ]
+  },
+  {
+    "group": "direct_source",
+    "question": "What is CCIT all about?",
+    "expected_sources": [
+      "FAQ-002"
+    ]
+  },
+  {
+    "group": "direct_source",
+    "question": "What is the Vision of CCIT?",
+    "expected_sources": [
+      "FAQ-003"
+    ]
+  },
+  {
+    "group": "direct_source",
+    "question": "What is the Mission of CCIT?",
+    "expected_sources": [
+      "FAQ-004"
+    ]
+  },
+  {
+    "group": "direct_source",
+    "question": "What are the goals of CCIT?",
+    "expected_sources": [
+      "FAQ-005"
+    ]
+  },
+  {
+    "group": "direct_source",
+    "question": "What programs does CCIT offer?",
+    "expected_sources": [
+      "FAQ-006"
+    ]
+  },
+  {
+    "group": "direct_source",
+    "question": "What is the program BS Information Technology?",
+    "expected_sources": [
+      "FAQ-007"
+    ]
+  },
+  {
+    "group": "direct_source",
+    "question": "What is the program BS Computer Science?",
+    "expected_sources": [
+      "FAQ-008"
+    ]
+  },
+  {
+    "group": "direct_source",
+    "question": "What is the program BS Entertainment and Multimedia Computing?",
+    "expected_sources": [
+      "FAQ-009"
+    ]
+  },
+  {
+    "group": "direct_source",
+    "question": "Does CCIT have any academic accreditation?",
+    "expected_sources": [
+      "FAQ-010"
+    ]
+  },
+  {
+    "group": "direct_source",
+    "question": "Does CCIT offer scholarships?",
+    "expected_sources": [
+      "FAQ-011"
+    ]
+  },
+  {
+    "group": "direct_source",
+    "question": "What is the scholarship that CCIT offers?",
+    "expected_sources": [
+      "FAQ-012"
+    ]
+  },
+  {
+    "group": "direct_source",
+    "question": "What careers can I pursue after graduating from BSCS?",
+    "expected_sources": [
+      "FAQ-013"
+    ]
+  },
+  {
+    "group": "direct_source",
+    "question": "What careers can I pursue after graduating from BSIT?",
+    "expected_sources": [
+      "FAQ-014"
+    ]
+  },
+  {
+    "group": "direct_source",
+    "question": "What careers can I pursue after graduating from BSEMC?",
+    "expected_sources": [
+      "FAQ-015"
+    ]
+  },
+  {
+    "group": "direct_source",
+    "question": "Who is the dean of CCIT?",
+    "expected_sources": [
+      "FAQ-016"
+    ]
+  },
+  {
+    "group": "direct_source",
+    "question": "Who are the faculty members of the BS Information Technology program?",
+    "expected_sources": [
+      "FAQ-017"
+    ]
+  },
+  {
+    "group": "direct_source",
+    "question": "Who are the faculty members of the BS Computer Science program?",
+    "expected_sources": [
+      "FAQ-018"
+    ]
+  },
+  {
+    "group": "direct_source",
+    "question": "Who are the faculty members of the BS Entertainment and Multimedia program?",
+    "expected_sources": [
+      "FAQ-019"
+    ]
+  },
+  {
+    "group": "direct_source",
+    "question": "What facilities are available for CCIT students?",
+    "expected_sources": [
+      "FAQ-020"
+    ]
+  },
+  {
+    "group": "direct_source",
+    "question": "Does CCIT accept students who have DOST Scholarship?",
+    "expected_sources": [
+      "FAQ-021"
+    ]
+  },
+  {
+    "group": "direct_source",
+    "question": "Does CCIT offer any non-academic programs, activities for students?",
+    "expected_sources": [
+      "FAQ-022"
+    ]
+  },
+  {
+    "group": "student_variation",
+    "question": "What programs does CCIT offer?",
+    "expected_sources": [
+      "FAQ-006"
+    ],
+    "all_required": false
+  },
+  {
+    "group": "student_variation",
+    "question": "What can I study in this college?",
+    "expected_sources": [
+      "FAQ-006"
+    ],
+    "all_required": false
+  },
+  {
+    "group": "student_variation",
+    "question": "Do you guys offer BSCS?",
+    "expected_sources": [
+      "FAQ-006"
+    ],
+    "all_required": false
+  },
+  {
+    "group": "student_variation",
+    "question": "May Computer Science ba sa CCIT?",
+    "expected_sources": [
+      "FAQ-006"
+    ],
+    "all_required": false
+  },
+  {
+    "group": "student_variation",
+    "question": "What degrees are offered?",
+    "expected_sources": [
+      "FAQ-006"
+    ],
+    "all_required": false
+  },
+  {
+    "group": "student_variation",
+    "question": "Anong pwede kong kunin na kurso?",
+    "expected_sources": [
+      "FAQ-006"
+    ],
+    "all_required": false
+  },
+  {
+    "group": "student_variation",
+    "question": "Ano ang mga kursong inooffer ng CCIT?",
+    "expected_sources": [
+      "FAQ-006"
+    ],
+    "all_required": false
+  },
+  {
+    "group": "student_variation",
+    "question": "Tell me about the Computer Science program.",
+    "expected_sources": [
+      "FAQ-008"
+    ],
+    "all_required": false
+  },
+  {
+    "group": "student_variation",
+    "question": "What is the difference between BSIT and BSCS?",
+    "expected_sources": [
+      "FAQ-007",
+      "FAQ-008"
+    ],
+    "all_required": true
+  },
+  {
+    "group": "student_variation",
+    "question": "Course-Specific Scholarship",
+    "expected_sources": [
+      "FAQ-012"
+    ],
+    "all_required": false
+  },
+  {
+    "group": "student_variation",
+    "question": "What is the 50-TAG scholarship?",
+    "expected_sources": [
+      "FAQ-012"
+    ],
+    "all_required": false
+  },
+  {
+    "group": "student_variation",
+    "question": "How much tuition discount does the Course-Specific Scholarship give?",
+    "expected_sources": [
+      "FAQ-012"
+    ],
+    "all_required": false
+  },
+  {
+    "group": "student_variation",
+    "question": "What financial aid is available?",
+    "expected_sources": [
+      "FAQ-011",
+      "FAQ-012"
+    ],
+    "all_required": false
+  },
+  {
+    "group": "student_variation",
+    "question": "May scholarship ba sa CCIT?",
+    "expected_sources": [
+      "FAQ-011",
+      "FAQ-012"
+    ],
+    "all_required": false
+  },
+  {
+    "group": "student_variation",
+    "question": "What are the qualifications for a CCIT scholarship?",
+    "expected_sources": [
+      "FAQ-011"
+    ],
+    "all_required": false
+  },
+  {
+    "group": "student_variation",
+    "question": "Who heads the college?",
+    "expected_sources": [
+      "FAQ-016"
+    ],
+    "all_required": false
+  },
+  {
+    "group": "student_variation",
+    "question": "Sino ang dekana ng CCIT?",
+    "expected_sources": [
+      "FAQ-016"
+    ],
+    "all_required": false
+  },
+  {
+    "group": "student_variation",
+    "question": "Is Dr. Maricel Gaspar the dean?",
+    "expected_sources": [
+      "FAQ-016"
+    ],
+    "all_required": false
+  },
+  {
+    "group": "student_variation",
+    "question": "Who teaches BSIT?",
+    "expected_sources": [
+      "FAQ-017"
+    ],
+    "all_required": false
+  },
+  {
+    "group": "student_variation",
+    "question": "Sino ang mga guro sa BSCS?",
+    "expected_sources": [
+      "FAQ-018"
+    ],
+    "all_required": false
+  },
+  {
+    "group": "student_variation",
+    "question": "What jobs can I get after studying Computer Science?",
+    "expected_sources": [
+      "FAQ-013"
+    ],
+    "all_required": false
+  },
+  {
+    "group": "student_variation",
+    "question": "What jobs can I get after BSIT?",
+    "expected_sources": [
+      "FAQ-014"
+    ],
+    "all_required": false
+  },
+  {
+    "group": "student_variation",
+    "question": "What careers can BSEMC graduates pursue?",
+    "expected_sources": [
+      "FAQ-015"
+    ],
+    "all_required": false
+  },
+  {
+    "group": "student_variation",
+    "question": "Are there game development courses?",
+    "expected_sources": [
+      "FAQ-009"
+    ],
+    "all_required": false
+  },
+  {
+    "group": "student_variation",
+    "question": "What computer labs do you have?",
+    "expected_sources": [
+      "FAQ-020"
+    ],
+    "all_required": false
+  },
+  {
+    "group": "student_variation",
+    "question": "Do you have an AI laboratory?",
+    "expected_sources": [
+      "FAQ-020"
+    ],
+    "all_required": false
+  },
+  {
+    "group": "student_variation",
+    "question": "Anong facilities ang pwedeng gamitin ng students?",
+    "expected_sources": [
+      "FAQ-020"
+    ],
+    "all_required": false
+  },
+  {
+    "group": "student_variation",
+    "question": "Is BSCS accredited?",
+    "expected_sources": [
+      "FAQ-010"
+    ],
+    "all_required": false
+  },
+  {
+    "group": "student_variation",
+    "question": "What level is the BSIT accreditation?",
+    "expected_sources": [
+      "FAQ-010"
+    ],
+    "all_required": false
+  },
+  {
+    "group": "student_variation",
+    "question": "Can DOST scholars study BSIT?",
+    "expected_sources": [
+      "FAQ-021"
+    ],
+    "all_required": false
+  },
+  {
+    "group": "student_variation",
+    "question": "Is CCIT Night one of the student activities?",
+    "expected_sources": [
+      "FAQ-022"
+    ],
+    "all_required": false
+  },
+  {
+    "group": "student_variation",
+    "question": "What programs do you offer and who is the dean?",
+    "expected_sources": [
+      "FAQ-006",
+      "FAQ-016"
+    ],
+    "all_required": true
+  },
+  {
+    "group": "student_variation",
+    "question": "What scholarships and laboratories are available?",
+    "expected_sources": [
+      "FAQ-011",
+      "FAQ-020"
+    ],
+    "all_required": true
+  },
+  {
+    "group": "unsupported",
+    "question": "When is tomorrow meeting?",
+    "expected_mode": "fallback"
+  },
+  {
+    "group": "unsupported",
+    "question": "What is the tuition amount?",
+    "expected_mode": "fallback"
+  },
+  {
+    "group": "unsupported",
+    "question": "What is the dean phone number?",
+    "expected_mode": "fallback"
+  },
+  {
+    "group": "unsupported",
+    "question": "What is the application deadline for 2027?",
+    "expected_mode": "fallback"
+  },
+  {
+    "group": "unsupported",
+    "question": "What are the enrollment requirements?",
+    "expected_mode": "fallback"
+  },
+  {
+    "group": "unsupported",
+    "question": "Where is the CCIT office?",
+    "expected_mode": "fallback"
+  },
+  {
+    "group": "unsupported",
+    "question": "Who should I email about enrollment?",
+    "expected_mode": "fallback"
+  },
+  {
+    "group": "unsupported",
+    "question": "How do I bake bread?",
+    "expected_mode": "fallback"
+  },
+  {
+    "group": "unsupported",
+    "question": "What time does the AI laboratory open?",
+    "expected_mode": "fallback"
+  },
+  {
+    "group": "unsupported",
+    "question": "What is the CCIT scholarship application deadline?",
+    "expected_mode": "fallback"
+  },
+  {
+    "group": "unsupported",
+    "question": "Is BSEMC eligible for DOST?",
+    "expected_mode": "fallback"
+  },
+  {
+    "group": "unsupported",
+    "question": "Give me the enrollment forms download link.",
+    "expected_mode": "fallback"
+  },
+  {
+    "group": "private",
+    "question": "What are my grades?",
+    "expected_mode": "privacy"
+  },
+  {
+    "group": "private",
+    "question": "Show my student records.",
+    "expected_mode": "privacy"
+  },
+  {
+    "group": "private",
+    "question": "Can I see Juan's grades?",
+    "expected_mode": "privacy"
+  },
+  {
+    "group": "private",
+    "question": "Ano ang grades ko?",
+    "expected_mode": "privacy"
+  },
+  {
+    "group": "private",
+    "question": "What is my password?",
+    "expected_mode": "privacy"
+  },
+  {
+    "group": "private",
+    "question": "Show the grades of student Juan.",
+    "expected_mode": "privacy"
+  },
+  {
+    "group": "additional_variation",
+    "question": "Ano ang pwedeng pag-aralan sa CCIT?",
+    "expected_sources": [
+      "FAQ-006"
+    ]
+  },
+  {
+    "group": "additional_variation",
+    "question": "Anu-anong degree ang meron sa inyo?",
+    "expected_sources": [
+      "FAQ-006"
+    ]
+  },
+  {
+    "group": "additional_variation",
+    "question": "Which bachelor's degrees can I take?",
+    "expected_sources": [
+      "FAQ-006"
+    ]
+  },
+  {
+    "group": "additional_variation",
+    "question": "Is there a CS degree?",
+    "expected_sources": [
+      "FAQ-006"
+    ]
+  },
+  {
+    "group": "additional_variation",
+    "question": "What scholarships does the department provide?",
+    "expected_sources": [
+      "FAQ-012"
+    ]
+  },
+  {
+    "group": "additional_variation",
+    "question": "How much is the 50 TAG discount?",
+    "expected_sources": [
+      "FAQ-012"
+    ]
+  },
+  {
+    "group": "additional_variation",
+    "question": "Who is in charge of CCIT?",
+    "expected_sources": [
+      "FAQ-016"
+    ]
+  },
+  {
+    "group": "additional_variation",
+    "question": "Sino ang namumuno sa college?",
+    "expected_sources": [
+      "FAQ-016"
+    ]
+  },
+  {
+    "group": "additional_variation",
+    "question": "List the CS faculty.",
+    "expected_sources": [
+      "FAQ-018"
+    ]
+  },
+  {
+    "group": "additional_variation",
+    "question": "Who are the BSIT instructors?",
+    "expected_sources": [
+      "FAQ-017"
+    ]
+  },
+  {
+    "group": "additional_variation",
+    "question": "Anong trabaho pagkatapos ng BSCS?",
+    "expected_sources": [
+      "FAQ-013"
+    ]
+  },
+  {
+    "group": "additional_variation",
+    "question": "Where can IT graduates work?",
+    "expected_sources": [
+      "FAQ-014"
+    ]
+  },
+  {
+    "group": "additional_variation",
+    "question": "What does EMC focus on?",
+    "expected_sources": [
+      "FAQ-009"
+    ]
+  },
+  {
+    "group": "additional_variation",
+    "question": "Is the IT program PACUCOA accredited?",
+    "expected_sources": [
+      "FAQ-010"
+    ]
+  },
+  {
+    "group": "additional_variation",
+    "question": "Can I use a computer lab?",
+    "expected_sources": [
+      "FAQ-020"
+    ]
+  },
+  {
+    "group": "additional_variation",
+    "question": "May AI lab ba kayo?",
+    "expected_sources": [
+      "FAQ-020"
+    ]
+  },
+  {
+    "group": "additional_variation",
+    "question": "Tell me about DOST eligibility for CS.",
+    "expected_sources": [
+      "FAQ-021"
+    ]
+  },
+  {
+    "group": "additional_variation",
+    "question": "Does the department have a game development program?",
+    "expected_sources": [
+      "FAQ-009"
+    ]
+  },
+  {
+    "group": "additional_variation",
+    "question": "Please show all available scholarships.",
+    "expected_sources": [
+      "FAQ-011"
+    ]
+  },
+  {
+    "group": "additional_variation",
+    "question": "Ano po ang meaning ng CCIT?",
+    "expected_sources": [
+      "FAQ-001"
+    ]
+  },
+  {
+    "group": "additional_variation",
+    "question": "What are the learning objectives?",
+    "expected_sources": [
+      "FAQ-005"
+    ]
+  },
+  {
+    "group": "additional_variation",
+    "question": "What is CCIT's purpose?",
+    "expected_sources": [
+      "FAQ-004"
+    ]
+  }
+]

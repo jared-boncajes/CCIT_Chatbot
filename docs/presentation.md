@@ -10,6 +10,10 @@ Before presenting, confirm the currency of the imported About CCIT document, con
 4. Ask a paraphrase or Filipino variant and compare the source.
 5. Ask a question outside the dataset; show the unknown-answer response.
 6. Ask for private grades; explain the privacy boundary.
-7. Clear the chat and demonstrate loading/error feedback.
+7. Ask a follow-up such as “What jobs can I get after this program?” and show the correct program context.
+8. Demonstrate Retry or the explicitly labeled FAQ fallback when AI is unavailable.
+9. Expand full source details, copy an answer, and clear the chat to reset context.
 
-Discuss executed tests from testing.md, source freshness, lexical retrieval limitations, and the need to review model outputs. Both Gemini and OpenAI use their maintained official SDKs. Gemini was added to allow use of an AI Studio key and any free-tier quota available to the selected account/model; no live provider comparison or free-quota guarantee is claimed. Future work: broader multilingual evaluation, stronger retrieval, and production deployment hardening. Use the actual screenshots in `docs/screenshots/` and the recorded retrieval results in `docs/evaluation.json`. The revised Figma layout and 14 browser scenarios have been checked; live AI remains untested. Explain that FAQ-mode screenshots demonstrate source retrieval and interface behavior, not AI generation.
+Discuss executed tests from testing.md, source freshness, lexical retrieval limitations, and the need to review model outputs. Both Gemini and OpenAI use their maintained official SDKs. Gemini was added to allow use of an AI Studio key and any free-tier quota available to the selected account/model; no live provider comparison or free-quota guarantee is claimed. Future work: broader multilingual evaluation, stronger retrieval, and production deployment hardening. Use the actual screenshots in `docs/screenshots/` and the recorded retrieval results in `docs/evaluation.json`. The revised Figma layout and 20 browser scenarios have been checked; successful live AI generation remains unverified. Explain that FAQ-mode screenshots demonstrate source retrieval and interface behavior, not AI generation.
+
+The latest validation includes 230 automated tests, 20 browser scenarios and 95 source-support/mode checks. These are not live AI accuracy percentages. Use docs/evaluation-improved.json and screenshots/improvements/ for current evidence, and complete the department-verification checklist before presenting time-sensitive facts as current.

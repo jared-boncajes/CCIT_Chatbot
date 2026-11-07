@@ -106,7 +106,7 @@ def test_openai_still_uses_responses_api(monkeypatch):
     ('gemini', 'CCIT_API_KEY', None),
     ('openai', 'GEMINI_API_KEY', None),
 ])
-def test_provider_key_selection(monkeypatch, provider, key_name, expected_key):
+def test_provider_key_selection(monkeypatch, caplog, provider, key_name, expected_key):
     for name in ['GEMINI_API_KEY', 'GOOGLE_API_KEY', 'CCIT_API_KEY', 'OPENAI_API_KEY', 'CCIT_MODEL']:
         monkeypatch.delenv(name, raising=False)
     monkeypatch.setenv('CCIT_AI_PROVIDER', provider)
@@ -124,7 +124,9 @@ def test_provider_key_selection(monkeypatch, provider, key_name, expected_key):
         response = client.post('/api/chat', json={'message': 'programs'})
         assert response.status_code == 503
         required = 'GEMINI_API_KEY' if provider == 'gemini' else 'CCIT_API_KEY'
-        assert required in response.get_json()['error']
+        assert required in caplog.text
+        assert response.get_json()['error_code'] == 'ai_not_configured'
+        assert response.get_json()['can_use_faq'] is True
 
 
 def test_invalid_provider_is_reported_without_calling_sdk(monkeypatch):

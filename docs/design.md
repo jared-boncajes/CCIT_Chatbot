@@ -30,3 +30,7 @@ The send control is disabled for empty input or while a response is pending. FAQ
 [Desktop](screenshots/desktop.png) · [Tablet](screenshots/tablet.png) · [Mobile](screenshots/mobile.png) · [Conversation](screenshots/conversation.png) · [Mobile conversation](screenshots/mobile-conversation.png) · [Loading](screenshots/loading.png)
 
 These are Chromium captures of the running application in explicitly labeled FAQ mode. No screenshots show or claim a successful live AI response. Browser checks are recorded in [browser-results.json](screenshots/browser-results.json).
+
+## Conversation improvements
+
+The home/header retain the inspected Figma dimensions. Conversation states now include focused lists, a visible source-currency warning, native expandable original-source details, Copy answer, and Retry/Read FAQ answer instead controls. These extend states missing from the source frame using the existing font, colors and rounded surfaces. Current focused-answer and follow-up screenshots are under screenshots/improvements/.

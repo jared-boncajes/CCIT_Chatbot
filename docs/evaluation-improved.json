@@ -1,0 +1,1675 @@
+{
+  "executed_at": "2026-11-07T16:18:49.275326+00:00",
+  "mode": "Actual HTTP requests in labeled FAQ mode; no live AI calls",
+  "scope": "Expected source support or fallback/privacy behavior; not independent fact verification or a general accuracy estimate.",
+  "summary": {
+    "additional_variation": {
+      "passed": 22,
+      "total": 22
+    },
+    "direct_source": {
+      "passed": 22,
+      "total": 22
+    },
+    "private": {
+      "passed": 6,
+      "total": 6
+    },
+    "student_variation": {
+      "passed": 33,
+      "total": 33
+    },
+    "unsupported": {
+      "passed": 12,
+      "total": 12
+    }
+  },
+  "results": [
+    {
+      "group": "direct_source",
+      "question": "What is the meaning of CCIT?",
+      "expected_sources": [
+        "FAQ-001"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-001"
+      ],
+      "reply": "FAITH- College of Computer and Information Technology",
+      "warnings": [
+        "Current department details have not been independently confirmed.",
+        "The source uses both “College of Computer” and “College of Computing” in the college name. Confirm the official wording with CCIT."
+      ],
+      "passed": true,
+      "elapsed_ms": 23.46
+    },
+    {
+      "group": "direct_source",
+      "question": "What is CCIT all about?",
+      "expected_sources": [
+        "FAQ-002"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-002"
+      ],
+      "reply": "The College of Computing and Information Technology (CCIT) of First Asia Institute of Technology and Humanities recently restructured its academic philosophy to reflect what students should learn upon completing a program, and what they should attain a few years after graduation.",
+      "warnings": [
+        "Current department details have not been independently confirmed.",
+        "The source uses both “College of Computer” and “College of Computing” in the college name. Confirm the official wording with CCIT."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.14
+    },
+    {
+      "group": "direct_source",
+      "question": "What is the Vision of CCIT?",
+      "expected_sources": [
+        "FAQ-003"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-003"
+      ],
+      "reply": "CCIT's vision is to be a Center of Excellence in Information Technology Education with a strong passion to uplift lives and society.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 6.46
+    },
+    {
+      "group": "direct_source",
+      "question": "What is the Mission of CCIT?",
+      "expected_sources": [
+        "FAQ-004"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-004"
+      ],
+      "reply": "CCIT’s mission is to produce globally competent, committed and compassionate IT professionals transforming society through Innovative teaching-learning approaches, Technology-advanced breakthroughs and Enabling extension endeavors.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.81
+    },
+    {
+      "group": "direct_source",
+      "question": "What are the goals of CCIT?",
+      "expected_sources": [
+        "FAQ-005"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-005"
+      ],
+      "reply": "The goal of CCIT is represented by the acronym CCITITE, which consists of seven key objectives:\n1. Create a learning environment that uses outcomes-based education aligned with industry needs and practices.\n2. Cultivate a research culture that promotes technological innovation and commercialization.\n3. Integrate professional programs and alternative learning systems in the field of Information and Communications Technology (ICT).\n4. Transform and empower communities through sustainable ICT extension programs and services.\n5. Imbibe the value of collaboration in achieving industry-driven research and innovative solutions across various fields.\n6. Transcend in digital humanities by upholding professionalism, ethical practices, and social and environmental responsibility.\n7. Encourage lifelong learning, a positive work attitude, and effective communication in the workplace.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.26
+    },
+    {
+      "group": "direct_source",
+      "question": "What programs does CCIT offer?",
+      "expected_sources": [
+        "FAQ-006"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-006"
+      ],
+      "reply": "Programs listed in the supplied document:\n• Bachelor of Science in Information Technology (BSIT)\n• Bachelor of Science in Computer Science (BSCS)\n• Bachelor of Science in Entertainment and Multimedia Computing (BSEMC)\n\nIt also provides graduate programs, including a Master’s and Doctorate degree in Information Technology.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.27
+    },
+    {
+      "group": "direct_source",
+      "question": "What is the program BS Information Technology?",
+      "expected_sources": [
+        "FAQ-007"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-007"
+      ],
+      "reply": "Information Technology (IT) is the field of study that focuses on using computers, software, networks, and databases to store, process, manage, and protect information. It involves developing and maintaining technological systems that help individuals, businesses, and organizations work efficiently and solve real-world problems.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.64
+    },
+    {
+      "group": "direct_source",
+      "question": "What is the program BS Computer Science?",
+      "expected_sources": [
+        "FAQ-008"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-008"
+      ],
+      "reply": "Computer Science (CS) is the field of study that focuses on computing, programming, algorithms, data structures, and the development of software and computer systems. It involves understanding how computers solve problems, designing efficient solutions, and exploring advanced technologies such as artificial intelligence and machine learning.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.43
+    },
+    {
+      "group": "direct_source",
+      "question": "What is the program BS Entertainment and Multimedia Computing?",
+      "expected_sources": [
+        "FAQ-009"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-009"
+      ],
+      "reply": "Entertainment and Multimedia Computing (BSEMC) is the field of study that focuses on the use of technology in creating digital entertainment and multimedia content. It covers areas such as game development, animation, digital arts, interactive media, and multimedia design.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 4.95
+    },
+    {
+      "group": "direct_source",
+      "question": "Does CCIT have any academic accreditation?",
+      "expected_sources": [
+        "FAQ-010"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-010"
+      ],
+      "reply": "Yes, the College of Computing and Information Technology (CCIT) has achieved Level IV accreditation from the Philippine Association of Colleges and Universities Commission on Accreditation (PACUCOA) for its Bachelor of Science in Information Technology (BSIT) and Bachelor of Science in Computer Science (BSCS) programs. Meanwhile, the Bachelor of Science in Entertainment and Multimedia Computing (BSEMC) program is currently undergoing the process of achieving Level I accreditation.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.27
+    },
+    {
+      "group": "direct_source",
+      "question": "Does CCIT offer scholarships?",
+      "expected_sources": [
+        "FAQ-011"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-011"
+      ],
+      "reply": "Yes, aside from the academic scholarships offered by FAITH Colleges, students may also qualify for course-specific scholarships based on their academic performance in senior high school. These scholarships are granted to students who meet or exceed the requirements established by the dean of CCIT.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.09
+    },
+    {
+      "group": "direct_source",
+      "question": "What is the scholarship that CCIT offers?",
+      "expected_sources": [
+        "FAQ-012"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-012"
+      ],
+      "reply": "Scholarship discounts listed in the document:\n• The Course-Specific Scholarship provides qualified students with a 100% discount on tuition fees.\n• 50-TAG Scholarship grants a 50% discount on tuition fees.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.18
+    },
+    {
+      "group": "direct_source",
+      "question": "What careers can I pursue after graduating from BSCS?",
+      "expected_sources": [
+        "FAQ-013"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-013"
+      ],
+      "reply": "Careers for BSCS listed in the document:\n• Software Developer\n• Web Developer\n• Mobile Application Developer\n• Data Scientist\n• Artificial Intelligence (AI) Engineer\n• Machine Learning Engineer\n• Systems Analyst\n• Database Administrator\n• Game Developer",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.65
+    },
+    {
+      "group": "direct_source",
+      "question": "What careers can I pursue after graduating from BSIT?",
+      "expected_sources": [
+        "FAQ-014"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-014"
+      ],
+      "reply": "Careers for BSIT listed in the document:\n• IT Support Specialist\n• Network Administrator\n• Systems Administrator\n• Web Developer\n• Database Administrator\n• Cybersecurity Analyst\n• IT Project Manager\n• Cloud Computing Specialist\n• Business Analyst\n• Software Developer",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.83
+    },
+    {
+      "group": "direct_source",
+      "question": "What careers can I pursue after graduating from BSEMC?",
+      "expected_sources": [
+        "FAQ-015"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-015"
+      ],
+      "reply": "Careers for BSEMC listed in the document:\n• Game Developer\n• Game Designer\n• 2D and 3D Animator\n• Multimedia Artist\n• Graphic Designer\n• UI/UX Designer\n• Video Editor\n• Visual Effects (VFX) Artist\n• 3D Modeler",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.61
+    },
+    {
+      "group": "direct_source",
+      "question": "Who is the dean of CCIT?",
+      "expected_sources": [
+        "FAQ-016"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-016"
+      ],
+      "reply": "The supplied document lists Dr. Maricel M. Gaspar as the CCIT dean.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.11
+    },
+    {
+      "group": "direct_source",
+      "question": "Who are the faculty members of the BS Information Technology program?",
+      "expected_sources": [
+        "FAQ-017"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-017"
+      ],
+      "reply": "Faculty for BSIT listed in the document:\n• Judith Elic\n• Angelica Evangelista\n• Vince Paulo Calanog\n• Joseph Malaluan\n• Roland Calderon\n• Carl Ade Salsona\n• Eubert Manalo",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.21
+    },
+    {
+      "group": "direct_source",
+      "question": "Who are the faculty members of the BS Computer Science program?",
+      "expected_sources": [
+        "FAQ-018"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-018"
+      ],
+      "reply": "Faculty for BSCS listed in the document:\n• Farley Abrigo\n• Bryan Christian Briones\n• Paul Domenic Trambulo",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.75
+    },
+    {
+      "group": "direct_source",
+      "question": "Who are the faculty members of the BS Entertainment and Multimedia program?",
+      "expected_sources": [
+        "FAQ-019"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-019"
+      ],
+      "reply": "Faculty for BSEMC listed in the document:\n• John Benedict Palomeno\n• Joshua O. Orlondo\n• Rafael Isidro\n• Gerlie Mae Orpilla",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.31
+    },
+    {
+      "group": "direct_source",
+      "question": "What facilities are available for CCIT students?",
+      "expected_sources": [
+        "FAQ-020"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-020"
+      ],
+      "reply": "Laboratories listed in the document:\n• Programming Laboratory\n• Multimedia Laboratory\n• 316 Laboratory\n• AI Laboratory",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.97
+    },
+    {
+      "group": "direct_source",
+      "question": "Does CCIT accept students who have DOST Scholarship?",
+      "expected_sources": [
+        "FAQ-021"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-021"
+      ],
+      "reply": "Yes, CCIT accepts students who have qualified for the DOST Scholarship and wish to pursue either the Bachelor of Science in Information Technology (BSIT) or the Bachelor of Science in Computer Science (BSCS) program. Students should also ensure that they meet the admission requirements of FAITH Colleges and the terms and conditions of their DOST scholarship.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.24
+    },
+    {
+      "group": "direct_source",
+      "question": "Does CCIT offer any non-academic programs, activities for students?",
+      "expected_sources": [
+        "FAQ-022"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-022"
+      ],
+      "reply": "Yes, CCIT organizes various non-academic activities to support students' overall well-being and promote camaraderie, personal growth, and spiritual development. These activities include CCIT Camp, which is held every other year, CCIT Night, and spiritual activities.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.41
+    },
+    {
+      "group": "student_variation",
+      "question": "What programs does CCIT offer?",
+      "expected_sources": [
+        "FAQ-006"
+      ],
+      "all_required": false,
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-006"
+      ],
+      "reply": "Programs listed in the supplied document:\n• Bachelor of Science in Information Technology (BSIT)\n• Bachelor of Science in Computer Science (BSCS)\n• Bachelor of Science in Entertainment and Multimedia Computing (BSEMC)\n\nIt also provides graduate programs, including a Master’s and Doctorate degree in Information Technology.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.2
+    },
+    {
+      "group": "student_variation",
+      "question": "What can I study in this college?",
+      "expected_sources": [
+        "FAQ-006"
+      ],
+      "all_required": false,
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-006"
+      ],
+      "reply": "Programs listed in the supplied document:\n• Bachelor of Science in Information Technology (BSIT)\n• Bachelor of Science in Computer Science (BSCS)\n• Bachelor of Science in Entertainment and Multimedia Computing (BSEMC)\n\nIt also provides graduate programs, including a Master’s and Doctorate degree in Information Technology.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 6.12
+    },
+    {
+      "group": "student_variation",
+      "question": "Do you guys offer BSCS?",
+      "expected_sources": [
+        "FAQ-006"
+      ],
+      "all_required": false,
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-006"
+      ],
+      "reply": "Yes. The supplied document lists Bachelor of Science in Computer Science (BSCS) as an undergraduate program.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 6.0
+    },
+    {
+      "group": "student_variation",
+      "question": "May Computer Science ba sa CCIT?",
+      "expected_sources": [
+        "FAQ-006"
+      ],
+      "all_required": false,
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-006"
+      ],
+      "reply": "Yes. The supplied document lists Bachelor of Science in Computer Science (BSCS) as an undergraduate program.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.34
+    },
+    {
+      "group": "student_variation",
+      "question": "What degrees are offered?",
+      "expected_sources": [
+        "FAQ-006"
+      ],
+      "all_required": false,
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-006"
+      ],
+      "reply": "Programs listed in the supplied document:\n• Bachelor of Science in Information Technology (BSIT)\n• Bachelor of Science in Computer Science (BSCS)\n• Bachelor of Science in Entertainment and Multimedia Computing (BSEMC)\n\nIt also provides graduate programs, including a Master’s and Doctorate degree in Information Technology.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.01
+    },
+    {
+      "group": "student_variation",
+      "question": "Anong pwede kong kunin na kurso?",
+      "expected_sources": [
+        "FAQ-006"
+      ],
+      "all_required": false,
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-006"
+      ],
+      "reply": "Programs listed in the supplied document:\n• Bachelor of Science in Information Technology (BSIT)\n• Bachelor of Science in Computer Science (BSCS)\n• Bachelor of Science in Entertainment and Multimedia Computing (BSEMC)\n\nIt also provides graduate programs, including a Master’s and Doctorate degree in Information Technology.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.44
+    },
+    {
+      "group": "student_variation",
+      "question": "Ano ang mga kursong inooffer ng CCIT?",
+      "expected_sources": [
+        "FAQ-006"
+      ],
+      "all_required": false,
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-006"
+      ],
+      "reply": "Programs listed in the supplied document:\n• Bachelor of Science in Information Technology (BSIT)\n• Bachelor of Science in Computer Science (BSCS)\n• Bachelor of Science in Entertainment and Multimedia Computing (BSEMC)\n\nIt also provides graduate programs, including a Master’s and Doctorate degree in Information Technology.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.05
+    },
+    {
+      "group": "student_variation",
+      "question": "Tell me about the Computer Science program.",
+      "expected_sources": [
+        "FAQ-008"
+      ],
+      "all_required": false,
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-008"
+      ],
+      "reply": "Computer Science (CS) is the field of study that focuses on computing, programming, algorithms, data structures, and the development of software and computer systems. It involves understanding how computers solve problems, designing efficient solutions, and exploring advanced technologies such as artificial intelligence and machine learning.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.26
+    },
+    {
+      "group": "student_variation",
+      "question": "What is the difference between BSIT and BSCS?",
+      "expected_sources": [
+        "FAQ-007",
+        "FAQ-008"
+      ],
+      "all_required": true,
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-007",
+        "FAQ-008"
+      ],
+      "reply": "BSCS: Computer Science (CS) is the field of study that focuses on computing, programming, algorithms, data structures, and the development of software and computer systems. It involves understanding how computers solve problems, designing efficient solutions, and exploring advanced technologies such as artificial intelligence and machine learning.\n\nBSIT: Information Technology (IT) is the field of study that focuses on using computers, software, networks, and databases to store, process, manage, and protect information. It involves developing and maintaining technological systems that help individuals, businesses, and organizations work efficiently and solve real-world problems.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.45
+    },
+    {
+      "group": "student_variation",
+      "question": "Course-Specific Scholarship",
+      "expected_sources": [
+        "FAQ-012"
+      ],
+      "all_required": false,
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-012"
+      ],
+      "reply": "Scholarship discounts listed in the document:\n• The Course-Specific Scholarship provides qualified students with a 100% discount on tuition fees.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 4.93
+    },
+    {
+      "group": "student_variation",
+      "question": "What is the 50-TAG scholarship?",
+      "expected_sources": [
+        "FAQ-012"
+      ],
+      "all_required": false,
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-012"
+      ],
+      "reply": "Scholarship discounts listed in the document:\n• 50-TAG Scholarship grants a 50% discount on tuition fees.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.23
+    },
+    {
+      "group": "student_variation",
+      "question": "How much tuition discount does the Course-Specific Scholarship give?",
+      "expected_sources": [
+        "FAQ-012"
+      ],
+      "all_required": false,
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-012"
+      ],
+      "reply": "Scholarship discounts listed in the document:\n• The Course-Specific Scholarship provides qualified students with a 100% discount on tuition fees.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.6
+    },
+    {
+      "group": "student_variation",
+      "question": "What financial aid is available?",
+      "expected_sources": [
+        "FAQ-011",
+        "FAQ-012"
+      ],
+      "all_required": false,
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-011"
+      ],
+      "reply": "Yes, aside from the academic scholarships offered by FAITH Colleges, students may also qualify for course-specific scholarships based on their academic performance in senior high school. These scholarships are granted to students who meet or exceed the requirements established by the dean of CCIT.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.32
+    },
+    {
+      "group": "student_variation",
+      "question": "May scholarship ba sa CCIT?",
+      "expected_sources": [
+        "FAQ-011",
+        "FAQ-012"
+      ],
+      "all_required": false,
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-011"
+      ],
+      "reply": "Yes, aside from the academic scholarships offered by FAITH Colleges, students may also qualify for course-specific scholarships based on their academic performance in senior high school. These scholarships are granted to students who meet or exceed the requirements established by the dean of CCIT.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.03
+    },
+    {
+      "group": "student_variation",
+      "question": "What are the qualifications for a CCIT scholarship?",
+      "expected_sources": [
+        "FAQ-011"
+      ],
+      "all_required": false,
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-011"
+      ],
+      "reply": "Yes, aside from the academic scholarships offered by FAITH Colleges, students may also qualify for course-specific scholarships based on their academic performance in senior high school. These scholarships are granted to students who meet or exceed the requirements established by the dean of CCIT.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.39
+    },
+    {
+      "group": "student_variation",
+      "question": "Who heads the college?",
+      "expected_sources": [
+        "FAQ-016"
+      ],
+      "all_required": false,
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-016"
+      ],
+      "reply": "The supplied document lists Dr. Maricel M. Gaspar as the CCIT dean.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.02
+    },
+    {
+      "group": "student_variation",
+      "question": "Sino ang dekana ng CCIT?",
+      "expected_sources": [
+        "FAQ-016"
+      ],
+      "all_required": false,
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-016"
+      ],
+      "reply": "The supplied document lists Dr. Maricel M. Gaspar as the CCIT dean.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.01
+    },
+    {
+      "group": "student_variation",
+      "question": "Is Dr. Maricel Gaspar the dean?",
+      "expected_sources": [
+        "FAQ-016"
+      ],
+      "all_required": false,
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-016"
+      ],
+      "reply": "The supplied document lists Dr. Maricel M. Gaspar as the CCIT dean.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.31
+    },
+    {
+      "group": "student_variation",
+      "question": "Who teaches BSIT?",
+      "expected_sources": [
+        "FAQ-017"
+      ],
+      "all_required": false,
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-017"
+      ],
+      "reply": "Faculty for BSIT listed in the document:\n• Judith Elic\n• Angelica Evangelista\n• Vince Paulo Calanog\n• Joseph Malaluan\n• Roland Calderon\n• Carl Ade Salsona\n• Eubert Manalo",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.09
+    },
+    {
+      "group": "student_variation",
+      "question": "Sino ang mga guro sa BSCS?",
+      "expected_sources": [
+        "FAQ-018"
+      ],
+      "all_required": false,
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-018"
+      ],
+      "reply": "Faculty for BSCS listed in the document:\n• Farley Abrigo\n• Bryan Christian Briones\n• Paul Domenic Trambulo",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 4.97
+    },
+    {
+      "group": "student_variation",
+      "question": "What jobs can I get after studying Computer Science?",
+      "expected_sources": [
+        "FAQ-013"
+      ],
+      "all_required": false,
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-013"
+      ],
+      "reply": "Careers for BSCS listed in the document:\n• Software Developer\n• Web Developer\n• Mobile Application Developer\n• Data Scientist\n• Artificial Intelligence (AI) Engineer\n• Machine Learning Engineer\n• Systems Analyst\n• Database Administrator\n• Game Developer",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.66
+    },
+    {
+      "group": "student_variation",
+      "question": "What jobs can I get after BSIT?",
+      "expected_sources": [
+        "FAQ-014"
+      ],
+      "all_required": false,
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-014"
+      ],
+      "reply": "Careers for BSIT listed in the document:\n• IT Support Specialist\n• Network Administrator\n• Systems Administrator\n• Web Developer\n• Database Administrator\n• Cybersecurity Analyst\n• IT Project Manager\n• Cloud Computing Specialist\n• Business Analyst\n• Software Developer",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.08
+    },
+    {
+      "group": "student_variation",
+      "question": "What careers can BSEMC graduates pursue?",
+      "expected_sources": [
+        "FAQ-015"
+      ],
+      "all_required": false,
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-015"
+      ],
+      "reply": "Careers for BSEMC listed in the document:\n• Game Developer\n• Game Designer\n• 2D and 3D Animator\n• Multimedia Artist\n• Graphic Designer\n• UI/UX Designer\n• Video Editor\n• Visual Effects (VFX) Artist\n• 3D Modeler",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.15
+    },
+    {
+      "group": "student_variation",
+      "question": "Are there game development courses?",
+      "expected_sources": [
+        "FAQ-009"
+      ],
+      "all_required": false,
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-009"
+      ],
+      "reply": "Entertainment and Multimedia Computing (BSEMC) is the field of study that focuses on the use of technology in creating digital entertainment and multimedia content. It covers areas such as game development, animation, digital arts, interactive media, and multimedia design.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.99
+    },
+    {
+      "group": "student_variation",
+      "question": "What computer labs do you have?",
+      "expected_sources": [
+        "FAQ-020"
+      ],
+      "all_required": false,
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-020"
+      ],
+      "reply": "Laboratories listed in the document:\n• Programming Laboratory\n• Multimedia Laboratory\n• 316 Laboratory\n• AI Laboratory",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.15
+    },
+    {
+      "group": "student_variation",
+      "question": "Do you have an AI laboratory?",
+      "expected_sources": [
+        "FAQ-020"
+      ],
+      "all_required": false,
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-020"
+      ],
+      "reply": "Laboratories listed in the document:\n• Programming Laboratory\n• Multimedia Laboratory\n• 316 Laboratory\n• AI Laboratory",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 4.93
+    },
+    {
+      "group": "student_variation",
+      "question": "Anong facilities ang pwedeng gamitin ng students?",
+      "expected_sources": [
+        "FAQ-020"
+      ],
+      "all_required": false,
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-020"
+      ],
+      "reply": "Laboratories listed in the document:\n• Programming Laboratory\n• Multimedia Laboratory\n• 316 Laboratory\n• AI Laboratory",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 6.15
+    },
+    {
+      "group": "student_variation",
+      "question": "Is BSCS accredited?",
+      "expected_sources": [
+        "FAQ-010"
+      ],
+      "all_required": false,
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-010"
+      ],
+      "reply": "Yes, the College of Computing and Information Technology (CCIT) has achieved Level IV accreditation from the Philippine Association of Colleges and Universities Commission on Accreditation (PACUCOA) for its Bachelor of Science in Information Technology (BSIT) and Bachelor of Science in Computer Science (BSCS) programs.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.24
+    },
+    {
+      "group": "student_variation",
+      "question": "What level is the BSIT accreditation?",
+      "expected_sources": [
+        "FAQ-010"
+      ],
+      "all_required": false,
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-010"
+      ],
+      "reply": "Yes, the College of Computing and Information Technology (CCIT) has achieved Level IV accreditation from the Philippine Association of Colleges and Universities Commission on Accreditation (PACUCOA) for its Bachelor of Science in Information Technology (BSIT) and Bachelor of Science in Computer Science (BSCS) programs.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 6.1
+    },
+    {
+      "group": "student_variation",
+      "question": "Can DOST scholars study BSIT?",
+      "expected_sources": [
+        "FAQ-021"
+      ],
+      "all_required": false,
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-021"
+      ],
+      "reply": "Yes, CCIT accepts students who have qualified for the DOST Scholarship and wish to pursue either the Bachelor of Science in Information Technology (BSIT) or the Bachelor of Science in Computer Science (BSCS) program. Students should also ensure that they meet the admission requirements of FAITH Colleges and the terms and conditions of their DOST scholarship.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.13
+    },
+    {
+      "group": "student_variation",
+      "question": "Is CCIT Night one of the student activities?",
+      "expected_sources": [
+        "FAQ-022"
+      ],
+      "all_required": false,
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-022"
+      ],
+      "reply": "Yes, CCIT organizes various non-academic activities to support students' overall well-being and promote camaraderie, personal growth, and spiritual development. These activities include CCIT Camp, which is held every other year, CCIT Night, and spiritual activities.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 6.29
+    },
+    {
+      "group": "student_variation",
+      "question": "What programs do you offer and who is the dean?",
+      "expected_sources": [
+        "FAQ-006",
+        "FAQ-016"
+      ],
+      "all_required": true,
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-006",
+        "FAQ-016"
+      ],
+      "reply": "Programs listed in the supplied document:\n• Bachelor of Science in Information Technology (BSIT)\n• Bachelor of Science in Computer Science (BSCS)\n• Bachelor of Science in Entertainment and Multimedia Computing (BSEMC)\n\nIt also provides graduate programs, including a Master’s and Doctorate degree in Information Technology.\n\nThe supplied document lists Dr. Maricel M. Gaspar as the CCIT dean.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.37
+    },
+    {
+      "group": "student_variation",
+      "question": "What scholarships and laboratories are available?",
+      "expected_sources": [
+        "FAQ-011",
+        "FAQ-020"
+      ],
+      "all_required": true,
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-011",
+        "FAQ-020"
+      ],
+      "reply": "Yes, aside from the academic scholarships offered by FAITH Colleges, students may also qualify for course-specific scholarships based on their academic performance in senior high school. These scholarships are granted to students who meet or exceed the requirements established by the dean of CCIT.\n\nLaboratories listed in the document:\n• Programming Laboratory\n• Multimedia Laboratory\n• 316 Laboratory\n• AI Laboratory",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.26
+    },
+    {
+      "group": "unsupported",
+      "question": "When is tomorrow meeting?",
+      "expected_mode": "fallback",
+      "http_status": 200,
+      "actual_mode": "fallback",
+      "actual_sources": [],
+      "reply": "I don't currently have verified information about that. Please contact the CCIT department office for assistance.",
+      "warnings": [],
+      "passed": true,
+      "elapsed_ms": 3.21
+    },
+    {
+      "group": "unsupported",
+      "question": "What is the tuition amount?",
+      "expected_mode": "fallback",
+      "http_status": 200,
+      "actual_mode": "fallback",
+      "actual_sources": [],
+      "reply": "I don't currently have verified information about that. Please contact the CCIT department office for assistance.",
+      "warnings": [],
+      "passed": true,
+      "elapsed_ms": 3.3
+    },
+    {
+      "group": "unsupported",
+      "question": "What is the dean phone number?",
+      "expected_mode": "fallback",
+      "http_status": 200,
+      "actual_mode": "fallback",
+      "actual_sources": [],
+      "reply": "I don't currently have verified information about that. Please contact the CCIT department office for assistance.",
+      "warnings": [],
+      "passed": true,
+      "elapsed_ms": 2.99
+    },
+    {
+      "group": "unsupported",
+      "question": "What is the application deadline for 2027?",
+      "expected_mode": "fallback",
+      "http_status": 200,
+      "actual_mode": "fallback",
+      "actual_sources": [],
+      "reply": "I don't currently have verified information about that. Please contact the CCIT department office for assistance.",
+      "warnings": [],
+      "passed": true,
+      "elapsed_ms": 3.01
+    },
+    {
+      "group": "unsupported",
+      "question": "What are the enrollment requirements?",
+      "expected_mode": "fallback",
+      "http_status": 200,
+      "actual_mode": "fallback",
+      "actual_sources": [],
+      "reply": "I don't currently have verified information about that. Please contact the CCIT department office for assistance.",
+      "warnings": [],
+      "passed": true,
+      "elapsed_ms": 2.84
+    },
+    {
+      "group": "unsupported",
+      "question": "Where is the CCIT office?",
+      "expected_mode": "fallback",
+      "http_status": 200,
+      "actual_mode": "fallback",
+      "actual_sources": [],
+      "reply": "I don't currently have verified information about that. Please contact the CCIT department office for assistance.",
+      "warnings": [],
+      "passed": true,
+      "elapsed_ms": 3.01
+    },
+    {
+      "group": "unsupported",
+      "question": "Who should I email about enrollment?",
+      "expected_mode": "fallback",
+      "http_status": 200,
+      "actual_mode": "fallback",
+      "actual_sources": [],
+      "reply": "I don't currently have verified information about that. Please contact the CCIT department office for assistance.",
+      "warnings": [],
+      "passed": true,
+      "elapsed_ms": 2.95
+    },
+    {
+      "group": "unsupported",
+      "question": "How do I bake bread?",
+      "expected_mode": "fallback",
+      "http_status": 200,
+      "actual_mode": "fallback",
+      "actual_sources": [],
+      "reply": "I don't currently have verified information about that. Please contact the CCIT department office for assistance.",
+      "warnings": [],
+      "passed": true,
+      "elapsed_ms": 5.19
+    },
+    {
+      "group": "unsupported",
+      "question": "What time does the AI laboratory open?",
+      "expected_mode": "fallback",
+      "http_status": 200,
+      "actual_mode": "fallback",
+      "actual_sources": [],
+      "reply": "I don't currently have verified information about that. Please contact the CCIT department office for assistance.",
+      "warnings": [],
+      "passed": true,
+      "elapsed_ms": 3.32
+    },
+    {
+      "group": "unsupported",
+      "question": "What is the CCIT scholarship application deadline?",
+      "expected_mode": "fallback",
+      "http_status": 200,
+      "actual_mode": "fallback",
+      "actual_sources": [],
+      "reply": "I don't currently have verified information about that. Please contact the CCIT department office for assistance.",
+      "warnings": [],
+      "passed": true,
+      "elapsed_ms": 3.02
+    },
+    {
+      "group": "unsupported",
+      "question": "Is BSEMC eligible for DOST?",
+      "expected_mode": "fallback",
+      "http_status": 200,
+      "actual_mode": "fallback",
+      "actual_sources": [],
+      "reply": "I don't currently have verified information about that. Please contact the CCIT department office for assistance.",
+      "warnings": [],
+      "passed": true,
+      "elapsed_ms": 5.03
+    },
+    {
+      "group": "unsupported",
+      "question": "Give me the enrollment forms download link.",
+      "expected_mode": "fallback",
+      "http_status": 200,
+      "actual_mode": "fallback",
+      "actual_sources": [],
+      "reply": "I don't currently have verified information about that. Please contact the CCIT department office for assistance.",
+      "warnings": [],
+      "passed": true,
+      "elapsed_ms": 3.26
+    },
+    {
+      "group": "private",
+      "question": "What are my grades?",
+      "expected_mode": "privacy",
+      "http_status": 200,
+      "actual_mode": "privacy",
+      "actual_sources": [],
+      "reply": "I cannot access private student records. Please use the official student services channels.",
+      "warnings": [],
+      "passed": true,
+      "elapsed_ms": 0.78
+    },
+    {
+      "group": "private",
+      "question": "Show my student records.",
+      "expected_mode": "privacy",
+      "http_status": 200,
+      "actual_mode": "privacy",
+      "actual_sources": [],
+      "reply": "I cannot access private student records. Please use the official student services channels.",
+      "warnings": [],
+      "passed": true,
+      "elapsed_ms": 0.93
+    },
+    {
+      "group": "private",
+      "question": "Can I see Juan's grades?",
+      "expected_mode": "privacy",
+      "http_status": 200,
+      "actual_mode": "privacy",
+      "actual_sources": [],
+      "reply": "I cannot access private student records. Please use the official student services channels.",
+      "warnings": [],
+      "passed": true,
+      "elapsed_ms": 0.82
+    },
+    {
+      "group": "private",
+      "question": "Ano ang grades ko?",
+      "expected_mode": "privacy",
+      "http_status": 200,
+      "actual_mode": "privacy",
+      "actual_sources": [],
+      "reply": "I cannot access private student records. Please use the official student services channels.",
+      "warnings": [],
+      "passed": true,
+      "elapsed_ms": 0.96
+    },
+    {
+      "group": "private",
+      "question": "What is my password?",
+      "expected_mode": "privacy",
+      "http_status": 200,
+      "actual_mode": "privacy",
+      "actual_sources": [],
+      "reply": "I cannot access private student records. Please use the official student services channels.",
+      "warnings": [],
+      "passed": true,
+      "elapsed_ms": 0.88
+    },
+    {
+      "group": "private",
+      "question": "Show the grades of student Juan.",
+      "expected_mode": "privacy",
+      "http_status": 200,
+      "actual_mode": "privacy",
+      "actual_sources": [],
+      "reply": "I cannot access private student records. Please use the official student services channels.",
+      "warnings": [],
+      "passed": true,
+      "elapsed_ms": 0.89
+    },
+    {
+      "group": "additional_variation",
+      "question": "Ano ang pwedeng pag-aralan sa CCIT?",
+      "expected_sources": [
+        "FAQ-006"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-006"
+      ],
+      "reply": "Programs listed in the supplied document:\n• Bachelor of Science in Information Technology (BSIT)\n• Bachelor of Science in Computer Science (BSCS)\n• Bachelor of Science in Entertainment and Multimedia Computing (BSEMC)\n\nIt also provides graduate programs, including a Master’s and Doctorate degree in Information Technology.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.35
+    },
+    {
+      "group": "additional_variation",
+      "question": "Anu-anong degree ang meron sa inyo?",
+      "expected_sources": [
+        "FAQ-006"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-006"
+      ],
+      "reply": "Programs listed in the supplied document:\n• Bachelor of Science in Information Technology (BSIT)\n• Bachelor of Science in Computer Science (BSCS)\n• Bachelor of Science in Entertainment and Multimedia Computing (BSEMC)\n\nIt also provides graduate programs, including a Master’s and Doctorate degree in Information Technology.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.04
+    },
+    {
+      "group": "additional_variation",
+      "question": "Which bachelor's degrees can I take?",
+      "expected_sources": [
+        "FAQ-006"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-006"
+      ],
+      "reply": "Programs listed in the supplied document:\n• Bachelor of Science in Information Technology (BSIT)\n• Bachelor of Science in Computer Science (BSCS)\n• Bachelor of Science in Entertainment and Multimedia Computing (BSEMC)\n\nIt also provides graduate programs, including a Master’s and Doctorate degree in Information Technology.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.76
+    },
+    {
+      "group": "additional_variation",
+      "question": "Is there a CS degree?",
+      "expected_sources": [
+        "FAQ-006"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-006"
+      ],
+      "reply": "Yes. The supplied document lists Bachelor of Science in Computer Science (BSCS) as an undergraduate program.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.11
+    },
+    {
+      "group": "additional_variation",
+      "question": "What scholarships does the department provide?",
+      "expected_sources": [
+        "FAQ-012"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-012"
+      ],
+      "reply": "Scholarship discounts listed in the document:\n• The Course-Specific Scholarship provides qualified students with a 100% discount on tuition fees.\n• 50-TAG Scholarship grants a 50% discount on tuition fees.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.84
+    },
+    {
+      "group": "additional_variation",
+      "question": "How much is the 50 TAG discount?",
+      "expected_sources": [
+        "FAQ-012"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-012"
+      ],
+      "reply": "Scholarship discounts listed in the document:\n• 50-TAG Scholarship grants a 50% discount on tuition fees.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.25
+    },
+    {
+      "group": "additional_variation",
+      "question": "Who is in charge of CCIT?",
+      "expected_sources": [
+        "FAQ-016"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-016"
+      ],
+      "reply": "The supplied document lists Dr. Maricel M. Gaspar as the CCIT dean.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.25
+    },
+    {
+      "group": "additional_variation",
+      "question": "Sino ang namumuno sa college?",
+      "expected_sources": [
+        "FAQ-016"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-016"
+      ],
+      "reply": "The supplied document lists Dr. Maricel M. Gaspar as the CCIT dean.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.2
+    },
+    {
+      "group": "additional_variation",
+      "question": "List the CS faculty.",
+      "expected_sources": [
+        "FAQ-018"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-018"
+      ],
+      "reply": "Faculty for BSCS listed in the document:\n• Farley Abrigo\n• Bryan Christian Briones\n• Paul Domenic Trambulo",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 4.99
+    },
+    {
+      "group": "additional_variation",
+      "question": "Who are the BSIT instructors?",
+      "expected_sources": [
+        "FAQ-017"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-017"
+      ],
+      "reply": "Faculty for BSIT listed in the document:\n• Judith Elic\n• Angelica Evangelista\n• Vince Paulo Calanog\n• Joseph Malaluan\n• Roland Calderon\n• Carl Ade Salsona\n• Eubert Manalo",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.19
+    },
+    {
+      "group": "additional_variation",
+      "question": "Anong trabaho pagkatapos ng BSCS?",
+      "expected_sources": [
+        "FAQ-013"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-013"
+      ],
+      "reply": "Careers for BSCS listed in the document:\n• Software Developer\n• Web Developer\n• Mobile Application Developer\n• Data Scientist\n• Artificial Intelligence (AI) Engineer\n• Machine Learning Engineer\n• Systems Analyst\n• Database Administrator\n• Game Developer",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.24
+    },
+    {
+      "group": "additional_variation",
+      "question": "Where can IT graduates work?",
+      "expected_sources": [
+        "FAQ-014"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-014"
+      ],
+      "reply": "Careers for BSIT listed in the document:\n• IT Support Specialist\n• Network Administrator\n• Systems Administrator\n• Web Developer\n• Database Administrator\n• Cybersecurity Analyst\n• IT Project Manager\n• Cloud Computing Specialist\n• Business Analyst\n• Software Developer",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 3.48
+    },
+    {
+      "group": "additional_variation",
+      "question": "What does EMC focus on?",
+      "expected_sources": [
+        "FAQ-009"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-009"
+      ],
+      "reply": "Entertainment and Multimedia Computing (BSEMC) is the field of study that focuses on the use of technology in creating digital entertainment and multimedia content. It covers areas such as game development, animation, digital arts, interactive media, and multimedia design.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.11
+    },
+    {
+      "group": "additional_variation",
+      "question": "Is the IT program PACUCOA accredited?",
+      "expected_sources": [
+        "FAQ-010"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-010"
+      ],
+      "reply": "Yes, the College of Computing and Information Technology (CCIT) has achieved Level IV accreditation from the Philippine Association of Colleges and Universities Commission on Accreditation (PACUCOA) for its Bachelor of Science in Information Technology (BSIT) and Bachelor of Science in Computer Science (BSCS) programs.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.02
+    },
+    {
+      "group": "additional_variation",
+      "question": "Can I use a computer lab?",
+      "expected_sources": [
+        "FAQ-020"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-020"
+      ],
+      "reply": "Laboratories listed in the document:\n• Programming Laboratory\n• Multimedia Laboratory\n• 316 Laboratory\n• AI Laboratory",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.43
+    },
+    {
+      "group": "additional_variation",
+      "question": "May AI lab ba kayo?",
+      "expected_sources": [
+        "FAQ-020"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-020"
+      ],
+      "reply": "Laboratories listed in the document:\n• Programming Laboratory\n• Multimedia Laboratory\n• 316 Laboratory\n• AI Laboratory",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.06
+    },
+    {
+      "group": "additional_variation",
+      "question": "Tell me about DOST eligibility for CS.",
+      "expected_sources": [
+        "FAQ-021"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-021"
+      ],
+      "reply": "Yes, CCIT accepts students who have qualified for the DOST Scholarship and wish to pursue either the Bachelor of Science in Information Technology (BSIT) or the Bachelor of Science in Computer Science (BSCS) program. Students should also ensure that they meet the admission requirements of FAITH Colleges and the terms and conditions of their DOST scholarship.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.76
+    },
+    {
+      "group": "additional_variation",
+      "question": "Does the department have a game development program?",
+      "expected_sources": [
+        "FAQ-009"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-009"
+      ],
+      "reply": "Entertainment and Multimedia Computing (BSEMC) is the field of study that focuses on the use of technology in creating digital entertainment and multimedia content. It covers areas such as game development, animation, digital arts, interactive media, and multimedia design.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 6.6
+    },
+    {
+      "group": "additional_variation",
+      "question": "Please show all available scholarships.",
+      "expected_sources": [
+        "FAQ-011"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-011"
+      ],
+      "reply": "Yes, aside from the academic scholarships offered by FAITH Colleges, students may also qualify for course-specific scholarships based on their academic performance in senior high school. These scholarships are granted to students who meet or exceed the requirements established by the dean of CCIT.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.98
+    },
+    {
+      "group": "additional_variation",
+      "question": "Ano po ang meaning ng CCIT?",
+      "expected_sources": [
+        "FAQ-001"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-001"
+      ],
+      "reply": "FAITH- College of Computer and Information Technology",
+      "warnings": [
+        "Current department details have not been independently confirmed.",
+        "The source uses both “College of Computer” and “College of Computing” in the college name. Confirm the official wording with CCIT."
+      ],
+      "passed": true,
+      "elapsed_ms": 6.1
+    },
+    {
+      "group": "additional_variation",
+      "question": "What are the learning objectives?",
+      "expected_sources": [
+        "FAQ-005"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-005"
+      ],
+      "reply": "The goal of CCIT is represented by the acronym CCITITE, which consists of seven key objectives:\n1. Create a learning environment that uses outcomes-based education aligned with industry needs and practices.\n2. Cultivate a research culture that promotes technological innovation and commercialization.\n3. Integrate professional programs and alternative learning systems in the field of Information and Communications Technology (ICT).\n4. Transform and empower communities through sustainable ICT extension programs and services.\n5. Imbibe the value of collaboration in achieving industry-driven research and innovative solutions across various fields.\n6. Transcend in digital humanities by upholding professionalism, ethical practices, and social and environmental responsibility.\n7. Encourage lifelong learning, a positive work attitude, and effective communication in the workplace.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.44
+    },
+    {
+      "group": "additional_variation",
+      "question": "What is CCIT's purpose?",
+      "expected_sources": [
+        "FAQ-004"
+      ],
+      "http_status": 200,
+      "actual_mode": "faq",
+      "actual_sources": [
+        "FAQ-004"
+      ],
+      "reply": "CCIT’s mission is to produce globally competent, committed and compassionate IT professionals transforming society through Innovative teaching-learning approaches, Technology-advanced breakthroughs and Enabling extension endeavors.",
+      "warnings": [
+        "Current department details have not been independently confirmed."
+      ],
+      "passed": true,
+      "elapsed_ms": 5.28
+    }
+  ]
+}

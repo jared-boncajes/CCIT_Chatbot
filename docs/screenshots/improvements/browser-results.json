@@ -1,0 +1,30 @@
+{
+  "executed_at": "2026-11-07T16:03:17.566960+00:00",
+  "mode": "FAQ answers from the running app; simulated provider errors/safety fixture; no live AI calls",
+  "checks": [
+    {
+      "check": "Focused source answer, visible currency warning, expandable full source, and copy",
+      "passed": true
+    },
+    {
+      "check": "Program follow-up, New chat context reset, and clarification completion",
+      "passed": true
+    },
+    {
+      "check": "Retry preserves question/context/draft and replaces error without duplicate user messages",
+      "passed": true
+    },
+    {
+      "check": "Explicit FAQ fallback sends mode=faq and labels the real source answer",
+      "passed": true
+    },
+    {
+      "check": "Retrying an old turn preserves the newer program context",
+      "passed": true
+    },
+    {
+      "check": "Reply, warning and source details remain plain text without HTML execution",
+      "passed": true
+    }
+  ]
+}
