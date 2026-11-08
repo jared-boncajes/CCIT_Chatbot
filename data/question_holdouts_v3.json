@@ -1,0 +1,2185 @@
+{
+  "description": "AI-authored constructed validation/test questions, frozen before the first v3 training run. Not independent student data; shared subject templates can inflate metrics. All English.",
+  "examples": {
+    "FAQ-001": {
+      "validation": [
+        "Expand the abbreviation CCIT for me.",
+        "What college name is shortened to CCIT?"
+      ],
+      "test": [
+        "Give the full college name represented by CCIT.",
+        "CCIT is short for which college at FAITH?"
+      ]
+    },
+    "FAQ-002": {
+      "validation": [
+        "Describe the academic philosophy behind CCIT.",
+        "What is the general background of the computing college?"
+      ],
+      "test": [
+        "Give an overview of the College of Computing and Information Technology.",
+        "What approach to student learning does CCIT describe?"
+      ]
+    },
+    "FAQ-003": {
+      "validation": [
+        "What future does the CCIT vision aim toward?",
+        "Tell me the vision statement of the computing college."
+      ],
+      "test": [
+        "What is the long-term vision for CCIT?",
+        "Describe the institutional vision of CCIT."
+      ]
+    },
+    "FAQ-004": {
+      "validation": [
+        "Which purpose is expressed in the CCIT mission?",
+        "Tell me the mission statement of the computing college."
+      ],
+      "test": [
+        "What does the mission of CCIT aim to produce?",
+        "Describe the institutional mission of CCIT."
+      ]
+    },
+    "FAQ-005": {
+      "validation": [
+        "List the educational goals of CCIT.",
+        "What objectives guide the computing college?"
+      ],
+      "test": [
+        "Which goals does CCIT set for its students?",
+        "Describe the goals and objectives of the department."
+      ]
+    },
+    "FAQ-006": {
+      "validation": [
+        "List all degree offerings at CCIT.",
+        "Which undergraduate and graduate programs can I pursue at CCIT?"
+      ],
+      "test": [
+        "What degrees are included in the college program offerings?",
+        "Give me the list of CCIT academic programs."
+      ]
+    },
+    "FAQ-007": {
+      "validation": [
+        "Describe what the BSIT degree focuses on.",
+        "Explain Information Technology as a bachelor degree."
+      ],
+      "test": [
+        "What areas of computing does the BSIT program cover?",
+        "Give an overview of Bachelor of Science in Information Technology."
+      ]
+    },
+    "FAQ-008": {
+      "validation": [
+        "Describe what the BSCS degree focuses on.",
+        "Explain Computer Science as a bachelor degree."
+      ],
+      "test": [
+        "What areas of computing does the BSCS program cover?",
+        "Give an overview of Bachelor of Science in Computer Science."
+      ]
+    },
+    "FAQ-009": {
+      "validation": [
+        "Describe what the BSEMC degree focuses on.",
+        "Explain Entertainment and Multimedia Computing as a bachelor degree."
+      ],
+      "test": [
+        "What areas does the BSEMC program cover?",
+        "Give an overview of Bachelor of Science in Entertainment and Multimedia Computing."
+      ]
+    },
+    "FAQ-010": {
+      "validation": [
+        "Tell me the PACUCOA levels of the CCIT degrees.",
+        "What academic accreditation status do BSIT and BSCS hold?"
+      ],
+      "test": [
+        "Which accreditation levels are reported for the computing programs?",
+        "Explain the PACUCOA accreditation status for BSEMC."
+      ]
+    },
+    "FAQ-011": {
+      "validation": [
+        "How does senior high school performance affect scholarship eligibility?",
+        "What academic basis is used for course-specific scholarship qualification?"
+      ],
+      "test": [
+        "Who sets the academic requirements for course-specific scholarships?",
+        "Can senior high school grades qualify someone for a CCIT scholarship?"
+      ]
+    },
+    "FAQ-012": {
+      "validation": [
+        "What tuition reductions come with the two CCIT program scholarships?",
+        "Tell me the discounts for Course-Specific and 50-TAG awards."
+      ],
+      "test": [
+        "Which two scholarship schemes offer tuition discounts at CCIT?",
+        "Compare the tuition support from Course-Specific Scholarship and 50-TAG."
+      ]
+    },
+    "FAQ-013": {
+      "validation": [
+        "List possible career paths for a Computer Science graduate.",
+        "What professions can someone with BSCS pursue?"
+      ],
+      "test": [
+        "Which occupations are listed for graduates of BSCS?",
+        "Tell me about employment opportunities after a Computer Science degree."
+      ]
+    },
+    "FAQ-014": {
+      "validation": [
+        "List possible career paths for an Information Technology graduate.",
+        "What professions can someone with BSIT pursue?"
+      ],
+      "test": [
+        "Which occupations are listed for graduates of BSIT?",
+        "Tell me about employment opportunities after an Information Technology degree."
+      ]
+    },
+    "FAQ-015": {
+      "validation": [
+        "List possible career paths for an Entertainment and Multimedia Computing graduate.",
+        "What professions can someone with BSEMC pursue?"
+      ],
+      "test": [
+        "Which occupations are listed for graduates of BSEMC?",
+        "Tell me about employment opportunities after an Entertainment and Multimedia Computing degree."
+      ]
+    },
+    "FAQ-016": {
+      "validation": [
+        "Name the person serving as CCIT dean.",
+        "Who leads CCIT in the role of dean?"
+      ],
+      "test": [
+        "Tell me the name of the dean of the computing college.",
+        "Who holds the dean position in CCIT?"
+      ]
+    },
+    "FAQ-017": {
+      "validation": [
+        "List the instructors assigned to the BSIT program.",
+        "Name the teaching staff for Information Technology."
+      ],
+      "test": [
+        "Which faculty teach Bachelor of Science in Information Technology?",
+        "Give me the BSIT teaching roster."
+      ]
+    },
+    "FAQ-018": {
+      "validation": [
+        "List the instructors assigned to the BSCS program.",
+        "Name the teaching staff for Computer Science."
+      ],
+      "test": [
+        "Which faculty teach Bachelor of Science in Computer Science?",
+        "Give me the BSCS teaching roster."
+      ]
+    },
+    "FAQ-019": {
+      "validation": [
+        "List the instructors assigned to the BSEMC program.",
+        "Name the teaching staff for Entertainment and Multimedia Computing."
+      ],
+      "test": [
+        "Which faculty teach Bachelor of Science in Entertainment and Multimedia Computing?",
+        "Give me the BSEMC teaching roster."
+      ]
+    },
+    "FAQ-020": {
+      "validation": [
+        "Give an overview of the facilities available to computing students.",
+        "Which facilities support CCIT student learning?"
+      ],
+      "test": [
+        "What learning facilities does CCIT provide?",
+        "Tell me about the facilities of the computing college."
+      ]
+    },
+    "FAQ-021": {
+      "validation": [
+        "Can DOST-funded scholars study Computer Science at CCIT?",
+        "Is a DOST award accepted for BSIT study at FAITH?"
+      ],
+      "test": [
+        "Does the college accept DOST scholarship recipients for its BSCS degree?",
+        "Which degree programs can a DOST scholar enter at CCIT?"
+      ]
+    },
+    "FAQ-022": {
+      "validation": [
+        "Which non-academic activities support CCIT student well-being?",
+        "Describe the college activities for camaraderie and spiritual growth."
+      ],
+      "test": [
+        "What non-academic opportunities support personal growth at CCIT?",
+        "Tell me about spiritual and social activities for computing students."
+      ]
+    },
+    "FAQ-023": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before GECOMM+?",
+        "In BSCS, does GECOMM+ (Purposive Communication) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in GECOMM+ under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for GECOMM+ (Purposive Communication)."
+      ]
+    },
+    "FAQ-024": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before GEMATH+?",
+        "In BSCS, does GEMATH+ (Mathematics in the Modern World) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in GEMATH+ under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for GEMATH+ (Mathematics in the Modern World)."
+      ]
+    },
+    "FAQ-025": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before ITECC01?",
+        "In BSCS, does ITECC01 (Introduction to Computing) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in ITECC01 under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for ITECC01 (Introduction to Computing)."
+      ]
+    },
+    "FAQ-026": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before ITECC02?",
+        "In BSCS, does ITECC02 (Computer Programming 1) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in ITECC02 under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for ITECC02 (Computer Programming 1)."
+      ]
+    },
+    "FAQ-027": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before PATH-F1?",
+        "In BSCS, does PATH-F1 (Physical Activities Towards Health and Fitness 1) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in PATH-F1 under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for PATH-F1 (Physical Activities Towards Health and Fitness 1)."
+      ]
+    },
+    "FAQ-028": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before NSTP100?",
+        "In BSCS, does NSTP100 (National Service Training Program 1) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in NSTP100 under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for NSTP100 (National Service Training Program 1)."
+      ]
+    },
+    "FAQ-029": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before FAITH01?",
+        "In BSCS, does FAITH01 (Introduction to First Asia Culture and Tradition) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in FAITH01 under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for FAITH01 (Introduction to First Asia Culture and Tradition)."
+      ]
+    },
+    "FAQ-030": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before ITECC03?",
+        "In BSCS, does ITECC03 (Computer Programming 2) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in ITECC03 under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for ITECC03 (Computer Programming 2)."
+      ]
+    },
+    "FAQ-031": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before PATH-F2?",
+        "In BSCS, does PATH-F2 (Physical Activities Towards Health and Fitness 2) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in PATH-F2 under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for PATH-F2 (Physical Activities Towards Health and Fitness 2)."
+      ]
+    },
+    "FAQ-032": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before NSTP200?",
+        "In BSCS, does NSTP200 (National Service Training Program 2) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in NSTP200 under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for NSTP200 (National Service Training Program 2)."
+      ]
+    },
+    "FAQ-033": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before CSSP101?",
+        "In BSCS, does CSSP101 (Social Issues and Professional Practice) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in CSSP101 under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for CSSP101 (Social Issues and Professional Practice)."
+      ]
+    },
+    "FAQ-034": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before GEWORLD?",
+        "In BSCS, does GEWORLD (The Contemporary World) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in GEWORLD under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for GEWORLD (The Contemporary World)."
+      ]
+    },
+    "FAQ-035": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before DIFCAL+?",
+        "In BSCS, does DIFCAL+ (Differential Calculus) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in DIFCAL+ under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for DIFCAL+ (Differential Calculus)."
+      ]
+    },
+    "FAQ-036": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before GEEMIND?",
+        "In BSCS, does GEEMIND (The Entrepreneurial Mind) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in GEEMIND under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for GEEMIND (The Entrepreneurial Mind)."
+      ]
+    },
+    "FAQ-037": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before ITECC04?",
+        "In BSCS, does ITECC04 (Data Structures and Algorithms) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in ITECC04 under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for ITECC04 (Data Structures and Algorithms)."
+      ]
+    },
+    "FAQ-038": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before PATH-F3?",
+        "In BSCS, does PATH-F3 (Physical Activities Towards Health and Fitness 3) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in PATH-F3 under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for PATH-F3 (Physical Activities Towards Health and Fitness 3)."
+      ]
+    },
+    "FAQ-039": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before GEFIL01?",
+        "In BSCS, does GEFIL01 (Kontekstwalisadong Komunikasyon sa Filipino) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in GEFIL01 under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for GEFIL01 (Kontekstwalisadong Komunikasyon sa Filipino)."
+      ]
+    },
+    "FAQ-040": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before CSAR101?",
+        "In BSCS, does CSAR101 (Architecture and Organization) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in CSAR101 under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for CSAR101 (Architecture and Organization)."
+      ]
+    },
+    "FAQ-041": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before CSSDF01?",
+        "In BSCS, does CSSDF01 (Object-oriented Programming) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in CSSDF01 under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for CSSDF01 (Object-oriented Programming)."
+      ]
+    },
+    "FAQ-042": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before GESCIE+?",
+        "In BSCS, does GESCIE+ (Science, Technology and Society) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in GESCIE+ under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for GESCIE+ (Science, Technology and Society)."
+      ]
+    },
+    "FAQ-043": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before INTCAL+?",
+        "In BSCS, does INTCAL+ (Integral Calculus) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in INTCAL+ under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for INTCAL+ (Integral Calculus)."
+      ]
+    },
+    "FAQ-044": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before GELIT02?",
+        "In BSCS, does GELIT02 (Sine Sosyedad at Pelikulang Panlipunan) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in GELIT02 under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for GELIT02 (Sine Sosyedad at Pelikulang Panlipunan)."
+      ]
+    },
+    "FAQ-045": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before ITECC05?",
+        "In BSCS, does ITECC05 (Information Management) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in ITECC05 under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for ITECC05 (Information Management)."
+      ]
+    },
+    "FAQ-046": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before ITECC06?",
+        "In BSCS, does ITECC06 (Applications Development and Emerging Technologies) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in ITECC06 under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for ITECC06 (Applications Development and Emerging Technologies)."
+      ]
+    },
+    "FAQ-047": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before PATH-F4?",
+        "In BSCS, does PATH-F4 (Physical Activities Towards Health and Fitness 4) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in PATH-F4 under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for PATH-F4 (Physical Activities Towards Health and Fitness 4)."
+      ]
+    },
+    "FAQ-048": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before CALPHY+?",
+        "In BSCS, does CALPHY+ (Calculus-based Physics 1) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in CALPHY+ under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for CALPHY+ (Calculus-based Physics 1)."
+      ]
+    },
+    "FAQ-049": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before GEFIL02?",
+        "In BSCS, does GEFIL02 (Filipino sa Iba't Ibang Disiplina) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in GEFIL02 under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for GEFIL02 (Filipino sa Iba't Ibang Disiplina)."
+      ]
+    },
+    "FAQ-050": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before GEHISTO?",
+        "In BSCS, does GEHISTO (Readings in Philippine History) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in GEHISTO under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for GEHISTO (Readings in Philippine History)."
+      ]
+    },
+    "FAQ-051": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before CSPL101?",
+        "In BSCS, does CSPL101 (Programming Languages) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in CSPL101 under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for CSPL101 (Programming Languages)."
+      ]
+    },
+    "FAQ-052": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before CSOS101?",
+        "In BSCS, does CSOS101 (Operating System) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in CSOS101 under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for CSOS101 (Operating System)."
+      ]
+    },
+    "FAQ-053": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before CSDS101?",
+        "In BSCS, does CSDS101 (Discrete Structure 1) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in CSDS101 under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for CSDS101 (Discrete Structure 1)."
+      ]
+    },
+    "FAQ-054": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before CSHC101?",
+        "In BSCS, does CSHC101 (Introduction to Human Computer) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in CSHC101 under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for CSHC101 (Introduction to Human Computer)."
+      ]
+    },
+    "FAQ-055": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before CSDS102?",
+        "In BSCS, does CSDS102 (Discrete Structure 2) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in CSDS102 under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for CSDS102 (Discrete Structure 2)."
+      ]
+    },
+    "FAQ-056": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before CALPH++?",
+        "In BSCS, does CALPH++ (Calculus-based Physics 2) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in CALPH++ under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for CALPH++ (Calculus-based Physics 2)."
+      ]
+    },
+    "FAQ-057": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before ADVSTA+?",
+        "In BSCS, does ADVSTA+ (Advanced Probability and Statistics) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in ADVSTA+ under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for ADVSTA+ (Advanced Probability and Statistics)."
+      ]
+    },
+    "FAQ-058": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before LINALG+?",
+        "In BSCS, does LINALG+ (Linear Algebra) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in LINALG+ under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for LINALG+ (Linear Algebra)."
+      ]
+    },
+    "FAQ-059": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before CSSE101?",
+        "In BSCS, does CSSE101 (Software Engineering 1) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in CSSE101 under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for CSSE101 (Software Engineering 1)."
+      ]
+    },
+    "FAQ-060": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before CSELEC1?",
+        "In BSCS, does CSELEC1 (Principles of Artificial Intelligence and Data Science) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in CSELEC1 under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for CSELEC1 (Principles of Artificial Intelligence and Data Science)."
+      ]
+    },
+    "FAQ-061": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before CSAL102?",
+        "In BSCS, does CSAL102 (Automata Theory and Formal Languages) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in CSAL102 under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for CSAL102 (Automata Theory and Formal Languages)."
+      ]
+    },
+    "FAQ-062": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before CSNC101?",
+        "In BSCS, does CSNC101 (Networks and Communication) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in CSNC101 under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for CSNC101 (Networks and Communication)."
+      ]
+    },
+    "FAQ-063": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before GESELF+?",
+        "In BSCS, does GESELF+ (Understanding the Self) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in GESELF+ under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for GESELF+ (Understanding the Self)."
+      ]
+    },
+    "FAQ-064": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before CSELEC2?",
+        "In BSCS, does CSELEC2 (Data Mining and Machine Learning 1) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in CSELEC2 under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for CSELEC2 (Data Mining and Machine Learning 1)."
+      ]
+    },
+    "FAQ-065": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before CSSE102?",
+        "In BSCS, does CSSE102 (Software Engineering 2) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in CSSE102 under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for CSSE102 (Software Engineering 2)."
+      ]
+    },
+    "FAQ-066": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before CSIAS01?",
+        "In BSCS, does CSIAS01 (Information Assurance and Security) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in CSIAS01 under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for CSIAS01 (Information Assurance and Security)."
+      ]
+    },
+    "FAQ-067": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before THESIS1?",
+        "In BSCS, does THESIS1 (Computer Science Thesis Writing 1) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in THESIS1 under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for THESIS1 (Computer Science Thesis Writing 1)."
+      ]
+    },
+    "FAQ-068": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before CSELEC3?",
+        "In BSCS, does CSELEC3 (Data Mining and Machine Learning 2) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in CSELEC3 under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for CSELEC3 (Data Mining and Machine Learning 2)."
+      ]
+    },
+    "FAQ-069": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before JOSERIZ?",
+        "In BSCS, does JOSERIZ (Rizal's Life, Works and Writings) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in JOSERIZ under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for JOSERIZ (Rizal's Life, Works and Writings)."
+      ]
+    },
+    "FAQ-070": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before GETHICS?",
+        "In BSCS, does GETHICS (Ethics) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in GETHICS under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for GETHICS (Ethics)."
+      ]
+    },
+    "FAQ-071": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before GEARTS+?",
+        "In BSCS, does GEARTS+ (Art Appreciation) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in GEARTS+ under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for GEARTS+ (Art Appreciation)."
+      ]
+    },
+    "FAQ-072": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before THESIS2?",
+        "In BSCS, does THESIS2 (Computer Science Thesis Writing 2) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in THESIS2 under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for THESIS2 (Computer Science Thesis Writing 2)."
+      ]
+    },
+    "FAQ-073": {
+      "validation": [
+        "For BSCS, which prerequisite courses are needed before CSPRAC+?",
+        "In BSCS, does CSPRAC+ (Computer Science Practicum) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in CSPRAC+ under BSCS, what must I complete or take alongside it?",
+        "For the BSCS degree, tell me the prerequisite and co-requisite rules for CSPRAC+ (Computer Science Practicum)."
+      ]
+    },
+    "FAQ-074": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before GECOMM+?",
+        "In BSIT, does GECOMM+ (Purposive Communication) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in GECOMM+ under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for GECOMM+ (Purposive Communication)."
+      ]
+    },
+    "FAQ-075": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before GEMATH+?",
+        "In BSIT, does GEMATH+ (Mathematics in the Modern World) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in GEMATH+ under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for GEMATH+ (Mathematics in the Modern World)."
+      ]
+    },
+    "FAQ-076": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before ITECC01?",
+        "In BSIT, does ITECC01 (Introduction to Computing) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in ITECC01 under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for ITECC01 (Introduction to Computing)."
+      ]
+    },
+    "FAQ-077": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before ITECC02?",
+        "In BSIT, does ITECC02 (Computer Programming 1) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in ITECC02 under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for ITECC02 (Computer Programming 1)."
+      ]
+    },
+    "FAQ-078": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before PATH-F1?",
+        "In BSIT, does PATH-F1 (Physical Activities Towards Health and Fitness 1: Movement Competency Training) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in PATH-F1 under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for PATH-F1 (Physical Activities Towards Health and Fitness 1: Movement Competency Training)."
+      ]
+    },
+    "FAQ-079": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before NSTP100?",
+        "In BSIT, does NSTP100 (National Service Training Program 1) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in NSTP100 under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for NSTP100 (National Service Training Program 1)."
+      ]
+    },
+    "FAQ-080": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before FAITH01?",
+        "In BSIT, does FAITH01 (Introduction to First Asia Culture and Tradition) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in FAITH01 under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for FAITH01 (Introduction to First Asia Culture and Tradition)."
+      ]
+    },
+    "FAQ-081": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before ITECC03?",
+        "In BSIT, does ITECC03 (Computer Programming 2) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in ITECC03 under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for ITECC03 (Computer Programming 2)."
+      ]
+    },
+    "FAQ-082": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before PATH-F2?",
+        "In BSIT, does PATH-F2 (Physical Activities Towards Health and Fitness 2: Exercise-based Fitness Activities) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in PATH-F2 under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for PATH-F2 (Physical Activities Towards Health and Fitness 2: Exercise-based Fitness Activities)."
+      ]
+    },
+    "FAQ-083": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before NSTP200?",
+        "In BSIT, does NSTP200 (National Service Training Program 2) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in NSTP200 under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for NSTP200 (National Service Training Program 2)."
+      ]
+    },
+    "FAQ-084": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before PROETHS?",
+        "In BSIT, does PROETHS (Social and Professional Issues) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in PROETHS under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for PROETHS (Social and Professional Issues)."
+      ]
+    },
+    "FAQ-085": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before GEWORLD?",
+        "In BSIT, does GEWORLD (The Contemporary World) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in GEWORLD under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for GEWORLD (The Contemporary World)."
+      ]
+    },
+    "FAQ-086": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before DIFCAL+?",
+        "In BSIT, does DIFCAL+ (Differential Calculus) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in DIFCAL+ under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for DIFCAL+ (Differential Calculus)."
+      ]
+    },
+    "FAQ-087": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before GEEMIND?",
+        "In BSIT, does GEEMIND (The Entrepreneurial Mind) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in GEEMIND under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for GEEMIND (The Entrepreneurial Mind)."
+      ]
+    },
+    "FAQ-088": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before ITECC04?",
+        "In BSIT, does ITECC04 (Data Structures and Algorithms) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in ITECC04 under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for ITECC04 (Data Structures and Algorithms)."
+      ]
+    },
+    "FAQ-089": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before PATH-F3?",
+        "In BSIT, does PATH-F3 (Physical Activities Towards Health and Fitness 3: Dance (Rhythmic Dance)) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in PATH-F3 under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for PATH-F3 (Physical Activities Towards Health and Fitness 3: Dance (Rhythmic Dance))."
+      ]
+    },
+    "FAQ-090": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before GEFIL01?",
+        "In BSIT, does GEFIL01 (Kontekstwalisadong Komunikasyon sa Filipino) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in GEFIL01 under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for GEFIL01 (Kontekstwalisadong Komunikasyon sa Filipino)."
+      ]
+    },
+    "FAQ-091": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before ITECC05?",
+        "In BSIT, does ITECC05 (Information Management) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in ITECC05 under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for ITECC05 (Information Management)."
+      ]
+    },
+    "FAQ-092": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before GELIT01?",
+        "In BSIT, does GELIT01 (Sinesosyedad/Pelikulang Panlipunan) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in GELIT01 under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for GELIT01 (Sinesosyedad/Pelikulang Panlipunan)."
+      ]
+    },
+    "FAQ-093": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before GESCIE+?",
+        "In BSIT, does GESCIE+ (Science, Technology and Society) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in GESCIE+ under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for GESCIE+ (Science, Technology and Society)."
+      ]
+    },
+    "FAQ-094": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before CCIT102?",
+        "In BSIT, does CCIT102 (Integrative Programming and Technologies) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in CCIT102 under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for CCIT102 (Integrative Programming and Technologies)."
+      ]
+    },
+    "FAQ-095": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before INFASEC?",
+        "In BSIT, does INFASEC (Information Assurance and Security 1) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in INFASEC under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for INFASEC (Information Assurance and Security 1)."
+      ]
+    },
+    "FAQ-096": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before ITECC06?",
+        "In BSIT, does ITECC06 (Applications Development and Emerging Technologies) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in ITECC06 under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for ITECC06 (Applications Development and Emerging Technologies)."
+      ]
+    },
+    "FAQ-097": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before PATH-F4?",
+        "In BSIT, does PATH-F4 (Physical Activities Towards Health and Fitness 4: Sports (Individual and Team Sports)) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in PATH-F4 under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for PATH-F4 (Physical Activities Towards Health and Fitness 4: Sports (Individual and Team Sports))."
+      ]
+    },
+    "FAQ-098": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before CALPHY+?",
+        "In BSIT, does CALPHY+ (Calculus-based Physics 1) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in CALPHY+ under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for CALPHY+ (Calculus-based Physics 1)."
+      ]
+    },
+    "FAQ-099": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before GEFIL02?",
+        "In BSIT, does GEFIL02 (Filipino sa Iba't Ibang Disiplina) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in GEFIL02 under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for GEFIL02 (Filipino sa Iba't Ibang Disiplina)."
+      ]
+    },
+    "FAQ-100": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before EDISMAT?",
+        "In BSIT, does EDISMAT (Discrete Mathematics) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in EDISMAT under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for EDISMAT (Discrete Mathematics)."
+      ]
+    },
+    "FAQ-101": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before GEHISTO?",
+        "In BSIT, does GEHISTO (Readings in Philippine History) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in GEHISTO under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for GEHISTO (Readings in Philippine History)."
+      ]
+    },
+    "FAQ-102": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before CCIT104?",
+        "In BSIT, does CCIT104 (Quantitative Methods (including Modeling and Simulation)) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in CCIT104 under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for CCIT104 (Quantitative Methods (including Modeling and Simulation))."
+      ]
+    },
+    "FAQ-103": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before CCIT103?",
+        "In BSIT, does CCIT103 (Networking 1) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in CCIT103 under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for CCIT103 (Networking 1)."
+      ]
+    },
+    "FAQ-104": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before CALPH++?",
+        "In BSIT, does CALPH++ (Calculus-based Physics 2) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in CALPH++ under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for CALPH++ (Calculus-based Physics 2)."
+      ]
+    },
+    "FAQ-105": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before GEARTS+?",
+        "In BSIT, does GEARTS+ (Art Appreciation) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in GEARTS+ under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for GEARTS+ (Art Appreciation)."
+      ]
+    },
+    "FAQ-106": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before ITELEC1?",
+        "In BSIT, does ITELEC1 (Integrative Programming and Technologies) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in ITELEC1 under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for ITELEC1 (Integrative Programming and Technologies)."
+      ]
+    },
+    "FAQ-107": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before GEETHCS?",
+        "In BSIT, does GEETHCS (Ethics) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in GEETHCS under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for GEETHCS (Ethics)."
+      ]
+    },
+    "FAQ-108": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before CCIT105?",
+        "In BSIT, does CCIT105 (Networking 2) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in CCIT105 under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for CCIT105 (Networking 2)."
+      ]
+    },
+    "FAQ-109": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before ADVSTAT?",
+        "In BSIT, does ADVSTAT (Advanced Probability and Statistics) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in ADVSTAT under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for ADVSTAT (Advanced Probability and Statistics)."
+      ]
+    },
+    "FAQ-110": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before HUMCOM+?",
+        "In BSIT, does HUMCOM+ (Human Computer Interaction) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in HUMCOM+ under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for HUMCOM+ (Human Computer Interaction)."
+      ]
+    },
+    "FAQ-111": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before ACCTNG1?",
+        "In BSIT, does ACCTNG1 (Accounting for Non-Accountants) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in ACCTNG1 under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for ACCTNG1 (Accounting for Non-Accountants)."
+      ]
+    },
+    "FAQ-112": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before ITELEC2?",
+        "In BSIT, does ITELEC2 (Internet of Things) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in ITELEC2 under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for ITELEC2 (Internet of Things)."
+      ]
+    },
+    "FAQ-113": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before DATSYS+?",
+        "In BSIT, does DATSYS+ (Database Systems) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in DATSYS+ under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for DATSYS+ (Database Systems)."
+      ]
+    },
+    "FAQ-114": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before SYSADMA?",
+        "In BSIT, does SYSADMA (System Administration and Maintenance) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in SYSADMA under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for SYSADMA (System Administration and Maintenance)."
+      ]
+    },
+    "FAQ-115": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before GESELF+?",
+        "In BSIT, does GESELF+ (Understanding the Self) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in GESELF+ under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for GESELF+ (Understanding the Self)."
+      ]
+    },
+    "FAQ-116": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before ITELEC3?",
+        "In BSIT, does ITELEC3 (Web Systems and Technologies) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in ITELEC3 under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for ITELEC3 (Web Systems and Technologies)."
+      ]
+    },
+    "FAQ-117": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before SYSINTA?",
+        "In BSIT, does SYSINTA (System Integration and Architecture) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in SYSINTA under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for SYSINTA (System Integration and Architecture)."
+      ]
+    },
+    "FAQ-118": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before CAPSONE?",
+        "In BSIT, does CAPSONE (Capstone Project and Research 1) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in CAPSONE under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for CAPSONE (Capstone Project and Research 1)."
+      ]
+    },
+    "FAQ-119": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before JOSERIZ?",
+        "In BSIT, does JOSERIZ (Rizal's Life, Works and Writings) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in JOSERIZ under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for JOSERIZ (Rizal's Life, Works and Writings)."
+      ]
+    },
+    "FAQ-120": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before INFASC2?",
+        "In BSIT, does INFASC2 (Information Assurance and Security 2) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in INFASC2 under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for INFASC2 (Information Assurance and Security 2)."
+      ]
+    },
+    "FAQ-121": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before ITELEC4?",
+        "In BSIT, does ITELEC4 (Security in Cloud Computing) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in ITELEC4 under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for ITELEC4 (Security in Cloud Computing)."
+      ]
+    },
+    "FAQ-122": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before CAPSTWO?",
+        "In BSIT, does CAPSTWO (Capstone Project and Research 2) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in CAPSTWO under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for CAPSTWO (Capstone Project and Research 2)."
+      ]
+    },
+    "FAQ-123": {
+      "validation": [
+        "For BSIT, which prerequisite courses are needed before ITPRACT?",
+        "In BSIT, does ITPRACT (Practicum) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in ITPRACT under BSIT, what must I complete or take alongside it?",
+        "For the BSIT degree, tell me the prerequisite and co-requisite rules for ITPRACT (Practicum)."
+      ]
+    },
+    "FAQ-124": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before GECOMM+?",
+        "In BSEMC-DA, does GECOMM+ (Purposive Communication) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in GECOMM+ under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for GECOMM+ (Purposive Communication)."
+      ]
+    },
+    "FAQ-125": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before GEMATH+?",
+        "In BSEMC-DA, does GEMATH+ (Mathematics in the Modern World) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in GEMATH+ under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for GEMATH+ (Mathematics in the Modern World)."
+      ]
+    },
+    "FAQ-126": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before ITECC01?",
+        "In BSEMC-DA, does ITECC01 (Introduction to Computing) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in ITECC01 under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for ITECC01 (Introduction to Computing)."
+      ]
+    },
+    "FAQ-127": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before ITECC02?",
+        "In BSEMC-DA, does ITECC02 (Computer Programming 1) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in ITECC02 under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for ITECC02 (Computer Programming 1)."
+      ]
+    },
+    "FAQ-128": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before PATH-F1?",
+        "In BSEMC-DA, does PATH-F1 (Physical Activities Towards Health and Fitness 1: Movement Competency Training) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in PATH-F1 under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for PATH-F1 (Physical Activities Towards Health and Fitness 1: Movement Competency Training)."
+      ]
+    },
+    "FAQ-129": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before NSTP100?",
+        "In BSEMC-DA, does NSTP100 (National Service Training Program 1) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in NSTP100 under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for NSTP100 (National Service Training Program 1)."
+      ]
+    },
+    "FAQ-130": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before FAITH01?",
+        "In BSEMC-DA, does FAITH01 (Introduction to First Asia Culture and Tradition) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in FAITH01 under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for FAITH01 (Introduction to First Asia Culture and Tradition)."
+      ]
+    },
+    "FAQ-131": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before FREEHDD?",
+        "In BSEMC-DA, does FREEHDD (Free Hand and Digital Drawing) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in FREEHDD under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for FREEHDD (Free Hand and Digital Drawing)."
+      ]
+    },
+    "FAQ-132": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before ITECC03?",
+        "In BSEMC-DA, does ITECC03 (Computer Programming 2) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in ITECC03 under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for ITECC03 (Computer Programming 2)."
+      ]
+    },
+    "FAQ-133": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before PATH-F2?",
+        "In BSEMC-DA, does PATH-F2 (Physical Activities Towards Health and Fitness 2: Exercise-based Fitness Activities) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in PATH-F2 under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for PATH-F2 (Physical Activities Towards Health and Fitness 2: Exercise-based Fitness Activities)."
+      ]
+    },
+    "FAQ-134": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before NSTP200?",
+        "In BSEMC-DA, does NSTP200 (National Service Training Program 2) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in NSTP200 under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for NSTP200 (National Service Training Program 2)."
+      ]
+    },
+    "FAQ-135": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before INTROGD?",
+        "In BSEMC-DA, does INTROGD (Introduction to Game Design & Development) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in INTROGD under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for INTROGD (Introduction to Game Design & Development)."
+      ]
+    },
+    "FAQ-136": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before GEWORLD?",
+        "In BSEMC-DA, does GEWORLD (The Contemporary World) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in GEWORLD under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for GEWORLD (The Contemporary World)."
+      ]
+    },
+    "FAQ-137": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before 2DANIMA?",
+        "In BSEMC-DA, does 2DANIMA (Principles of 2D Animation) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in 2DANIMA under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for 2DANIMA (Principles of 2D Animation)."
+      ]
+    },
+    "FAQ-138": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before GEEMIND?",
+        "In BSEMC-DA, does GEEMIND (The Entrepreneurial Mind) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in GEEMIND under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for GEEMIND (The Entrepreneurial Mind)."
+      ]
+    },
+    "FAQ-139": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before ITECC04?",
+        "In BSEMC-DA, does ITECC04 (Data Structures and Algorithms) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in ITECC04 under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for ITECC04 (Data Structures and Algorithms)."
+      ]
+    },
+    "FAQ-140": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before PATH-F3?",
+        "In BSEMC-DA, does PATH-F3 (Physical Activities Towards Health and Fitness 3: Dance (Rhythmic Dance)) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in PATH-F3 under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for PATH-F3 (Physical Activities Towards Health and Fitness 3: Dance (Rhythmic Dance))."
+      ]
+    },
+    "FAQ-141": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before GEFIL01?",
+        "In BSEMC-DA, does GEFIL01 (Kontekstwalisadong Komunikasyon sa Filipino) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in GEFIL01 under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for GEFIL01 (Kontekstwalisadong Komunikasyon sa Filipino)."
+      ]
+    },
+    "FAQ-142": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before TECHWRI?",
+        "In BSEMC-DA, does TECHWRI (Technical Writing) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in TECHWRI under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for TECHWRI (Technical Writing)."
+      ]
+    },
+    "FAQ-143": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before ANALGEO?",
+        "In BSEMC-DA, does ANALGEO (Analytic Geometry) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in ANALGEO under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for ANALGEO (Analytic Geometry)."
+      ]
+    },
+    "FAQ-144": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before 3DANIMA?",
+        "In BSEMC-DA, does 3DANIMA (Principles of 3D Animation) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in 3DANIMA under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for 3DANIMA (Principles of 3D Animation)."
+      ]
+    },
+    "FAQ-145": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before GESCIE+?",
+        "In BSEMC-DA, does GESCIE+ (Science, Technology and Society) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in GESCIE+ under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for GESCIE+ (Science, Technology and Society)."
+      ]
+    },
+    "FAQ-146": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before GELIT02?",
+        "In BSEMC-DA, does GELIT02 (Sine Sosyedad at Pelikulang Panlipunan) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in GELIT02 under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for GELIT02 (Sine Sosyedad at Pelikulang Panlipunan)."
+      ]
+    },
+    "FAQ-147": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before ITECC05?",
+        "In BSEMC-DA, does ITECC05 (Information Management) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in ITECC05 under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for ITECC05 (Information Management)."
+      ]
+    },
+    "FAQ-148": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before ITECC06?",
+        "In BSEMC-DA, does ITECC06 (Applications Development and Emerging Technologies) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in ITECC06 under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for ITECC06 (Applications Development and Emerging Technologies)."
+      ]
+    },
+    "FAQ-149": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before PATH-F4?",
+        "In BSEMC-DA, does PATH-F4 (Physical Activities Towards Health and Fitness 4: Sports (Individual and Team Sports)) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in PATH-F4 under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for PATH-F4 (Physical Activities Towards Health and Fitness 4: Sports (Individual and Team Sports))."
+      ]
+    },
+    "FAQ-150": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before CALPHY+?",
+        "In BSEMC-DA, does CALPHY+ (Calculus-based Physics 1) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in CALPHY+ under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for CALPHY+ (Calculus-based Physics 1)."
+      ]
+    },
+    "FAQ-151": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before GEFIL02?",
+        "In BSEMC-DA, does GEFIL02 (Filipino sa Iba't Ibang Disiplina) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in GEFIL02 under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for GEFIL02 (Filipino sa Iba't Ibang Disiplina)."
+      ]
+    },
+    "FAQ-152": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before COMGRAP?",
+        "In BSEMC-DA, does COMGRAP (Computer Graphics Programming) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in COMGRAP under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for COMGRAP (Computer Graphics Programming)."
+      ]
+    },
+    "FAQ-153": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before GEHISTO?",
+        "In BSEMC-DA, does GEHISTO (Readings in Philippine History) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in GEHISTO under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for GEHISTO (Readings in Philippine History)."
+      ]
+    },
+    "FAQ-154": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before UDESIGN?",
+        "In BSEMC-DA, does UDESIGN (Usability, HCI, and User Interaction Design) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in UDESIGN under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for UDESIGN (Usability, HCI, and User Interaction Design)."
+      ]
+    },
+    "FAQ-155": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before DIGI301?",
+        "In BSEMC-DA, does DIGI301 (Image and Video Processing) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in DIGI301 under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for DIGI301 (Image and Video Processing)."
+      ]
+    },
+    "FAQ-156": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before WRITNEW?",
+        "In BSEMC-DA, does WRITNEW (Writing for New Media) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in WRITNEW under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for WRITNEW (Writing for New Media)."
+      ]
+    },
+    "FAQ-157": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before FRELEC1?",
+        "In BSEMC-DA, does FRELEC1 (EMC Professional Elective 1) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in FRELEC1 under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for FRELEC1 (EMC Professional Elective 1)."
+      ]
+    },
+    "FAQ-158": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before CALPH++?",
+        "In BSEMC-DA, does CALPH++ (Calculus-based Physics 2) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in CALPH++ under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for CALPH++ (Calculus-based Physics 2)."
+      ]
+    },
+    "FAQ-159": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before DIGI302?",
+        "In BSEMC-DA, does DIGI302 (Modelling and Rigging) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in DIGI302 under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for DIGI302 (Modelling and Rigging)."
+      ]
+    },
+    "FAQ-160": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before AUDSUNE?",
+        "In BSEMC-DA, does AUDSUNE (Audio Design and Sound Engineering) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in AUDSUNE under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for AUDSUNE (Audio Design and Sound Engineering)."
+      ]
+    },
+    "FAQ-161": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before DIGI303?",
+        "In BSEMC-DA, does DIGI303 (Lighting and Effects) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in DIGI303 under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for DIGI303 (Lighting and Effects)."
+      ]
+    },
+    "FAQ-162": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before DIGI305?",
+        "In BSEMC-DA, does DIGI305 (Advanced 2D Animation) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in DIGI305 under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for DIGI305 (Advanced 2D Animation)."
+      ]
+    },
+    "FAQ-163": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before SCRIPT+?",
+        "In BSEMC-DA, does SCRIPT+ (Script Writing and Storyboard Engineering) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in SCRIPT+ under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for SCRIPT+ (Script Writing and Storyboard Engineering)."
+      ]
+    },
+    "FAQ-164": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before DESIGNP?",
+        "In BSEMC-DA, does DESIGNP (Design and Production) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in DESIGNP under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for DESIGNP (Design and Production)."
+      ]
+    },
+    "FAQ-165": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before DIGI304?",
+        "In BSEMC-DA, does DIGI304 (Advanced Sound Production) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in DIGI304 under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for DIGI304 (Advanced Sound Production)."
+      ]
+    },
+    "FAQ-166": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before GESELF+?",
+        "In BSEMC-DA, does GESELF+ (Understanding the Self) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in GESELF+ under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for GESELF+ (Understanding the Self)."
+      ]
+    },
+    "FAQ-167": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before DIGI306?",
+        "In BSEMC-DA, does DIGI306 (Advanced 3D Animation and Scripting) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in DIGI306 under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for DIGI306 (Advanced 3D Animation and Scripting)."
+      ]
+    },
+    "FAQ-168": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before DIGI307?",
+        "In BSEMC-DA, does DIGI307 (Texture and Mapping) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in DIGI307 under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for DIGI307 (Texture and Mapping)."
+      ]
+    },
+    "FAQ-169": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before FRELEC2?",
+        "In BSEMC-DA, does FRELEC2 (EMC Professional Elective 2) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in FRELEC2 under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for FRELEC2 (EMC Professional Elective 2)."
+      ]
+    },
+    "FAQ-170": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before FRELEC3?",
+        "In BSEMC-DA, does FRELEC3 (EMC Professional Elective 3) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in FRELEC3 under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for FRELEC3 (EMC Professional Elective 3)."
+      ]
+    },
+    "FAQ-171": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before ACCTNG+?",
+        "In BSEMC-DA, does ACCTNG+ (Accounting for Non-IT) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in ACCTNG+ under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for ACCTNG+ (Accounting for Non-IT)."
+      ]
+    },
+    "FAQ-172": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before EMCCAP1?",
+        "In BSEMC-DA, does EMCCAP1 (Capstone Project 1) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in EMCCAP1 under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for EMCCAP1 (Capstone Project 1)."
+      ]
+    },
+    "FAQ-173": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before JOSERIZ?",
+        "In BSEMC-DA, does JOSERIZ (Rizal's Life, Works and Writings) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in JOSERIZ under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for JOSERIZ (Rizal's Life, Works and Writings)."
+      ]
+    },
+    "FAQ-174": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before GETHICS?",
+        "In BSEMC-DA, does GETHICS (Ethics) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in GETHICS under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for GETHICS (Ethics)."
+      ]
+    },
+    "FAQ-175": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before GEARTS+?",
+        "In BSEMC-DA, does GEARTS+ (Art Appreciation) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in GEARTS+ under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for GEARTS+ (Art Appreciation)."
+      ]
+    },
+    "FAQ-176": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before DIGI308?",
+        "In BSEMC-DA, does DIGI308 (Compositing and Rendering) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in DIGI308 under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for DIGI308 (Compositing and Rendering)."
+      ]
+    },
+    "FAQ-177": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before DIGI309?",
+        "In BSEMC-DA, does DIGI309 (Animation Design and Production) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in DIGI309 under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for DIGI309 (Animation Design and Production)."
+      ]
+    },
+    "FAQ-178": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before EMCCAP2?",
+        "In BSEMC-DA, does EMCCAP2 (Capstone Project 2) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in EMCCAP2 under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for EMCCAP2 (Capstone Project 2)."
+      ]
+    },
+    "FAQ-179": {
+      "validation": [
+        "For BSEMC-DA, which prerequisite courses are needed before EMCOJT+?",
+        "In BSEMC-DA, does EMCOJT+ (Internship) require any prerequisite or concurrent subject?"
+      ],
+      "test": [
+        "Before enrolling in EMCOJT+ under BSEMC-DA, what must I complete or take alongside it?",
+        "For the BSEMC-DA degree, tell me the prerequisite and co-requisite rules for EMCOJT+ (Internship)."
+      ]
+    },
+    "FAQ-180": {
+      "validation": [
+        "Identify the student organization for computing students at FAITH.",
+        "Which organization represents CCIT students?"
+      ],
+      "test": [
+        "What student group is available within the computing college?",
+        "Name the CCIT student organization I could join."
+      ]
+    },
+    "FAQ-181": {
+      "validation": [
+        "Explain the process for becoming an active FACTS member.",
+        "How do I get involved as a member or officer of FACTS?"
+      ],
+      "test": [
+        "What steps should I follow to join FACTS?",
+        "How can a CCIT student become active in FACTS?"
+      ]
+    },
+    "FAQ-182": {
+      "validation": [
+        "Where should I look for opportunities to participate in FACTS?",
+        "Where is FACTS membership participation available?"
+      ],
+      "test": [
+        "At what venues can students take part in FACTS?",
+        "Where do students go to get involved in FACTS activities?"
+      ]
+    },
+    "FAQ-183": {
+      "validation": [
+        "List the officer roles within FACTS.",
+        "Which leadership positions does FACTS have?"
+      ],
+      "test": [
+        "What offices can a FACTS student officer hold?",
+        "Give me the available positions in the FACTS organization."
+      ]
+    },
+    "FAQ-184": {
+      "validation": [
+        "At what time can I apply to become a FACTS officer?",
+        "When does FACTS accept students for officer applications?"
+      ],
+      "test": [
+        "What is the joining period for FACTS membership?",
+        "When is it possible to seek a FACTS leadership position?"
+      ]
+    },
+    "FAQ-185": {
+      "validation": [
+        "Explain the advantages of FACTS membership.",
+        "What do students gain from joining FACTS?"
+      ],
+      "test": [
+        "What benefits does participation in FACTS offer?",
+        "Why is becoming a FACTS member useful for students?"
+      ]
+    },
+    "FAQ-186": {
+      "validation": [
+        "List the FACTS executive team for academic year 2025-2026.",
+        "Who represented the classes in FACTS during AY 2025-2026?"
+      ],
+      "test": [
+        "Name the FACTS president and officers for 2025-2026.",
+        "Show the student leadership roster of FACTS for academic year 2025-2026."
+      ]
+    },
+    "FAQ-187": {
+      "validation": [
+        "Name the faculty adviser assigned to FACTS.",
+        "Who serves as the FACTS organization adviser?"
+      ],
+      "test": [
+        "Which person advises FACTS?",
+        "Tell me the name of the adviser for the FACTS student group."
+      ]
+    },
+    "FAQ-188": {
+      "validation": [
+        "Where can I find the official FACTS social accounts?",
+        "How can a student get in touch with FACTS online?"
+      ],
+      "test": [
+        "What social media channels can I use to contact FACTS?",
+        "Give me the online contact pages for the FACTS organization."
+      ]
+    },
+    "FAQ-189": {
+      "validation": [
+        "List the computer labs and explain the use of each one.",
+        "What purpose does each CCIT computer laboratory serve?"
+      ],
+      "test": [
+        "Describe the functions of the computing college laboratories.",
+        "Which computer laboratories are provided and what are they used for?"
+      ]
+    },
+    "FAQ-190": {
+      "validation": [
+        "What rules apply when students use a CCIT computer lab?",
+        "How do students arrange access to the college laboratories?"
+      ],
+      "test": [
+        "Explain when students are allowed to use the CCIT labs.",
+        "Describe the procedure and conditions for using a computer laboratory."
+      ]
+    },
+    "FAQ-191": {
+      "validation": [
+        "Describe the complete BSIT curriculum structure.",
+        "Give an overview of the BSIT study plan and specialization."
+      ],
+      "test": [
+        "What does the overall BSIT curriculum cover?",
+        "How is the BSIT degree curriculum organized at FAITH?"
+      ]
+    },
+    "FAQ-192": {
+      "validation": [
+        "List the courses for year 1 of the BSIT degree.",
+        "What subjects are taken during the first year in BSIT?"
+      ],
+      "test": [
+        "For a first-year BSIT student, which subjects appear in the study plan?",
+        "Show both semesters of BSIT year 1, including the course units."
+      ]
+    },
+    "FAQ-193": {
+      "validation": [
+        "List the courses for year 2 of the BSIT degree.",
+        "What subjects are taken during the second year in BSIT?"
+      ],
+      "test": [
+        "For a second-year BSIT student, which subjects appear in the study plan?",
+        "Show both semesters of BSIT year 2, including the course units."
+      ]
+    },
+    "FAQ-194": {
+      "validation": [
+        "List the courses for year 3 of the BSIT degree.",
+        "What subjects are taken during the third year in BSIT?"
+      ],
+      "test": [
+        "For a third-year BSIT student, which subjects appear in the study plan?",
+        "Show both semesters of BSIT year 3, including the course units."
+      ]
+    },
+    "FAQ-195": {
+      "validation": [
+        "List the courses for year 4 of the BSIT degree.",
+        "What subjects are taken during the fourth year in BSIT?"
+      ],
+      "test": [
+        "For a fourth-year BSIT student, which subjects appear in the study plan?",
+        "Show both semesters of BSIT year 4, including the course units."
+      ]
+    },
+    "FAQ-196": {
+      "validation": [
+        "Describe the complete BSCS curriculum structure.",
+        "Give an overview of the BSCS study plan and specialization."
+      ],
+      "test": [
+        "What does the overall BSCS curriculum cover?",
+        "How is the BSCS degree curriculum organized at FAITH?"
+      ]
+    },
+    "FAQ-197": {
+      "validation": [
+        "List the courses for year 1 of the BSCS degree.",
+        "What subjects are taken during the first year in BSCS?"
+      ],
+      "test": [
+        "For a first-year BSCS student, which subjects appear in the study plan?",
+        "Show both semesters of BSCS year 1, including the course units."
+      ]
+    },
+    "FAQ-198": {
+      "validation": [
+        "List the courses for year 2 of the BSCS degree.",
+        "What subjects are taken during the second year in BSCS?"
+      ],
+      "test": [
+        "For a second-year BSCS student, which subjects appear in the study plan?",
+        "Show both semesters of BSCS year 2, including the course units."
+      ]
+    },
+    "FAQ-199": {
+      "validation": [
+        "List the courses for year 3 of the BSCS degree.",
+        "What subjects are taken during the third year in BSCS?"
+      ],
+      "test": [
+        "For a third-year BSCS student, which subjects appear in the study plan?",
+        "Show both semesters of BSCS year 3, including the course units."
+      ]
+    },
+    "FAQ-200": {
+      "validation": [
+        "List the courses for year 4 of the BSCS degree.",
+        "What subjects are taken during the fourth year in BSCS?"
+      ],
+      "test": [
+        "For a fourth-year BSCS student, which subjects appear in the study plan?",
+        "Show both semesters of BSCS year 4, including the course units."
+      ]
+    },
+    "FAQ-201": {
+      "validation": [
+        "Describe the complete BSEMC curriculum structure.",
+        "Give an overview of the BSEMC study plan and specialization."
+      ],
+      "test": [
+        "What does the overall BSEMC curriculum cover?",
+        "How is the BSEMC degree curriculum organized at FAITH?"
+      ]
+    },
+    "FAQ-202": {
+      "validation": [
+        "List the courses for year 1 of the BSEMC degree.",
+        "What subjects are taken during the first year in BSEMC?"
+      ],
+      "test": [
+        "For a first-year BSEMC student, which subjects appear in the study plan?",
+        "Show both semesters of BSEMC year 1, including the course units."
+      ]
+    },
+    "FAQ-203": {
+      "validation": [
+        "List the courses for year 2 of the BSEMC degree.",
+        "What subjects are taken during the second year in BSEMC?"
+      ],
+      "test": [
+        "For a second-year BSEMC student, which subjects appear in the study plan?",
+        "Show both semesters of BSEMC year 2, including the course units."
+      ]
+    },
+    "FAQ-204": {
+      "validation": [
+        "List the courses for year 3 of the BSEMC degree.",
+        "What subjects are taken during the third year in BSEMC?"
+      ],
+      "test": [
+        "For a third-year BSEMC student, which subjects appear in the study plan?",
+        "Show both semesters of BSEMC year 3, including the course units."
+      ]
+    },
+    "FAQ-205": {
+      "validation": [
+        "List the courses for year 4 of the BSEMC degree.",
+        "What subjects are taken during the fourth year in BSEMC?"
+      ],
+      "test": [
+        "For a fourth-year BSEMC student, which subjects appear in the study plan?",
+        "Show both semesters of BSEMC year 4, including the course units."
+      ]
+    },
+    "FAQ-206": {
+      "validation": [
+        "What is the practicum hour requirement for BSIT?",
+        "How much internship time must a BSIT student complete?"
+      ],
+      "test": [
+        "State the required number of OJT hours for Information Technology.",
+        "For BSIT, how many hours of on-the-job training are required?"
+      ]
+    },
+    "FAQ-207": {
+      "validation": [
+        "What is the practicum hour requirement for BSCS?",
+        "How much internship time must a BSCS student complete?"
+      ],
+      "test": [
+        "State the required number of OJT hours for Computer Science.",
+        "For BSCS, how many hours of on-the-job training are required?"
+      ]
+    },
+    "FAQ-208": {
+      "validation": [
+        "What is the practicum hour requirement for BSEMC?",
+        "How much internship time must a BSEMC student complete?"
+      ],
+      "test": [
+        "State the required number of OJT hours for Entertainment and Multimedia Computing.",
+        "For BSEMC, how many hours of on-the-job training are required?"
+      ]
+    },
+    "FAQ-209": {
+      "validation": [
+        "Does the school assist students in looking for an OJT company?",
+        "What help is available from FAITH in finding an internship placement?"
+      ],
+      "test": [
+        "Will FAITH help me locate a company for my practicum?",
+        "Does the college support students searching for OJT host companies?"
+      ]
+    },
+    "FAQ-210": {
+      "validation": [
+        "List the events organized by the CCIT department.",
+        "What is the overall lineup of CCIT events?"
+      ],
+      "test": [
+        "Which college events can computing students take part in?",
+        "Give me an overview of the events hosted by CCIT."
+      ]
+    },
+    "FAQ-211": {
+      "validation": [
+        "Explain what students do at CCIT Camp.",
+        "Tell me about the purpose of the CCIT Camp event."
+      ],
+      "test": [
+        "Describe the CCIT Camp activity.",
+        "What is the camp organized for CCIT students about?"
+      ]
+    },
+    "FAQ-212": {
+      "validation": [
+        "Explain what students do at CCIT Night.",
+        "Tell me about the purpose of the CCIT Night event."
+      ],
+      "test": [
+        "Describe the CCIT Night activity.",
+        "What is the night event organized for CCIT students about?"
+      ]
+    },
+    "FAQ-213": {
+      "validation": [
+        "Explain what students do at the CCIT Sem Opener.",
+        "Tell me about the purpose of the semester opener event."
+      ],
+      "test": [
+        "Describe the CCIT Sem Opener activity.",
+        "What is the semester-opening event for CCIT students about?"
+      ]
+    },
+    "FAQ-214": {
+      "validation": [
+        "Explain what students do at CodeQuest.",
+        "Tell me about the purpose of the CodeQuest event."
+      ],
+      "test": [
+        "Describe the CodeQuest activity.",
+        "What is the CCIT event called CodeQuest about?"
+      ]
+    },
+    "FAQ-215": {
+      "validation": [
+        "Explain what students do at Artventure.",
+        "Tell me about the purpose of the Artventure event."
+      ],
+      "test": [
+        "Describe the Artventure activity.",
+        "What is the CCIT event called Artventure about?"
+      ]
+    },
+    "FAQ-216": {
+      "validation": [
+        "Explain what students do at the Year-End Party.",
+        "Tell me about the purpose of the CCIT year-end celebration."
+      ],
+      "test": [
+        "Describe the Year-End Party activity.",
+        "What is the end-of-year party for CCIT students about?"
+      ]
+    },
+    "FAQ-217": {
+      "validation": [
+        "What consequences follow missing a CCIT event without permission?",
+        "Does unexcused absence from a CCIT event lead to community service?"
+      ],
+      "test": [
+        "What happens to enrollment if I miss CCIT events without authorization?",
+        "Explain the penalty for not attending a department event without permission."
+      ]
+    },
+    "FAQ-218": {
+      "validation": [
+        "What steps do I follow to complete assigned community service hours?",
+        "How do students fulfill community service obligations in CCIT?"
+      ],
+      "test": [
+        "Explain the procedure for rendering my community service.",
+        "How can I finish the community service hours I have been assigned?"
+      ]
+    }
+  }
+}

@@ -103,7 +103,7 @@ def load_dataset(path, allowed_labels):
                           'mean': statistics.mean(lengths), 'median': statistics.median(lengths),
                           'stdev': statistics.stdev(lengths), 'q1': q1, 'q3': q3, 'upper_fence': upper},
         'notes': [
-            'Questions are constructed examples, not collected student conversations.',
+            'See row provenance for source-supplied and constructed examples; these are not established student conversations.',
             'Missing/invalid rows and within-split duplicate questions are removed; conflicts and cross-split duplicates stop the run.',
             'NFKC, whitespace and case normalization are applied. FAQ/split/language labels are categorical; FAQ labels are targets, never input features.',
             'Token-length outliers are described, not removed: long legitimate questions remain useful. No numeric outlier clipping or missing-text imputation is appropriate.',

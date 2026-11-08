@@ -1,3 +1,5 @@
+> Knowledge and training update: the chatbot loads 218 FAQs from `database_v3.json` and a matching model from `research/results-v3`. Training uses 936 supplied questions; 436 validation and 436 test questions were newly AI-authored and frozen before evaluation. Test accuracy is 364/436 (83.5%), macro F1 0.833, on constructed examples only. See [data documentation](data/README.md) for source mapping, reproduction, and limitations. The original 22-class dataset and results remain available as historical artifacts; older counts and metrics below refer to that experiment.
+
 # CCIThink
 
 Flask and vanilla JavaScript foundation for the FAITH Colleges CCIT information assistant. Students ask questions, a conservative retriever selects reviewed JSON records, and the official Google Gen AI or OpenAI SDK can generate a grounded answer. A locally trained Naive Bayes classifier assists ranking after source checks. No database or frontend build is required.

@@ -10,7 +10,7 @@ CASES=[
 ('courses','FAQ-006'),('What graduate degrees are available?','FAQ-006'),
 ('What is BSIT?','FAQ-007'),('What is Computer Science?','FAQ-008'),
 ('What is BSEMC?','FAQ-009'),('Does CCIT have academic accreditation?','FAQ-010'),
-('PACUCOA accreditation','FAQ-010'),('Does CCIT offer scholarships?','FAQ-011'),
+('PACUCOA accreditation','FAQ-010'),('Does CCIT offer scholarships?','FAQ-012'),
 ('50-TAG tuition discount','FAQ-012'),('What careers after BSCS?','FAQ-013'),
 ('BSIT jobs','FAQ-014'),('BSEMC careers','FAQ-015'),('Who is the dean?','FAQ-016'),
 ('Sino ang dean?','FAQ-016'),('BSIT faculty','FAQ-017'),('Computer Science teachers','FAQ-018'),

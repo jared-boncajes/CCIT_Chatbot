@@ -9,6 +9,7 @@ from functools import lru_cache
 PROGRAMS = {'bsit', 'bscs', 'bsemc'}
 MINIMUM_COVERAGE = .6
 MODEL_RANK_BONUS = .25
+MODEL_MIN_RANK_SCORE = .5
 PHRASES = [
     (r'\bcourse[\s-]+specific\b', 'course_specific'),
     (r'\bprogram[\s-]+specific scholarships?\b', 'scholarships'),
@@ -65,6 +66,14 @@ INTENT_TERMS = {
 }
 INTENT_VOCABULARY = set(ALIASES) | set(ALIASES.values()) | {term for group in INTENT_TERMS.values() for term in group}
 
+EXTENDED_INTENTS = {
+    'prerequisites': r'\b(?:pre[ -]?requisites?|co[ -]?requisites?)\b|\btake before\b',
+    'ojt': r'\b(?:ojt|internship|practicum)\b',
+    'curriculum': r'\b(?:curricul(?:um|a)|subjects|study plan|checklist)\b',
+    'organizations': r'\b(?:facts|organizations?|officers?|representatives?|adviser)\b',
+    'community-service': r'\b(?:community service|comserve|skip|not attend|no attendance)\b',
+}
+
 
 def normalize(text):
     text = re.sub(r'\bIT\b', 'bsit', text)
@@ -104,6 +113,9 @@ def program_entities(text):
 
 def intents(text):
     """Identify requested topics using the documented keyword lists above."""
+    for category in ('community-service', 'prerequisites', 'ojt', 'organizations', 'curriculum'):
+        if re.search(EXTENDED_INTENTS[category], text, re.I):
+            return [category]
     query = tokens(text)
     found = []
     for name, terms in INTENT_TERMS.items():
@@ -172,6 +184,20 @@ def _supported_detail(question, record):
 
 def retrieve(question, records, model=None):
     """Filter sources first, then rank eligible records by topic and word support."""
+    # Authored question variants are explicit source support, including questions
+    # whose wording predates the generic detail guards below. Prefer canonical
+    # titles when an alternative also appears in a broader overview record.
+    key = normalize(question).strip(' ?.\n')
+    for field in ('question', 'alternative_questions'):
+        exact = []
+        for record in records:
+            if record.get('verification_status') != 'verified':
+                continue
+            variants = [record['question']] if field == 'question' else record.get(field, [])
+            if any(normalize(variant).strip(' ?.\n') == key for variant in variants):
+                exact.append(record)
+        if len(exact) == 1:
+            return exact
     # Step 1: recognize the words, program abbreviations and requested topics.
     query = tokens(question)
     if not query:
@@ -192,7 +218,11 @@ def retrieve(question, records, model=None):
     probabilities = {}
     if model:
         for prediction in model.predict(question):
-            probabilities[prediction['faq_id']] = prediction['score']
+            # Diffuse closed-set predictions should not displace lexical
+            # retrieval. This majority-score gate is a ranking heuristic,
+            # not a calibrated confidence or factual-verification threshold.
+            if prediction['score'] > MODEL_MIN_RANK_SCORE:
+                probabilities[prediction['faq_id']] = prediction['score']
     requested_programs = query & PROGRAMS
     topics = intents(question)
     comparison = bool(requested_programs and (len(requested_programs) > 1 or query & {'difference', 'compare', 'versus', 'vs'}))
@@ -203,7 +233,7 @@ def retrieve(question, records, model=None):
     documents = {}
     for record in reviewed:
         keywords = ' '.join(record.get('keywords', []))
-        document_text = record['question'] + ' ' + keywords + ' ' + record['answer']
+        document_text = record['question'] + ' ' + keywords + ' ' + record['answer'] + ' ' + ' '.join(record.get('alternative_questions', []))
         documents[record['id']] = tokens(document_text)
     df = Counter()
     for words in documents.values():
@@ -216,6 +246,13 @@ def retrieve(question, records, model=None):
         candidates = []
         for record in reviewed:
             category = record.get('category')
+            if category == 'prerequisites':
+                # Prerequisite answers mention other courses; those must never
+                # select the wrong target course. Preserve + and - in codes.
+                codes = re.findall(r'\b[A-Za-z][A-Za-z0-9-]*[0-9+][A-Za-z0-9+]*', question)
+                target = re.search(r'requirements of (\S+)', record['question'])
+                if codes and target and target[1].casefold() not in {c.casefold() for c in codes}:
+                    continue
             if topic == 'description':
                 allowed = requested_programs or ({'bsemc'} if query & {'game_development', 'animation', 'multimedia'} else PROGRAMS)
                 if category and category not in allowed:
@@ -250,7 +287,7 @@ def retrieve(question, records, model=None):
             coverage = len(matches) / len(relevant)
             if coverage < MINIMUM_COVERAGE:
                 continue
-            title = tokens(record['question'] + ' ' + ' '.join(record.get('keywords', [])))
+            title = tokens(record['question'] + ' ' + ' '.join(record.get('keywords', [])) + ' ' + ' '.join(record.get('alternative_questions', [])))
             score = 0
             for word in matches:
                 rarity_weight = 1 + math.log((len(reviewed) + 1) / (df[word] + 1))
@@ -261,7 +298,7 @@ def retrieve(question, records, model=None):
                 score += rarity_weight * title_weight
             score /= max(len(relevant), 1)
             score += MODEL_RANK_BONUS * probabilities.get(record['id'], 0)
-            if (topic == 'scholarships' and query & {'course_specific', '50tag', 'discount'}
+            if (topic == 'scholarships'
                     and not query & {'eligibility', 'requirements'} and re.search(r'\d+%', record['answer'])):
                 score += 2
             if normalize(question).strip(' ?.\n') == normalize(record['question']).strip(' ?.\n'):

@@ -73,7 +73,7 @@
     "group": "direct_source",
     "question": "Does CCIT offer scholarships?",
     "expected_sources": [
-      "FAQ-011"
+      "FAQ-012"
     ]
   },
   {
@@ -417,7 +417,7 @@
     "group": "student_variation",
     "question": "What scholarships and laboratories are available?",
     "expected_sources": [
-      "FAQ-011",
+      "FAQ-012",
       "FAQ-020"
     ],
     "all_required": true
@@ -642,7 +642,7 @@
     "group": "additional_variation",
     "question": "Please show all available scholarships.",
     "expected_sources": [
-      "FAQ-011"
+      "FAQ-012"
     ]
   },
   {

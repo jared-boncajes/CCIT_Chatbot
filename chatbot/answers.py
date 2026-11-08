@@ -10,6 +10,10 @@ def _sentences(text):
 def _summary(record, question):
     answer = record['answer'].strip()
     category = record.get('category')
+    if category in {'curriculum', 'prerequisites', 'ojt', 'organizations', 'community-service', 'activities'}:
+        return answer
+    if category in {'careers', 'faculty'} and re.search(r'\n\s*\d+\. ', answer):
+        return re.sub(r'(?m)^\s*\d+\. ', '• ', answer)
     query = tokens(question)
     named = program_entities(question)
     if category == 'overview':
@@ -76,7 +80,7 @@ def _emphasize(text, record):
         r'|\d+% discount on tuition fees|Level [IVX]+ accreditation'
         r'|Master[’\']s and Doctorate degree in Information Technology'
         r'|Center of Excellence in Information Technology Education'
-        r'|globally competent, committed and compassionate IT professionals'
+        r'|globally competent, committed,? and compassionate IT professionals'
         r'|academic performance in senior high school'
         r'|CCITITE|CCIT Camp|CCIT Night', text,
     )

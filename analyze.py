@@ -60,6 +60,8 @@ def figures(output, report, rows):
     ax.bar(profile['class_counts'].keys(), profile['class_counts'].values(), color='#a71917')
     ax.set(title='Constructed examples per FAQ intent', ylabel='Examples', xlabel='FAQ ID')
     ax.tick_params(axis='x', rotation=70)
+    if len(profile['class_counts']) > 30:
+        ax.set_xticks(range(0, len(profile['class_counts']), 10))
     finish(fig, 'class_distribution.png')
 
     fig, ax = plt.subplots(figsize=(8, 4))
@@ -88,9 +90,13 @@ def figures(output, report, rows):
            xticklabels=labels, yticklabels=list(profile['class_counts']),
            xlabel='Predicted FAQ ID', ylabel='Actual FAQ ID', title='Selected model: frozen test-set confusion matrix')
     ax.tick_params(axis='x', rotation=90)
+    if len(labels) > 30:
+        ticks = list(range(0, len(labels), 10))
+        ax.set_xticks(ticks, [labels[i] for i in ticks])
+        ax.set_yticks(ticks, [labels[i] for i in ticks])
     for i, line in enumerate(matrix):
         for j, value in enumerate(line):
-            if value:
+            if value and len(labels) <= 30:
                 ax.text(j, i, str(value), ha='center', va='center', color='white' if value > 1 else 'black', fontsize=8)
     fig.colorbar(image, ax=ax, label='Questions')
     finish(fig, 'test_confusion.png')
@@ -140,15 +146,15 @@ def run(dataset_path, output, make_figures=True):
     report = {
         'schema_version': 1, 'executed_at': datetime.now(timezone.utc).isoformat(),
         'dataset': profile, 'labels': {row['id']: row['question'] for row in knowledge if row['id'] in labels},
-        'protocol': 'Fixed 8/2/2 examples per class in the bundled corpus. Fit vocabulary/counts on train only; choose among four fixed configurations on validation macro F1, then accuracy, then simpler n-grams, then alpha closest to 1. Evaluate only the selected configuration and a majority baseline on the frozen test set. Do not tune using test results.',
+        'protocol': 'Use the fixed splits in the selected CSV; actual per-class and split counts are reported in the dataset profile. Fit vocabulary/counts on train only; choose among four fixed configurations on validation macro F1, then accuracy, then simpler n-grams, then alpha closest to 1. Evaluate only the selected configuration and a majority baseline on the frozen test set. Do not tune using test results.',
         'algorithm': 'Multinomial Naive Bayes implemented in standard Python; bag-of-words counts with optional adjacent bigrams and additive smoothing.',
         'experiments': experiments, 'selected': selected, 'test': test,
         'baseline': {'name': 'Training majority class (alphabetical tie break)', 'predicted_label': majority, **baseline},
         'errors': [row for row in predictions if not row['correct']],
         'limitations': [
-            'All examples are AI-assisted constructed questions aligned to 22 source FAQs, not observed student inquiries.',
+            f'This corpus covers {len(labels)} source FAQs. See row provenance for supplied versus AI-authored questions; no observed student inquiries are established.',
             'Related phrasing and parallel templates can remain across splits even after exact duplicate/leakage rejection.',
-            'Only two test questions per class; no independent annotators, usability study or population-level accuracy claim.',
+            'The fixed test set is small; no independent annotators, usability study or population-level accuracy claim.',
             'Closed-set single-intent evaluation excludes unknown, private, ambiguous and multi-intent questions; application guards handle these separately.',
             'Normalized NB scores are not calibrated probabilities of correctness. Strong scores do not establish source support.',
             'The original 95 question checks are development regression checks, not this classifier test set.',

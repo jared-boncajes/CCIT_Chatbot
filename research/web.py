@@ -8,7 +8,7 @@ from chatbot.conversation import is_private_question
 
 analysis_blueprint = Blueprint('analysis', __name__)
 FIGURES = {
-    'class_distribution.png': ('FAQ class distribution', 'Each source FAQ has twelve constructed examples. This balance was designed; it does not represent actual student demand.'),
+    'class_distribution.png': ('FAQ class distribution', 'Counts reflect the supplied dataset and its constructed examples; they do not represent actual student demand.'),
     'question_lengths.png': ('Question lengths', 'Short and long questions are retained. Length outliers are descriptions, not automatic reasons to discard valid text.'),
     'language_distribution.png': ('Authoring-language distribution', 'English, Filipino and Taglish tags describe constructed wording; they are approximate and were not independently annotated.'),
     'validation_experiment.png': ('Parameter experiment', 'Four fixed configurations were compared on validation data. The test set did not choose the model.'),

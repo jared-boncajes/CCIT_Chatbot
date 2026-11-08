@@ -149,17 +149,17 @@ def test_training_reproduces_published_results_without_test_vocabulary(tmp_path)
 
 @pytest.fixture
 def client():
-    return create_app({'TESTING': True, 'CHAT_MODE': 'faq', 'API_KEY': None}).test_client()
+    # Keep the original experiment's audit and stale-artifact checks explicit.
+    return create_app({'TESTING': True, 'CHAT_MODE': 'faq', 'API_KEY': None,
+                       'ANALYSIS_ROOT': ROOT / 'research/results'}).test_client()
 
 
-def test_analysis_and_prediction_work_without_any_ai_key(client):
-    assert client.get('/api/health').get_json()['intent_model_ready']
+def test_historical_analysis_stays_available_but_stale_prediction_is_disabled(client):
+    assert not client.get('/api/health').get_json()['intent_model_ready']
     assert client.get('/analysis').status_code == 200
     data = client.get('/api/analysis').get_json()['report']
     assert data['dataset']['quality']['retained_rows'] == 264
-    predicted = client.post('/api/classify', json={'message': 'Who teaches BSCS?'}).get_json()
-    assert predicted['predictions'][0]['faq_id'] == 'FAQ-018'
-    assert 'uncalibrated' in predicted['note']
+    assert client.post('/api/classify', json={'message': 'Who teaches BSCS?'}).status_code == 503
     assert client.get('/analysis/figures/class_distribution.png').status_code == 200
     assert client.get('/analysis/figures/model.json').status_code == 404
 

@@ -25,7 +25,7 @@
     </section>
     <section class="analysis-section">
       <h2>Dataset and preprocessing</h2>
-      <p>{{ report.dataset.filename }} · 22 reviewed source FAQs from the supplied About CCIT document.</p>
+      <p>{{ report.dataset.filename }} · {{ report.dataset.class_counts|length }} FAQ labels from the supplied knowledge base.</p>
       <div class="table-scroll"><table><caption>Observed cleaning results</caption><thead><tr><th scope="col">Check</th><th scope="col">Rows</th></tr></thead><tbody>
         <tr><th scope="row">Input / retained</th><td>{{ report.dataset.quality.input_rows }} / {{ report.dataset.quality.retained_rows }}</td></tr>
         <tr><th scope="row">Missing rows removed</th><td>{{ report.dataset.quality.missing_rows_removed }}</td></tr>

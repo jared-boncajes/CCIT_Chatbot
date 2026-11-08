@@ -63,9 +63,10 @@ def test_scholarships_are_focused_bullets_with_backend_currency_metadata(client)
     assert '100%' in data['details'][0]['answer']
 
 
-def test_source_name_conflict_is_preserved_in_backend_metadata(client):
+def test_updated_source_name_has_no_legacy_conflict_warning(client):
     data = client.post('/api/chat', json={'message': 'What is the meaning of CCIT?'}).get_json()
-    assert any('both' in note and 'Computing' in note for note in data['warnings'])
+    assert not any('both' in note for note in data['warnings'])
+    assert data['sources'][0]['source'] == 'database_v3.json'
     assert data['sources'][0]['reviewed_at']
 
 
@@ -138,7 +139,7 @@ def test_user_cannot_override_provider_or_enable_an_arbitrary_mode(client):
 def test_program_summary_includes_graduate_options_without_repeating_degrees(client):
     data = client.post('/api/chat', json={'message': 'What programs does CCIT offer?'}).get_json()
     assert data['reply'].count('Bachelor of Science') == 3
-    assert 'graduate programs' in data['reply'] and 'Master' in data['reply'] and 'Doctorate' in data['reply']
+    assert 'graduate programs' in data['reply'] and 'master' in data['reply'].lower() and 'doctorate' in data['reply'].lower()
 
 
 def test_facilities_summary_lists_the_four_source_laboratories(client):
@@ -176,7 +177,7 @@ def test_ai_receives_only_resolved_question_and_retrieved_sources(client, monkey
 
 @pytest.mark.parametrize('question,source', [
     ('programms', 'FAQ-006'), ('What progrms do you offer?', 'FAQ-006'),
-    ('scholaships', 'FAQ-011'), ('facilites', 'FAQ-020'),
+    ('scholaships', 'FAQ-012'), ('facilites', 'FAQ-020'),
 ])
 def test_typo_correction_preserves_topic_intent(client, question, source):
     data = client.post('/api/chat', json={'message': question}).get_json()
@@ -199,12 +200,12 @@ def test_college_name_does_not_establish_a_program_head(client):
 
 
 @pytest.mark.parametrize('question,fact', [
-    ('What is the meaning of CCIT?', 'College of Computer and Information Technology'),
+    ('What is the meaning of CCIT?', 'College of Computing and Information Technology'),
     ('What is the vision of CCIT?', 'Center of Excellence in Information Technology Education'),
-    ('What is the mission of CCIT?', 'globally competent, committed and compassionate IT professionals'),
-    ('Does CCIT offer scholarships?', 'academic performance in senior high school'),
+    ('What is the mission of CCIT?', 'globally competent, committed, and compassionate IT professionals'),
+    ('Does CCIT offer scholarships?', '50-TAG Scholarship'),
     ('Do you offer BSCS?', 'Bachelor of Science in Computer Science (BSCS)'),
-    ('What is BSIT?', 'Information Technology (IT)'),
+    ('What is BSIT?', 'Bachelor of Science in Information Technology (BSIT)'),
     ('Who is the dean of CCIT?', 'Dr. Maricel M. Gaspar'),
     ('What facilities are available?', 'Programming Laboratory'),
     ('What careers can I pursue after BSCS?', 'Machine Learning Engineer'),

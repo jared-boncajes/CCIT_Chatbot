@@ -24,15 +24,15 @@ TOPICS = [
         'id': 'academics',
         'title': 'Programs & Academics',
         'description': 'Explore CCIT programs, subjects, and academic requirements.',
-        'categories': {'academic_programs', 'bsit', 'bscs', 'bsemc', 'accreditation', 'careers'},
-        'note': 'Choose a question from the department document. Subjects and detailed academic requirements are not documented yet.',
+        'categories': {'academic_programs', 'bsit', 'bscs', 'bsemc', 'accreditation', 'careers', 'curriculum', 'prerequisites', 'ojt'},
+        'note': 'Explore programs, curricula, course prerequisites, careers, and OJT requirements from the supplied knowledge base.',
     },
     {
         'id': 'services',
         'title': 'Student Services',
         'description': 'Find information on enrollment, forms, and department procedures.',
-        'categories': {'scholarships', 'dost', 'activities'},
-        'note': 'The document covers scholarships, DOST scholarship acceptance, and student activities. Enrollment forms and procedures are not documented yet.',
+        'categories': {'scholarships', 'dost', 'activities', 'organizations', 'community-service'},
+        'note': 'Explore scholarships, student organizations, events, and community service from the supplied knowledge base.',
     },
     {
         'id': 'directory',
@@ -71,7 +71,7 @@ def create_app(test_config=None):
     # Tests can supply small settings without changing the real .env or data file.
     if test_config:
         app.config.update(test_config)
-    app.config.setdefault('ANALYSIS_ROOT', ROOT / 'research/results')
+    app.config.setdefault('ANALYSIS_ROOT', ROOT / 'research/results-v3')
     model_path = Path(app.config['ANALYSIS_ROOT']) / 'model.json'
     app.config['INTENT_MODEL'] = load_model(model_path, app.config['KNOWLEDGE'])
 
