@@ -1,5 +1,5 @@
 {
-  "description": "AI-authored constructed validation/test questions. Original 218-label holdouts are unchanged; three chair-label holdouts were added before the expanded experiment. Not independent student data; shared templates can inflate metrics. All English.",
+  "description": "AI-authored constructed validation/test questions. Original 218-label holdouts are unchanged; three chair-label holdouts were added before the expanded experiment. Not independent student data; shared templates can inflate metrics. All English. FAQ-020 was retired at the user's request; its holdouts were removed with the class, and all other holdouts remain unchanged.",
   "examples": {
     "FAQ-001": {
       "validation": [
@@ -189,16 +189,6 @@
       "test": [
         "Which faculty teach Bachelor of Science in Entertainment and Multimedia Computing?",
         "Give me the BSEMC teaching roster."
-      ]
-    },
-    "FAQ-020": {
-      "validation": [
-        "Give an overview of the facilities available to computing students.",
-        "Which facilities support CCIT student learning?"
-      ],
-      "test": [
-        "What learning facilities does CCIT provide?",
-        "Tell me about the facilities of the computing college."
       ]
     },
     "FAQ-021": {

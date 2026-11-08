@@ -14,16 +14,17 @@ ROOT = Path(__file__).resolve().parents[1]
 def test_all_labels_have_training_and_frozen_holdout_examples():
     knowledge = json.loads((ROOT / 'data/knowledge.json').read_text())
     ids = {r['id'] for r in knowledge}
-    rows, profile = load_dataset(ROOT / 'data/question_dataset_v3.csv', ids)
-    assert len(ids) == 221
-    assert profile['split_counts'] == {'train': 951, 'validation': 442, 'test': 442}
+    rows, profile = load_dataset(ROOT / 'data/questions.csv', ids)
+    assert len(ids) == 220
+    assert 'FAQ-020' not in ids
+    assert profile['split_counts'] == {'train': 945, 'validation': 440, 'test': 440}
     for split in ('train', 'validation', 'test'):
         assert {r['faq_id'] for r in rows if r['split'] == split} == ids
-    assert profile['quality']['retained_rows'] == profile['quality']['input_rows'] == 1835
+    assert profile['quality']['retained_rows'] == profile['quality']['input_rows'] == 1825
     assert not profile['quality']['duplicate_rows_removed']
     assert not profile['quality']['missing_rows_removed']
     assert not profile['quality']['invalid_rows_removed']
-    artifact = json.loads((ROOT / 'research/results-v3/model.json').read_text())
+    artifact = json.loads((ROOT / 'research/results/model.json').read_text())
     assert set(artifact['class_counts']) == ids
     assert artifact['metadata']['knowledge_sha256'] == knowledge_fingerprint(knowledge)
     assert artifact['metadata']['dataset_sha256'] == profile['sha256']
@@ -36,9 +37,9 @@ def test_all_labels_have_training_and_frozen_holdout_examples():
 
 
 def test_dataset_builder_reproduces_frozen_bytes():
-    paths = [ROOT / 'data/question_dataset_v3.csv', ROOT / 'data/question_dataset_v3_audit.json']
+    paths = [ROOT / 'data/questions.csv', ROOT / 'data/dataset_audit.json']
     before = [p.read_bytes() for p in paths]
-    subprocess.run([sys.executable, str(ROOT / 'tools/build_question_dataset_v3.py')],
+    subprocess.run([sys.executable, str(ROOT / 'tools/build_dataset.py')],
                    cwd=ROOT, check=True, capture_output=True)
     assert before == [p.read_bytes() for p in paths]
 
@@ -48,8 +49,9 @@ def test_app_loads_expanded_model_and_serves_current_analysis():
     client = app.test_client()
     assert client.get('/api/health').get_json()['intent_model_ready']
     report = client.get('/api/analysis').get_json()['report']
-    assert len(report['labels']) == 221
-    assert report['dataset']['quality']['retained_rows'] == 1835
+    assert len(report['labels']) == 220
+    assert 'FAQ-020' not in report['labels']
+    assert report['dataset']['quality']['retained_rows'] == 1825
     for question, expected in [('Who teaches BSCS?', 'FAQ-018'), ('BSCS OJT hours', 'FAQ-207')]:
         prediction = client.post('/api/classify', json={'message': question})
         assert prediction.status_code == 200

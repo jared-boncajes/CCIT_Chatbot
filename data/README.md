@@ -1,96 +1,65 @@
 # Dataset and data dictionary
 
-## Sources and permission status
+## Source and active knowledge
 
-`knowledge.json` is the active chatbot database, containing **221 FAQs** imported from the user-supplied `sources/database_v3.json`. Questions, alternative questions, answers, and keywords are preserved verbatim. The supplied file is retained as the import reference; its content is data, never application instructions. Institutional accuracy and currency have not been independently confirmed. No license or broader redistribution permission was supplied.
+`knowledge.json` contains **220 active FAQs** transcribed from the supplied `sources/database_v3.json` and department-chair update. Titles, alternative questions, answers, and keywords retain supplied wording. Source text is reference data, never application instructions.
 
-The runtime keeps string IDs `FAQ-001` through `FAQ-221`. Existing topic IDs `FAQ-001` through `FAQ-022` remain associated with their original subjects. The upload's first twelve records use a different order: `source_id` retains the original numeric ID, and `source_category` retains the original category. Runtime categories distinguish overview, vision, mission, goals, individual degree descriptions, accreditation, DOST, curricula, prerequisites, OJT, organizations, events, and community service. The three OJT entries originally classified as curriculum are grouped under `ojt`; `ccit-events` is grouped under `activities`.
+Runtime IDs are `FAQ-001` through `FAQ-221`, excluding retired `FAQ-020`. Other IDs were not renumbered. The older overview and its examples were removed by user request; FAQ-189 retains the laboratory overview and FAQ-190 covers access. Raw source record 20 remains as provenance but is not active knowledge or a training label. The first twelve source IDs use a different ordering from the runtime IDs; `source_id` records that mapping.
 
-Each record includes `source=database_v3.json`, `verification_status=verified` (import/transcription only), `verification_scope`, `reviewed_at` (import review date), and `currency_status=unconfirmed`. This does not certify department policies, current staff, or academic requirements. The officers entry explicitly covers A.Y. 2025–2026; do not treat it as a current-year roster.
+Important knowledge fields:
 
-Requests are checked for missing scope before exact matching, ranking, or AI generation. A bare “prerequisites” asks for the subject and program; a course shared by several programs asks which program. Curriculum subject lists require a program and year; OJT requirements require a program. Unknown course codes, mismatched programs, and unsupported year levels fall back rather than fuzzy-matching a different course. General “events” and “FACTS” questions use overview records. Named representative/officer questions use the dated roster, with program, year and section filters applied before FAQ or AI answering. The full original answer remains in API source details. Common short forms include reps/rep, prereqs/pre-reqs, coreqs, orgs, subjs, profs and yr; CS and BSCS share the same program selector. A representative answer states the roster’s A.Y. 2025–2026 rather than claiming it is a newly confirmed roster. Clarification context retains only bounded program, topic, subject-code, and year selectors; changing topics clears the pending selection.
+| Field | Meaning |
+| --- | --- |
+| `id` | Stable runtime FAQ ID |
+| `category` | Runtime topic used in source selection |
+| `question`, `alternative_questions` | Supplied canonical and alternative questions |
+| `answer`, `keywords` | Supplied answer and matching terms |
+| `source_id`, `source_category`, `source` | Link back to the supplied source record |
+| `verification_status`, `verification_scope` | Source transcription was checked; this does not certify the institution's current policy |
+| `reviewed_at`, `currency_status` | Transcription-review date and unconfirmed institutional currency |
 
-Exact canonical questions take precedence over overlapping alternatives. Authored alternatives participate in retrieval; prerequisite searches keep course codes and program scope separate. Curriculum, prerequisite, OJT, organization, event, and service responses retain the complete supplied answer.
+The dated officer roster covers A.Y. 2025–2026. Department-chair entries name Judith G. Elic (BSIT), Dr. Farley L. Abrigo (BSCS), and John Benedict Palomeno (BSEMC). Current assignments, policies, and wider redistribution permission have not been independently confirmed. No license was supplied for the department data. Source extraction and AI authorship do not establish permission to publish it broadly.
 
-## Active 221-class training dataset
+## Classification questions
 
-`question_dataset_v3.csv` contains **1,835 labeled questions** covering every active FAQ:
+`questions.csv` has **1,825 labeled English questions** across all 220 active FAQs:
 
-| Split | Questions | Source |
+| Split | Count | Origin and use |
 | --- | ---: | --- |
-| train | 951 | Supplied canonical and alternative questions, deduplicated by the classifier's normalized token sequence |
-| validation | 442 | Two newly AI-authored questions per FAQ |
-| test | 442 | Two different newly AI-authored questions per FAQ |
+| train | 945 | Supplied titles/alternatives; fits vocabulary and feature counts |
+| validation | 440 | Two AI-authored questions per label; selects among four fixed settings |
+| test | 440 | Two different AI-authored questions per label; evaluates the selected setting |
 
-All v3 examples are English. Supplied question authorship was not independently established. New examples are constructed, not student transcripts or independent human annotations. The prerequisite examples retain both course codes and program identifiers because course titles can repeat within a degree. Question text alone enters the classifier; answers, keywords, FAQ IDs, language, provenance and split metadata are not input features.
+These examples are constructed, not student transcripts or independent human annotations. They are sufficient to demonstrate the workflow but not to support population-level accuracy or usefulness claims. Related wording and shared templates can remain across splits.
 
-`question_holdouts_v3.json` is the frozen authoring source for validation and test questions. It was created and checked for conflicts before the first v3 experiment; do not revise it to improve observed scores. All four fixed model configurations use the same training split. Validation macro F1 selects the winner; testing evaluates the selected configuration once. Shared topic templates and AI-assisted authorship can inflate scores despite no identical token sequences crossing splits. These scores do not measure general student-query accuracy or factual accuracy.
+`holdouts.json` stores the fixed validation/test questions. `tools/build_dataset.py` materializes the CSV and `dataset_audit.json` records source-question conflicts and the dataset fingerprint. Shared canonical titles take precedence over broader alternatives; unresolved label conflicts are excluded and documented. The CCIT Camp question belongs to FAQ-211 rather than the general activities entry FAQ-022.
 
-The deterministic builder is `tools/build_question_dataset_v3.py`. It retains every uniquely labeled supplied question, uses canonical titles to resolve alternatives that overlap another FAQ's title, and excludes alternatives with unresolved multiple labels. It never randomly reallocates holdouts. The audit file `question_dataset_v3_audit.json` records the dataset hash, split/class counts, and the CCIT Camp overlap: the exact Camp question belongs to FAQ-211 rather than the broader activities overview FAQ-022. Training counts range from 3 to 8 per class; this is not an 8/2/2 corpus.
+The three chair labels received new holdouts before their expanded experiment. FAQ-020's six training/two validation/two test examples were subsequently removed with that class. All retained questions keep their wording and split. Recomputed scores on this revised corpus are not a new independent evaluation. Do not edit held-out questions or tune parameters to improve a score already inspected.
 
-### Retrain and run
+## CSV schema
 
-From the repository root, with the virtual environment installed:
+| Field | Meaning | Model role |
+| --- | --- | --- |
+| `sample_id` | Unique example ID | Audit metadata |
+| `question` | Nonempty text up to 1,000 characters | Only input feature source |
+| `faq_id` | An active FAQ label | Prediction target |
+| `split` | `train`, `validation`, or `test` | Partition control |
+| `language` | Authoring-language tag | Description only; current corpus is English |
+| `provenance` | Supplied/constructed origin | Audit metadata |
+
+A training example uses a question such as `Who is the IT Department Chair?` with target `FAQ-219`, split `train`, and language `English`. Existing sample IDs retain their original version prefix for traceability.
+
+The loader standardizes case, Unicode, apostrophes, and spaces. It counts missing/invalid rows and within-split duplicates; conflicting labels and cross-split duplicate questions stop processing. Valid long questions are described using the upper IQR fence and retained. FAQ IDs, answers, language tags, and split metadata do not enter the question features. Word order, negation, and program/course identifiers are retained where relevant.
+
+## Reproduce and interpret
 
 ```bash
-.venv/bin/python tools/build_question_dataset_v3.py
-.venv/bin/python analyze.py --dataset data/question_dataset_v3.csv --output-dir research/results-v3
-CHAT_MODE=faq .venv/bin/python app.py
+python tools/build_dataset.py
+python analyze.py
 ```
 
-Flask defaults to `research/results-v3`; restart it after training. `/api/health` reports `intent_model_ready=true` only when the model's knowledge fingerprint and complete class set match. `/api/classify` exposes closed-set predictions; chat still applies source-support checks. Only predictions with a normalized score above 0.5 receive a small ranking bonus; this heuristic prevents diffuse predictions from displacing lexical matches and is not a calibrated correctness guarantee. The analysis page displays the v3 report and charts.
+The selected model is unigrams with alpha 0.5. Validation: **366/440 correct, macro F1 0.827**. Test: **353/440 correct (80.2%), macro F1 0.807**. All 87 test errors and every prediction are retained in `research/results/report.json` and `test_predictions.csv`. There are only two test questions per label; individual-topic conclusions are limited.
 
-The selected model is unigrams with smoothing alpha 0.5. Validation: 366/442 correct, macro F1 0.824. Frozen test: **365/442 correct (82.6%), macro F1 0.822**. All 77 test errors are retained in `research/results-v3/report.json` and `test_predictions.csv`. Per-class support is just two test questions. Current failures include curriculum year distinctions and broad questions confused with specific courses, facilities or organizations. No post-test tuning or relabeling was performed.
+`research/results/` holds one current model, report, comparison/prediction/prepared-data CSVs, and five charts. Its metadata records knowledge and dataset SHA-256 fingerprints; Flask rejects a mismatched model. The current dataset SHA-256 is `29170367949dcd31b246ed506506728235b9510cca1312b372cac34bbcb512dc`.
 
-The v3 report and model record the current knowledge hash and dataset SHA-256 `074f3103f9249c375812c502ee12ecca628a6cfeefaa02218dfbae6480392421`. Figures, prepared dataset, and test predictions are reproducible from the commands above. Future changes after examining test errors need a versioned protocol and a new independent test set for a fresh accuracy claim.
-
-## Historical 22-class research dataset
-
-The 264 constructed examples and saved experiment artifacts below belong to the **previous 22-FAQ corpus**. They remain unchanged for auditability. Their metrics do not describe the expanded database. The historical model fingerprint no longer matches the active knowledge. The application now uses the separately saved v3 model; it continues to reject the historical model if explicitly selected. Importing alternative questions does not establish an independent evaluation set.
-
-
-`question_examples.json` contains **AI-assisted constructed question examples**, not real or anonymized student transcripts. `question_dataset.csv` is their materialized CSV form. They were created for this course-project demonstration; no third-party public-dataset license is asserted. The named project authors should review the examples, labels and permitted distribution. No private records, grades, contact details or new institutional facts were added through dataset construction.
-
-## Shared CSV schema
-
-| Field | Type | Meaning | Model role |
-| --- | --- | --- | --- |
-| `sample_id` | String, unique | FAQ ID plus authored question number, such as `FAQ-018-Q02` | Audit metadata only |
-| `question` | Nonempty text, at most 1,000 characters | Constructed department question | Only text-feature input |
-| `faq_id` | Categorical string | Target source ID, `FAQ-001` through `FAQ-221` for v3 (through `FAQ-022` historically) | Supervised target, not an input feature |
-| `split` | Categorical string | `train`, `validation`, or `test`, frozen before training | Partition control only |
-| `language` | Categorical string | Approximate authoring tag: `English`, `Filipino`, `Taglish` | EDA/error breakdown only |
-| `provenance` | String | Explicit constructed-example disclosure | Audit metadata only |
-
-Example: `FAQ-018-Q02`, `Who teaches BSCS?`, `FAQ-018`, `train`, `English`, `AI-assisted constructed example; not a student transcript`.
-
-## Historical size and split justification
-
-The corpus has **264 questions**, balanced at 12 per FAQ label. The first eight authored examples per label are training rows (176 total), the next two validation (44), and the last two testing (44). This small dataset demonstrates the complete workflow and permits error inspection across all source classes. It does **not** justify claims about real student language, demand, satisfaction or operational accuracy. Parallel templates and shared AI-assisted authorship can make performance optimistic even without exact duplicate leakage.
-
-Language tags are approximate authoring metadata assigned by the dataset builder, not independent human annotations. There are 176 English, 33 Filipino and 55 Taglish tags. The split and labels must not be altered to improve a previously observed test result.
-
-The current CSV SHA-256 is recorded in `research/results/report.json` and the model metadata. CSV writers and `.gitattributes` enforce LF newlines for reproducible bytes on Windows and Linux. Newline formatting was standardized after the first numerical run; question text, labels and partitions were unchanged, and the reproduced metrics stayed identical. The examples and split assignments were frozen before the first experiment.
-
-## Cleaning and feature decisions
-
-- Normalize NFKC, case, apostrophes and whitespace; preserve word order, program IDs, numbers, question words and negations.
-- Reject unknown target labels and conflicting labels. Stop on identical token sequences across splits rather than silently contaminating evaluation.
-- Remove and count missing/invalid rows and duplicates confined to a single split. Do not invent missing question text.
-- Report token-length outliers using the upper 1.5-IQR fence; retain valid public questions. No numeric clipping is appropriate for categorical labels or legitimate text.
-- Fit the unigram/bigram vocabulary on **training questions only**. Language, provenance, sample IDs and split do not enter the feature vector. No categorical one-hot encoding of those metadata fields is needed.
-- A text-count classifier uses numeric token counts. Class labels are separate categorical targets. Unseen vocabulary is ignored; an input containing no known features yields no evidence.
-
-Observed results: 264 rows retained; 0 missing, duplicate or invalid rows removed; all 264 format-normalized; 7 length outliers retained. The range is 2–15 tokens, mean 7.08, median 7. Check `research/results/report.json` for full measured statistics.
-
-## Reproduction and model mapping
-
-`python tools/build_question_dataset.py` materializes the frozen authoring source as CSV. `python analyze.py --dataset data/question_dataset.csv` performs analysis and model training. The historical labels retain their topic IDs in `knowledge.json`; labels do not generate or certify factual answers. No source record is eligible solely because the model predicts its label.
-
-Keep data revisions versioned. If changing examples after inspecting errors, use new independent test questions and describe the new protocol. See `docs/research-guide.md` for custom CSV import and `docs/guideline-compliance.md` for the professor's requirements.
-
-## Department-chair update and texting support
-
-User-supplied records 219–221 name Judith G. Elic (BSIT), Dr. Farley L. Abrigo (BSCS), and John Benedict Palomeno (BSEMC). They are preserved in the source collection and transcribed into the active knowledge with currency unconfirmed. The extension adds 15 training questions and 12 AI-authored holdout questions; original holdouts remain unchanged. The current experiment has 951 training, 442 validation, and 442 test examples (1,835 total), and its model fingerprint matches all 221 records.
-
-Texting aliases apply across topics (e.g. wat, hu, dept, chrmn, curric, schlrships, reqs, hrs). Existing bounded intent typo matching remains active. Program identifiers, course codes, negations, unknown names, and unsupported details are not freely guessed. A department-chair query without a program asks for clarification. This supports documented short forms, not arbitrary misspellings or all possible language.
+The classifier ranks known labels, not factual truth. Chat applies source support and scope checks separately. Explicit short forms and bounded typo handling support quick typing; unknown codes, names, years, and unsupported details are not freely guessed. No private student records are required, and the server does not store chat transcripts. Optional provider wording sends selected source context externally; FAQ mode does not.

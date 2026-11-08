@@ -555,37 +555,6 @@
     "currency_status": "unconfirmed"
   },
   {
-    "id": "FAQ-020",
-    "category": "facilities",
-    "question": "What facilities are available for CCIT students?",
-    "alternative_questions": [
-      "What laboratories are available to computing students?",
-      "What computer labs can students use?",
-      "Does the college have an AI Laboratory?",
-      "Does the college have a Multimedia Laboratory?",
-      "What is the purpose of the Programming Laboratory?"
-    ],
-    "answer": "CCIT provides a variety of computer laboratories to support students in their academic studies and practical learning activities. These include the Programming Laboratory, which supports programming and software development activities; the Multimedia Laboratory, which is intended for multimedia design and digital content creation; the 316 Laboratory, which serves as an additional learning space for computing-related activities; and the AI Laboratory, which supports learning and exploration in artificial intelligence and related technologies. These facilities help students develop their technical skills and apply their knowledge through hands-on learning experiences.",
-    "keywords": [
-      "computer laboratories",
-      "Programming Laboratory",
-      "Multimedia Laboratory",
-      "316 Laboratory",
-      "AI Laboratory",
-      "artificial intelligence lab",
-      "computer lab facilities",
-      "software development lab",
-      "multimedia design lab"
-    ],
-    "source_id": 20,
-    "source_category": "facilities",
-    "source": "database_v3.json",
-    "verification_status": "verified",
-    "verification_scope": "Imported verbatim from user-supplied database_v3.json; institutional accuracy and currency not independently verified",
-    "reviewed_at": "2026-11-08",
-    "currency_status": "unconfirmed"
-  },
-  {
     "id": "FAQ-021",
     "category": "dost",
     "question": "Does CCIT accept students who have a DOST Scholarship?",

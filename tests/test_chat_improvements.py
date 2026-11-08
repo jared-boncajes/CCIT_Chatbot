@@ -144,9 +144,11 @@ def test_program_summary_includes_graduate_options_without_repeating_degrees(cli
 
 def test_facilities_summary_lists_the_four_source_laboratories(client):
     data = client.post('/api/chat', json={'message': 'What computer labs do you have?'}).get_json()
+    assert [row['id'] for row in data['sources']] == ['FAQ-189']
     assert data['reply'].count('•') == 4
-    for name in ['Programming', 'Multimedia', '316', 'AI']:
-        assert name + ' Laboratory' in data['reply']
+    for name in ['Programming Lab', 'Multimedia Lab', 'Sound Lab', 'Artificial Intelligence Lab (AI Lab)']:
+        assert name in data['reply']
+    assert '316 Laboratory' not in data['reply']
 
 
 def test_negated_offering_question_does_not_receive_an_ambiguous_yes(client):
@@ -177,7 +179,7 @@ def test_ai_receives_only_resolved_question_and_retrieved_sources(client, monkey
 
 @pytest.mark.parametrize('question,source', [
     ('programms', 'FAQ-006'), ('What progrms do you offer?', 'FAQ-006'),
-    ('scholaships', 'FAQ-012'), ('facilites', 'FAQ-020'),
+    ('scholaships', 'FAQ-012'), ('facilites', 'FAQ-189'),
 ])
 def test_typo_correction_preserves_topic_intent(client, question, source):
     data = client.post('/api/chat', json={'message': question}).get_json()
@@ -208,7 +210,7 @@ def test_supplied_program_chair_is_now_supported(client):
     ('Do you offer BSCS?', 'Bachelor of Science in Computer Science (BSCS)'),
     ('What is BSIT?', 'Bachelor of Science in Information Technology (BSIT)'),
     ('Who is the dean of CCIT?', 'Dr. Maricel M. Gaspar'),
-    ('What facilities are available?', 'Programming Laboratory'),
+    ('What facilities are available?', 'Programming Lab: Designated for Computer Science (CS) and Information Technology (IT) students.'),
     ('What careers can I pursue after BSCS?', 'Machine Learning Engineer'),
     ('Who are the BSCS faculty?', 'Farley Abrigo'),
 ])

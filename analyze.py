@@ -1,6 +1,6 @@
 """Load a labeled CSV, run EDA and a validation-selected FAQ classifier experiment.
 
-Usage: python analyze.py --dataset data/question_dataset.csv
+Usage: python analyze.py --dataset data/questions.csv
 Install optional research dependencies with requirements-research.txt first.
 No AI API key, student transcript, or network call is used.
 """
@@ -176,7 +176,7 @@ def run(dataset_path, output, make_figures=True):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--dataset', type=Path, default=ROOT / 'data/question_dataset.csv')
+    parser.add_argument('--dataset', type=Path, default=ROOT / 'data/questions.csv')
     parser.add_argument('--output-dir', type=Path, default=ROOT / 'research/results')
     parser.add_argument('--no-figures', action='store_true', help='Run numerical analysis without optional Matplotlib')
     args = parser.parse_args()

@@ -1,11 +1,11 @@
 {
   "source": "database_v3.json",
-  "classes": 221,
-  "dataset_sha256": "074f3103f9249c375812c502ee12ecca628a6cfeefaa02218dfbae6480392421",
+  "classes": 220,
+  "dataset_sha256": "29170367949dcd31b246ed506506728235b9510cca1312b372cac34bbcb512dc",
   "split_counts": {
-    "test": 442,
-    "train": 951,
-    "validation": 442
+    "test": 440,
+    "train": 945,
+    "validation": 440
   },
   "training_examples_per_class": {
     "FAQ-001": 5,
@@ -27,7 +27,6 @@
     "FAQ-017": 4,
     "FAQ-018": 4,
     "FAQ-019": 4,
-    "FAQ-020": 6,
     "FAQ-021": 5,
     "FAQ-022": 5,
     "FAQ-023": 4,

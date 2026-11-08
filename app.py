@@ -73,7 +73,7 @@ def create_app(test_config=None):
     # Tests can supply small settings without changing the real .env or data file.
     if test_config:
         app.config.update(test_config)
-    app.config.setdefault('ANALYSIS_ROOT', ROOT / 'research/results-v3')
+    app.config.setdefault('ANALYSIS_ROOT', ROOT / 'research/results')
     model_path = Path(app.config['ANALYSIS_ROOT']) / 'model.json'
     app.config['INTENT_MODEL'] = load_model(model_path, app.config['KNOWLEDGE'])
 

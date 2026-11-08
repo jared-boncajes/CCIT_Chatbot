@@ -6,7 +6,7 @@ Uses the shared Word/PDF renderers; does not rebuild historical reports or slide
 import json
 from pathlib import Path
 
-from build_project_documents import ROOT, OUT, cover, head, para, bullets, table, register_pdf_fonts, write_markdown, AUTHORS
+from build_project_documents import ROOT, OUT, head, para, bullets, table, register_pdf_fonts, write_markdown, AUTHORS
 
 from imrad_layout import write_docx, write_pdf
 
@@ -15,6 +15,9 @@ TITLE = 'CCIThink: A Department Information Chatbot for CCIT Students'
 
 def manuscript(report):
     data, test, selected = report['dataset'], report['test'], report['selected']
+    classes = len(report['labels'])
+    total = data['quality']['retained_rows']
+    splits = data['split_counts']
     pct = lambda n: f'{100 * n:.1f}%'
     blocks = [{'kind': 'title', 'text': TITLE.upper()},
               {'kind': 'center', 'text': ', '.join(AUTHORS)},
@@ -24,10 +27,10 @@ def manuscript(report):
     blocks += [head('ABSTRACT'), para(f'''
         This project developed CCIThink, a web-based chatbot that helps students find information about
         the College of Computing and Information Technology (CCIT) at FAITH Colleges. The chatbot uses
-        a supplied collection of 221 frequently asked questions (FAQs). Its topics include academic programs,
+        a supplied collection of {classes} frequently asked questions (FAQs). Its topics include academic programs,
         scholarships, faculty, curricula, subject prerequisites, student organizations and college events.
         A question classifier was trained to suggest which FAQ matches a student's question. The dataset
-        contained 1,835 labeled questions: 951 for training, 442 for choosing the model settings, and 442
+        contained {total:,} labeled questions: {splits['train']} for training, {splits['validation']} for choosing the model settings, and {splits['test']}
         for testing the selected model. Training questions came from the supplied database. Validation
         and test questions were written with AI assistance and fixed before the experiment. Four settings
         of the Naive Bayes classifier were compared. The selected model correctly classified
@@ -52,9 +55,9 @@ def manuscript(report):
         task is to choose an FAQ label for a question. For example, a question about BSCS internship hours
         should be linked to the FAQ about that requirement. The model suggests a label; the department
         information still comes from the stored source answer.
-    '''), head('Objectives', 2), para('''
+    '''), head('Objectives', 2), para(f'''
         The general objective was to develop a department chatbot with a trainable question classifier.
-        The specific objectives were to prepare labeled examples for the 221 FAQs, check the quality of
+        The specific objectives were to prepare labeled examples for the {classes} FAQs, check the quality of
         the dataset, compare four model settings, measure the selected model's performance, and prevent
         unclear or unsupported questions from receiving an arbitrary answer.
     '''), bullets([
@@ -75,20 +78,22 @@ def manuscript(report):
     '''), head('II. METHODOLOGY'), head('Development approach and data source', 2), para('''
         The study involved building the software and testing it locally. Each question was treated as one
         data example. No participants were recruited. The current knowledge base was imported from the
-        user-supplied database_v3.json file, which originally contained 218 FAQs, now extended with three user-supplied department-chair records, and alternative versions of their
-        questions [1]. Original answers were retained. Checking the import
+        user-supplied database_v3.json file, which originally contained 218 FAQs, and extended with
+        three user-supplied department-chair records [1]. The older laboratory overview, FAQ-020,
+        was subsequently removed at the user's request; the separate laboratory overview, FAQ-189,
+        remains active. Other IDs and original answers were retained. Checking the import
         confirmed that the text was copied correctly; it did not independently verify department policies
         or staff assignments. Some records have a specific academic year, which must remain clear in answers.
-    '''), para('''
+    '''), para(f'''
         The question dataset contains six columns: an example ID, the question, its correct FAQ label,
         its assigned split, its language and its origin. Only question text is used as model input. The FAQ
         label is the expected output. Names of files, answers and other metadata are not used as question
-        features. All 1,835 examples in the current dataset are English.
+        features. All {total:,} examples in the current dataset are English.
     '''), table('Table 1. Current dataset allocation', ['Purpose', 'Number of questions', 'Origin'], [
         ['Training', data['split_counts']['train'], 'Supplied FAQ titles and alternative questions'],
         ['Validation', data['split_counts']['validation'], 'Two AI-authored questions per FAQ'],
         ['Testing', data['split_counts']['test'], 'Two different AI-authored questions per FAQ'],
-        ['Total', data['quality']['retained_rows'], '221 FAQ labels'],
+        ['Total', data['quality']['retained_rows'], f'{classes} FAQ labels'],
     ]), para('''
         The supplied questions provided between three and eight training examples per FAQ. One overlapping
         question about CCIT Camp was assigned to its specific Camp FAQ instead of the general activities FAQ.
@@ -141,12 +146,12 @@ def manuscript(report):
         No rows were removed for missing information, invalid values or duplicate questions. The loader
         standardized the formatting of all rows. Question lengths ranged from {data['token_lengths']['minimum']}
         to {data['token_lengths']['maximum']} words or number tokens, with an average of
-        {data['token_lengths']['mean']:.2f}. Nine unusually long questions were retained. Training counts
+        {data['token_lengths']['mean']:.2f}. {data['quality']['token_length_outliers']} unusually long questions were retained. Training counts
         differ across labels because the supplied FAQs contain different numbers of alternative questions.
         These counts describe the prepared dataset, not the frequency of questions asked by students.
     ''')]
     def chart(filename, caption):
-        return {'kind': 'figure', 'path': ROOT / 'research/results-v3/figures' / filename, 'caption': caption}
+        return {'kind': 'figure', 'path': ROOT / 'research/results/figures' / filename, 'caption': caption}
     blocks += [chart('class_distribution.png', 'Figure 1. Examples per FAQ label. The counts reflect dataset preparation, not student demand.'),
                chart('question_lengths.png', 'Figure 2. Question lengths after text formatting was standardized.'),
     head('Validation and test performance', 2), table('Table 2. Comparison using validation questions only',
@@ -197,8 +202,8 @@ def manuscript(report):
         stored information.
     '''), head('Conclusion', 2), para(f'''
         CCIThink demonstrates how a department chatbot can combine a stored FAQ collection, a trainable
-        question classifier and rules for handling unclear requests. The current model covers 221 FAQ
-        labels and achieved {pct(test['accuracy'])} accuracy on 442 constructed test questions.
+        question classifier and rules for handling unclear requests. The current model covers {classes} FAQ
+        labels and achieved {pct(test['accuracy'])} accuracy on {test['samples']} constructed test questions.
         The project provides a working final-project prototype and a repeatable way to examine its
         results. Its findings support further development, rather than a claim that it is already reliable
         for all student questions. Independent student evaluation and updated department verification remain necessary.
@@ -209,18 +214,17 @@ def manuscript(report):
     {'kind': 'reference', 'text': '[4] Scikit-learn developers. (n.d.-b). Naive Bayes. Scikit-learn user guide. https://scikit-learn.org/stable/modules/naive_bayes.html'},
     head('Reproducing the experiment', 2), para('''
         Repository: https://github.com/jared-boncajes/CCIT_Chatbot. The active dataset is
-        data/question_dataset_v3.csv and the fixed validation and test questions are in
-        data/question_holdouts_v3.json. The original 22-FAQ experiment is retained separately in
-        research/results; it is not the experiment reported in this revised paper.
-    '''), {'kind': 'code', 'language': 'bash', 'text': 'python -m pip install -r requirements-research.txt\npython tools/build_question_dataset_v3.py\npython analyze.py --dataset data/question_dataset_v3.csv --output-dir research/results-v3\npython tools/build_imrad.py'},
+        data/questions.csv and the fixed validation and test questions are in
+        data/holdouts.json. The original course guideline PDF is retained at docs/FINAL_PROJECT.pdf. The current model and all five charts are stored in research/results.
+    '''), {'kind': 'code', 'language': 'bash', 'text': 'python -m pip install -r requirements-research.txt\npython tools/build_dataset.py\npython analyze.py --dataset data/questions.csv --output-dir research/results\npython tools/build_imrad.py'},
     para('''
         These commands should be run in an activated virtual environment from the project folder.
-        The report, trained model, charts and test predictions are saved in research/results-v3.
+        The report, trained model, charts and test predictions are saved in research/results.
         To use the chatbot without an external AI key, set CHAT_MODE=faq in .env and run python app.py.
         The analysis page shows the current results. Repeating the same experiment is a check of
         reproducibility, not a new independent evaluation.
     ''')]
-    blocks.insert(next(i for i,b in enumerate(blocks) if b.get('text') == 'Data preparation'), para('The three department-chair FAQs were supplied as a later update. Their labels and newly authored holdouts extend the original frozen evaluation; previous holdouts remain unchanged. The expanded experiment is a repeatable constructed-data evaluation, not independent student validation. Texting aliases and conservative typo handling support short questions across topics; unknown codes, missing facts and ambiguous requests still require clarification or fallback.'))
+    blocks.insert(next(i for i,b in enumerate(blocks) if b.get('text') == 'Data preparation'), para('The three department-chair FAQs were supplied as a later update. Their labels and newly authored holdouts extend the original frozen evaluation; all retained holdout questions remain unchanged. The retired FAQ-020 examples are excluded with their label by user request. The revised-corpus experiment is a repeatable constructed-data evaluation, not independent student validation. Texting aliases and conservative typo handling support short questions across topics; unknown codes, missing facts and ambiguous requests still require clarification or fallback.'))
     appendix = next(i for i, b in enumerate(blocks) if b.get('text') == 'Reproducing the experiment')
     reproduction = blocks[appendix:]
     blocks = blocks[:appendix]
@@ -230,7 +234,7 @@ def manuscript(report):
 
 
 def main():
-    report = json.loads((ROOT / 'research/results-v3/report.json').read_text(encoding='utf-8'))
+    report = json.loads((ROOT / 'research/results/report.json').read_text(encoding='utf-8'))
     blocks = manuscript(report)
     OUT.mkdir(parents=True, exist_ok=True)
     register_pdf_fonts()

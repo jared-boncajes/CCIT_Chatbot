@@ -136,7 +136,7 @@
     "group": "direct_source",
     "question": "What facilities are available for CCIT students?",
     "expected_sources": [
-      "FAQ-020"
+      "FAQ-189"
     ]
   },
   {
@@ -352,7 +352,7 @@
     "group": "student_variation",
     "question": "What computer labs do you have?",
     "expected_sources": [
-      "FAQ-020"
+      "FAQ-189"
     ],
     "all_required": false
   },
@@ -360,7 +360,7 @@
     "group": "student_variation",
     "question": "Do you have an AI laboratory?",
     "expected_sources": [
-      "FAQ-020"
+      "FAQ-189"
     ],
     "all_required": false
   },
@@ -368,7 +368,7 @@
     "group": "student_variation",
     "question": "Anong facilities ang pwedeng gamitin ng students?",
     "expected_sources": [
-      "FAQ-020"
+      "FAQ-189"
     ],
     "all_required": false
   },
@@ -418,7 +418,7 @@
     "question": "What scholarships and laboratories are available?",
     "expected_sources": [
       "FAQ-012",
-      "FAQ-020"
+      "FAQ-189"
     ],
     "all_required": true
   },
@@ -614,14 +614,14 @@
     "group": "additional_variation",
     "question": "Can I use a computer lab?",
     "expected_sources": [
-      "FAQ-020"
+      "FAQ-189"
     ]
   },
   {
     "group": "additional_variation",
     "question": "May AI lab ba kayo?",
     "expected_sources": [
-      "FAQ-020"
+      "FAQ-189"
     ]
   },
   {

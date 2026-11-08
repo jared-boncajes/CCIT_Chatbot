@@ -1,27 +1,23 @@
-# Project proposal
+# Project proposal: CCIThink
 
-**Title:** CCIThink: A Source-Grounded CCIT Information Chatbot with Explainable FAQ Classification and Data Analysis
+Authors: Boncajes, Rhian Jared D.; Marcos, Maricar N.; Carandang, Jamie Pearl U.
 
-**Authors:** Boncajes, Rhian Jared D.; Marcos, Maricar N.; Carandang, Jamie Pearl U.
+Course: Principles of Artificial Intelligence and Data Science.
 
-**Course:** Principles of Artificial Intelligence and Data Science. **Topic approval:** confirmed by the user, November 8, 2026.
+## Problem and objective
 
-## Problem and objectives
+Students need to find information about CCIT programs, subjects, faculty, scholarships, organizations, and department activities. The project proposes a Python chatbot with a local FAQ classifier and a separate analysis page. Its measurable task is classifying a question to a known FAQ label. Staff workload, waiting time, and student satisfaction are not measured.
 
-The project addresses finding relevant information within a supplied department FAQ document when users phrase the same question differently. It combines an existing CCIT chat interface with an inspectable supervised classification and analysis workflow. It does not predict student performance or claim measured staff-workload reduction.
+## Dataset
 
-The general objective is to develop and evaluate a Python application that transforms a documented question dataset into useful FAQ-intent predictions and interpretable findings. Specific objectives are CSV dataset management, appropriate text preprocessing, descriptive EDA with at least three charts, an implemented classifier, a meaningful parameter comparison, appropriate split-based evaluation and responsible-use documentation.
+The current approved-topic implementation uses 220 active source FAQs and 1,825 labeled questions. Supplied titles and alternatives provide 945 training examples; 440 validation and 440 test examples were AI-authored and fixed separately. FAQ-020 was retired by user request, and the other IDs and examples retain their wording and split. Original source text and source/currency metadata remain traceable. Broader redistribution permission and institutional currency are unconfirmed. See data/README.md.
 
-## Dataset and proposed method
+## Proposed method and outputs
 
-The source is 22 FAQs from the user-supplied About CCIT document. A separate corpus contains 264 AI-assisted constructed questions, not real student transcripts. Its six fields and permission status are documented in `data/README.md`. The fixed split has 176 training, 44 validation and 44 testing questions, with every FAQ label represented in each partition. This is a demonstration corpus, not evidence of real student inquiry distribution.
+The workflow validates a CSV, reports missing/invalid/duplicate rows, standardizes text, describes lengths and label/language counts, and generates at least three EDA charts. A standard-Python multinomial Naive Bayes classifier compares four fixed feature/smoothing settings using validation macro F1. The selected model is evaluated on separate test questions with accuracy, macro metrics, a confusion matrix, per-class results, and a majority baseline.
 
-Multinomial Naive Bayes is implemented directly in Python using text counts. The experiment compares unigram versus unigram-plus-bigram features and additive smoothing of 1.0 versus 0.5. Training fits vocabulary and counts; validation macro F1 selects the configuration; a frozen test set and majority baseline assess the selected model. Metrics include accuracy, precision, recall, F1 and a confusion matrix.
+The outputs are a working Flask chat and analysis interface, model/report/CSV artifacts, five charts, a five-chapter technical report with APA-style references, the requested IMRaD, and a 12-slide presentation. Setup, a user guide, test cases, and additional screenshots are included as required by the original course handout in FINAL_PROJECT.pdf.
 
-## Expected outputs and scope
+## Limits and ethics
 
-Outputs are the preserved chat UI, a separate analysis/results page, documented CSV and data dictionary, runnable source code, five visualizations, a trained local classifier, complete prediction/error artifacts, an IMRaD manuscript, a five-chapter report and a defense presentation. The learner assists ranking after existing source-support checks; it cannot invent department facts or access private records.
-
-The corpus, labels and institutional facts need author/department review before broad use. AI assistance is disclosed, and students must understand the submitted implementation. No independent human study or successful live AI-generation claim forms part of this proposal.
-
-**Implementation note:** this proposal is retained as a submission artifact; the accompanying analysis has now been executed. Its actual results are reported separately rather than described as expected outcomes here.
+The project is a classroom demonstration using constructed examples, not an independently evaluated student service. No private student records are needed. Source support checks remain separate from classification, and unknown or ambiguous questions must not receive invented facts. AI assistance in coding, examples, debugging, and drafting is disclosed. Each author must review the documents, understand the implementation, and follow instructor-specific disclosure and source-permission requirements.

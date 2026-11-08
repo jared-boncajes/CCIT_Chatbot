@@ -7,7 +7,7 @@ import pytest
 
 from analyze import run
 from app import create_app
-from chatbot.intent_model import IntentModel, clean_question, knowledge_fingerprint, load_model
+from chatbot.intent_model import IntentModel, clean_question, features, knowledge_fingerprint, load_model
 from chatbot.retriever import retrieve
 from research.dataset import load_dataset
 from research.evaluation import classification_metrics
@@ -135,30 +135,52 @@ def test_model_scores_cannot_override_source_detail_guards():
 
 
 def test_training_reproduces_published_results_without_test_vocabulary(tmp_path):
-    report = run(ROOT / 'data/question_dataset.csv', tmp_path, make_figures=False)
+    dataset_path = ROOT / 'data/questions.csv'
+    report = run(dataset_path, tmp_path, make_figures=False)
     published = json.loads((ROOT / 'research/results/report.json').read_text())
     assert report['experiments'] == published['experiments']
     assert report['test'] == published['test']
     artifact = json.loads((tmp_path / 'model.json').read_text())
-    assert len(artifact['metadata']['training_sample_ids']) == 176
-    assert all(not sample.endswith(('Q09', 'Q10', 'Q11', 'Q12')) for sample in artifact['metadata']['training_sample_ids'])
-    assert sum(artifact['class_counts'].values()) == 176
-    # This token occurs in a held-out question but not in training.
-    assert 'initials' not in artifact['vocabulary']
+    assert len(artifact['metadata']['training_sample_ids']) == 945
+    assert all('-TRAIN-' in sample for sample in artifact['metadata']['training_sample_ids'])
+    assert sum(artifact['class_counts'].values()) == 945
+    rows, _ = load_dataset(dataset_path, set(published['labels']))
+    training_words = {word for row in rows if row['split'] == 'train' for word in features(row['question'])}
+    heldout_words = {word for row in rows if row['split'] != 'train' for word in features(row['question'])}
+    heldout_only = heldout_words - training_words
+    assert heldout_only
+    assert heldout_only.isdisjoint(artifact['vocabulary'])
+
+
+def test_retired_labels_cannot_reenter_the_active_model(tmp_path):
+    path = tmp_path / 'retired-label.csv'
+    rows = base_rows()
+    for row in rows:
+        row['faq_id'] = 'FAQ-001' if row['faq_id'] == 'A' else 'FAQ-020'
+    write_dataset(path, rows)
+    with pytest.raises(ValueError, match='Unknown FAQ label'):
+        run(path, tmp_path / 'results', make_figures=False)
 
 
 @pytest.fixture
-def client():
-    # Keep the original experiment's audit and stale-artifact checks explicit.
+def client(tmp_path):
+    # A readable report can remain even when its saved model is stale.
+    results = ROOT / 'research/results'
+    model = json.loads((results / 'model.json').read_text())
+    model['metadata']['knowledge_sha256'] = 'synthetic-outdated-fingerprint'
+    (tmp_path / 'model.json').write_text(json.dumps(model))
+    (tmp_path / 'report.json').write_bytes((results / 'report.json').read_bytes())
+    (tmp_path / 'figures').mkdir()
+    (tmp_path / 'figures/class_distribution.png').write_bytes((results / 'figures/class_distribution.png').read_bytes())
     return create_app({'TESTING': True, 'CHAT_MODE': 'faq', 'API_KEY': None,
-                       'ANALYSIS_ROOT': ROOT / 'research/results'}).test_client()
+                       'ANALYSIS_ROOT': tmp_path}).test_client()
 
 
-def test_historical_analysis_stays_available_but_stale_prediction_is_disabled(client):
+def test_analysis_stays_available_but_stale_prediction_is_disabled(client):
     assert not client.get('/api/health').get_json()['intent_model_ready']
     assert client.get('/analysis').status_code == 200
     data = client.get('/api/analysis').get_json()['report']
-    assert data['dataset']['quality']['retained_rows'] == 264
+    assert data['dataset']['quality']['retained_rows'] == 1825
     assert client.post('/api/classify', json={'message': 'Who teaches BSCS?'}).status_code == 503
     assert client.get('/analysis/figures/class_distribution.png').status_code == 200
     assert client.get('/analysis/figures/model.json').status_code == 404

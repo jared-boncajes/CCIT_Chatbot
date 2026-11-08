@@ -61,6 +61,10 @@ def classify():
     if model is None:
         return jsonify(success=False, error='Run analyze.py and restart Flask to load a model matching the knowledge file.'), 503
     labels = {record['id']: record['question'] for record in current_app.config['KNOWLEDGE']}
-    predictions = [{**item, 'title': labels[item['faq_id']]} for item in model.predict(message)[:3]]
+    predictions = []
+    for item in model.predict(message)[:3]:
+        prediction = dict(item)
+        prediction['title'] = labels[item['faq_id']]
+        predictions.append(prediction)
     return jsonify(success=True, predictions=predictions,
                    note='Closed-set FAQ predictions. Scores are uncalibrated and do not establish that an answer is supported.')

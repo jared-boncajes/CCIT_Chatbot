@@ -10,7 +10,7 @@ from urllib.request import Request, urlopen
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--base-url', default='http://127.0.0.1:5000')
-    parser.add_argument('--output', type=Path, default=Path('docs/evaluation-improved.json'))
+    parser.add_argument('--output', type=Path, default=Path('test-results/questions.json'))
     args = parser.parse_args()
     base = args.base_url.rstrip('/')
     with urlopen(base + '/api/health', timeout=10) as response:

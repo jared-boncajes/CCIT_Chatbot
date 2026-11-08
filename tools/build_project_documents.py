@@ -43,317 +43,81 @@ def cover(subtitle):
 
 
 def content(report):
-    profile, test, selected = report['dataset'], report['test'], report['selected']
-    pct = lambda value: f'{100 * value:.1f}%'
-    experiments = [[row['name'].replace('a=', 'alpha='), str(row['correct']) + '/44',
-                    pct(row['accuracy']), f"{row['macro_f1']:.3f}"] for row in report['experiments']]
-    abstract = [head('Abstract'), para(f'''
-        This project developed CCIThink, a web-based department information chatbot for CCIT at FAITH Colleges,
-        and added a reproducible data-science workflow while preserving its existing interface. The work addressed
-        how a small, documented question dataset can support explainable FAQ classification without allowing a
-        learned prediction to replace source evidence. Twenty-two FAQs from a supplied department document were
-        paired with 264 AI-assisted constructed questions, allocated to 176 training, 44 validation and 44 test
-        examples. The pipeline validated a CSV dataset, normalized text, summarized data quality, and produced five
-        exploratory and evaluation figures. A standard-Python multinomial Naive Bayes implementation compared
-        unigrams and unigrams plus bigrams under two smoothing settings. Validation macro F1 selected the
-        unigram-plus-bigram model with alpha = 0.5. It correctly classified {test['correct']} of {test['samples']} test
-        questions ({pct(test['accuracy'])} accuracy), with macro F1 = {test['macro_f1']:.3f}; a training-majority
-        baseline obtained {pct(report['baseline']['accuracy'])} accuracy. These findings describe a controlled,
-        constructed corpus, not real-world student accuracy. Errors, especially in some Filipino wordings and
-        related academic intents, support using the classifier as a bounded ranking aid behind source checks.
-        The completed prototype demonstrates dataset handling, machine learning, evaluation, visual interpretation
-        and responsible-use documentation. Independent student-data evaluation and current department verification
-        remain future work.
-    '''), para('Keywords: department chatbot; FAQ classification; multinomial Naive Bayes; data analysis; responsible AI')]
+    """Use the same measured findings for the article and five-chapter report."""
+    import csv
+    from build_imrad import manuscript
 
-    intro = [
-        head('Background and problem', 2),
-        para('''CCIThink addresses the practical task of locating department information in a supplied CCIT
-        document. Its knowledge base covers programs, scholarships, faculty, facilities and related activities.
-        A conversational interface can help users ask these questions in familiar wording, but useful behavior
-        requires both relevant answer selection and clear boundaries around missing information. This project
-        does not claim that staff workload, response delays or student satisfaction were measured before development.
-        The need is framed as an information-access and classification problem rather than as a demonstrated
-        reduction in administrative workload.'''),
-        para('''The original system used reviewed FAQ records, lexical retrieval and optional Gemini or OpenAI
-        answer generation. That combination alone did not demonstrate all of the course's data-science requirements.
-        The final-project handout calls for dataset management, preprocessing, at least three visualizations, an
-        implemented algorithm, task-specific evaluation, experimentation and an ethics discussion (Final project:
-        AI-powered data analysis and prediction system, n.d.). The authors confirmed that the CCIT chatbot topic
-        had instructor approval. The adaptation therefore treats selection of one of 22 FAQ intents as the supervised
-        learning task and adds an analysis workflow alongside the existing chat interface.'''),
-        head('Objectives and research questions', 2),
-        para('''The general objective was to develop and evaluate a source-grounded department chatbot with a
-        reproducible Python data-analysis and FAQ-classification component. Specific objectives were to document
-        a relevant corpus, implement transparent cleaning, visualize its structure, implement a trainable classifier,
-        compare prespecified configurations using validation data, evaluate the selected model on a separate test
-        partition, and preserve source-support and privacy checks during application integration.'''),
-        bullets([
-            'RQ1: How accurately does the selected model classify held-out constructed questions into the 22 FAQ labels?',
-            'RQ2: How do unigram versus unigram-plus-bigram features and smoothing alpha = 1.0 versus 0.5 affect validation performance?',
-            'RQ3: Which observed errors and ethical constraints should limit use of the model inside the chatbot?',
-        ]),
-        head('Scope, limitations and significance', 2),
-        para('''The project is an educational prototype for a small, fixed FAQ collection. It does not predict grades,
-        assess individual students, provide private records, process enrollment transactions or verify current policy.
-        Its contribution is an inspectable connection between dataset preparation, a learned text classifier and a
-        working information interface. The study is relevant to students learning AI and Data Science because its
-        counts, equations, errors and software behavior can be reproduced and explained. Department staff may
-        review its information coverage, but deployment suitability and user benefit require additional evidence.'''),
-    ]
+    article = manuscript(report)
 
-    related = [
-        head('Text classification and explainable learning', 2),
-        para('''Multinomial Naive Bayes classifies text using feature counts, class priors and smoothed conditional
-        likelihoods. Its conditional-independence assumption simplifies training and inference, while additive
-        smoothing prevents unseen class-feature combinations from receiving zero likelihood. The scikit-learn
-        documentation describes this formulation and distinguishes Laplace smoothing at alpha = 1 from Lidstone
-        smoothing below 1 (Scikit-learn developers, n.d.-b). CCIThink implements the count-based calculation directly
-        in Python rather than loading a pretrained text model. This makes its operation suitable for code explanation
-        and a small course demonstration, but does not establish that it is the best classifier for the domain.'''),
-        head('Related conversational system', 2),
-        para('''Rasa Open Source provides a related example of a machine-learning framework for contextual text and
-        voice assistants (Rasa, n.d.). Its repository also identifies the legacy open-source project as being in
-        maintenance mode. CCIThink has a narrower scope: it ranks documented FAQ records and carries only a small
-        program context for follow-ups, rather than implementing a general dialogue-management framework or
-        transactional workflow. Rasa is discussed as a related system; it was not installed, evaluated or used as
-        an experimental baseline in this project.'''),
-        head('Evaluation concepts and identified opportunity', 2),
-        para('''Accuracy gives the proportion of correct predictions, while per-class precision and recall describe
-        different error types. Macro F1 averages the class-specific F1 scores and gives equal weight to every FAQ
-        intent (Scikit-learn developers, n.d.-a). Reporting only a single overall percentage can hide classes that
-        fail completely. A confusion matrix and language-tag breakdown therefore accompany the aggregate metrics.
-        Naive Bayes score normalization also does not make scores reliable probabilities of correctness
-        (Scikit-learn developers, n.d.-b). The opportunity addressed here is to expose these limitations while retaining
-        source checks, instead of presenting a prebuilt language-model response as sufficient evidence of machine
-        learning performance.'''),
-    ]
+    def section(name):
+        # Copy one section, stopping at the next heading of the same level.
+        result = []
+        level = None
+        for block in article:
+            if block.get('text') == name:
+                level = block['level']
+                continue
+            if level is not None:
+                if block['kind'] == 'heading' and block['level'] <= level:
+                    break
+                result.append(dict(block))
+        return result
 
-    methods = [
-        head('Design and data source', 2),
-        para('''A developmental, computational study was conducted through software implementation and controlled
-        offline evaluation. The unit of analysis was a question, not a student. No participants were recruited and no
-        survey, interview, private transcript or usability outcome was collected. The supplied About CCIT document
-        provided 22 FAQ answers and their corresponding labels (About CCIT, n.d.). Source transcription was checked
-        during earlier development; institutional accuracy and currency were not independently confirmed. The source
-        contains a college-name wording discrepancy that remains recorded in backend metadata.'''),
-        para('''The question corpus was constructed with AI assistance from those 22 FAQ intents. Each intent has
-        12 examples, fixed in authoring order before the first classifier experiment: eight training, two validation
-        and two test examples. The resulting CSV contains 264 rows and six fields: sample_id, question, faq_id,
-        split, language and provenance. The last two describe origin and approximate authoring language; neither
-        enters the feature vector. Examples are not observed student demand, independently annotated language
-        samples or an independently validated gold standard. Their size is sufficient to demonstrate the course
-        workflow and expose errors across all 22 classes, but insufficient for population-level accuracy claims.'''),
-        table('Table 1. Dataset allocation', ['Partition', 'Questions per FAQ', 'Total questions'],
-              [['Training', '8', '176'], ['Validation', '2', '44'], ['Test', '2', '44'], ['Total', '12', '264']]),
-        head('Collection and preprocessing procedures', 2),
-        para('''The authoring examples are retained in question_examples.json and materialized as question_dataset.csv.
-        A reproducible loader checks required columns, nonempty values, known FAQ IDs, allowed split and language
-        values, unique sample IDs and a 1,000-character input limit. Missing or invalid rows and duplicates within the
-        same split are removed and counted. Conflicting labels or an identical token sequence across different splits
-        stop the run, because silently retaining such rows could contaminate evaluation. Exact overlap with the prior
-        95-question development set was checked for validation and test examples; none was found. Related wording
-        and parallel templates may still appear across partitions, which limits independence.'''),
-        para('''Text is Unicode NFKC-normalized, case-folded, whitespace-normalized and standardized for curly
-        apostrophes. A regular expression creates lowercase Latin-letter and number tokens, including internal
-        apostrophes. Program abbreviations, numbers, question words and negations are retained; no stemming or
-        stopword deletion is applied. Text is not imputed when absent. FAQ IDs are categorical targets; no one-hot
-        encoding of language or provenance is needed because those fields are excluded. Token-length outliers are
-        reported using the upper 1.5-IQR fence and retained when valid. An unusual question length is not itself
-        evidence of an invalid public inquiry.'''),
-        head('Features, algorithm and system workflow', 2),
-        para('''The training vocabulary contains only features observed in the training partition. Candidate
-        representations are unigram counts and unigram-plus-adjacent-bigram counts. For class c and question q,
-        the implemented decision score is: score(c, q) = log P(c) + sum over t of x_t times log[(N_ct + alpha) /
-        (N_c + alpha times |V|)]. Here x_t is the question feature count, N_ct is its training count in class c,
-        N_c is the total feature count in that class, and |V| is the training-vocabulary size. Class priors come from
-        training example frequencies. Scores are normalized using a numerically stable exponential calculation;
-        they are described as uncalibrated relative scores. Inputs with no known features yield no prediction.'''),
-        para('''Naive Bayes was selected for its transparent count-based implementation, low computational cost and
-        suitability for a small text-classification demonstration, rather than a claim of optimality. JSON stores the
-        trained counts and metadata without executable pickle objects. A knowledge fingerprint invalidates a model
-        when source questions or answers change. The workflow is CSV loading, validation and normalization,
-        descriptive analysis, training, validation-based selection, selected-model testing, figure/report export and
-        application integration. All numerical analysis can run locally without an external AI API key.'''),
-        para('''Inside the chatbot, privacy and unsupported-detail checks still apply. The learned score contributes
-        only a fixed 0.25-times-score bonus to ranking among eligible lexical candidates; it cannot bypass topic,
-        program, coverage or source checks. The standalone classifier is evaluated separately from this guarded
-        application behavior. The chat homepage, styling and controls are preserved. A separate /analysis page
-        presents data quality, charts, model comparison, errors and a local prediction demonstration. Optional
-        Gemini/OpenAI answer generation remains a separate feature and was not used to obtain classifier metrics.'''),
-        head('Experimental design and metrics', 2),
-        para('''Four configurations were specified: unigram or unigram-plus-bigram features, each with alpha = 1.0
-        or 0.5. Vocabulary, feature counts and priors were fitted on 176 training questions only. Validation macro F1
-        selected the configuration; prespecified ties use validation accuracy, fewer n-grams and alpha closest to 1.
-        The selected model was not refitted on validation questions. Only that selected configuration and a training
-        majority-class baseline were evaluated on the frozen 44-question test partition. Test errors were inspected
-        for discussion, not used to revise the corpus or retune this experiment. Re-running the scripts reproduces
-        the same numerical outputs; it is not a new independent trial.'''),
-        para('''For each class, precision = TP/(TP + FP), recall = TP/(TP + FN), and F1 = 2PR/(P + R), with zero
-        used for undefined zero-denominator cases. Macro scores are arithmetic means across all 22 classes.
-        Accuracy = correct predictions / all test questions. A confusion matrix shows actual-versus-predicted labels,
-        and descriptive accuracy is also tabulated by approximate language tag. The 95 existing HTTP question
-        checks and automated/browser checks are application regression evidence, not held-out classifier accuracy
-        or human satisfaction measures.'''),
-        head('Ethical considerations and responsible use', 2),
-        para('''The dataset contains constructed public-information questions rather than private student records.
-        Questions entered in the analysis demonstration are not persisted. Chat history and preferred names remain
-        browser-tab-local; the backend does not store conversations. AI answer mode sends the question and selected
-        source records to the configured provider, so external-provider handling must be considered before use with
-        sensitive content. API keys remain in private environment settings. Department facts may be outdated, and
-        source checking does not replace current institutional confirmation. No open redistribution license was
-        supplied for the original department document. Its permitted use should be confirmed before broader release.
-        AI assistance in code, dataset examples, tests and this draft is disclosed; the named authors must review and
-        understand their submitted work in accordance with instructor policy.'''),
-    ]
+    related = section('Related concepts and scope')
+    intro = [head('Background of the study', 2)] + section('Background of the study')
+    intro += [head('Problem statement', 2), para('Students need a way to find a supported answer in the supplied department information. The study asks which of four Naive Bayes configurations best classifies the constructed validation questions, how the selected model performs on the fixed test questions, and which limitations prevent broader claims.')]
+    intro += [head('General and specific objectives', 2)] + section('Objectives')
+    intro += [head('Scope and limitations', 2), related[-1], head('Significance of the project', 2), para('The project demonstrates a complete Python data-science workflow using department questions. Its value is a working, explainable prototype and a reproducible experiment. It does not establish reduced staff workload, student satisfaction, or deployment effectiveness.')]
 
-    results = [
-        head('Dataset description and preprocessing results', 2),
-        para(f'''The loader retained all {profile['quality']['retained_rows']} input examples. Missing rows,
-        within-split duplicates and invalid rows were each zero in this constructed corpus; the cleaning code did
-        not manufacture such problems to inflate its contribution. All 264 rows underwent format normalization.
-        Seven token-length outliers above the upper fence of 11 tokens were retained. Questions ranged from
-        {profile['token_lengths']['minimum']} to {profile['token_lengths']['maximum']} tokens, with mean
-        {profile['token_lengths']['mean']:.2f}, median {profile['token_lengths']['median']:.0f} and sample standard
-        deviation {profile['token_lengths']['stdev']:.2f}. Each FAQ has 12 examples by design. The approximate
-        language tags comprise 176 English, 33 Filipino and 55 Taglish questions.'''),
-        figure('class_distribution.png', 'Figure 1. Constructed class distribution. Equal counts reflect corpus design, not measured student demand.'),
-        figure('question_lengths.png', 'Figure 2. Token-length distribution after normalization. Valid longer questions were retained.'),
-        figure('language_distribution.png', 'Figure 3. Approximate authoring-language distribution. These tags are metadata, not independently verified annotations.'),
-        head('Validation experiment and selected configuration', 2),
-        table('Table 2. Prespecified configurations evaluated on validation data only',
-              ['Features / smoothing', 'Correct', 'Accuracy', 'Macro F1'], experiments, [.45, .17, .19, .19]),
-        para(f'''Unigrams with alpha = 1.0 obtained validation macro F1 = {report['experiments'][0]['macro_f1']:.3f}.
-        The selected unigram-plus-bigram model with alpha = 0.5 obtained {selected['correct']} correct validation
-        predictions ({pct(selected['accuracy'])}) and macro F1 = {selected['macro_f1']:.3f}. The validation result
-        suggests that short word-order information and lighter smoothing helped this corpus. It does not establish
-        a universally superior setting. The selected training vocabulary contained 810 features.'''),
-        figure('validation_experiment.png', 'Figure 4. Validation macro F1 across the four fixed configurations. Test results did not select the model.'),
-        head('Selected-model test results', 2),
-        table('Table 3. Frozen-test performance; 44 questions, 22 classes',
-              ['System', 'Accuracy', 'Macro precision', 'Macro recall', 'Macro F1'],
-              [['Selected Naive Bayes', pct(test['accuracy']), f"{test['macro_precision']:.3f}", f"{test['macro_recall']:.3f}", f"{test['macro_f1']:.3f}"],
-               ['Training-majority baseline', pct(report['baseline']['accuracy']), f"{report['baseline']['macro_precision']:.3f}", f"{report['baseline']['macro_recall']:.3f}", f"{report['baseline']['macro_f1']:.3f}"]], [.34, .17, .17, .16, .16]),
-        para(f'''The selected model correctly classified {test['correct']} of {test['samples']} held-out questions,
-        giving {pct(test['accuracy'])} accuracy and macro F1 = {test['macro_f1']:.3f}. Sixteen predictions were wrong.
-        The majority baseline always selected FAQ-001, because all training classes were tied and the specified
-        tie-break was alphabetical; it correctly classified 2 of 44 questions. The selected classifier therefore
-        exceeded this weak baseline, but it still failed on more than one third of the small test partition.
-        The gap between validation and test performance is a practical warning against interpreting the selected
-        validation score as deployment accuracy.'''),
-        figure('test_confusion.png', 'Figure 5. Test confusion matrix. Nonzero off-diagonal entries identify actual misclassifications; each row has only two examples.'),
-        table('Table 4. Descriptive test results by approximate authoring-language tag', ['Tag', 'Correct / total', 'Accuracy'],
-              [[language, f"{row['correct']} / {row['samples']}", pct(row['correct'] / row['samples'])]
-               for language, row in test['by_language'].items()]),
-        head('Errors, system behavior and verification', 2),
-        para('''The two held-out examples for each of FAQ-002 (college overview), FAQ-006 (program offerings),
-        FAQ-007 (IT definition) and FAQ-008 (CS definition) were all misclassified. Some definition questions were
-        confused with faculty or mission questions, and several Filipino career questions were classified as the
-        mission intent. Such results are consistent with sparse lexical coverage, shared phrasing and overlapping
-        concepts, but causal explanations were not separately tested. The English-tagged set had 16/22 correct,
-        Filipino 3/8 and Taglish 9/14. These small, constructed and approximately tagged groups do not support a
-        claim about performance on all Filipino or English users.'''),
-        para('''The integrated application passed the existing 95/95 HTTP source-support or answer-mode checks.
-        The full automated suite passed 263 tests, and 26 browser scenarios covered the original chat behavior,
-        concise bold replies, explicit recovery and the new analysis demonstration. Successful chat answers in
-        these checks used FAQ mode; provider outages and safety payloads were explicitly simulated. These counts
-        demonstrate checked software behavior, not 100% language understanding, current factual correctness,
-        live AI-generation quality or measured student satisfaction. Timestamped reports and all test predictions
-        are retained with the repository.'''),
-    ]
+    concepts = [head('AI and Data Science concepts', 2)] + related[:-1]
+    concepts += [head('Related systems and selected algorithm', 2), table('Comparison of approaches', ['Approach', 'Role and limitation'], [
+        ['Manual FAQ search', 'Readers locate an answer themselves; no trained prediction.'],
+        ['Naive Bayes text classification', 'Learns word counts from labeled questions; predicts an FAQ label, not a verified fact (Scikit-learn developers, n.d.-b).'],
+        ['Source-grounded chat prototype', 'CCIThink combines source checks with bounded model ranking and optional provider wording. Successful live generation has not been established.'],
+    ]), head('Opportunities for improvement', 2), para('Related wording, sparse training examples, and overlapping course names make classification difficult. Independently written questions and reviewed labels are needed before claiming reliable real-student performance. This comparison explains design choices rather than inventing a comparative user study.')]
 
-    discussion = [
-        head('Interpretation against the research questions', 2),
-        para(f'''RQ1 is answered by {pct(test['accuracy'])} test accuracy and macro F1 = {test['macro_f1']:.3f}
-        on the constructed corpus. RQ2 is answered by the validation comparison: the selected unigram-plus-bigram,
-        alpha = 0.5 configuration had the highest validation macro F1 among the four settings. RQ3 is answered by
-        the observed intent confusions, uneven descriptive language results and missing real-user evidence.
-        Together, the findings favor a constrained supporting role for this learned model rather than autonomous
-        authority over department answers.'''),
-        para('''The results illustrate the distinction between classification and information reliability. A model
-        can assign a strong relative score to a wrong FAQ, while a correct FAQ selection can still refer to an
-        outdated institutional statement. Source-support guards, missing-information fallback and institutional
-        review therefore address different concerns from classifier accuracy. The fixed 0.25 ranking bonus preserves
-        this separation. No ablation study was run to estimate the bonus's causal effect on real-user answer quality;
-        passing existing regression cases should not be interpreted as such an experiment.'''),
-        head('Limitations and unexpected findings', 2),
-        para('''The corpus is small, balanced by construction and AI-assisted. Closely related templates remain
-        possible across partitions despite the absence of exact duplicate leakage. Only two test examples represent
-        each class, so class-level metrics are unstable. Labels and language tags were not independently annotated,
-        and inter-rater agreement was not measured. The classifier is closed-set and single-intent; unsupported,
-        ambiguous, private and multi-intent questions are outside its numerical test task and are handled separately
-        by application rules. The tokenizer does not provide robust morphology, spelling normalization or full
-        non-ASCII-language coverage. These choices can disadvantage forms absent from training.'''),
-        para('''The 95 development questions were used to improve earlier retrieval behavior and are not an
-        independent generalization benchmark. No independent human assessment, task-completion timing,
-        satisfaction survey, controlled workload comparison or production-load test was conducted. Successful
-        live Gemini/OpenAI generation was not established in this environment because no private provider key
-        was configured. The source's current factual accuracy remains unconfirmed. These limits prevent claims
-        of institution-wide effectiveness or production readiness.'''),
-        head('Practical recommendations', 2),
-        bullets([
-            'Obtain dated department confirmation for faculty, dean, scholarships, accreditation and official college-name wording.',
-            'Collect permissioned or anonymized student questions, use independent label review, and create a fresh external test set before tuning further.',
-            'Expand difficult Filipino/Taglish and ambiguous-intent examples; evaluate changes with grouped splits and explicit out-of-scope detection.',
-            'Compare the current model with additional justified algorithms on training/validation data, then reserve new test evidence for final assessment.',
-            'Evaluate score calibration, confidence rejection, accessibility, user task completion and deployment capacity before operational use.',
-        ]),
-    ]
+    methods = section('II. METHODOLOGY')
+    methods += [head('Feature selection and Naive Bayes calculation', 2), para('Question text is converted to counts of words or adjacent word pairs. FAQ IDs, answers, authoring-language tags, and split labels are excluded from input features. The implementation uses log scores to avoid multiplying many small values.'),
+        {'kind': 'code', 'text': 'score(label) = log P(label) + sum(count(word) * log P(word | label))\nP(word | label) = (training count + alpha) /\n                  (all feature counts for label + alpha * vocabulary size)'},
+        para('The class prior is its training-question count divided by all training questions. Alpha adds a small smoothing count. Naive Bayes assumes conditional independence of features given the label; that assumption is imperfect for natural language (Scikit-learn developers, n.d.-b).'),
+        head('System architecture and workflow', 2), bullets([
+            'Offline: load CSV, validate and clean rows, describe the data, train four settings, select on validation, evaluate on test, and save the model/report/figures.',
+            'Online: validate a question, detect private requests, resolve a bounded follow-up, check source scope, rank eligible FAQs, and return the source-supported response.',
+            'The local classifier cannot supply missing facts. Unclear requests ask for details; unsupported questions fall back. Optional AI wording uses selected source text only.',
+        ])]
+    findings = section('III. RESULT')
+    findings += [head('Language coverage', 2), figure('language_distribution.png', 'Figure 5. All current authoring examples are English. This chart exposes a coverage limitation, not a student-language survey.')]
+    discussion = section('Meaning of the findings') + section('Limitations and recommendations')
+    conclusion = section('Conclusion')
+    conclusion += [head('Achievement of objectives and recommendations', 2), para('The system loads and validates data, describes patterns with five charts, implements and compares an explained classifier, evaluates fixed test questions, and demonstrates supported chat and predictions. The objective is a course prototype, not proof of unrestricted reliability.'), *section('Limitations and recommendations')]
 
-    conclusion = [
-        para('''CCIThink now combines the preserved department-chat interface with an inspectable data-science
-        pipeline: CSV dataset handling, documented preprocessing, descriptive analysis, five figures, an implemented
-        trainable algorithm, a validation experiment, frozen-test evaluation and a separate results demonstration.
-        These completed components meet the technical coverage sought by the course guidelines while keeping
-        the chatbot's answers concise and source-grounded.'''),
-        para(f'''The selected classifier obtained {test['correct']}/{test['samples']} test predictions correct
-        ({pct(test['accuracy'])}) and macro F1 = {test['macro_f1']:.3f}, exceeding the majority baseline but showing
-        substantial errors. The supported conclusion is that the workflow functions as an educational prototype
-        and that classification quality needs further evidence and improvement. The study does not establish
-        current institutional accuracy, real-student effectiveness or successful live generative-AI service.
-        Future work should prioritize authoritative data review and an independent, ethically collected question
-        corpus rather than presenting the present results as final deployment performance.'''),
-    ]
+    references = section('REFERENCES')
+    references[0]['text'] = 'CCIT knowledge database. (n.d.). *database_v3.json and department-chair update* [User-supplied source collection; currency and broader usage permission unconfirmed].'
+    references[1]['text'] = 'Final project: AI-powered data analysis and prediction system. (n.d.). *Final project documentation guidelines* [Course handout; original PDF retained as docs/FINAL_PROJECT.pdf].'
+    references[2]['text'] = 'Scikit-learn developers. (n.d.-a). *Metrics and scoring: Quantifying the quality of predictions*. https://scikit-learn.org/stable/modules/model_evaluation.html'
+    references[3]['text'] = 'Scikit-learn developers. (n.d.-b). *Naive Bayes*. https://scikit-learn.org/stable/modules/naive_bayes.html'
+    citations = {'[1]': '(CCIT knowledge database, n.d.)', '[2]': '(Final project: AI-powered data analysis and prediction system, n.d.)', '[3]': '(Scikit-learn developers, n.d.-a)', '[4]': '(Scikit-learn developers, n.d.-b)'}
+    for blocks in [intro, concepts, methods, findings, discussion, conclusion]:
+        for block in blocks:
+            if 'text' in block:
+                for number, author_date in citations.items():
+                    block['text'] = block['text'].replace(number, author_date)
 
-    references = [head('References'), *[{**para(text), 'kind': 'reference'} for text in [
-        '*About CCIT*. (n.d.). [Department information document supplied with the project].',
-        '*Final project: AI-powered data analysis and prediction system*. (n.d.). [Unpublished course handout, Principles of Artificial Intelligence and Data Science].',
-        'Rasa. (n.d.). *Rasa Open Source* [Computer software]. GitHub. Retrieved November 8, 2026, from https://github.com/RasaHQ/rasa',
-        'Scikit-learn developers. (n.d.-a). *Metrics and scoring: Quantifying the quality of predictions*. Scikit-learn user guide. Retrieved November 8, 2026, from https://scikit-learn.org/stable/modules/model_evaluation.html',
-        'Scikit-learn developers. (n.d.-b). *Naive Bayes*. Scikit-learn user guide. Retrieved November 8, 2026, from https://scikit-learn.org/stable/modules/naive_bayes.html',
-    ]]]
-
-    appendices = [head('Appendices'), head('Appendix A. Repository and reproduction', 2),
-        para('Repository: https://github.com/jared-boncajes/CCIT_Chatbot. Core analysis: analyze.py, chatbot/intent_model.py, research/dataset.py and research/evaluation.py. Setup and full user guide are in README.md and docs/research-guide.md.'),
-        para('In an activated Python virtual environment, install requirements-research.txt. Run python analyze.py --dataset data/question_dataset.csv, then python app.py. Open / for chat and /analysis for the analysis demonstration. Use python -m pytest -q for automated checks. Numerical analysis can run with --no-figures when Matplotlib is unavailable.'),
-        head('Appendix B. Dataset dictionary and permitted sample', 2),
-        table('Table A1. CSV fields', ['Field', 'Meaning / role'], [
-            ['sample_id', 'Unique example identifier; audit metadata, not a feature.'],
-            ['question', 'Constructed public department question; only input to text features.'],
-            ['faq_id', 'One of FAQ-001 through FAQ-022; supervised target linked to knowledge.json.'],
-            ['split', 'Fixed train, validation or test assignment; not a feature.'],
-            ['language', 'Approximate English, Filipino or Taglish authoring tag; excluded from features.'],
-            ['provenance', 'AI-assisted constructed-example disclosure; not a student transcript.'],
-        ], [.22, .78]),
-        para('Sample training record: FAQ-018-Q02; question = "Who teaches BSCS?"; faq_id = FAQ-018; split = train; language = English. This is a constructed example, not a private student communication. The source PDF was not reclassified as openly licensed.'),
-        head('Appendix C. Evidence and test cases', 2),
-        para('research/results/report.json stores the experiment, confusion matrix, per-class metrics and language breakdown. test_predictions.csv lists every test prediction; experiments.csv lists the validation comparison. docs/screenshots contains actual browser evidence. Test cases cover hand-calculated Bayes probabilities, order-sensitive bigrams, invalid smoothing, cross-split leakage, conflicting labels, missing/stale artifacts, input validation and source guards.'),
-        table('Table A2. Representative executed application checks', ['Input / action', 'Observed checked behavior'], [
-            ['Do you guys offer BSCS?', 'Focused offering answer with bold degree name and no source/verification clutter.'],
-            ['What time do the labs open?', 'Unsupported-detail fallback; a predicted topic cannot establish opening hours.'],
-            ['Show my student grades', 'Privacy response in chat; prediction demo rejects the request.'],
-            ['Who teaches BSCS? (analysis demo)', 'Local classifier predicts FAQ-018 without an AI provider call.'],
-            ['New chat after a program follow-up', 'Clears program context and asks for clarification when required.'],
-        ], [.42, .58]),
-        {'kind': 'figure', 'path': ROOT / 'docs/screenshots/desktop.png',
-         'caption': 'Figure A1. Actual browser screenshot of the preserved desktop home interface.'},
-        {'kind': 'figure', 'path': ROOT / 'docs/screenshots/improvements/mobile-focused-answer.png',
-         'caption': 'Figure A2. Actual mobile FAQ-mode answer with a bold key fact and concise text. The mode label distinguishes retrieval from AI generation.'},
-        head('Appendix D. AI assistance and author review', 2),
-        para('OpenAI Codex assistance was used for implementation, constructed question examples, tests, analysis scripts and manuscript drafting. Numerical findings were computed by the supplied scripts rather than fabricated. Before submission, the three named authors should verify citations and source permissions, review the corpus and outputs, explain the algorithm and code, confirm instructor-specific disclosure requirements, and adapt the draft as their own reviewed work. No participant study or independent human annotation is claimed.'),
-    ]
-    return dict(abstract=abstract, intro=intro, related=related, methods=methods, results=results,
-                discussion=discussion, conclusion=conclusion, references=references, appendices=appendices)
+    with (ROOT / 'data/questions.csv').open(newline='', encoding='utf-8') as stream:
+        samples = list(csv.DictReader(stream))[:3]
+    appendices = [head('Appendices'), head('A. Source code, dataset, and usage', 2),
+        para('Repository: https://github.com/jared-boncajes/CCIT_Chatbot. The data dictionary is data/README.md. data/knowledge.json contains the supported source answers; data/questions.csv contains labeled classification questions. Institutional currency and wider redistribution permissions remain unconfirmed.'),
+        table('Permitted project sample: constructed questions, not student transcripts', ['Sample', 'Question', 'Target'], [[row['sample_id'], row['question'], row['faq_id']] for row in samples]),
+        head('B. Demonstration screenshots', 2),
+        {'kind': 'figure', 'path': ROOT / 'docs/screenshots/chat.png', 'caption': 'Chat demonstration: a shorthand department-chair question uses the supplied source.'},
+        {'kind': 'figure', 'path': ROOT / 'docs/screenshots/analysis.png', 'caption': 'Analysis demonstration: current corpus, cleaning summary, charts, and prediction form.'},
+        head('C. Test cases and additional results', 2), para('The tests directory includes canonical/alternative question checks, shorthand, unclear scope, source support, privacy, provider failures, CSV validation, model arithmetic, leakage checks, and repeatable training. docs/testing.md records the latest executed validation. research/results/test_predictions.csv retains every classifier test prediction; report.json contains per-class scores and errors.'),
+        head('D. User guide and responsible AI disclosure', 2), para('See README.md for installation and docs/beginner-guide.md for the code-reading guide and worked Bayes example. AI assistance was used for implementation, constructed questions, debugging, and drafting. Named authors must review the work and be able to explain the code. No interviews, survey results, or real-user outcomes are claimed.'),
+        {'kind': 'code', 'text': 'python -m pip install -r requirements-research.txt\npython tools/build_dataset.py\npython analyze.py\npython -m pytest -q\n# Start a separate terminal with CHAT_MODE=faq, then: python app.py\npython tools/build_project_documents.py'}]
+    return {'abstract': [head('Abstract')] + section('ABSTRACT'), 'intro': intro,
+            'related': concepts, 'methods': methods, 'results': findings,
+            'discussion': discussion, 'conclusion': conclusion,
+            'references': [head('References')] + references, 'appendices': appendices}
 
 
 def inline_runs(text):
@@ -571,35 +335,43 @@ def slides(report):
     from reportlab.pdfgen import canvas
     from reportlab.lib.utils import simpleSplit
     test = report['test']
+    data = report['dataset']
+    selected = report['selected']
+    splits = data['split_counts']
+    classes = len(report['labels'])
     entries = [
-        ('CCIThink', ['CCIT information chatbot + explainable FAQ classification', *AUTHORS, 'Principles of Artificial Intelligence and Data Science · November 2026'], None,
-         'Introduce the approved topic and team. Explain that this is a small educational prototype, not a student-record or grade-prediction system. About 45 seconds.'),
-        ('Problem and objectives', ['Find answers within 22 documented department FAQs.', 'Preserve the existing chat UI and source-support checks.', 'Demonstrate data preparation, learning, evaluation and interpretation.'], None,
-         'Frame information access as the project problem. Do not claim measured workload reduction or student satisfaction. About 1 minute.'),
-        ('Dataset and provenance', ['264 AI-assisted constructed questions; 22 FAQ target labels.', '176 training / 44 validation / 44 test; fixed assignments.', 'Not real student conversations; no private records.', 'Eight training, two validation and two test questions per label.'], 'class_distribution.png',
-         'Show question_dataset.csv and the data dictionary. Explain why a small corpus can demonstrate the workflow but cannot establish real-world effectiveness. About 1 minute.'),
-        ('Preprocessing and EDA', ['Validate schema, label IDs, split membership and input limits.', 'Reject label conflicts and cross-split duplicates.', '264 normalized; 0 missing, duplicate or invalid rows removed.', 'Mean length 7.08 tokens; 7 longer valid questions retained.'], 'question_lengths.png',
-         'Demonstrate actual cleaning statistics, not synthetic claims of dirty real data. Explain why outlier lengths were retained and why labels/language metadata are not features. About 1 minute.'),
-        ('Language coverage', ['176 English / 33 Filipino / 55 Taglish authoring tags.', 'Tags are approximate, not independently annotated.', 'The corpus is balanced by FAQ, not sampled from student demand.'], 'language_distribution.png',
-         'This is the third EDA visualization. Discuss representativeness and language bias, and distinguish designed counts from observed real student behavior. About 45 seconds.'),
-        ('Implemented algorithm', ['Multinomial Naive Bayes, implemented in standard Python.', 'Count unigrams or unigrams plus adjacent bigrams.', 'Learn vocabulary and class-feature counts on training data only.', 'Additive smoothing avoids zero likelihoods; scores are uncalibrated.'], None,
-         'Open chatbot/intent_model.py. Explain the log-prior plus feature-count-weighted log-likelihood equation. State the conditional-independence assumption and why it is imperfect for language. About 90 seconds.'),
-        ('Validation experiment', ['Four fixed feature/smoothing configurations.', 'Choose using validation macro F1, not test accuracy.', 'Selected: unigrams + bigrams, alpha = 0.5.', 'Validation: 31/44 correct; macro F1 = 0.663.'], 'validation_experiment.png',
-         'Explain each axis and the tie-breaking rule. Training and validation remain separate; the selected model was not refitted on validation data. About 1 minute.'),
-        ('Frozen-test results', [f"28/44 correct: {100 * test['accuracy']:.1f}% accuracy.", f"Macro F1 = {test['macro_f1']:.3f}; macro precision = {test['macro_precision']:.3f}.", 'Majority-class baseline: 2/44 correct (4.5%).', '16 mistakes; only two test questions per label.'], 'test_confusion.png',
-         'Interpret the confusion matrix and the limits of the baseline. Do not call the classifier perfect or generalize its percentage to all users. About 1 minute.'),
-        ('Error analysis', ['English-tagged test: 16/22 correct.', 'Filipino-tagged test: 3/8; Taglish: 9/14.', 'Overview, offerings and IT/CS definitions were difficult.', 'Small constructed groups do not establish population differences.'], None,
-         'Open test_predictions.csv and show an actual mistake. Explain sparse wording and overlapping intents as plausible, untested explanations. About 1 minute.'),
-        ('Working demonstration', ['Run python analyze.py, then python app.py.', 'Use /analysis for charts, cleaning, metrics and predictions.', 'Use / for the preserved chat interface and short bold answers.', 'ML only adds a bounded ranking bonus after source checks.', '263 automated tests; 26 browser scenarios; 95/95 chat checks.'], None,
-         'Demonstrate Who teaches BSCS? on the analysis page and the chat. Then show an unsupported detail falling back. Explain that the 95 checks are regression tests, not classifier hold-out accuracy. About 90 seconds.'),
-        ('Ethics and limitations', ['No private student records; no stored chat transcript.', 'Department facts and source permissions still need appropriate review.', 'AI assistance is disclosed; every author must understand the code.', 'No participant study, production-load result or successful live LLM claim.'], None,
-         'Discuss language bias, source currency and provider privacy. Note that optional AI answer mode sends selected information to the chosen provider. About 1 minute.'),
-        ('Conclusion and next steps', ['A reproducible AI/Data Science workflow now supports the chatbot.', 'The classifier outperformed a weak baseline but needs improvement.', 'Next: confirmed facts, permissioned student examples, independent labels and a fresh test set.', 'Questions and defense discussion'], None,
-         'Answer the three research questions briefly. Reserve the professor-required 5 minutes after the 10–15 minute presentation for questions. Do not claim field effectiveness. About 45 seconds.'),
+        ('CCIThink', ['CCIT information chatbot and explainable FAQ classifier', *AUTHORS, 'Principles of Artificial Intelligence and Data Science'], None,
+         'Introduce the team and approved department-information topic. This is a class prototype, not a student-record system. About 45 seconds.'),
+        ('Problem and objectives', [f'Find supported answers within {classes} active department FAQs.', 'Prepare data, describe patterns, train a classifier, and evaluate results.', 'Keep unclear and unsupported questions separate from supported answers.'], None,
+         'Explain the information-search problem without claiming measured waiting times or staff workload savings. About 1 minute.'),
+        ('Dataset and source', [f"{data['quality']['retained_rows']:,} labeled English questions; {classes} FAQ labels.", f"{splits['train']} train / {splits['validation']} validation / {splits['test']} test.", 'Training titles and variants were supplied with the knowledge.', 'Holdouts are AI-authored constructed examples, not student transcripts.'], 'class_distribution.png',
+         'Show data/questions.csv and data/README.md. Explain why a small constructed corpus demonstrates the workflow but cannot establish population accuracy. About 1 minute.'),
+        ('Cleaning and exploration', ['Check missing fields, duplicates, labels, and formats.', 'Reject label conflicts and cross-split duplicates.', f"{data['quality']['missing_rows_removed']} missing, {data['quality']['duplicate_rows_removed']} duplicate, {data['quality']['invalid_rows_removed']} invalid rows removed.", f"Mean {data['token_lengths']['mean']:.2f} tokens; {data['quality']['token_length_outliers']} long valid questions retained."], 'question_lengths.png',
+         'Explain that valid long questions remain. Only question text becomes input features. The reported cleaning counts are measured, not fabricated dirty data. About 1 minute.'),
+        ('Coverage and bias', ['All current dataset examples are English.', 'The model test does not establish Filipino or Taglish accuracy.', 'Topic counts are designed examples, not measured student demand.'], 'language_distribution.png',
+         'This is the third EDA visualization. Explain language coverage and the difference between dataset composition and real student behavior. About 45 seconds.'),
+        ('How Naive Bayes works', ['Count words in training questions for each FAQ label.', 'Estimate a label prior and smoothed word likelihoods.', 'Add log likelihoods to rank possible labels.', 'Independence is an approximation; scores are uncalibrated.'], None,
+         'Open chatbot/intent_model.py and explain the worked example in docs/beginner-guide.md. The implementation uses ordinary Python, counters, loops, and math. About 90 seconds.'),
+        ('Parameter experiment', ['Compare four fixed unigram/bigram and alpha settings.', 'Select with validation macro F1; keep test questions separate.', f"Selected: {selected['name']}.", f"Validation: {selected['correct']}/{selected['samples']} correct; macro F1 {selected['macro_f1']:.3f}."], 'validation_experiment.png',
+         'Explain the validation comparison and tie-breaking rule. No test-based parameter tuning or retraining on held-out questions. About 1 minute.'),
+        ('Test results', [f"{test['correct']}/{test['samples']} correct ({test['accuracy']:.1%}).", f"Macro F1 {test['macro_f1']:.3f}.", f"Majority baseline: {report['baseline']['accuracy']:.1%} accuracy.", f"{len(report['errors'])} errors; two test questions per label."], 'test_confusion.png',
+         'Interpret actual and predicted labels. These are constructed-question classifier results, not chat-user satisfaction or independent real-world accuracy. About 1 minute.'),
+        ('Errors and limitations', ['Similar course and curriculum wording can confuse labels.', 'AI-authored questions may share templates.', 'FAQ-020 was retired by user request; other IDs remain stable.', 'Recomputed results do not constitute a new independent study.'], None,
+         'Show an actual error in research/results/test_predictions.csv. Explain that changing the corpus changes the scores and does not itself prove better generalization. About 1 minute.'),
+        ('Working demonstration', ['Run python analyze.py, then start python app.py in FAQ mode.', 'Use /analysis for five charts, metrics, and a local prediction.', 'Use chat for source-supported answers and short forms.', 'Try an ambiguous question and an unsupported detail.'], None,
+         'Demonstrate Who teaches BSCS?, it dept chair, and a missing contact detail. Distinguish application regressions from classifier test accuracy. About 90 seconds.'),
+        ('Ethics and responsible AI', ['No private student records are required.', 'Source currency and permissions still need review.', 'AI assistance is disclosed; authors must explain their work.', 'Optional provider wording is not a verified live-generation result.'], None,
+         'Discuss privacy, source currency, language bias, and required AI disclosure. Optional AI mode sends selected context to a provider; FAQ mode does not. About 1 minute.'),
+        ('Conclusion and next steps', ['A complete data-science workflow supports the chatbot.', 'The classifier remains limited to a constructed, closed-set task.', 'Next: confirmed sources, permissioned student questions, independent labels.', 'Questions and defense discussion'], None,
+         'Summarize the objectives and limitations. Prepare each team member to explain their contribution and the algorithm. Reserve 5 minutes for questions after the 10–15-minute presentation.'),
     ]
     presentation = Presentation()
     presentation.slide_width, presentation.slide_height = Inches(13.333), Inches(7.5)
     pdf = canvas.Canvas(str(OUT / 'CCIThink_Defense.pdf'), pagesize=(960, 540))
+    pdf.setTitle('CCIThink: Defense Presentation')
+    pdf.setAuthor('; '.join(AUTHORS))
+    presentation.core_properties.title = 'CCIThink: Defense Presentation'
+    presentation.core_properties.author = '; '.join(AUTHORS)
     outline = []
     for index, (title, points, image, notes) in enumerate(entries, 1):
         slide = presentation.slides.add_slide(presentation.slide_layouts[6])
@@ -638,29 +410,27 @@ def slides(report):
 
 
 def main():
+    # All submission documents use this one current result file.
     report = json.loads((ROOT / 'research/results/report.json').read_text(encoding='utf-8'))
     OUT.mkdir(parents=True, exist_ok=True)
     register_pdf_fonts()
     parts = content(report)
-    from build_imrad import manuscript
-    imrad = manuscript(json.loads((ROOT / 'research/results-v3/report.json').read_text(encoding='utf-8')))
-    technical = cover('Five-chapter technical documentation') + parts['abstract']
+    technical = cover('Five-chapter technical documentation · Draft for author review') + parts['abstract']
     chapters = [('Chapter 1: Introduction', parts['intro']),
                 ('Chapter 2: Review of Related Systems and Concepts', parts['related']),
                 ('Chapter 3: Methodology', parts['methods']),
-                ('Chapter 4: Results and Discussion', parts['results'] + parts['discussion'][:-2]),
-                ('Chapter 5: Conclusion and Recommendations', parts['conclusion'] + parts['discussion'][-2:])]
+                ('Chapter 4: Results and Discussion', parts['results'] + parts['discussion']),
+                ('Chapter 5: Conclusion and Recommendations', parts['conclusion'])]
     for name, blocks in chapters:
         technical += [{'kind': 'pagebreak'}, head(name)] + blocks
     technical += [{'kind': 'pagebreak'}] + parts['references'] + parts['appendices']
-    for name, markdown_name, blocks in [('CCIThink_IMRaD_Draft', 'imrad.md', imrad),
-                                        ('CCIThink_Technical_Report_Draft', 'technical-report.md', technical)]:
-        write_markdown(blocks, OUT / markdown_name)
-        write_docx(blocks, OUT / (name + '.docx'), document_title=blocks[0]['text'])
-        write_pdf(blocks, OUT / (name + '.pdf'), document_title=blocks[0]['text'])
-        print(f'Built {name}: Markdown, DOCX and PDF')
+    write_markdown(technical, OUT / 'technical-report.md')
+    write_docx(technical, OUT / 'CCIThink_Technical_Report_Draft.docx')
+    write_pdf(technical, OUT / 'CCIThink_Technical_Report_Draft.pdf')
+    from build_imrad import main as build_article
+    build_article()
     slides(report)
-    print('Built 12-slide defense presentation: PPTX, PDF and Markdown speaker notes')
+    print('Built current five-chapter report, IMRaD, and 12-slide defense.')
 
 
 if __name__ == '__main__':

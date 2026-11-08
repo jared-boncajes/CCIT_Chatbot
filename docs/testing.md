@@ -1,66 +1,39 @@
-# Validation evidence
+# Executed validation
 
-The latest automated run completed with **263 passed** (`.venv/bin/python -m pytest -q`). It covers the original 94 checks, 146 chat regression checks and 23 research checks. These cover reviewed question variants, English/Tagalog phrasing, unsupported facts, direct bold summaries, source metadata, context, explicit FAQ override, privacy/recovery, hand-calculated Bayes scores, bigram order, data cleaning/leakage rejection, stale/invalid models, reproducible experiment outputs and the analysis/prediction endpoints. No test uses a real AI credential.
+The current project has 220 active FAQs; FAQ-020 is retired and the other IDs remain stable. Checks were run after consolidating the project into one dataset and one result folder.
 
-## Separate classifier evaluation
+| Check | Outcome |
+| --- | --- |
+| Python regression suite | 832 passed; no skipped tests reported |
+| HTTP source-support checks | 95/95 passed against a fresh FAQ-mode server |
+| Chat browser checks | 14 passed, including six viewport sizes, real replies, personalization, reset, privacy/fallback, safe text, and simulated failure recovery |
+| Analysis browser checks | 6 passed, including current metrics/charts, local prediction, unknown vocabulary, privacy, simulated failure, and recovery |
+| Dataset/model reproduction | CSV builder preserves fixed bytes; training reproduces the recorded model comparison and test scores; holdout-only words do not enter the trained vocabulary |
+| Retired FAQ checks | No active record, dataset label, model class, analysis label, suggestion, or returned source uses FAQ-020; laboratory questions use FAQ-189 |
+| Required documents | Original guideline PDF is byte-identical to the upload; report has Chapters 1–5, references, appendices, current metrics; deck has 12 slides; IMRaD retains the requested article format |
+| Document review | PDF report and results slide rendered for visual inspection; Word/PPTX opened with their Python libraries; local Markdown links checked |
 
-`python analyze.py` loads 264 AI-assisted constructed questions (176 training, 44 validation, 44 testing). Four prespecified unigram/bigram and smoothing configurations were selected using validation macro F1. The selected unigram-plus-bigram model, alpha 0.5, scored **28/44 correct (63.6% accuracy), macro precision 0.629, macro recall 0.636 and macro F1 0.595** on the frozen test partition. The training-majority baseline scored **2/44 (4.5%), macro F1 0.004**. See `research/results/report.json`, `experiments.csv`, `test_predictions.csv` and figures for the actual results and all sixteen errors.
+## Reproduce
 
-No vocabulary/counts were fitted on validation or test examples. Exact cross-split duplicate questions stop the run. Related templates and AI-assisted authorship remain limitations, and there are only two test questions per class. Validation/test examples have no exact normalized overlap with the older 95-question fixture. No real-student accuracy claim or human study is established. Approximate language tags are authoring metadata, not independently annotated gold labels.
+```bash
+python tools/build_dataset.py
+python analyze.py
+python -m pytest -q
+python tools/build_project_documents.py
+```
 
-## Actual HTTP question evaluation
+With the FAQ-mode server running:
 
-`python tests/evaluate_questions.py --base-url <local FAQ server>` completed **95/95** expected source-support or mode checks:
+```bash
+python tests/evaluate_questions.py
+python tests/browser_smoke.py
+python tests/browser_analysis.py
+```
 
-| Group | Passed | Total |
-| --- | ---: | ---: |
-| Original source questions | 22 | 22 |
-| Review student phrasing/multi-topic requests | 33 | 33 |
-| Additional wording variations | 22 | 22 |
-| Unsupported questions | 12 | 12 |
-| Explicit privacy responses | 6 | 6 |
+Browser checks use Playwright and Chromium. Their result files and optional screenshots go to ignored `test-results/`. Two current screenshots needed for the report appendix remain in `docs/screenshots/`.
 
-Actual replies, selected source IDs, modes, warnings and timings are recorded in evaluation-improved.json. The review phrasing set improved from 8 expected-source matches to 33; it was used during development and is not an independent accuracy benchmark. These checks verify source support and handling, not current institutional accuracy or live AI response quality. Extra automated negative controls cover undocumented fees, online delivery, scholarship guarantees, dates, office details and unsupported programs.
+## Measured classifier results and limits
 
-## Browser validation
+The current corpus has 1,825 questions: 945 train, 440 validation, 440 test. The selected unigrams/alpha-0.5 model scores 366/440 correct on validation (macro F1 0.827) and 353/440 on test (80.2%, macro F1 0.807). All 87 test mistakes remain in the current prediction CSV and report.
 
-`python tests/browser_smoke.py` passed **14 scenarios** in Chromium at desktop 1440×1024, laptop 1280×800, tablet 768×1024, mobile 390×844, small mobile 320×568 and landscape 844×390. Checks include geometry, font loading, no horizontal document overflow, all topic selectors, actual sourced replies, personalization/dialogs, empty-input and duplicate protection, loading, clear-chat confirmation, private/unknown questions, literal HTML-like user text, and simulated outages/retry.
-
-`python tests/browser_improvements.py` passed **6 additional scenarios**:
-
-1. Direct answer, bold key fact, absence of source/verification clutter and actual plain-text clipboard copy.
-2. Program follow-up, New chat context reset and completing a program clarification.
-3. Retry with original request/context, no duplicate user message and preservation of an unsent draft.
-4. Explicit mode=faq fallback, labeled source answer and replacement of the error.
-5. Retrying an older turn while preserving the newer program context.
-6. Safe bold/list rendering for AI replies, literal unmatched markers and user text, and hidden source metadata.
-
-Successful source replies come from the actual local Flask server in FAQ mode. Provider failures and safety payloads are deliberately simulated; they are not live AI responses. No unexpected JavaScript page errors occurred. Current screenshots and timestamped reports are in screenshots/ and screenshots/improvements/.
-
-`python tests/browser_analysis.py` passed **6 more scenarios**, bringing the browser total to **26**. These verify measured metrics and five loaded figures; mobile layout and actual local predictions; unseen-vocabulary abstention; rejection of private-record requests; simulated failure followed by real recovery; and safe literal prediction text plus return to the preserved chat UI. Reports/screenshots are in screenshots/analysis/. The chat homepage template, original CSS and original JavaScript were not changed by the research update.
-
-## Document artifacts
-
-`python tools/build_project_documents.py` generated the IMRaD manuscript and five-chapter technical report in DOCX/PDF/Markdown, plus a 12-slide PPTX/PDF deck with speaker notes. Both papers use the confirmed author names and the actual retained result artifacts. PDF pages were rendered and inspected, including the title/abstract, charts, tables, references and a results slide; embedded fonts avoid viewer substitution. DOCX and PPTX structures were opened with their Python libraries. No fabricated participant or satisfaction results are included.
-
-The readability refactor expands the main routes, word scoring, Naive Bayes calculation, dataset checks and metric counts into explicit steps/loops. The existing regression and numerical-reproduction checks still pass, with unchanged model settings and published results. `tools/build_walkthrough.py` exports a separate beginner guide in Word/PDF/Markdown, including a current function index, every included file and a suggested seven-day learning/build plan.
-
-## Provider and diagnostic coverage
-
-SDK tests use real SDK serialization/parsing with in-memory HTTP transports. They exercise Gemini/OpenAI grounding payloads, default models/key selection, source-only replies, empty/blocked results, quotas without retries, safe classification/logging of 400/403/404/429/503 and connection/timeout errors, model listing and secret-free CLI output. Model-finder tests cover the three-request cap, early success, exclusion of media/preview/Pro IDs, immediate stop on quota/access/connection errors and preservation of .env.
-
-No successful live generation has been confirmed here. The user separately reported a live 503 for gemini-3.8-flash and 404 for the listed gemini-2.5-flash-lite. The model finder remains available to test actual per-project generation access locally.
-
-## Limits
-
-Source transcription is checked against the supplied PDF; current department facts remain unconfirmed. Firefox, Safari, actual mobile devices, screen readers, deployment/load testing and broad independently collected language evaluation remain unrun. JavaScript syntax and Git whitespace checks passed. Runtime dependencies remain unchanged; optional chart/document-generation dependencies are pinned in requirements-research.txt.
-
-## Department-chair and shorthand update (2026-11-08)
-
-The expanded knowledge base has 221 records, including the three user-supplied department chairs. Validation of this update passed 832 pytest cases, including a texting-form variant of every canonical FAQ, 726 supplied alternative questions, chair identity/scope checks, privacy wording, and unsupported-detail guards. The original 218 source records and their frozen validation/test questions were checked for preservation.
-
-A fresh FAQ-mode server passed all 95 existing HTTP source-support checks, 14 chat browser checks across six viewport sizes, and 6 analysis browser scenarios. Additional Chromium requests confirmed that `it dept chair` and `cs dept chrmn` display the supplied names. The browser scripts now use current suggestions and report-driven analysis metrics instead of historical dataset constants. Simulated failure scenarios remain identified in their runner output.
-
-The retrained classifier used 951 training, 442 validation, and 442 test examples. Test performance was 365/442 (82.6%), macro F1 0.822. These constructed-data scores are separate from application regression results. The original holdouts were retained; the three new labels received AI-authored holdouts before the expanded experiment. This is not independent student validation.
-
-The IMRaD Word file was checked for its two-column section and Roman-numbered headings. The generated five-page PDF was rendered for visual inspection of its first and final pages; title, abstract, columns, references, and current metrics were checked. The layout follows the supplied Klarify example while preserving CCIThink authorship and measured findings. Reproduction: `python tools/build_imrad.py`.
+Those constructed-data results differ from source-support regression checks. The retained holdouts keep their wording and split; removing an FAQ changes the corpus and does not create an independent new evaluation. No real-user satisfaction, workload reduction, production-load measurement, or successful live provider generation has been established. Department currency, source permissions, independent student questions, author understanding, and final instructor review remain outside what passing software checks can certify.

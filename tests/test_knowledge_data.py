@@ -13,9 +13,10 @@ ROWS = json.loads((Path(__file__).resolve().parents[1] / 'data/knowledge.json').
 
 
 def test_database_integrity():
-    assert len(ROWS) == 221
-    assert len({row['id'] for row in ROWS}) == 221
-    assert {row['source_id'] for row in ROWS} == set(range(1, 222))
+    assert len(ROWS) == 220
+    assert len({row['id'] for row in ROWS}) == 220
+    assert {row['source_id'] for row in ROWS} == set(range(1, 222)) - {20}
+    assert 'FAQ-020' not in {row['id'] for row in ROWS}
     source = json.loads((Path(__file__).resolve().parents[1] / 'data/sources/database_v3.json').read_text())
     by_id = {r['id']: r for r in source}
     for row in ROWS:
@@ -27,6 +28,24 @@ def test_database_integrity():
         assert row['source'] == 'database_v3.json'
         assert row['currency_status'] == 'unconfirmed'
         assert all(isinstance(q, str) and q.strip() for q in row['alternative_questions'])
+
+
+def test_retired_facilities_overview_is_absent_from_live_endpoints():
+    app = create_app({'TESTING': True, 'CHAT_MODE': 'faq', 'API_KEY': None})
+    client = app.test_client()
+    retired_question = 'What facilities are available for CCIT students?'
+    suggestions = client.get('/api/suggestions').get_json()
+    assert retired_question not in suggestions['questions']
+    assert all(retired_question not in topic['questions'] for topic in suggestions['topics'])
+    assert client.get('/api/health').get_json()['knowledge_records'] == 220
+    assert client.get('/api/health').get_json()['intent_model_ready']
+    assert 'FAQ-020' not in client.get('/api/analysis').get_json()['report']['labels']
+    response = client.post('/api/chat', json={'message': retired_question}).get_json()
+    assert [row['id'] for row in response['sources']] == ['FAQ-189']
+    assert '316 Laboratory' not in response['reply']
+    predictions = client.post('/api/classify', json={'message': retired_question}).get_json()
+    assert predictions['success']
+    assert all(row['faq_id'] != 'FAQ-020' for row in predictions['predictions'])
 
 
 @pytest.mark.parametrize('row', ROWS, ids=lambda row: row['id'])
@@ -56,8 +75,10 @@ def test_expanded_answers_are_complete_through_api(faq_id):
 
 
 def test_stale_classifier_is_not_loaded():
-    legacy = Path(__file__).resolve().parents[1] / 'research/results/model.json'
-    assert load_model(legacy, ROWS) is None
+    model_path = Path(__file__).resolve().parents[1] / 'research/results/model.json'
+    changed = [dict(row) for row in ROWS]
+    changed[0]['answer'] += ' Changed source text.'
+    assert load_model(model_path, changed) is None
 
 
 def test_alternative_questions_retrieve_the_authored_record_or_request_missing_year():
@@ -81,4 +102,4 @@ def test_alternative_questions_retrieve_the_authored_record_or_request_missing_y
             else:
                 assert [r['id'] for r in retrieve(question, ROWS)] == [expected]
             checked += 1
-    assert checked == 726
+    assert checked == 721

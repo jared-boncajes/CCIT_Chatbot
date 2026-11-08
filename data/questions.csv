@@ -225,8 +225,6 @@ FAQ-163-V3-TRAIN-01,Does SCRIPT+ (Script Writing and Storyboard Engineering) hav
 FAQ-114-V3-TRAIN-01,Does SYSADMA (System Administration and Maintenance) have a prerequisite in the BSIT curriculum?,FAQ-114,train,English,User-supplied database_v3.json alternative question; authorship not independently established
 FAQ-117-V3-TRAIN-01,Does SYSINTA (System Integration and Architecture) have a prerequisite in the BSIT curriculum?,FAQ-117,train,English,User-supplied database_v3.json alternative question; authorship not independently established
 FAQ-142-V3-TRAIN-01,Does TECHWRI (Technical Writing) have a prerequisite in the BSEMC-DA curriculum?,FAQ-142,train,English,User-supplied database_v3.json alternative question; authorship not independently established
-FAQ-020-V3-TRAIN-01,Does the college have a Multimedia Laboratory?,FAQ-020,train,English,User-supplied database_v3.json alternative question; authorship not independently established
-FAQ-020-V3-TRAIN-02,Does the college have an AI Laboratory?,FAQ-020,train,English,User-supplied database_v3.json alternative question; authorship not independently established
 FAQ-022-V3-TRAIN-02,Does the college organize CCIT Night?,FAQ-022,train,English,User-supplied database_v3.json alternative question; authorship not independently established
 FAQ-209-V3-TRAIN-04,Does the school help me find a company for OJT?,FAQ-209,train,English,User-supplied database_v3.json alternative question; authorship not independently established
 FAQ-067-V3-TRAIN-01,Does THESIS1 (Computer Science Thesis Writing 1) have a prerequisite in the BSCS curriculum?,FAQ-067,train,English,User-supplied database_v3.json alternative question; authorship not independently established
@@ -485,7 +483,6 @@ FAQ-013-V3-TRAIN-03,What careers can I pursue after graduating from BSCS?,FAQ-01
 FAQ-015-V3-TRAIN-03,What careers can I pursue after graduating from BSEMC?,FAQ-015,train,English,User-supplied database_v3.json canonical question; authorship not independently established
 FAQ-014-V3-TRAIN-03,What careers can I pursue after graduating from BSIT?,FAQ-014,train,English,User-supplied database_v3.json canonical question; authorship not independently established
 FAQ-189-V3-TRAIN-03,What computer laboratories are available for CCIT students and what are their purposes?,FAQ-189,train,English,User-supplied database_v3.json canonical question; authorship not independently established
-FAQ-020-V3-TRAIN-03,What computer labs can students use?,FAQ-020,train,English,User-supplied database_v3.json alternative question; authorship not independently established
 FAQ-006-V3-TRAIN-06,What courses are offered by CCIT?,FAQ-006,train,English,User-supplied database_v3.json alternative question; authorship not independently established
 FAQ-179-V3-TRAIN-03,What do I need before taking Internship in BSEMC-DA?,FAQ-179,train,English,User-supplied database_v3.json alternative question; authorship not independently established
 FAQ-215-V3-TRAIN-02,What do students do in Artventure?,FAQ-215,train,English,User-supplied database_v3.json alternative question; authorship not independently established
@@ -504,7 +501,6 @@ FAQ-002-V3-TRAIN-02,What does the College of Computing and Information Technolog
 FAQ-189-V3-TRAIN-04,What equipments does CCIT have?,FAQ-189,train,English,User-supplied database_v3.json alternative question; authorship not independently established
 FAQ-210-V3-TRAIN-04,What events does CCIT organize?,FAQ-210,train,English,User-supplied database_v3.json canonical question; authorship not independently established
 FAQ-210-V3-TRAIN-05,What events does the College of Computing in Information Tecnhology have?,FAQ-210,train,English,User-supplied database_v3.json alternative question; authorship not independently established
-FAQ-020-V3-TRAIN-04,What facilities are available for CCIT students?,FAQ-020,train,English,User-supplied database_v3.json canonical question; authorship not independently established
 FAQ-189-V3-TRAIN-05,What facilities does CCIT have?,FAQ-189,train,English,User-supplied database_v3.json alternative question; authorship not independently established
 FAQ-012-V3-TRAIN-04,What financial aid is available for CCIT students?,FAQ-012,train,English,User-supplied database_v3.json alternative question; authorship not independently established
 FAQ-215-V3-TRAIN-03,What happens in Artventure?,FAQ-215,train,English,User-supplied database_v3.json alternative question; authorship not independently established
@@ -717,7 +713,6 @@ FAQ-142-V3-TRAIN-03,What is the prerequisite for TECHWRI (Technical Writing) in 
 FAQ-154-V3-TRAIN-03,"What is the prerequisite for UDESIGN (Usability, HCI, and User Interaction Design) in the BSEMC-DA curriculum?",FAQ-154,train,English,User-supplied database_v3.json alternative question; authorship not independently established
 FAQ-156-V3-TRAIN-03,What is the prerequisite for WRITNEW (Writing for New Media) in the BSEMC-DA curriculum?,FAQ-156,train,English,User-supplied database_v3.json alternative question; authorship not independently established
 FAQ-002-V3-TRAIN-05,What is the purpose of the College of Computing and Information Technology?,FAQ-002,train,English,User-supplied database_v3.json alternative question; authorship not independently established
-FAQ-020-V3-TRAIN-05,What is the purpose of the Programming Laboratory?,FAQ-020,train,English,User-supplied database_v3.json alternative question; authorship not independently established
 FAQ-184-V3-TRAIN-01,What is the recruitment timeline for FACTS officers?,FAQ-184,train,English,User-supplied database_v3.json alternative question; authorship not independently established
 FAQ-190-V3-TRAIN-04,What is the schedule for lab work in CCIT?,FAQ-190,train,English,User-supplied database_v3.json alternative question; authorship not independently established
 FAQ-213-V3-TRAIN-05,What is the Sem Opener?,FAQ-213,train,English,User-supplied database_v3.json alternative question; authorship not independently established
@@ -728,7 +723,6 @@ FAQ-013-V3-TRAIN-04,What jobs can I get with a BSCS degree?,FAQ-013,train,Englis
 FAQ-015-V3-TRAIN-04,What jobs can I get with a BSEMC degree?,FAQ-015,train,English,User-supplied database_v3.json alternative question; authorship not independently established
 FAQ-014-V3-TRAIN-04,What jobs can I get with a BSIT degree?,FAQ-014,train,English,User-supplied database_v3.json alternative question; authorship not independently established
 FAQ-004-V3-TRAIN-05,What kind of IT professionals does CCIT aim to produce?,FAQ-004,train,English,User-supplied database_v3.json alternative question; authorship not independently established
-FAQ-020-V3-TRAIN-06,What laboratories are available to computing students?,FAQ-020,train,English,User-supplied database_v3.json alternative question; authorship not independently established
 FAQ-006-V3-TRAIN-07,What master's and doctorate programs are available?,FAQ-006,train,English,User-supplied database_v3.json alternative question; authorship not independently established
 FAQ-022-V3-TRAIN-03,What non-academic activities and events does CCIT organize for students?,FAQ-022,train,English,User-supplied database_v3.json canonical question; authorship not independently established
 FAQ-022-V3-TRAIN-04,What non-academic activities does the college organize?,FAQ-022,train,English,User-supplied database_v3.json alternative question; authorship not independently established
@@ -1026,10 +1020,6 @@ FAQ-019-V3-VALIDATION-01,List the instructors assigned to the BSEMC program.,FAQ
 FAQ-019-V3-VALIDATION-02,Name the teaching staff for Entertainment and Multimedia Computing.,FAQ-019,validation,English,AI-authored constructed question; frozen before v3 evaluation; not a student transcript
 FAQ-019-V3-TEST-01,Which faculty teach Bachelor of Science in Entertainment and Multimedia Computing?,FAQ-019,test,English,AI-authored constructed question; frozen before v3 evaluation; not a student transcript
 FAQ-019-V3-TEST-02,Give me the BSEMC teaching roster.,FAQ-019,test,English,AI-authored constructed question; frozen before v3 evaluation; not a student transcript
-FAQ-020-V3-VALIDATION-01,Give an overview of the facilities available to computing students.,FAQ-020,validation,English,AI-authored constructed question; frozen before v3 evaluation; not a student transcript
-FAQ-020-V3-VALIDATION-02,Which facilities support CCIT student learning?,FAQ-020,validation,English,AI-authored constructed question; frozen before v3 evaluation; not a student transcript
-FAQ-020-V3-TEST-01,What learning facilities does CCIT provide?,FAQ-020,test,English,AI-authored constructed question; frozen before v3 evaluation; not a student transcript
-FAQ-020-V3-TEST-02,Tell me about the facilities of the computing college.,FAQ-020,test,English,AI-authored constructed question; frozen before v3 evaluation; not a student transcript
 FAQ-021-V3-VALIDATION-01,Can DOST-funded scholars study Computer Science at CCIT?,FAQ-021,validation,English,AI-authored constructed question; frozen before v3 evaluation; not a student transcript
 FAQ-021-V3-VALIDATION-02,Is a DOST award accepted for BSIT study at FAITH?,FAQ-021,validation,English,AI-authored constructed question; frozen before v3 evaluation; not a student transcript
 FAQ-021-V3-TEST-01,Does the college accept DOST scholarship recipients for its BSCS degree?,FAQ-021,test,English,AI-authored constructed question; frozen before v3 evaluation; not a student transcript

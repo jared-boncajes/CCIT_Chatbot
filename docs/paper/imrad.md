@@ -10,7 +10,7 @@ Bachelor of Science in Computer Science
 
 ## ABSTRACT
 
-This project developed CCIThink, a web-based chatbot that helps students find information about the College of Computing and Information Technology (CCIT) at FAITH Colleges. The chatbot uses a supplied collection of 221 frequently asked questions (FAQs). Its topics include academic programs, scholarships, faculty, curricula, subject prerequisites, student organizations and college events. A question classifier was trained to suggest which FAQ matches a student's question. The dataset contained 1,835 labeled questions: 951 for training, 442 for choosing the model settings, and 442 for testing the selected model. Training questions came from the supplied database. Validation and test questions were written with AI assistance and fixed before the experiment. Four settings of the Naive Bayes classifier were compared. The selected model correctly classified 365 of 442 test questions, giving 82.6% accuracy and a macro F1 score of 0.822. These results apply to the constructed dataset, rather than to actual student use. The chatbot also checks whether the source supports an answer and asks for details when a question is unclear. The project demonstrates a working student information prototype. Evaluation with independently written student questions and confirmation of current department information are recommended before wider use.
+This project developed CCIThink, a web-based chatbot that helps students find information about the College of Computing and Information Technology (CCIT) at FAITH Colleges. The chatbot uses a supplied collection of 220 frequently asked questions (FAQs). Its topics include academic programs, scholarships, faculty, curricula, subject prerequisites, student organizations and college events. A question classifier was trained to suggest which FAQ matches a student's question. The dataset contained 1,825 labeled questions: 945 for training, 440 for choosing the model settings, and 440 for testing the selected model. Training questions came from the supplied database. Validation and test questions were written with AI assistance and fixed before the experiment. Four settings of the Naive Bayes classifier were compared. The selected model correctly classified 353 of 440 test questions, giving 80.2% accuracy and a macro F1 score of 0.807. These results apply to the constructed dataset, rather than to actual student use. The chatbot also checks whether the source supports an answer and asks for details when a question is unclear. The project demonstrates a working student information prototype. Evaluation with independently written student questions and confirmation of current department information are recommended before wider use.
 
 Key terms: department chatbot; frequently asked questions; Naive Bayes; text classification; student information
 
@@ -24,7 +24,7 @@ The project also applies the topics covered in Principles of Artificial Intellig
 
 ### Objectives
 
-The general objective was to develop a department chatbot with a trainable question classifier. The specific objectives were to prepare labeled examples for the 221 FAQs, check the quality of the dataset, compare four model settings, measure the selected model's performance, and prevent unclear or unsupported questions from receiving an arbitrary answer.
+The general objective was to develop a department chatbot with a trainable question classifier. The specific objectives were to prepare labeled examples for the 220 FAQs, check the quality of the dataset, compare four model settings, measure the selected model's performance, and prevent unclear or unsupported questions from receiving an arbitrary answer.
 
 - How accurately does the selected model classify the constructed test questions?
 - Which of the four model settings performs best on the validation questions?
@@ -40,21 +40,21 @@ CCIThink is limited to the supplied CCIT knowledge. It does not access private s
 
 ### Development approach and data source
 
-The study involved building the software and testing it locally. Each question was treated as one data example. No participants were recruited. The current knowledge base was imported from the user-supplied database_v3.json file, which originally contained 218 FAQs, now extended with three user-supplied department-chair records, and alternative versions of their questions [1]. Original answers were retained. Checking the import confirmed that the text was copied correctly; it did not independently verify department policies or staff assignments. Some records have a specific academic year, which must remain clear in answers.
+The study involved building the software and testing it locally. Each question was treated as one data example. No participants were recruited. The current knowledge base was imported from the user-supplied database_v3.json file, which originally contained 218 FAQs, and extended with three user-supplied department-chair records [1]. The older laboratory overview, FAQ-020, was subsequently removed at the user's request; the separate laboratory overview, FAQ-189, remains active. Other IDs and original answers were retained. Checking the import confirmed that the text was copied correctly; it did not independently verify department policies or staff assignments. Some records have a specific academic year, which must remain clear in answers.
 
-The question dataset contains six columns: an example ID, the question, its correct FAQ label, its assigned split, its language and its origin. Only question text is used as model input. The FAQ label is the expected output. Names of files, answers and other metadata are not used as question features. All 1,835 examples in the current dataset are English.
+The question dataset contains six columns: an example ID, the question, its correct FAQ label, its assigned split, its language and its origin. Only question text is used as model input. The FAQ label is the expected output. Names of files, answers and other metadata are not used as question features. All 1,825 examples in the current dataset are English.
 
 Table 1. Current dataset allocation
 | Purpose | Number of questions | Origin |
 | --- | --- | --- |
-| Training | 951 | Supplied FAQ titles and alternative questions |
-| Validation | 442 | Two AI-authored questions per FAQ |
-| Testing | 442 | Two different AI-authored questions per FAQ |
-| Total | 1835 | 221 FAQ labels |
+| Training | 945 | Supplied FAQ titles and alternative questions |
+| Validation | 440 | Two AI-authored questions per FAQ |
+| Testing | 440 | Two different AI-authored questions per FAQ |
+| Total | 1825 | 220 FAQ labels |
 
 The supplied questions provided between three and eight training examples per FAQ. One overlapping question about CCIT Camp was assigned to its specific Camp FAQ instead of the general activities FAQ. The newly written validation and test examples were stored separately before the first experiment. Validation questions were used to choose the model settings. Test questions were reserved for the final measurement and were not changed after the results were inspected. Because the new questions were AI-authored and sometimes use similar sentence patterns, they are not an independent sample of real student questions.
 
-The three department-chair FAQs were supplied as a later update. Their labels and newly authored holdouts extend the original frozen evaluation; previous holdouts remain unchanged. The expanded experiment is a repeatable constructed-data evaluation, not independent student validation. Texting aliases and conservative typo handling support short questions across topics; unknown codes, missing facts and ambiguous requests still require clarification or fallback.
+The three department-chair FAQs were supplied as a later update. Their labels and newly authored holdouts extend the original frozen evaluation; all retained holdout questions remain unchanged. The retired FAQ-020 examples are excluded with their label by user request. The revised-corpus experiment is a repeatable constructed-data evaluation, not independent student validation. Texting aliases and conservative typo handling support short questions across topics; unknown codes, missing facts and ambiguous requests still require clarification or fallback.
 
 ### Data preparation
 
@@ -80,29 +80,29 @@ The system does not require private student records. Optional AI answer generati
 
 ### Dataset checks
 
-All 1,835 input questions passed the dataset checks and were retained. No rows were removed for missing information, invalid values or duplicate questions. The loader standardized the formatting of all rows. Question lengths ranged from 2 to 28 words or number tokens, with an average of 12.31. Nine unusually long questions were retained. Training counts differ across labels because the supplied FAQs contain different numbers of alternative questions. These counts describe the prepared dataset, not the frequency of questions asked by students.
+All 1,825 input questions passed the dataset checks and were retained. No rows were removed for missing information, invalid values or duplicate questions. The loader standardized the formatting of all rows. Question lengths ranged from 2 to 28 words or number tokens, with an average of 12.33. 9 unusually long questions were retained. Training counts differ across labels because the supplied FAQs contain different numbers of alternative questions. These counts describe the prepared dataset, not the frequency of questions asked by students.
 
-![Figure 1. Examples per FAQ label. The counts reflect dataset preparation, not student demand.](../../research/results-v3/figures/class_distribution.png)
+![Figure 1. Examples per FAQ label. The counts reflect dataset preparation, not student demand.](../../research/results/figures/class_distribution.png)
 
-![Figure 2. Question lengths after text formatting was standardized.](../../research/results-v3/figures/question_lengths.png)
+![Figure 2. Question lengths after text formatting was standardized.](../../research/results/figures/question_lengths.png)
 
 ### Validation and test performance
 
 Table 2. Comparison using validation questions only
 | Model setting | Correct / total | Accuracy | Macro F1 |
 | --- | --- | --- | --- |
-| Unigrams / smoothing=1 | 357/442 | 80.8% | 0.801 |
-| Unigrams / smoothing=0.5 | 366/442 | 82.8% | 0.824 |
-| Uni+bigrams / smoothing=1 | 281/442 | 63.6% | 0.683 |
-| Uni+bigrams / smoothing=0.5 | 288/442 | 65.2% | 0.701 |
+| Unigrams / smoothing=1 | 358/440 | 81.4% | 0.807 |
+| Unigrams / smoothing=0.5 | 366/440 | 83.2% | 0.827 |
+| Uni+bigrams / smoothing=1 | 280/440 | 63.6% | 0.683 |
+| Uni+bigrams / smoothing=0.5 | 288/440 | 65.5% | 0.703 |
 
-The individual-word model with smoothing 0.5 performed best on validation, correctly classifying 366 of 442 questions. Its validation macro F1 was 0.824. The word-pair settings did not improve validation performance in this experiment. This result supports the selected setting for this dataset, but does not show that individual words will always work better for other question collections.
+The individual-word model with smoothing 0.5 performed best on validation, correctly classifying 366 of 440 questions. Its validation macro F1 was 0.827. The word-pair settings did not improve validation performance in this experiment. This result supports the selected setting for this dataset, but does not show that individual words will always work better for other question collections.
 
-![Figure 3. Validation macro F1 for the four model settings. The test set did not determine the winner.](../../research/results-v3/figures/validation_experiment.png)
+![Figure 3. Validation macro F1 for the four model settings. The test set did not determine the winner.](../../research/results/figures/validation_experiment.png)
 
-On the separate test set, the selected model classified 365 of 442 questions correctly. This gives 82.6% accuracy and a macro F1 of 0.822. The always-predict-one-label comparison achieved 0.5% accuracy. There were 77 incorrect test predictions. The full prediction list and error records are saved with the project.
+On the separate test set, the selected model classified 353 of 440 questions correctly. This gives 80.2% accuracy and a macro F1 of 0.807. The always-predict-one-label comparison achieved 0.5% accuracy. There were 87 incorrect test predictions. The full prediction list and error records are saved with the project.
 
-![Figure 4. Actual and predicted FAQ labels on the test set. Marks away from the diagonal indicate mistakes.](../../research/results-v3/figures/test_confusion.png)
+![Figure 4. Actual and predicted FAQ labels on the test set. Marks away from the diagonal indicate mistakes.](../../research/results/figures/test_confusion.png)
 
 Errors included confusion between curriculum years, similar prerequisite topics, and broad questions that were assigned to a more specific FAQ. Software tests also checked input handling, source selection, clarification and conversation follow-ups. Browser checks exercised the chat interface on mobile and desktop sizes. These checks help identify software problems; they do not measure student satisfaction or establish the accuracy of every possible conversation.
 
@@ -110,7 +110,7 @@ Errors included confusion between curriculum years, similar prerequisite topics,
 
 ### Meaning of the findings
 
-The first research question is answered by the test result of 82.6% accuracy. The second is answered by the validation comparison, which favored individual words with smoothing 0.5. The third concerns the mistakes and limits of using this result in a chatbot. Although the model performed better than the simple comparison method, its 77 test errors show that it should not decide answers on its own.
+The first research question is answered by the test result of 80.2% accuracy. The second is answered by the validation comparison, which favored individual words with smoothing 0.5. The third concerns the mistakes and limits of using this result in a chatbot. Although the model performed better than the simple comparison method, its 87 test errors show that it should not decide answers on its own.
 
 Finding the right FAQ and giving reliable information are related but different tasks. A model can select the wrong FAQ, and even a correctly selected source may contain an outdated policy. The chatbot therefore needs both careful source selection and department review. Clarification rules are especially useful for short questions that omit the subject, program or year. They cannot guarantee that every unclear question will be recognized, so errors should continue to be recorded.
 
@@ -122,20 +122,20 @@ The next step should be to collect independently written student questions with 
 
 ### Conclusion
 
-CCIThink demonstrates how a department chatbot can combine a stored FAQ collection, a trainable question classifier and rules for handling unclear requests. The current model covers 221 FAQ labels and achieved 82.6% accuracy on 442 constructed test questions. The project provides a working final-project prototype and a repeatable way to examine its results. Its findings support further development, rather than a claim that it is already reliable for all student questions. Independent student evaluation and updated department verification remain necessary.
+CCIThink demonstrates how a department chatbot can combine a stored FAQ collection, a trainable question classifier and rules for handling unclear requests. The current model covers 220 FAQ labels and achieved 80.2% accuracy on 440 constructed test questions. The project provides a working final-project prototype and a repeatable way to examine its results. Its findings support further development, rather than a claim that it is already reliable for all student questions. Independent student evaluation and updated department verification remain necessary.
 
 ### Reproducing the experiment
 
-Repository: https://github.com/jared-boncajes/CCIT_Chatbot. The active dataset is data/question_dataset_v3.csv and the fixed validation and test questions are in data/question_holdouts_v3.json. The original 22-FAQ experiment is retained separately in research/results; it is not the experiment reported in this revised paper.
+Repository: https://github.com/jared-boncajes/CCIT_Chatbot. The active dataset is data/questions.csv and the fixed validation and test questions are in data/holdouts.json. The original course guideline PDF is retained at docs/FINAL_PROJECT.pdf. The current model and all five charts are stored in research/results.
 
 ```bash
 python -m pip install -r requirements-research.txt
-python tools/build_question_dataset_v3.py
-python analyze.py --dataset data/question_dataset_v3.csv --output-dir research/results-v3
+python tools/build_dataset.py
+python analyze.py --dataset data/questions.csv --output-dir research/results
 python tools/build_imrad.py
 ```
 
-These commands should be run in an activated virtual environment from the project folder. The report, trained model, charts and test predictions are saved in research/results-v3. To use the chatbot without an external AI key, set CHAT_MODE=faq in .env and run python app.py. The analysis page shows the current results. Repeating the same experiment is a check of reproducibility, not a new independent evaluation.
+These commands should be run in an activated virtual environment from the project folder. The report, trained model, charts and test predictions are saved in research/results. To use the chatbot without an external AI key, set CHAT_MODE=faq in .env and run python app.py. The analysis page shows the current results. Repeating the same experiment is a check of reproducibility, not a new independent evaluation.
 
 ## REFERENCES
 

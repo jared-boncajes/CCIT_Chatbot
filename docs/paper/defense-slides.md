@@ -1,107 +1,106 @@
 ## Slide 1: CCIThink
 
-- CCIT information chatbot + explainable FAQ classification
+- CCIT information chatbot and explainable FAQ classifier
 - Boncajes, Rhian Jared D.
 - Marcos, Maricar N.
 - Carandang, Jamie Pearl U.
-- Principles of Artificial Intelligence and Data Science · November 2026
+- Principles of Artificial Intelligence and Data Science
 
-**Speaker notes:** Introduce the approved topic and team. Explain that this is a small educational prototype, not a student-record or grade-prediction system. About 45 seconds.
+**Speaker notes:** Introduce the team and approved department-information topic. This is a class prototype, not a student-record system. About 45 seconds.
 
 ## Slide 2: Problem and objectives
 
-- Find answers within 22 documented department FAQs.
-- Preserve the existing chat UI and source-support checks.
-- Demonstrate data preparation, learning, evaluation and interpretation.
+- Find supported answers within 220 active department FAQs.
+- Prepare data, describe patterns, train a classifier, and evaluate results.
+- Keep unclear and unsupported questions separate from supported answers.
 
-**Speaker notes:** Frame information access as the project problem. Do not claim measured workload reduction or student satisfaction. About 1 minute.
+**Speaker notes:** Explain the information-search problem without claiming measured waiting times or staff workload savings. About 1 minute.
 
-## Slide 3: Dataset and provenance
+## Slide 3: Dataset and source
 
-- 264 AI-assisted constructed questions; 22 FAQ target labels.
-- 176 training / 44 validation / 44 test; fixed assignments.
-- Not real student conversations; no private records.
-- Eight training, two validation and two test questions per label.
+- 1,825 labeled English questions; 220 FAQ labels.
+- 945 train / 440 validation / 440 test.
+- Training titles and variants were supplied with the knowledge.
+- Holdouts are AI-authored constructed examples, not student transcripts.
 
-**Speaker notes:** Show question_dataset.csv and the data dictionary. Explain why a small corpus can demonstrate the workflow but cannot establish real-world effectiveness. About 1 minute.
+**Speaker notes:** Show data/questions.csv and data/README.md. Explain why a small constructed corpus demonstrates the workflow but cannot establish population accuracy. About 1 minute.
 
-## Slide 4: Preprocessing and EDA
+## Slide 4: Cleaning and exploration
 
-- Validate schema, label IDs, split membership and input limits.
+- Check missing fields, duplicates, labels, and formats.
 - Reject label conflicts and cross-split duplicates.
-- 264 normalized; 0 missing, duplicate or invalid rows removed.
-- Mean length 7.08 tokens; 7 longer valid questions retained.
+- 0 missing, 0 duplicate, 0 invalid rows removed.
+- Mean 12.33 tokens; 9 long valid questions retained.
 
-**Speaker notes:** Demonstrate actual cleaning statistics, not synthetic claims of dirty real data. Explain why outlier lengths were retained and why labels/language metadata are not features. About 1 minute.
+**Speaker notes:** Explain that valid long questions remain. Only question text becomes input features. The reported cleaning counts are measured, not fabricated dirty data. About 1 minute.
 
-## Slide 5: Language coverage
+## Slide 5: Coverage and bias
 
-- 176 English / 33 Filipino / 55 Taglish authoring tags.
-- Tags are approximate, not independently annotated.
-- The corpus is balanced by FAQ, not sampled from student demand.
+- All current dataset examples are English.
+- The model test does not establish Filipino or Taglish accuracy.
+- Topic counts are designed examples, not measured student demand.
 
-**Speaker notes:** This is the third EDA visualization. Discuss representativeness and language bias, and distinguish designed counts from observed real student behavior. About 45 seconds.
+**Speaker notes:** This is the third EDA visualization. Explain language coverage and the difference between dataset composition and real student behavior. About 45 seconds.
 
-## Slide 6: Implemented algorithm
+## Slide 6: How Naive Bayes works
 
-- Multinomial Naive Bayes, implemented in standard Python.
-- Count unigrams or unigrams plus adjacent bigrams.
-- Learn vocabulary and class-feature counts on training data only.
-- Additive smoothing avoids zero likelihoods; scores are uncalibrated.
+- Count words in training questions for each FAQ label.
+- Estimate a label prior and smoothed word likelihoods.
+- Add log likelihoods to rank possible labels.
+- Independence is an approximation; scores are uncalibrated.
 
-**Speaker notes:** Open chatbot/intent_model.py. Explain the log-prior plus feature-count-weighted log-likelihood equation. State the conditional-independence assumption and why it is imperfect for language. About 90 seconds.
+**Speaker notes:** Open chatbot/intent_model.py and explain the worked example in docs/beginner-guide.md. The implementation uses ordinary Python, counters, loops, and math. About 90 seconds.
 
-## Slide 7: Validation experiment
+## Slide 7: Parameter experiment
 
-- Four fixed feature/smoothing configurations.
-- Choose using validation macro F1, not test accuracy.
-- Selected: unigrams + bigrams, alpha = 0.5.
-- Validation: 31/44 correct; macro F1 = 0.663.
+- Compare four fixed unigram/bigram and alpha settings.
+- Select with validation macro F1; keep test questions separate.
+- Selected: Unigrams / a=0.5.
+- Validation: 366/440 correct; macro F1 0.827.
 
-**Speaker notes:** Explain each axis and the tie-breaking rule. Training and validation remain separate; the selected model was not refitted on validation data. About 1 minute.
+**Speaker notes:** Explain the validation comparison and tie-breaking rule. No test-based parameter tuning or retraining on held-out questions. About 1 minute.
 
-## Slide 8: Frozen-test results
+## Slide 8: Test results
 
-- 28/44 correct: 63.6% accuracy.
-- Macro F1 = 0.595; macro precision = 0.629.
-- Majority-class baseline: 2/44 correct (4.5%).
-- 16 mistakes; only two test questions per label.
+- 353/440 correct (80.2%).
+- Macro F1 0.807.
+- Majority baseline: 0.5% accuracy.
+- 87 errors; two test questions per label.
 
-**Speaker notes:** Interpret the confusion matrix and the limits of the baseline. Do not call the classifier perfect or generalize its percentage to all users. About 1 minute.
+**Speaker notes:** Interpret actual and predicted labels. These are constructed-question classifier results, not chat-user satisfaction or independent real-world accuracy. About 1 minute.
 
-## Slide 9: Error analysis
+## Slide 9: Errors and limitations
 
-- English-tagged test: 16/22 correct.
-- Filipino-tagged test: 3/8; Taglish: 9/14.
-- Overview, offerings and IT/CS definitions were difficult.
-- Small constructed groups do not establish population differences.
+- Similar course and curriculum wording can confuse labels.
+- AI-authored questions may share templates.
+- FAQ-020 was retired by user request; other IDs remain stable.
+- Recomputed results do not constitute a new independent study.
 
-**Speaker notes:** Open test_predictions.csv and show an actual mistake. Explain sparse wording and overlapping intents as plausible, untested explanations. About 1 minute.
+**Speaker notes:** Show an actual error in research/results/test_predictions.csv. Explain that changing the corpus changes the scores and does not itself prove better generalization. About 1 minute.
 
 ## Slide 10: Working demonstration
 
-- Run python analyze.py, then python app.py.
-- Use /analysis for charts, cleaning, metrics and predictions.
-- Use / for the preserved chat interface and short bold answers.
-- ML only adds a bounded ranking bonus after source checks.
-- 263 automated tests; 26 browser scenarios; 95/95 chat checks.
+- Run python analyze.py, then start python app.py in FAQ mode.
+- Use /analysis for five charts, metrics, and a local prediction.
+- Use chat for source-supported answers and short forms.
+- Try an ambiguous question and an unsupported detail.
 
-**Speaker notes:** Demonstrate Who teaches BSCS? on the analysis page and the chat. Then show an unsupported detail falling back. Explain that the 95 checks are regression tests, not classifier hold-out accuracy. About 90 seconds.
+**Speaker notes:** Demonstrate Who teaches BSCS?, it dept chair, and a missing contact detail. Distinguish application regressions from classifier test accuracy. About 90 seconds.
 
-## Slide 11: Ethics and limitations
+## Slide 11: Ethics and responsible AI
 
-- No private student records; no stored chat transcript.
-- Department facts and source permissions still need appropriate review.
-- AI assistance is disclosed; every author must understand the code.
-- No participant study, production-load result or successful live LLM claim.
+- No private student records are required.
+- Source currency and permissions still need review.
+- AI assistance is disclosed; authors must explain their work.
+- Optional provider wording is not a verified live-generation result.
 
-**Speaker notes:** Discuss language bias, source currency and provider privacy. Note that optional AI answer mode sends selected information to the chosen provider. About 1 minute.
+**Speaker notes:** Discuss privacy, source currency, language bias, and required AI disclosure. Optional AI mode sends selected context to a provider; FAQ mode does not. About 1 minute.
 
 ## Slide 12: Conclusion and next steps
 
-- A reproducible AI/Data Science workflow now supports the chatbot.
-- The classifier outperformed a weak baseline but needs improvement.
-- Next: confirmed facts, permissioned student examples, independent labels and a fresh test set.
+- A complete data-science workflow supports the chatbot.
+- The classifier remains limited to a constructed, closed-set task.
+- Next: confirmed sources, permissioned student questions, independent labels.
 - Questions and defense discussion
 
-**Speaker notes:** Answer the three research questions briefly. Reserve the professor-required 5 minutes after the 10–15 minute presentation for questions. Do not claim field effectiveness. About 45 seconds.
+**Speaker notes:** Summarize the objectives and limitations. Prepare each team member to explain their contribution and the algorithm. Reserve 5 minutes for questions after the 10–15-minute presentation.

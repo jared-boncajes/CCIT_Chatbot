@@ -1,6 +1,6 @@
 """Build the v3 corpus with source questions in train and frozen authored holdouts.
 
-Run from any directory: python tools/build_question_dataset_v3.py
+Run from any directory: python tools/build_dataset.py
 No answers, keywords, IDs, or split metadata become question text features.
 """
 import csv
@@ -21,13 +21,15 @@ def key(question):
 
 
 def build():
+    # 1. Read the active answers and the fixed holdout questions.
     records = json.loads((ROOT / 'data/knowledge.json').read_text(encoding='utf-8'))
-    holdouts_path = ROOT / 'data/question_holdouts_v3.json'
+    holdouts_path = ROOT / 'data/holdouts.json'
     holdouts = json.loads(holdouts_path.read_text(encoding='utf-8'))['examples']
     ids = {r['id'] for r in records}
     if set(holdouts) != ids:
         raise ValueError('Holdouts must cover exactly the active knowledge IDs')
 
+    # 2. Group supplied question variants and resolve shared titles.
     candidates = defaultdict(list)
     for record in records:
         candidates[key(record['question'])].append((record['id'], record['question'], 'canonical'))
@@ -41,7 +43,10 @@ def build():
         if normalized in used:
             raise ValueError(f'Duplicate or overlapping split question: {question}')
         used[normalized] = (label, split)
-        number = sum(r['faq_id'] == label and r['split'] == split for r in rows) + 1
+        number = 1
+        for row in rows:
+            if row['faq_id'] == label and row['split'] == split:
+                number += 1
         rows.append(dict(sample_id=f'{label}-V3-{split.upper()}-{number:02}',
                          question=question, faq_id=label, split=split,
                          language='English', provenance=provenance))
@@ -62,6 +67,7 @@ def build():
         add(chosen[0], chosen[1], 'train',
             f'User-supplied database_v3.json {chosen[2]} question; authorship not independently established')
 
+    # 3. Add the separate validation and test questions without reshuffling.
     for label in sorted(holdouts):
         for split in ('validation', 'test'):
             if len(holdouts[label][split]) != 2:
@@ -69,7 +75,8 @@ def build():
             for question in holdouts[label][split]:
                 add(label, question, split, ('AI-authored constructed question; frozen before expanded chair evaluation; not a student transcript' if int(label.split('-')[1]) >= 219 else 'AI-authored constructed question; frozen before v3 evaluation; not a student transcript'))
 
-    output = ROOT / 'data/question_dataset_v3.csv'
+    # 4. Save the CSV and an audit of the counts, conflicts, and fingerprint.
+    output = ROOT / 'data/questions.csv'
     with output.open('w', newline='', encoding='utf-8') as stream:
         writer = csv.DictWriter(stream, fieldnames=FIELDS, lineterminator='\n')
         writer.writeheader()
@@ -82,7 +89,7 @@ def build():
              'training_examples_per_class': dict(sorted(Counter(r['faq_id'] for r in rows if r['split'] == 'train').items())),
              'source_question_conflicts': excluded,
              'protocol': 'All uniquely labeled supplied canonical/alternative questions train the model. Newly AI-authored holdouts are frozen separately before the first experiment. Never retune using test results. Shared templates and AI authorship limit external validity.'}
-    (ROOT / 'data/question_dataset_v3_audit.json').write_text(json.dumps(audit, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    (ROOT / 'data/dataset_audit.json').write_text(json.dumps(audit, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(json.dumps({k: audit[k] for k in ('classes', 'dataset_sha256', 'split_counts')}, indent=2))
 
 
