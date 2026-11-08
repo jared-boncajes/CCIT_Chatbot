@@ -7,6 +7,8 @@ from difflib import get_close_matches
 from functools import lru_cache
 
 PROGRAMS = {'bsit', 'bscs', 'bsemc'}
+MINIMUM_COVERAGE = .6
+MODEL_RANK_BONUS = .25
 PHRASES = [
     (r'\bcourse[\s-]+specific\b', 'course_specific'),
     (r'\bprogram[\s-]+specific scholarships?\b', 'scholarships'),
@@ -87,8 +89,13 @@ def _canonical_word(word):
 
 
 def tokens(text):
+    """Turn a sentence into a set of meaningful, consistently named words."""
     words = re.findall(r'[a-z0-9_]+', normalize(text))
-    return {_canonical_word(word) for word in words if word not in STOP}
+    result = set()
+    for word in words:
+        if word not in STOP:
+            result.add(_canonical_word(word))
+    return result
 
 
 def program_entities(text):
@@ -96,9 +103,12 @@ def program_entities(text):
 
 
 def intents(text):
+    """Identify requested topics using the documented keyword lists above."""
     query = tokens(text)
-    found = [name for name, terms in INTENT_TERMS.items()
-             if name != 'academic_programs' and query & terms]
+    found = []
+    for name, terms in INTENT_TERMS.items():
+        if name != 'academic_programs' and query & terms:
+            found.append(name)
     if re.search(r'\b(?:meaning|stands? for|all about)\b', normalize(text)) or normalize(text).strip(' ?.') == 'ccit':
         if 'overview' not in found:
             found.insert(0, 'overview')
@@ -160,32 +170,52 @@ def _supported_detail(question, record):
     return True
 
 
-def _record_category(record):
-    return record.get('category')
-
-
-def retrieve(question, records):
+def retrieve(question, records, model=None):
+    """Filter sources first, then rank eligible records by topic and word support."""
+    # Step 1: recognize the words, program abbreviations and requested topics.
     query = tokens(question)
     if not query:
         if 'ccit' in normalize(question) and (normalize(question).strip(' ?.') == 'ccit' or re.search(r'\b(?:about|what is|what\'s)\b', normalize(question))):
             question, query = 'What is CCIT all about?', {'overview'}
         else:
             return []
-    reviewed = [r for r in records if r.get('verification_status') == 'verified' and _supported_detail(question, r)]
+    # Step 2: exclude unreviewed sources and missing facts before scoring anything.
+    reviewed = []
+    for record in records:
+        if record.get('verification_status') == 'verified':
+            if _supported_detail(question, record):
+                reviewed.append(record)
     if not reviewed:
         return []
+    # Learned intent scores can rank source-supported candidates, but cannot
+    # bypass the detail, topic, program, coverage or exact-question checks.
+    probabilities = {}
+    if model:
+        for prediction in model.predict(question):
+            probabilities[prediction['faq_id']] = prediction['score']
     requested_programs = query & PROGRAMS
     topics = intents(question)
     comparison = bool(requested_programs and (len(requested_programs) > 1 or query & {'difference', 'compare', 'versus', 'vs'}))
     if comparison and not set(topics) & {'faculty', 'careers', 'accreditation', 'dost'}:
         topics = ['description']
-    documents = {r['id']: tokens(r['question'] + ' ' + ' '.join(r.get('keywords', [])) + ' ' + r['answer']) for r in reviewed}
-    df = Counter(word for words in documents.values() for word in words)
+    # Step 3: count how many eligible documents contain each word.
+    # Rarer matching words receive a little more weight in the ranking.
+    documents = {}
+    for record in reviewed:
+        keywords = ' '.join(record.get('keywords', []))
+        document_text = record['question'] + ' ' + keywords + ' ' + record['answer']
+        documents[record['id']] = tokens(document_text)
+    df = Counter()
+    for words in documents.values():
+        df.update(words)
+
     chosen = []
+    chosen_ids = set()
+    # Step 4: score candidates separately for each requested topic.
     for topic in topics or [None]:
         candidates = []
         for record in reviewed:
-            category = _record_category(record)
+            category = record.get('category')
             if topic == 'description':
                 allowed = requested_programs or ({'bsemc'} if query & {'game_development', 'animation', 'multimedia'} else PROGRAMS)
                 if category and category not in allowed:
@@ -210,14 +240,27 @@ def retrieve(question, records):
                 relevant.discard('where')
             if not relevant:
                 relevant = query
-            matches = {word for word in relevant if word in terms or (
-                len(word) >= 5 and get_close_matches(word, terms, n=1, cutoff=.88))}
+            matches = set()
+            for word in relevant:
+                if word in terms:
+                    matches.add(word)
+                elif len(word) >= 5:
+                    if get_close_matches(word, terms, n=1, cutoff=.88):
+                        matches.add(word)
             coverage = len(matches) / len(relevant)
-            if coverage < .6:
+            if coverage < MINIMUM_COVERAGE:
                 continue
             title = tokens(record['question'] + ' ' + ' '.join(record.get('keywords', [])))
-            score = sum((1 + math.log((len(reviewed) + 1) / (df[word] + 1))) * (2 if word in title else 1) for word in matches)
+            score = 0
+            for word in matches:
+                rarity_weight = 1 + math.log((len(reviewed) + 1) / (df[word] + 1))
+                if word in title:
+                    title_weight = 2
+                else:
+                    title_weight = 1
+                score += rarity_weight * title_weight
             score /= max(len(relevant), 1)
+            score += MODEL_RANK_BONUS * probabilities.get(record['id'], 0)
             if (topic == 'scholarships' and query & {'course_specific', '50tag', 'discount'}
                     and not query & {'eligibility', 'requirements'} and re.search(r'\d+%', record['answer'])):
                 score += 2
@@ -225,17 +268,25 @@ def retrieve(question, records):
                 score += 10
             candidates.append((score, record))
         ranked = sorted(candidates, key=lambda pair: pair[0], reverse=True)
+        # Step 5: keep one answer per topic, except explicit program comparisons
+        # and requests for several program faculty/career lists.
         if topic == 'description' and len(requested_programs) > 1:
             selected = []
             for program in sorted(requested_programs):
-                match = next((r for _, r in ranked if r.get('category') == program), None)
-                if match:
-                    selected.append(match)
+                for score, record in ranked:
+                    if record.get('category') == program:
+                        selected.append(record)
+                        break
         elif topic in {'faculty', 'careers'} and not requested_programs:
-            selected = [r for _, r in ranked[:3]]
+            selected = []
+            for score, record in ranked[:3]:
+                selected.append(record)
         else:
-            selected = [ranked[0][1]] if ranked else []
+            selected = []
+            if ranked:
+                selected.append(ranked[0][1])
         for record in selected:
-            if record['id'] not in {r['id'] for r in chosen}:
+            if record['id'] not in chosen_ids:
                 chosen.append(record)
+                chosen_ids.add(record['id'])
     return chosen[:4]

@@ -1,0 +1,35 @@
+.analysis-page main { width: min(1120px, calc(100% - 40px)); margin: 42px auto 64px; }
+.analysis-page h1 { margin: 0; font-size: clamp(28px, 5vw, 40px); font-weight: 600; }
+.analysis-page h2 { font-size: 24px; font-weight: 600; }
+.analysis-page h3 { font-size: 18px; font-weight: 600; }
+.analysis-page p, .analysis-page li { line-height: 1.7; }
+.analysis-page .intro { color: var(--muted); }
+.back-link { color: #fff; font-size: 14px; text-underline-offset: 4px; }
+.study-note { background: #faf3f2; border-left: 4px solid var(--red); padding: 16px 20px; }
+.metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin: 28px 0; }
+.metrics article { border: 1px solid #e8dada; border-radius: 12px; padding: 20px; display: grid; gap: 12px; }
+.metrics span, .metrics small { color: var(--muted); line-height: 1.5; }
+.metrics strong { font-size: clamp(22px, 3vw, 30px); color: var(--dark-red); font-weight: 600; }
+.analysis-section { margin-top: 44px; border-top: 1px solid #e8e8e8; padding-top: 16px; }
+.figure-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.figure-grid figure { margin: 0; padding: 14px; border: 1px solid #e8e8e8; border-radius: 10px; }
+.figure-grid img { height: auto; width: 100%; }
+.figure-grid figcaption { font-size: 13px; line-height: 1.7; margin-top: 10px; }
+.figure-grid figure:last-child { grid-column: 1 / -1; max-width: 850px; justify-self: center; }
+.table-scroll { overflow-x: auto; }
+.analysis-page table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.analysis-page caption { text-align: left; color: var(--muted); padding: 10px 0; }
+.analysis-page th, .analysis-page td { text-align: left; padding: 12px; border-bottom: 1px solid #e8e8e8; line-height: 1.6; vertical-align: top; }
+.analysis-page thead { background: #faf5f5; }
+.analysis-page th { font-weight: 600; }
+#classify-form { display: grid; gap: 12px; max-width: 650px; }
+#classify-form textarea { width: 100%; border: 1px solid #baa3a2; border-radius: 8px; padding: 12px; resize: vertical; }
+#classify-form button { justify-self: start; background: var(--red-gradient); color: #fff; border: 0; border-radius: 8px; padding: 12px 20px; }
+#classify-results li { margin: 12px 0; }
+@media (max-width: 760px) {
+  .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .figure-grid { grid-template-columns: 1fr; }
+  .analysis-page .topbar-content { width: calc(100% - 32px); gap: 12px; }
+  .analysis-page .brand { width: auto; padding-inline: 12px; font-size: 22px; }
+}
+@media (max-width: 380px) { .metrics { grid-template-columns: 1fr; } }

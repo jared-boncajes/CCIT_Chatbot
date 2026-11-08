@@ -34,3 +34,7 @@ These are Chromium captures of the running application in explicitly labeled FAQ
 ## Conversation improvements
 
 The home/header retain the inspected Figma dimensions. Conversation states include direct answers, focused lists, bold key facts, Copy answer, and Retry/Read FAQ answer instead controls. Source and verification metadata remain available through the backend/API. These extend states missing from the source frame using the existing font, colors and rounded surfaces. Current focused-answer and follow-up screenshots are under screenshots/improvements/.
+
+## Course analysis page
+
+The professor-guideline update preserves `templates/index.html`, `static/css/style.css` and `static/js/script.js`. A separate `/analysis` route uses the same red palette, logo and self-hosted Inter family with scoped additional CSS. It exposes the dataset profile, five generated figures, parameter comparison, test errors, limitations and a local classifier demonstration for coursework. Technical IDs and relative scores are confined to this explanatory page and backend metadata; chat bubbles retain direct answers and bold key facts. Analysis screenshots are under screenshots/analysis/.

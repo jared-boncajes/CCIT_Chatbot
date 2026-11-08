@@ -1,6 +1,4 @@
 """Map provider failures to fixed messages without echoing remote error text."""
-from dataclasses import dataclass
-
 import httpx2 as httpx
 from google.genai import errors as google_errors
 from openai import APIConnectionError, APIStatusError, APITimeoutError
@@ -10,12 +8,14 @@ class EmptyResponseError(ValueError):
     """The provider returned no usable answer."""
 
 
-@dataclass(frozen=True)
 class AIProblem:
-    code: str
-    message: str
-    action: str
-    upstream_status: int | None = None
+    """A small container for a safe error code, message and troubleshooting step."""
+
+    def __init__(self, code, message, action, upstream_status=None):
+        self.code = code
+        self.message = message
+        self.action = action
+        self.upstream_status = upstream_status
 
 
 def diagnose(error, provider):

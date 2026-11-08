@@ -1,0 +1,45 @@
+sample_id,question,faq_id,split,language,provenance,predicted,correct,score
+FAQ-001-Q11,i saw ccit on a sign; what is its expanded name?,FAQ-001,test,English,AI-assisted constructed example; not a student transcript,FAQ-001,True,0.32460218270727215
+FAQ-001-Q12,paano binabasa nang buo ang initials na ccit?,FAQ-001,test,Taglish,AI-assisted constructed example; not a student transcript,FAQ-001,True,0.1468156418556139
+FAQ-002-Q11,how does the ccit academic philosophy describe student learning?,FAQ-002,test,English,AI-assisted constructed example; not a student transcript,FAQ-022,False,0.41272984497394755
+FAQ-002-Q12,gusto kong maintindihan ang pangkalahatang layunin ng kolehiyo bilang institusyon,FAQ-002,test,Filipino,AI-assisted constructed example; not a student transcript,FAQ-005,False,0.9291855618902046
+FAQ-003-Q11,what aspiration guides ccit toward the future?,FAQ-003,test,English,AI-assisted constructed example; not a student transcript,FAQ-003,True,0.5158765030483539
+FAQ-003-Q12,"sa hinaharap, ano ang gustong maging papel ng ccit?",FAQ-003,test,Filipino,AI-assisted constructed example; not a student transcript,FAQ-003,True,0.5817076610408506
+FAQ-004-Q11,what commitment is expressed by the mission of the college?,FAQ-004,test,English,AI-assisted constructed example; not a student transcript,FAQ-004,True,0.4610018643479167
+FAQ-004-Q12,paano inilalarawan ng misyon ang mga propesyonal na lilinangin?,FAQ-004,test,Filipino,AI-assisted constructed example; not a student transcript,FAQ-004,True,0.24331120891043684
+FAQ-005-Q11,which seven objectives form the college's goals framework?,FAQ-005,test,English,AI-assisted constructed example; not a student transcript,FAQ-005,True,0.8396828090772902
+FAQ-005-Q12,pakilahad ang kabuuang hanay ng mga layunin ng departamento,FAQ-005,test,Filipino,AI-assisted constructed example; not a student transcript,FAQ-005,True,0.9546959120278035
+FAQ-006-Q11,which bachelor's and graduate degrees can a student choose here?,FAQ-006,test,English,AI-assisted constructed example; not a student transcript,FAQ-015,False,0.4557827272518679
+FAQ-006-Q12,plano kong mag-enroll; ano ang pagpipiliang programa sa ccit?,FAQ-006,test,Taglish,AI-assisted constructed example; not a student transcript,FAQ-002,False,0.33825822308474135
+FAQ-007-Q11,how does the it discipline use computers and networks?,FAQ-007,test,English,AI-assisted constructed example; not a student transcript,FAQ-004,False,0.34977319998675793
+FAQ-007-Q12,gusto kong malaman ang nilalaman ng larangang information technology,FAQ-007,test,Filipino,AI-assisted constructed example; not a student transcript,FAQ-017,False,0.45428853589495455
+FAQ-008-Q11,how does the cs discipline approach programming and algorithms?,FAQ-008,test,English,AI-assisted constructed example; not a student transcript,FAQ-022,False,0.21376062550046324
+FAQ-008-Q12,gusto kong malaman ang nilalaman ng larangang computer science,FAQ-008,test,Filipino,AI-assisted constructed example; not a student transcript,FAQ-018,False,0.4627388668067514
+FAQ-009-Q11,how does entertainment computing combine creativity with technical work?,FAQ-009,test,English,AI-assisted constructed example; not a student transcript,FAQ-009,True,0.48257186709495803
+FAQ-009-Q12,gusto kong maintindihan ang larangan ng digital entertainment at multimedia,FAQ-009,test,Filipino,AI-assisted constructed example; not a student transcript,FAQ-019,False,0.4422354777758756
+FAQ-010-Q11,which accreditation levels are associated with the three degree programs?,FAQ-010,test,English,AI-assisted constructed example; not a student transcript,FAQ-010,True,0.5322526944910634
+FAQ-010-Q12,pakilinaw ang pagkilala ng pacucoa sa mga programa ng kolehiyo,FAQ-010,test,Taglish,AI-assisted constructed example; not a student transcript,FAQ-005,False,0.39243374643188017
+FAQ-011-Q11,does senior high achievement matter when applying for scholarship support?,FAQ-011,test,English,AI-assisted constructed example; not a student transcript,FAQ-011,True,0.9411731767553204
+FAQ-011-Q12,paano isinasaalang-alang ang performance sa senior high para sa scholarship?,FAQ-011,test,Taglish,AI-assisted constructed example; not a student transcript,FAQ-011,True,0.9891701417622846
+FAQ-012-Q11,how do the two named scholarships differ in tuition-fee discount rates?,FAQ-012,test,English,AI-assisted constructed example; not a student transcript,FAQ-007,False,0.20106027206724483
+FAQ-012-Q12,pakikumpara ang bawas sa matrikula ng course-specific at 50-tag,FAQ-012,test,Taglish,AI-assisted constructed example; not a student transcript,FAQ-012,True,0.9987819933882394
+FAQ-013-Q11,what professional roles are possible with a computer science background?,FAQ-013,test,English,AI-assisted constructed example; not a student transcript,FAQ-013,True,0.8901126904925171
+FAQ-013-Q12,"pag natapos ko ang bscs, anong uri ng propesyon ang maaari kong pasukin?",FAQ-013,test,Taglish,AI-assisted constructed example; not a student transcript,FAQ-004,False,0.6637622524121578
+FAQ-014-Q11,what professional roles are possible with an information technology background?,FAQ-014,test,English,AI-assisted constructed example; not a student transcript,FAQ-014,True,0.649893283796152
+FAQ-014-Q12,"pag natapos ko ang bsit, anong uri ng propesyon ang maaari kong pasukin?",FAQ-014,test,Taglish,AI-assisted constructed example; not a student transcript,FAQ-004,False,0.45505642514970973
+FAQ-015-Q11,what professional roles are possible with an entertainment computing background?,FAQ-015,test,English,AI-assisted constructed example; not a student transcript,FAQ-015,True,0.7602418161933778
+FAQ-015-Q12,"pag natapos ko ang bsemc, anong uri ng propesyon ang maaari kong pasukin?",FAQ-015,test,Taglish,AI-assisted constructed example; not a student transcript,FAQ-004,False,0.6857571979336193
+FAQ-016-Q11,which person holds the dean role in ccit?,FAQ-016,test,English,AI-assisted constructed example; not a student transcript,FAQ-016,True,0.8772840167897787
+FAQ-016-Q12,pakilala ang pinuno ng kolehiyo na may tungkuling dean,FAQ-016,test,Taglish,AI-assisted constructed example; not a student transcript,FAQ-016,True,0.2703754624340133
+FAQ-017-Q11,which people comprise the information technology teaching faculty?,FAQ-017,test,English,AI-assisted constructed example; not a student transcript,FAQ-017,True,0.9821190077632378
+FAQ-017-Q12,gusto kong makilala ang mga propesor na nakatalaga sa bsit,FAQ-017,test,Taglish,AI-assisted constructed example; not a student transcript,FAQ-017,True,0.7630643860290645
+FAQ-018-Q11,which people comprise the computer science teaching faculty?,FAQ-018,test,English,AI-assisted constructed example; not a student transcript,FAQ-018,True,0.9660598340525833
+FAQ-018-Q12,gusto kong makilala ang mga propesor na nakatalaga sa bscs,FAQ-018,test,Taglish,AI-assisted constructed example; not a student transcript,FAQ-018,True,0.7463619045590905
+FAQ-019-Q11,which people comprise the entertainment and multimedia computing teaching faculty?,FAQ-019,test,English,AI-assisted constructed example; not a student transcript,FAQ-019,True,0.9477382419006231
+FAQ-019-Q12,gusto kong makilala ang mga propesor na nakatalaga sa bsemc,FAQ-019,test,Taglish,AI-assisted constructed example; not a student transcript,FAQ-019,True,0.7404896123764411
+FAQ-020-Q11,which laboratory spaces support practical learning in the department?,FAQ-020,test,English,AI-assisted constructed example; not a student transcript,FAQ-016,False,0.2782648761077154
+FAQ-020-Q12,pakibigay ang mga pasilidad na ginagamit para sa hands-on computing,FAQ-020,test,Taglish,AI-assisted constructed example; not a student transcript,FAQ-020,True,0.9885911690281478
+FAQ-021-Q11,can a student holding a dost scholarship enter the it or cs program?,FAQ-021,test,English,AI-assisted constructed example; not a student transcript,FAQ-021,True,0.9890827100644191
+FAQ-021-Q12,pakilinaw kung tinatanggap ang iskolar ng dost sa kolehiyong ito,FAQ-021,test,Taglish,AI-assisted constructed example; not a student transcript,FAQ-021,True,0.4711554873494423
+FAQ-022-Q11,which events support student camaraderie outside academic work?,FAQ-022,test,English,AI-assisted constructed example; not a student transcript,FAQ-022,True,0.4975808508886664
+FAQ-022-Q12,anong pagtitipon ang inihahanda para sa samahan at personal na paglago ng mga mag-aaral?,FAQ-022,test,Filipino,AI-assisted constructed example; not a student transcript,FAQ-020,False,0.44244428142628117

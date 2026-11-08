@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CCIThink · Project analysis</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/analysis.css') }}">
+</head>
+<body class="analysis-page">
+  <header class="topbar"><div class="topbar-content">
+    <a class="brand" href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='assets/ccit-logo.png') }}" width="28" height="28" alt="CCIT logo">CCIThink</a>
+    <a class="back-link" href="{{ url_for('index') }}">Back to chat</a>
+  </div></header>
+  <main>
+    <h1>Project analysis</h1>
+    <p class="intro">How the chatbot’s question classifier was trained and evaluated.</p>
+    {% if report %}
+    <p class="study-note"><strong>Course demonstration:</strong> these questions were constructed for the project. They are not real student conversations. The results describe this small dataset.</p>
+    <section class="metrics" aria-label="Dataset and test results">
+      <article><span>Dataset</span><strong>{{ report.dataset.quality.retained_rows }}</strong><small>constructed questions · {{ report.dataset.class_counts|length }} FAQ labels</small></article>
+      <article><span>Data split</span><strong>{{ report.dataset.split_counts.train }} / {{ report.dataset.split_counts.validation }} / {{ report.dataset.split_counts.test }}</strong><small>training / validation / testing</small></article>
+      <article><span>Test accuracy</span><strong>{{ '%.1f'|format(report.test.accuracy * 100) }}%</strong><small>{{ report.test.correct }} of {{ report.test.samples }} correct predictions</small></article>
+      <article><span>Test macro F1</span><strong>{{ '%.3f'|format(report.test.macro_f1) }}</strong><small>equal weight for each FAQ class</small></article>
+    </section>
+    <section class="analysis-section">
+      <h2>Dataset and preprocessing</h2>
+      <p>{{ report.dataset.filename }} · 22 reviewed source FAQs from the supplied About CCIT document.</p>
+      <div class="table-scroll"><table><caption>Observed cleaning results</caption><thead><tr><th scope="col">Check</th><th scope="col">Rows</th></tr></thead><tbody>
+        <tr><th scope="row">Input / retained</th><td>{{ report.dataset.quality.input_rows }} / {{ report.dataset.quality.retained_rows }}</td></tr>
+        <tr><th scope="row">Missing rows removed</th><td>{{ report.dataset.quality.missing_rows_removed }}</td></tr>
+        <tr><th scope="row">Duplicate rows removed</th><td>{{ report.dataset.quality.duplicate_rows_removed }}</td></tr>
+        <tr><th scope="row">Invalid rows removed</th><td>{{ report.dataset.quality.invalid_rows_removed }}</td></tr>
+        <tr><th scope="row">Format-normalized rows</th><td>{{ report.dataset.quality.normalized_rows }}</td></tr>
+        <tr><th scope="row">Length outliers retained</th><td>{{ report.dataset.quality.token_length_outliers }}</td></tr>
+      </tbody></table></div>
+      <p>Mean question length: {{ '%.2f'|format(report.dataset.token_lengths.mean) }} tokens; median: {{ report.dataset.token_lengths.median }}; range: {{ report.dataset.token_lengths.minimum }}–{{ report.dataset.token_lengths.maximum }}.</p>
+      <ul>{% for note in report.dataset.notes %}<li>{{ note }}</li>{% endfor %}</ul>
+    </section>
+    <section class="analysis-section"><h2>Exploration and results</h2>
+      <div class="figure-grid">{% for filename, figure in figures.items() %}<figure>
+        <a href="{{ url_for('analysis.analysis_figure', filename=filename) }}" aria-label="Open full-size {{ figure[0] }}"><img src="{{ url_for('analysis.analysis_figure', filename=filename) }}" alt="{{ figure[0] }}" loading="lazy" width="900" height="500"></a>
+        <figcaption><strong>{{ figure[0] }}.</strong> {{ figure[1] }}</figcaption>
+      </figure>{% endfor %}</div>
+    </section>
+    <section class="analysis-section"><h2>Model and experiment</h2>
+      <p>{{ report.algorithm }}</p><p>{{ report.protocol }}</p>
+      <div class="table-scroll"><table><caption>Validation-only model comparison</caption><thead><tr><th scope="col">Configuration</th><th scope="col">Accuracy</th><th scope="col">Macro F1</th><th scope="col">Selected</th></tr></thead><tbody>
+      {% for row in report.experiments %}<tr><th scope="row">{{ row.name }}</th><td>{{ '%.1f'|format(row.accuracy * 100) }}%</td><td>{{ '%.3f'|format(row.macro_f1) }}</td><td>{{ 'Yes' if row.name == report.selected.name else '—' }}</td></tr>{% endfor %}
+      </tbody></table></div>
+      <p>The selected model scored {{ '%.1f'|format(report.test.accuracy * 100) }}% test accuracy. The training-majority baseline scored {{ '%.1f'|format(report.baseline.accuracy * 100) }}%. The classifier supplies a small ranking bonus only after the chatbot’s source-support checks; it cannot create department facts.</p>
+      <h3>Test results by approximate language tag</h3>
+      <div class="table-scroll"><table><thead><tr><th scope="col">Language</th><th scope="col">Correct / total</th><th scope="col">Accuracy</th></tr></thead><tbody>{% for language, row in report.test.by_language.items() %}<tr><th scope="row">{{ language }}</th><td>{{ row.correct }} / {{ row.samples }}</td><td>{{ '%.1f'|format(100 * row.correct / row.samples) }}%</td></tr>{% endfor %}</tbody></table></div>
+    </section>
+    <section class="analysis-section"><h2>Try the question classifier</h2>
+      <p>This predicts a FAQ label; it does not generate an answer or establish that a question is supported. Use the chat for source-grounded answers. Questions entered here are not stored.</p>
+      <form id="classify-form"><label for="classify-question">Public department question</label><textarea id="classify-question" maxlength="1000" rows="3" required placeholder="Example: Who teaches BSCS?"></textarea><button type="submit" {% if not model_ready %}disabled{% endif %}>Predict FAQ topic</button></form>
+      {% if not model_ready %}<p>Train the model with analyze.py and restart Flask to enable this demonstration.</p>{% endif %}
+      <p id="classify-status" role="status"></p><ol id="classify-results"></ol>
+    </section>
+    <section class="analysis-section"><h2>Observed mistakes</h2>
+      <div class="table-scroll"><table><caption>All {{ report.errors|length }} test errors</caption><thead><tr><th scope="col">Question</th><th scope="col">Actual</th><th scope="col">Predicted</th></tr></thead><tbody>{% for row in report.errors %}<tr><td>{{ row.question }}</td><td>{{ row.faq_id }}</td><td>{{ row.predicted }}</td></tr>{% endfor %}</tbody></table></div>
+    </section>
+    <section class="analysis-section"><h2>Ethics and limitations</h2><ul>{% for item in report.limitations %}<li>{{ item }}</li>{% endfor %}</ul>
+      <p>No private student records are needed. Model training and charts run locally without an API key. AI-generated answer mode sends the question and selected public source records to the configured provider. The department source’s current accuracy and redistribution permissions still require appropriate review.</p>
+    </section>
+    {% else %}
+    <p>Run <code>python analyze.py --dataset data/question_dataset.csv</code> to prepare the dataset analysis, model, experiments and figures.</p>
+    {% endif %}
+  </main>
+  <script src="{{ url_for('static', filename='js/analysis.js') }}" defer></script>
+</body>
+</html>

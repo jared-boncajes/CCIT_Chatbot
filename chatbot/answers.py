@@ -101,16 +101,37 @@ def format_faq(records, question):
 
 
 def source_metadata(records, knowledge):
-    sources = [{
-        'id': r['id'], 'title': r['question'], 'source': r.get('source', 'About CCIT'),
-        'reviewed_at': r.get('reviewed_at'), 'currency_status': 'confirmed' if r.get('currency_status') == 'confirmed' else 'unconfirmed',
-        'verification_scope': r.get('verification_scope', 'Checked against the supplied source only.'),
-    } for r in records]
-    details = [{'id': r['id'], 'title': r['question'], 'answer': r['answer']} for r in records]
+    """Keep source review information in the API, separate from the visible reply."""
+    sources = []
+    details = []
+    has_unconfirmed_source = False
+    has_overview = False
+    for record in records:
+        if record.get('currency_status') == 'confirmed':
+            currency = 'confirmed'
+        else:
+            currency = 'unconfirmed'
+            has_unconfirmed_source = True
+        if record.get('category') == 'overview':
+            has_overview = True
+        sources.append({
+            'id': record['id'],
+            'title': record['question'],
+            'source': record.get('source', 'About CCIT'),
+            'reviewed_at': record.get('reviewed_at'),
+            'currency_status': currency,
+            'verification_scope': record.get('verification_scope', 'Checked against the supplied source only.'),
+        })
+        details.append({'id': record['id'], 'title': record['question'], 'answer': record['answer']})
+
     warnings = []
-    if any(source['currency_status'] == 'unconfirmed' for source in sources):
+    if has_unconfirmed_source:
         warnings.append('Current department details have not been independently confirmed.')
-    overview = ' '.join(r['answer'] for r in knowledge if r.get('category') == 'overview')
-    if any(r.get('category') == 'overview' for r in records) and 'College of Computer and' in overview and 'College of Computing and' in overview:
+    overview_answers = []
+    for record in knowledge:
+        if record.get('category') == 'overview':
+            overview_answers.append(record['answer'])
+    overview = ' '.join(overview_answers)
+    if has_overview and 'College of Computer and' in overview and 'College of Computing and' in overview:
         warnings.append('The source uses both “College of Computer” and “College of Computing” in the college name. Confirm the official wording with CCIT.')
     return sources, details, warnings

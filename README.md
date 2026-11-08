@@ -1,12 +1,28 @@
 # CCIThink
 
-Flask and vanilla JavaScript foundation for the FAITH Colleges CCIT information assistant. Students ask questions, a conservative retriever selects reviewed JSON records, and the official Google Gen AI or OpenAI SDK generates a grounded answer. No database or frontend build is required.
+Flask and vanilla JavaScript foundation for the FAITH Colleges CCIT information assistant. Students ask questions, a conservative retriever selects reviewed JSON records, and the official Google Gen AI or OpenAI SDK can generate a grounded answer. A locally trained Naive Bayes classifier assists ranking after source checks. No database or frontend build is required.
 
 **Status: source-grounded FAQ mode, short follow-ups, and the revised Figma interface work. Successful live AI generation remains unverified here.** All 22 FAQs from the uploaded About CCIT.pdf are imported. Source extraction is verified, but institutional currency is unconfirmed; see `docs/source-review.md` and the [department confirmation checklist](docs/department-verification.md). This cloud checkout has an ignored `.env` explicitly selecting FAQ retrieval-only mode. Set `CHAT_MODE=ai` and a valid key to enable actual generation.
 
 The uploaded Figma scene graph was decoded and its visible **Revised Version** frame inspected at full size. The interface uses its Inter fonts, red gradient, layout measurements, original logo/portrait, and original vector icons. Three topic cards open questions from the source document. The profile chip supports optional name personalization within the browser tab; it is not authentication. See [design notes](docs/design.md), [desktop screenshot](docs/screenshots/desktop.png), and [mobile screenshot](docs/screenshots/mobile.png).
 
 Question matching includes English/Tagalog aliases, full program names and close intent-word typos. Answers go straight to the question, with readable lists and **bold key facts**. Chat bubbles omit source labels, FAQ IDs, verification notices and original-source disclosures; grounding records and review metadata remain in the backend/API. Copy answer copies plain text without the bold markers. A short program context supports follow-ups such as “What jobs can I get after this program?” New chat clears that context. AI errors offer Retry and an explicitly labeled Read FAQ answer instead action; FAQ fallback never calls an AI provider or changes the server's configured mode.
+
+## Professor guideline update
+
+The approved chatbot topic now includes a documented **264-question constructed dataset**, CSV loading/cleaning, descriptive EDA, **five charts**, a standard-Python multinomial Naive Bayes implementation, four validation configurations, and frozen-test evaluation. The existing chat UI is preserved; the separate **`/analysis`** page shows the workflow and a local prediction demo. No API key is needed for the classifier or analysis.
+
+The selected model achieved **28/44 correct (63.6% accuracy), macro F1 0.595** on constructed held-out questions. This is a small course demonstration, not a real-student accuracy claim. The original chat still passes its separate **95/95** reviewed question checks.
+
+For the complete demonstration, install `requirements-research.txt`, run `py analyze.py`, then `py app.py`. The committed model/charts also let the app run with the original runtime dependencies. See the [research/user guide](docs/research-guide.md), [dataset dictionary](data/README.md), [guideline checklist](docs/guideline-compliance.md) and [project proposal](docs/project-proposal.md).
+
+The [IMRaD paper](docs/paper/CCIThink_IMRaD_Draft.docx), [required five-chapter report](docs/paper/CCIThink_Technical_Report_Draft.docx) and [12-slide defense deck](docs/paper/CCIThink_Defense.pptx) include the three confirmed authors. PDF and Markdown versions are under [docs/paper](docs/paper/README.md). They disclose AI assistance and are drafts for author review; results come from executed scripts, not invented participants or surveys.
+
+## Learn the code for your defense
+
+The backend uses explicit variables, loops and if/else branches. `app.py` labels the chat flow in nine steps; `analyze.py` labels the experiment in five. The Naive Bayes score and metric calculations are written out so you can explain the arithmetic. The chat UI and algorithm settings are preserved.
+
+The separate [beginner walkthrough (Word)](docs/learning/CCIThink_Beginner_Walkthrough.docx) and [PDF](docs/learning/CCIThink_Beginner_Walkthrough.pdf) explain the request flow, every backend function, frontend behavior, datasets, tests, document helpers and every included file. They include a Bayes hand calculation, current function/line index, suggested seven-day practice/build sequence and defense questions. See [learning guide](docs/learning/README.md) for reading order. Describe actual contributions and AI assistance accurately; the build sequence is a plan for learning/rebuilding the code.
 
 ## Windows / VS Code setup
 
@@ -91,6 +107,8 @@ Short follow-ups carry only whitelisted program IDs and an optional pending topi
 - `GET /api/health`: process availability, record counts, mode and readiness; HTTP 200 does not imply content readiness.
 - `GET /api/suggestions`: questions from verified records, grouped into the three design topics. Topic notes identify information absent from the document.
 - `POST /api/chat`: JSON object with `message` (1–1,000 characters), optional `context`, and optional `mode: "faq"`. Success returns `success`, `reply`, `sources`, `details`, `warnings`, `context`, and `mode` where applicable. Invalid input/context returns 400, missing configuration 503, provider failure 502.
+- `GET /analysis` and `GET /api/analysis`: course dataset profile, preprocessing results, figures, validation comparison and test results. Training/imports run locally through `analyze.py`.
+- `POST /api/classify`: JSON `message` predicts up to three FAQ labels using the local model. Scores are uncalibrated; predictions do not certify source support. No question storage or provider API call occurs.
 
 Private-record questions receive a privacy response, including common Tagalog and third-person variants. Unknown questions get a source-free fallback before any AI call. Assistant replies support only lists and `**bold**`, rendered with text nodes and safe DOM elements; user messages stay literal. Source metadata is not displayed in the chat. API keys stay on the backend. Requests have frontend and SDK timeouts; failed requests remain retryable.
 
@@ -104,7 +122,7 @@ Return the last response's `context` with a follow-up, for example `{"message":"
 
 Linux: `.venv/bin/python -m pytest -q`. Optional browser checks use Playwright and Chromium: install Playwright separately (`python -m pip install playwright`, then `python -m playwright install chromium` if no Chromium is installed), start a separate test server in FAQ mode, and run `python tests/browser_smoke.py` followed by `python tests/browser_improvements.py`. These check six viewport sizes, source panels, real requests, follow-ups, reset, Retry/FAQ recovery, copying and safe text rendering. Simulated provider failures are explicitly identified in the results.
 
-With that FAQ server running, `python tests/evaluate_questions.py` records actual HTTP replies in `docs/evaluation-improved.json`. The current regression run passes 240 automated tests, 20 browser scenarios and 95/95 expected source-support/mode checks. The 33 phrasing cases from the review improved from 8 expected-source matches to 33; this is the same regression set used during implementation, not an independent accuracy estimate. See [validation evidence](docs/testing.md) and [improvement notes](docs/improvements.md). Synthetic test records are never loaded by the application.
+With that FAQ server running, `python tests/evaluate_questions.py` records actual HTTP replies in `docs/evaluation-improved.json`. The current regression run passes 263 automated tests, 26 browser scenarios and 95/95 expected source-support/mode checks. The separate classifier test result is 28/44 correct, not 95/95. The 33 phrasing cases from the earlier review improved from 8 expected-source matches to 33; this is the same regression set used during that implementation, not an independent accuracy estimate. See [validation evidence](docs/testing.md), [research guide](docs/research-guide.md) and [improvement notes](docs/improvements.md). Synthetic unit-test records are never loaded by the application; the explicitly constructed research questions train the local learner.
 
 ## Remaining work
 

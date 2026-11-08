@@ -1,5 +1,5 @@
 {
-  "executed_at": "2026-11-08T01:50:45.051251+00:00",
+  "executed_at": "2026-11-08T02:47:49.020326+00:00",
   "mode": "Actual HTTP requests in labeled FAQ mode; no live AI calls",
   "scope": "Expected source support or fallback/privacy behavior; not independent fact verification or a general accuracy estimate.",
   "summary": {
@@ -42,7 +42,7 @@
         "The source uses both “College of Computer” and “College of Computing” in the college name. Confirm the official wording with CCIT."
       ],
       "passed": true,
-      "elapsed_ms": 32.59
+      "elapsed_ms": 22.66
     },
     {
       "group": "direct_source",
@@ -61,7 +61,7 @@
         "The source uses both “College of Computer” and “College of Computing” in the college name. Confirm the official wording with CCIT."
       ],
       "passed": true,
-      "elapsed_ms": 5.59
+      "elapsed_ms": 13.3
     },
     {
       "group": "direct_source",
@@ -79,7 +79,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.38
+      "elapsed_ms": 8.56
     },
     {
       "group": "direct_source",
@@ -97,7 +97,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.12
+      "elapsed_ms": 12.27
     },
     {
       "group": "direct_source",
@@ -115,7 +115,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.36
+      "elapsed_ms": 8.64
     },
     {
       "group": "direct_source",
@@ -133,7 +133,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.54
+      "elapsed_ms": 12.12
     },
     {
       "group": "direct_source",
@@ -151,7 +151,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.18
+      "elapsed_ms": 8.88
     },
     {
       "group": "direct_source",
@@ -169,7 +169,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 4.98
+      "elapsed_ms": 7.66
     },
     {
       "group": "direct_source",
@@ -187,7 +187,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 9.82
+      "elapsed_ms": 7.67
     },
     {
       "group": "direct_source",
@@ -205,7 +205,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.53
+      "elapsed_ms": 13.0
     },
     {
       "group": "direct_source",
@@ -223,7 +223,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.21
+      "elapsed_ms": 9.24
     },
     {
       "group": "direct_source",
@@ -241,7 +241,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 6.01
+      "elapsed_ms": 9.13
     },
     {
       "group": "direct_source",
@@ -259,7 +259,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.59
+      "elapsed_ms": 10.05
     },
     {
       "group": "direct_source",
@@ -277,7 +277,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.83
+      "elapsed_ms": 14.78
     },
     {
       "group": "direct_source",
@@ -295,7 +295,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 6.03
+      "elapsed_ms": 35.98
     },
     {
       "group": "direct_source",
@@ -313,7 +313,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 4.98
+      "elapsed_ms": 24.07
     },
     {
       "group": "direct_source",
@@ -331,7 +331,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 7.08
+      "elapsed_ms": 18.27
     },
     {
       "group": "direct_source",
@@ -349,7 +349,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.55
+      "elapsed_ms": 26.99
     },
     {
       "group": "direct_source",
@@ -367,7 +367,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.87
+      "elapsed_ms": 9.51
     },
     {
       "group": "direct_source",
@@ -385,7 +385,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.5
+      "elapsed_ms": 20.73
     },
     {
       "group": "direct_source",
@@ -403,7 +403,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.51
+      "elapsed_ms": 24.52
     },
     {
       "group": "direct_source",
@@ -421,7 +421,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.4
+      "elapsed_ms": 22.94
     },
     {
       "group": "student_variation",
@@ -440,7 +440,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 6.86
+      "elapsed_ms": 37.53
     },
     {
       "group": "student_variation",
@@ -459,7 +459,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.22
+      "elapsed_ms": 13.09
     },
     {
       "group": "student_variation",
@@ -478,7 +478,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.63
+      "elapsed_ms": 10.94
     },
     {
       "group": "student_variation",
@@ -497,7 +497,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.07
+      "elapsed_ms": 16.29
     },
     {
       "group": "student_variation",
@@ -516,7 +516,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.5
+      "elapsed_ms": 6.62
     },
     {
       "group": "student_variation",
@@ -535,7 +535,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.11
+      "elapsed_ms": 7.83
     },
     {
       "group": "student_variation",
@@ -554,7 +554,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.18
+      "elapsed_ms": 9.52
     },
     {
       "group": "student_variation",
@@ -573,7 +573,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.22
+      "elapsed_ms": 25.94
     },
     {
       "group": "student_variation",
@@ -594,7 +594,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.38
+      "elapsed_ms": 21.51
     },
     {
       "group": "student_variation",
@@ -613,7 +613,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.43
+      "elapsed_ms": 13.25
     },
     {
       "group": "student_variation",
@@ -632,7 +632,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.33
+      "elapsed_ms": 15.43
     },
     {
       "group": "student_variation",
@@ -651,7 +651,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 6.85
+      "elapsed_ms": 16.46
     },
     {
       "group": "student_variation",
@@ -664,14 +664,14 @@
       "http_status": 200,
       "actual_mode": "faq",
       "actual_sources": [
-        "FAQ-011"
+        "FAQ-012"
       ],
-      "reply": "Yes, aside from the academic scholarships offered by FAITH Colleges, students may also qualify for course-specific scholarships based on their **academic performance in senior high school**. These scholarships are granted to students who meet or exceed the requirements established by the dean of CCIT.",
+      "reply": "• The **Course-Specific Scholarship** provides qualified students with a **100% discount on tuition fees**.\n• **50-TAG Scholarship** grants a **50% discount on tuition fees**.",
       "warnings": [
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 4.96
+      "elapsed_ms": 6.3
     },
     {
       "group": "student_variation",
@@ -691,7 +691,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.65
+      "elapsed_ms": 18.43
     },
     {
       "group": "student_variation",
@@ -710,7 +710,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.12
+      "elapsed_ms": 19.4
     },
     {
       "group": "student_variation",
@@ -729,7 +729,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 6.06
+      "elapsed_ms": 10.66
     },
     {
       "group": "student_variation",
@@ -748,7 +748,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 4.94
+      "elapsed_ms": 10.05
     },
     {
       "group": "student_variation",
@@ -767,7 +767,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.29
+      "elapsed_ms": 5.75
     },
     {
       "group": "student_variation",
@@ -786,7 +786,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 4.96
+      "elapsed_ms": 6.8
     },
     {
       "group": "student_variation",
@@ -805,7 +805,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.23
+      "elapsed_ms": 7.19
     },
     {
       "group": "student_variation",
@@ -824,7 +824,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.12
+      "elapsed_ms": 7.22
     },
     {
       "group": "student_variation",
@@ -843,7 +843,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.12
+      "elapsed_ms": 7.06
     },
     {
       "group": "student_variation",
@@ -862,7 +862,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 6.73
+      "elapsed_ms": 9.64
     },
     {
       "group": "student_variation",
@@ -881,7 +881,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.68
+      "elapsed_ms": 12.81
     },
     {
       "group": "student_variation",
@@ -900,7 +900,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.83
+      "elapsed_ms": 6.85
     },
     {
       "group": "student_variation",
@@ -919,7 +919,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.4
+      "elapsed_ms": 12.45
     },
     {
       "group": "student_variation",
@@ -938,7 +938,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.38
+      "elapsed_ms": 5.74
     },
     {
       "group": "student_variation",
@@ -957,7 +957,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.2
+      "elapsed_ms": 5.65
     },
     {
       "group": "student_variation",
@@ -976,7 +976,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 6.52
+      "elapsed_ms": 5.61
     },
     {
       "group": "student_variation",
@@ -995,7 +995,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.15
+      "elapsed_ms": 7.41
     },
     {
       "group": "student_variation",
@@ -1014,7 +1014,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.37
+      "elapsed_ms": 8.27
     },
     {
       "group": "student_variation",
@@ -1035,7 +1035,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 6.47
+      "elapsed_ms": 5.75
     },
     {
       "group": "student_variation",
@@ -1056,7 +1056,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.29
+      "elapsed_ms": 5.73
     },
     {
       "group": "unsupported",
@@ -1068,7 +1068,7 @@
       "reply": "I don't currently have verified information about that. Please contact the CCIT department office for assistance.",
       "warnings": [],
       "passed": true,
-      "elapsed_ms": 3.21
+      "elapsed_ms": 9.17
     },
     {
       "group": "unsupported",
@@ -1080,7 +1080,7 @@
       "reply": "I don't currently have verified information about that. Please contact the CCIT department office for assistance.",
       "warnings": [],
       "passed": true,
-      "elapsed_ms": 3.22
+      "elapsed_ms": 7.26
     },
     {
       "group": "unsupported",
@@ -1092,7 +1092,7 @@
       "reply": "I don't currently have verified information about that. Please contact the CCIT department office for assistance.",
       "warnings": [],
       "passed": true,
-      "elapsed_ms": 3.23
+      "elapsed_ms": 7.68
     },
     {
       "group": "unsupported",
@@ -1104,7 +1104,7 @@
       "reply": "I don't currently have verified information about that. Please contact the CCIT department office for assistance.",
       "warnings": [],
       "passed": true,
-      "elapsed_ms": 2.92
+      "elapsed_ms": 4.76
     },
     {
       "group": "unsupported",
@@ -1116,7 +1116,7 @@
       "reply": "I don't currently have verified information about that. Please contact the CCIT department office for assistance.",
       "warnings": [],
       "passed": true,
-      "elapsed_ms": 6.92
+      "elapsed_ms": 3.22
     },
     {
       "group": "unsupported",
@@ -1128,7 +1128,7 @@
       "reply": "I don't currently have verified information about that. Please contact the CCIT department office for assistance.",
       "warnings": [],
       "passed": true,
-      "elapsed_ms": 3.05
+      "elapsed_ms": 3.57
     },
     {
       "group": "unsupported",
@@ -1140,7 +1140,7 @@
       "reply": "I don't currently have verified information about that. Please contact the CCIT department office for assistance.",
       "warnings": [],
       "passed": true,
-      "elapsed_ms": 3.33
+      "elapsed_ms": 3.69
     },
     {
       "group": "unsupported",
@@ -1152,7 +1152,7 @@
       "reply": "I don't currently have verified information about that. Please contact the CCIT department office for assistance.",
       "warnings": [],
       "passed": true,
-      "elapsed_ms": 5.51
+      "elapsed_ms": 5.82
     },
     {
       "group": "unsupported",
@@ -1164,7 +1164,7 @@
       "reply": "I don't currently have verified information about that. Please contact the CCIT department office for assistance.",
       "warnings": [],
       "passed": true,
-      "elapsed_ms": 3.12
+      "elapsed_ms": 6.96
     },
     {
       "group": "unsupported",
@@ -1176,7 +1176,7 @@
       "reply": "I don't currently have verified information about that. Please contact the CCIT department office for assistance.",
       "warnings": [],
       "passed": true,
-      "elapsed_ms": 3.05
+      "elapsed_ms": 3.74
     },
     {
       "group": "unsupported",
@@ -1188,7 +1188,7 @@
       "reply": "I don't currently have verified information about that. Please contact the CCIT department office for assistance.",
       "warnings": [],
       "passed": true,
-      "elapsed_ms": 6.61
+      "elapsed_ms": 10.7
     },
     {
       "group": "unsupported",
@@ -1200,7 +1200,7 @@
       "reply": "I don't currently have verified information about that. Please contact the CCIT department office for assistance.",
       "warnings": [],
       "passed": true,
-      "elapsed_ms": 3.08
+      "elapsed_ms": 3.83
     },
     {
       "group": "private",
@@ -1212,7 +1212,7 @@
       "reply": "I cannot access private student records. Please use the official student services channels.",
       "warnings": [],
       "passed": true,
-      "elapsed_ms": 0.79
+      "elapsed_ms": 2.2
     },
     {
       "group": "private",
@@ -1224,7 +1224,7 @@
       "reply": "I cannot access private student records. Please use the official student services channels.",
       "warnings": [],
       "passed": true,
-      "elapsed_ms": 0.92
+      "elapsed_ms": 0.87
     },
     {
       "group": "private",
@@ -1236,7 +1236,7 @@
       "reply": "I cannot access private student records. Please use the official student services channels.",
       "warnings": [],
       "passed": true,
-      "elapsed_ms": 0.96
+      "elapsed_ms": 2.01
     },
     {
       "group": "private",
@@ -1248,7 +1248,7 @@
       "reply": "I cannot access private student records. Please use the official student services channels.",
       "warnings": [],
       "passed": true,
-      "elapsed_ms": 0.87
+      "elapsed_ms": 1.11
     },
     {
       "group": "private",
@@ -1260,7 +1260,7 @@
       "reply": "I cannot access private student records. Please use the official student services channels.",
       "warnings": [],
       "passed": true,
-      "elapsed_ms": 0.87
+      "elapsed_ms": 0.97
     },
     {
       "group": "private",
@@ -1272,7 +1272,7 @@
       "reply": "I cannot access private student records. Please use the official student services channels.",
       "warnings": [],
       "passed": true,
-      "elapsed_ms": 0.84
+      "elapsed_ms": 2.06
     },
     {
       "group": "additional_variation",
@@ -1290,7 +1290,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 6.48
+      "elapsed_ms": 5.76
     },
     {
       "group": "additional_variation",
@@ -1308,7 +1308,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.26
+      "elapsed_ms": 5.18
     },
     {
       "group": "additional_variation",
@@ -1344,7 +1344,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.32
+      "elapsed_ms": 5.52
     },
     {
       "group": "additional_variation",
@@ -1362,7 +1362,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.28
+      "elapsed_ms": 9.25
     },
     {
       "group": "additional_variation",
@@ -1380,7 +1380,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.37
+      "elapsed_ms": 12.37
     },
     {
       "group": "additional_variation",
@@ -1398,7 +1398,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 4.98
+      "elapsed_ms": 9.1
     },
     {
       "group": "additional_variation",
@@ -1416,7 +1416,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.01
+      "elapsed_ms": 5.17
     },
     {
       "group": "additional_variation",
@@ -1434,7 +1434,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.34
+      "elapsed_ms": 5.41
     },
     {
       "group": "additional_variation",
@@ -1452,7 +1452,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.2
+      "elapsed_ms": 5.67
     },
     {
       "group": "additional_variation",
@@ -1470,7 +1470,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.27
+      "elapsed_ms": 6.42
     },
     {
       "group": "additional_variation",
@@ -1488,7 +1488,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 3.63
+      "elapsed_ms": 4.73
     },
     {
       "group": "additional_variation",
@@ -1506,7 +1506,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.0
+      "elapsed_ms": 7.19
     },
     {
       "group": "additional_variation",
@@ -1524,7 +1524,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.5
+      "elapsed_ms": 8.47
     },
     {
       "group": "additional_variation",
@@ -1542,7 +1542,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 4.96
+      "elapsed_ms": 6.62
     },
     {
       "group": "additional_variation",
@@ -1560,7 +1560,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 4.91
+      "elapsed_ms": 6.57
     },
     {
       "group": "additional_variation",
@@ -1578,7 +1578,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.21
+      "elapsed_ms": 5.79
     },
     {
       "group": "additional_variation",
@@ -1596,7 +1596,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.49
+      "elapsed_ms": 6.01
     },
     {
       "group": "additional_variation",
@@ -1614,7 +1614,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.62
+      "elapsed_ms": 5.88
     },
     {
       "group": "additional_variation",
@@ -1633,7 +1633,7 @@
         "The source uses both “College of Computer” and “College of Computing” in the college name. Confirm the official wording with CCIT."
       ],
       "passed": true,
-      "elapsed_ms": 5.15
+      "elapsed_ms": 11.3
     },
     {
       "group": "additional_variation",
@@ -1651,7 +1651,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.54
+      "elapsed_ms": 11.93
     },
     {
       "group": "additional_variation",
@@ -1669,7 +1669,7 @@
         "Current department details have not been independently confirmed."
       ],
       "passed": true,
-      "elapsed_ms": 5.11
+      "elapsed_ms": 11.35
     }
   ]
 }

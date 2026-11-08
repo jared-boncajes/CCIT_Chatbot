@@ -10,6 +10,7 @@ SYSTEM = '''You are the CCIT information assistant for FAITH Colleges. Use only 
 SYSTEM += ''' Answer the specific question first, using short paragraphs or simple bullet lists. Bold only key facts such as names, program names and discount amounts using **double asterisks**. Do not use HTML or other Markdown formatting. Do not append unrelated faculty, careers or policies to a program-offering question. Keep the answer brief unless the student asks for detail. Source references and verification metadata are handled separately by the application. Do not include citations, FAQ IDs, source labels, review dates, verification notices or phrases such as "the supplied document lists" in the answer. Preserve eligibility conditions and other qualifications that affect the answer itself.'''
 
 def generate(question, records, key, model, provider='openai'):
+    """Ask the selected provider to phrase an answer using our retrieved records."""
     content = json.dumps({'question': question, 'sources': records}, ensure_ascii=False)
     if provider == 'gemini':
         # Developer API keys come from Google AI Studio. Use a single request
@@ -43,12 +44,16 @@ def list_models(key, provider):
         with genai.Client(api_key=key, enterprise=False, http_options=types.HttpOptions(
             timeout=25000, retry_options=types.HttpRetryOptions(attempts=1),
         )) as client:
-            return sorted({
-                model.name.removeprefix('models/')
-                for model in client.models.list()
-                if model.name and 'generateContent' in (model.supported_actions or [])
-            })
+            model_names = set()
+            for model in client.models.list():
+                actions = model.supported_actions or []
+                if model.name and 'generateContent' in actions:
+                    model_names.add(model.name.removeprefix('models/'))
+            return sorted(model_names)
     if provider == 'openai':
         with OpenAI(api_key=key, timeout=25, max_retries=0) as client:
-            return sorted({model.id for model in client.models.list()})
+            model_names = set()
+            for model in client.models.list():
+                model_names.add(model.id)
+            return sorted(model_names)
     raise ValueError('Unsupported AI provider')

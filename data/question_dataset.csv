@@ -1,0 +1,265 @@
+sample_id,question,faq_id,split,language,provenance
+FAQ-001-Q01,What is the meaning of CCIT?,FAQ-001,train,English,AI-assisted constructed example; not a student transcript
+FAQ-001-Q02,What does CCIT stand for?,FAQ-001,train,English,AI-assisted constructed example; not a student transcript
+FAQ-001-Q03,Expand the acronym CCIT,FAQ-001,train,English,AI-assisted constructed example; not a student transcript
+FAQ-001-Q04,Tell me the full name of CCIT,FAQ-001,train,English,AI-assisted constructed example; not a student transcript
+FAQ-001-Q05,What do the letters CCIT mean?,FAQ-001,train,English,AI-assisted constructed example; not a student transcript
+FAQ-001-Q06,Give the college name behind CCIT,FAQ-001,train,English,AI-assisted constructed example; not a student transcript
+FAQ-001-Q07,Ano ang ibig sabihin ng CCIT?,FAQ-001,train,Filipino,AI-assisted constructed example; not a student transcript
+FAQ-001-Q08,Pakisabi ang buong pangalan ng CCIT,FAQ-001,train,Filipino,AI-assisted constructed example; not a student transcript
+FAQ-001-Q09,Please spell out the college acronym CCIT,FAQ-001,validation,English,AI-assisted constructed example; not a student transcript
+FAQ-001-Q10,Anong kahulugan ng abbreviation na CCIT?,FAQ-001,validation,Filipino,AI-assisted constructed example; not a student transcript
+FAQ-001-Q11,I saw CCIT on a sign; what is its expanded name?,FAQ-001,test,English,AI-assisted constructed example; not a student transcript
+FAQ-001-Q12,Paano binabasa nang buo ang initials na CCIT?,FAQ-001,test,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-002-Q01,What is CCIT all about?,FAQ-002,train,English,AI-assisted constructed example; not a student transcript
+FAQ-002-Q02,Give me an overview of the college,FAQ-002,train,English,AI-assisted constructed example; not a student transcript
+FAQ-002-Q03,Describe CCIT's academic philosophy,FAQ-002,train,English,AI-assisted constructed example; not a student transcript
+FAQ-002-Q04,What kind of college is CCIT?,FAQ-002,train,English,AI-assisted constructed example; not a student transcript
+FAQ-002-Q05,Explain the educational approach of CCIT,FAQ-002,train,English,AI-assisted constructed example; not a student transcript
+FAQ-002-Q06,Tell me about the college's academic direction,FAQ-002,train,English,AI-assisted constructed example; not a student transcript
+FAQ-002-Q07,Tungkol saan ang kolehiyong CCIT?,FAQ-002,train,Filipino,AI-assisted constructed example; not a student transcript
+FAQ-002-Q08,Ano ang pilosopiya ng edukasyon sa CCIT?,FAQ-002,train,Filipino,AI-assisted constructed example; not a student transcript
+FAQ-002-Q09,Introduce the college and its educational philosophy,FAQ-002,validation,English,AI-assisted constructed example; not a student transcript
+FAQ-002-Q10,Paano inilalarawan ang academic approach ng CCIT?,FAQ-002,validation,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-002-Q11,How does the CCIT academic philosophy describe student learning?,FAQ-002,test,English,AI-assisted constructed example; not a student transcript
+FAQ-002-Q12,Gusto kong maintindihan ang pangkalahatang layunin ng kolehiyo bilang institusyon,FAQ-002,test,Filipino,AI-assisted constructed example; not a student transcript
+FAQ-003-Q01,What is the vision of CCIT?,FAQ-003,train,English,AI-assisted constructed example; not a student transcript
+FAQ-003-Q02,Tell me CCIT's vision statement,FAQ-003,train,English,AI-assisted constructed example; not a student transcript
+FAQ-003-Q03,What future does CCIT envision?,FAQ-003,train,English,AI-assisted constructed example; not a student transcript
+FAQ-003-Q04,What does the college aspire to become?,FAQ-003,train,English,AI-assisted constructed example; not a student transcript
+FAQ-003-Q05,Describe the vision for the college,FAQ-003,train,English,AI-assisted constructed example; not a student transcript
+FAQ-003-Q06,What is CCIT's long-term aspiration?,FAQ-003,train,English,AI-assisted constructed example; not a student transcript
+FAQ-003-Q07,Ano ang bisyon ng CCIT?,FAQ-003,train,Filipino,AI-assisted constructed example; not a student transcript
+FAQ-003-Q08,Anong nais marating ng kolehiyo sa hinaharap?,FAQ-003,train,Filipino,AI-assisted constructed example; not a student transcript
+FAQ-003-Q09,State the college vision in simple words,FAQ-003,validation,English,AI-assisted constructed example; not a student transcript
+FAQ-003-Q10,Pakipaliwanag ang vision statement ng college,FAQ-003,validation,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-003-Q11,What aspiration guides CCIT toward the future?,FAQ-003,test,English,AI-assisted constructed example; not a student transcript
+FAQ-003-Q12,"Sa hinaharap, ano ang gustong maging papel ng CCIT?",FAQ-003,test,Filipino,AI-assisted constructed example; not a student transcript
+FAQ-004-Q01,What is the mission of CCIT?,FAQ-004,train,English,AI-assisted constructed example; not a student transcript
+FAQ-004-Q02,Tell me the mission statement,FAQ-004,train,English,AI-assisted constructed example; not a student transcript
+FAQ-004-Q03,What does CCIT aim to produce?,FAQ-004,train,English,AI-assisted constructed example; not a student transcript
+FAQ-004-Q04,What is the college's mission for IT professionals?,FAQ-004,train,English,AI-assisted constructed example; not a student transcript
+FAQ-004-Q05,Explain the purpose expressed in CCIT's mission,FAQ-004,train,English,AI-assisted constructed example; not a student transcript
+FAQ-004-Q06,How does CCIT describe its mission?,FAQ-004,train,English,AI-assisted constructed example; not a student transcript
+FAQ-004-Q07,Ano ang misyon ng CCIT?,FAQ-004,train,Filipino,AI-assisted constructed example; not a student transcript
+FAQ-004-Q08,Anong uri ng propesyonal ang nais hubugin ng CCIT?,FAQ-004,train,Filipino,AI-assisted constructed example; not a student transcript
+FAQ-004-Q09,Summarize the college mission,FAQ-004,validation,English,AI-assisted constructed example; not a student transcript
+FAQ-004-Q10,Pakibigay ang mission statement ng kolehiyo,FAQ-004,validation,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-004-Q11,What commitment is expressed by the mission of the college?,FAQ-004,test,English,AI-assisted constructed example; not a student transcript
+FAQ-004-Q12,Paano inilalarawan ng misyon ang mga propesyonal na lilinangin?,FAQ-004,test,Filipino,AI-assisted constructed example; not a student transcript
+FAQ-005-Q01,What are the goals of CCIT?,FAQ-005,train,English,AI-assisted constructed example; not a student transcript
+FAQ-005-Q02,List the objectives of the college,FAQ-005,train,English,AI-assisted constructed example; not a student transcript
+FAQ-005-Q03,Explain the acronym CCITITE,FAQ-005,train,English,AI-assisted constructed example; not a student transcript
+FAQ-005-Q04,What are the seven CCIT objectives?,FAQ-005,train,English,AI-assisted constructed example; not a student transcript
+FAQ-005-Q05,What goals guide the college?,FAQ-005,train,English,AI-assisted constructed example; not a student transcript
+FAQ-005-Q06,Tell me the goals represented by CCITITE,FAQ-005,train,English,AI-assisted constructed example; not a student transcript
+FAQ-005-Q07,Ano ang mga layunin ng CCIT?,FAQ-005,train,Filipino,AI-assisted constructed example; not a student transcript
+FAQ-005-Q08,Ilista ang pitong layunin ng kolehiyo,FAQ-005,train,Filipino,AI-assisted constructed example; not a student transcript
+FAQ-005-Q09,Describe the objectives behind CCITITE,FAQ-005,validation,English,AI-assisted constructed example; not a student transcript
+FAQ-005-Q10,Ano ang ibig sabihin ng bawat titik sa CCITITE?,FAQ-005,validation,Filipino,AI-assisted constructed example; not a student transcript
+FAQ-005-Q11,Which seven objectives form the college's goals framework?,FAQ-005,test,English,AI-assisted constructed example; not a student transcript
+FAQ-005-Q12,Pakilahad ang kabuuang hanay ng mga layunin ng departamento,FAQ-005,test,Filipino,AI-assisted constructed example; not a student transcript
+FAQ-006-Q01,What programs does CCIT offer?,FAQ-006,train,English,AI-assisted constructed example; not a student transcript
+FAQ-006-Q02,List the degree programs available in CCIT,FAQ-006,train,English,AI-assisted constructed example; not a student transcript
+FAQ-006-Q03,Does CCIT offer BSCS?,FAQ-006,train,English,AI-assisted constructed example; not a student transcript
+FAQ-006-Q04,Can I take BSIT at this college?,FAQ-006,train,English,AI-assisted constructed example; not a student transcript
+FAQ-006-Q05,Does the college offer BSEMC?,FAQ-006,train,English,AI-assisted constructed example; not a student transcript
+FAQ-006-Q06,What graduate programs does CCIT provide?,FAQ-006,train,English,AI-assisted constructed example; not a student transcript
+FAQ-006-Q07,Anong mga kurso ang inaalok sa CCIT?,FAQ-006,train,Filipino,AI-assisted constructed example; not a student transcript
+FAQ-006-Q08,May BSCS bang inooffer ang kolehiyo?,FAQ-006,train,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-006-Q09,Give me the undergraduate degree offerings,FAQ-006,validation,English,AI-assisted constructed example; not a student transcript
+FAQ-006-Q10,Anu-anong degree ang puwedeng kunin sa CCIT?,FAQ-006,validation,Filipino,AI-assisted constructed example; not a student transcript
+FAQ-006-Q11,Which bachelor's and graduate degrees can a student choose here?,FAQ-006,test,English,AI-assisted constructed example; not a student transcript
+FAQ-006-Q12,Plano kong mag-enroll; ano ang pagpipiliang programa sa CCIT?,FAQ-006,test,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-007-Q01,What is the program BS Information Technology?,FAQ-007,train,English,AI-assisted constructed example; not a student transcript
+FAQ-007-Q02,Explain BSIT,FAQ-007,train,English,AI-assisted constructed example; not a student transcript
+FAQ-007-Q03,What is Information Technology about?,FAQ-007,train,English,AI-assisted constructed example; not a student transcript
+FAQ-007-Q04,Describe the focus of BSIT,FAQ-007,train,English,AI-assisted constructed example; not a student transcript
+FAQ-007-Q05,What do IT students study in this field?,FAQ-007,train,English,AI-assisted constructed example; not a student transcript
+FAQ-007-Q06,How is information technology defined?,FAQ-007,train,English,AI-assisted constructed example; not a student transcript
+FAQ-007-Q07,Ano ang BSIT?,FAQ-007,train,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-007-Q08,Tungkol saan ang kursong Information Technology?,FAQ-007,train,Filipino,AI-assisted constructed example; not a student transcript
+FAQ-007-Q09,Explain the field covered by the BSIT degree,FAQ-007,validation,English,AI-assisted constructed example; not a student transcript
+FAQ-007-Q10,Ano ang pokus ng pag-aaral sa BSIT?,FAQ-007,validation,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-007-Q11,How does the IT discipline use computers and networks?,FAQ-007,test,English,AI-assisted constructed example; not a student transcript
+FAQ-007-Q12,Gusto kong malaman ang nilalaman ng larangang Information Technology,FAQ-007,test,Filipino,AI-assisted constructed example; not a student transcript
+FAQ-008-Q01,What is the program BS Computer Science?,FAQ-008,train,English,AI-assisted constructed example; not a student transcript
+FAQ-008-Q02,Explain BSCS,FAQ-008,train,English,AI-assisted constructed example; not a student transcript
+FAQ-008-Q03,What is Computer Science about?,FAQ-008,train,English,AI-assisted constructed example; not a student transcript
+FAQ-008-Q04,Describe the focus of BSCS,FAQ-008,train,English,AI-assisted constructed example; not a student transcript
+FAQ-008-Q05,What do computer science students study?,FAQ-008,train,English,AI-assisted constructed example; not a student transcript
+FAQ-008-Q06,How is the computer science field defined?,FAQ-008,train,English,AI-assisted constructed example; not a student transcript
+FAQ-008-Q07,Ano ang BSCS?,FAQ-008,train,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-008-Q08,Tungkol saan ang kursong Computer Science?,FAQ-008,train,Filipino,AI-assisted constructed example; not a student transcript
+FAQ-008-Q09,Explain the discipline covered by BSCS,FAQ-008,validation,English,AI-assisted constructed example; not a student transcript
+FAQ-008-Q10,Ano ang pokus ng pag-aaral sa computer science?,FAQ-008,validation,Filipino,AI-assisted constructed example; not a student transcript
+FAQ-008-Q11,How does the CS discipline approach programming and algorithms?,FAQ-008,test,English,AI-assisted constructed example; not a student transcript
+FAQ-008-Q12,Gusto kong malaman ang nilalaman ng larangang Computer Science,FAQ-008,test,Filipino,AI-assisted constructed example; not a student transcript
+FAQ-009-Q01,What is the program BS Entertainment and Multimedia Computing?,FAQ-009,train,English,AI-assisted constructed example; not a student transcript
+FAQ-009-Q02,Explain BSEMC,FAQ-009,train,English,AI-assisted constructed example; not a student transcript
+FAQ-009-Q03,What is Entertainment and Multimedia Computing about?,FAQ-009,train,English,AI-assisted constructed example; not a student transcript
+FAQ-009-Q04,Describe the focus of BSEMC,FAQ-009,train,English,AI-assisted constructed example; not a student transcript
+FAQ-009-Q05,Which degree studies game development and animation?,FAQ-009,train,English,AI-assisted constructed example; not a student transcript
+FAQ-009-Q06,What does multimedia computing involve?,FAQ-009,train,English,AI-assisted constructed example; not a student transcript
+FAQ-009-Q07,Ano ang BSEMC?,FAQ-009,train,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-009-Q08,Tungkol saan ang kursong Entertainment and Multimedia Computing?,FAQ-009,train,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-009-Q09,Explain the discipline covered by BSEMC,FAQ-009,validation,English,AI-assisted constructed example; not a student transcript
+FAQ-009-Q10,Ano ang pokus ng pag-aaral sa BSEMC?,FAQ-009,validation,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-009-Q11,How does entertainment computing combine creativity with technical work?,FAQ-009,test,English,AI-assisted constructed example; not a student transcript
+FAQ-009-Q12,Gusto kong maintindihan ang larangan ng digital entertainment at multimedia,FAQ-009,test,Filipino,AI-assisted constructed example; not a student transcript
+FAQ-010-Q01,Does CCIT have any academic accreditation?,FAQ-010,train,English,AI-assisted constructed example; not a student transcript
+FAQ-010-Q02,What PACUCOA accreditation does the college have?,FAQ-010,train,English,AI-assisted constructed example; not a student transcript
+FAQ-010-Q03,What accreditation level does BSIT have?,FAQ-010,train,English,AI-assisted constructed example; not a student transcript
+FAQ-010-Q04,Is the BSCS program accredited?,FAQ-010,train,English,AI-assisted constructed example; not a student transcript
+FAQ-010-Q05,What is the accreditation status of BSEMC?,FAQ-010,train,English,AI-assisted constructed example; not a student transcript
+FAQ-010-Q06,Explain the college accreditation levels,FAQ-010,train,English,AI-assisted constructed example; not a student transcript
+FAQ-010-Q07,Ano ang accreditation ng CCIT?,FAQ-010,train,Filipino,AI-assisted constructed example; not a student transcript
+FAQ-010-Q08,Anong antas ng akreditasyon ang mayroon ang BSIT?,FAQ-010,train,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-010-Q09,Describe PACUCOA recognition of the computing programs,FAQ-010,validation,English,AI-assisted constructed example; not a student transcript
+FAQ-010-Q10,Ano ang kalagayan ng akreditasyon ng BSEMC?,FAQ-010,validation,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-010-Q11,Which accreditation levels are associated with the three degree programs?,FAQ-010,test,English,AI-assisted constructed example; not a student transcript
+FAQ-010-Q12,Pakilinaw ang pagkilala ng PACUCOA sa mga programa ng kolehiyo,FAQ-010,test,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-011-Q01,Does CCIT offer scholarships?,FAQ-011,train,English,AI-assisted constructed example; not a student transcript
+FAQ-011-Q02,Can students qualify for academic scholarships?,FAQ-011,train,English,AI-assisted constructed example; not a student transcript
+FAQ-011-Q03,Who can qualify for course-specific scholarships?,FAQ-011,train,English,AI-assisted constructed example; not a student transcript
+FAQ-011-Q04,How is scholarship eligibility determined?,FAQ-011,train,English,AI-assisted constructed example; not a student transcript
+FAQ-011-Q05,Are scholarships based on senior high school performance?,FAQ-011,train,English,AI-assisted constructed example; not a student transcript
+FAQ-011-Q06,Explain the general scholarship requirements,FAQ-011,train,English,AI-assisted constructed example; not a student transcript
+FAQ-011-Q07,May scholarship ba sa CCIT?,FAQ-011,train,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-011-Q08,Sino ang maaaring maging kwalipikado sa scholarship?,FAQ-011,train,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-011-Q09,What academic performance is considered for scholarship eligibility?,FAQ-011,validation,English,AI-assisted constructed example; not a student transcript
+FAQ-011-Q10,Ano ang batayan para maging kwalipikado sa scholarship ng kolehiyo?,FAQ-011,validation,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-011-Q11,Does senior high achievement matter when applying for scholarship support?,FAQ-011,test,English,AI-assisted constructed example; not a student transcript
+FAQ-011-Q12,Paano isinasaalang-alang ang performance sa senior high para sa scholarship?,FAQ-011,test,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-012-Q01,What is the scholarship that CCIT offers?,FAQ-012,train,English,AI-assisted constructed example; not a student transcript
+FAQ-012-Q02,What is the 50-TAG Scholarship?,FAQ-012,train,English,AI-assisted constructed example; not a student transcript
+FAQ-012-Q03,What discount does the Course-Specific Scholarship provide?,FAQ-012,train,English,AI-assisted constructed example; not a student transcript
+FAQ-012-Q04,Which scholarship provides a tuition discount?,FAQ-012,train,English,AI-assisted constructed example; not a student transcript
+FAQ-012-Q05,Explain the 100 percent scholarship discount,FAQ-012,train,English,AI-assisted constructed example; not a student transcript
+FAQ-012-Q06,Compare 50-TAG and Course-Specific Scholarship discounts,FAQ-012,train,English,AI-assisted constructed example; not a student transcript
+FAQ-012-Q07,Ano ang diskwento ng 50-TAG?,FAQ-012,train,Filipino,AI-assisted constructed example; not a student transcript
+FAQ-012-Q08,Anong dalawang scholarship ang inaalok ng CCIT?,FAQ-012,train,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-012-Q09,List the scholarship names and their tuition discounts,FAQ-012,validation,English,AI-assisted constructed example; not a student transcript
+FAQ-012-Q10,Magkano ang porsiyentong bawas sa tuition sa 50-TAG?,FAQ-012,validation,Filipino,AI-assisted constructed example; not a student transcript
+FAQ-012-Q11,How do the two named scholarships differ in tuition-fee discount rates?,FAQ-012,test,English,AI-assisted constructed example; not a student transcript
+FAQ-012-Q12,Pakikumpara ang bawas sa matrikula ng Course-Specific at 50-TAG,FAQ-012,test,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-013-Q01,What careers can I pursue after graduating from BSCS?,FAQ-013,train,English,AI-assisted constructed example; not a student transcript
+FAQ-013-Q02,What jobs can a BSCS graduate get?,FAQ-013,train,English,AI-assisted constructed example; not a student transcript
+FAQ-013-Q03,List career opportunities in Computer Science,FAQ-013,train,English,AI-assisted constructed example; not a student transcript
+FAQ-013-Q04,What are possible careers after the BSCS degree?,FAQ-013,train,English,AI-assisted constructed example; not a student transcript
+FAQ-013-Q05,Can BSCS lead to software and AI careers?,FAQ-013,train,English,AI-assisted constructed example; not a student transcript
+FAQ-013-Q06,Tell me employment paths for computer science graduates,FAQ-013,train,English,AI-assisted constructed example; not a student transcript
+FAQ-013-Q07,Anong trabaho para sa nagtapos ng BSCS?,FAQ-013,train,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-013-Q08,Ano ang career opportunities ng BS Computer Science?,FAQ-013,train,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-013-Q09,Which occupations can follow a Computer Science degree?,FAQ-013,validation,English,AI-assisted constructed example; not a student transcript
+FAQ-013-Q10,Saan maaaring magtrabaho ang isang BSCS graduate?,FAQ-013,validation,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-013-Q11,What professional roles are possible with a computer science background?,FAQ-013,test,English,AI-assisted constructed example; not a student transcript
+FAQ-013-Q12,"Pag natapos ko ang BSCS, anong uri ng propesyon ang maaari kong pasukin?",FAQ-013,test,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-014-Q01,What careers can I pursue after graduating from BSIT?,FAQ-014,train,English,AI-assisted constructed example; not a student transcript
+FAQ-014-Q02,What jobs can a BSIT graduate get?,FAQ-014,train,English,AI-assisted constructed example; not a student transcript
+FAQ-014-Q03,List career opportunities in Information Technology,FAQ-014,train,English,AI-assisted constructed example; not a student transcript
+FAQ-014-Q04,What are possible careers after the BSIT degree?,FAQ-014,train,English,AI-assisted constructed example; not a student transcript
+FAQ-014-Q05,Can BSIT lead to networking and IT support careers?,FAQ-014,train,English,AI-assisted constructed example; not a student transcript
+FAQ-014-Q06,Tell me employment paths for IT graduates,FAQ-014,train,English,AI-assisted constructed example; not a student transcript
+FAQ-014-Q07,Anong trabaho para sa nagtapos ng BSIT?,FAQ-014,train,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-014-Q08,Ano ang career opportunities ng BS Information Technology?,FAQ-014,train,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-014-Q09,Which occupations can follow an Information Technology degree?,FAQ-014,validation,English,AI-assisted constructed example; not a student transcript
+FAQ-014-Q10,Saan maaaring magtrabaho ang isang BSIT graduate?,FAQ-014,validation,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-014-Q11,What professional roles are possible with an information technology background?,FAQ-014,test,English,AI-assisted constructed example; not a student transcript
+FAQ-014-Q12,"Pag natapos ko ang BSIT, anong uri ng propesyon ang maaari kong pasukin?",FAQ-014,test,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-015-Q01,What careers can I pursue after graduating from BSEMC?,FAQ-015,train,English,AI-assisted constructed example; not a student transcript
+FAQ-015-Q02,What jobs can a BSEMC graduate get?,FAQ-015,train,English,AI-assisted constructed example; not a student transcript
+FAQ-015-Q03,List career opportunities in Entertainment and Multimedia Computing,FAQ-015,train,English,AI-assisted constructed example; not a student transcript
+FAQ-015-Q04,What are possible careers after the BSEMC degree?,FAQ-015,train,English,AI-assisted constructed example; not a student transcript
+FAQ-015-Q05,Can BSEMC lead to animation and game design careers?,FAQ-015,train,English,AI-assisted constructed example; not a student transcript
+FAQ-015-Q06,Tell me employment paths for multimedia computing graduates,FAQ-015,train,English,AI-assisted constructed example; not a student transcript
+FAQ-015-Q07,Anong trabaho para sa nagtapos ng BSEMC?,FAQ-015,train,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-015-Q08,Ano ang career opportunities ng BS Entertainment and Multimedia Computing?,FAQ-015,train,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-015-Q09,Which occupations can follow a BSEMC degree?,FAQ-015,validation,English,AI-assisted constructed example; not a student transcript
+FAQ-015-Q10,Saan maaaring magtrabaho ang isang BSEMC graduate?,FAQ-015,validation,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-015-Q11,What professional roles are possible with an entertainment computing background?,FAQ-015,test,English,AI-assisted constructed example; not a student transcript
+FAQ-015-Q12,"Pag natapos ko ang BSEMC, anong uri ng propesyon ang maaari kong pasukin?",FAQ-015,test,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-016-Q01,Who is the dean of CCIT?,FAQ-016,train,English,AI-assisted constructed example; not a student transcript
+FAQ-016-Q02,Name the dean of the college,FAQ-016,train,English,AI-assisted constructed example; not a student transcript
+FAQ-016-Q03,Who heads the CCIT department?,FAQ-016,train,English,AI-assisted constructed example; not a student transcript
+FAQ-016-Q04,Who is in charge of the college?,FAQ-016,train,English,AI-assisted constructed example; not a student transcript
+FAQ-016-Q05,Tell me the CCIT dean's name,FAQ-016,train,English,AI-assisted constructed example; not a student transcript
+FAQ-016-Q06,Who leads CCIT?,FAQ-016,train,English,AI-assisted constructed example; not a student transcript
+FAQ-016-Q07,Sino ang dekana ng CCIT?,FAQ-016,train,Filipino,AI-assisted constructed example; not a student transcript
+FAQ-016-Q08,Sino ang namumuno sa kolehiyo?,FAQ-016,train,Filipino,AI-assisted constructed example; not a student transcript
+FAQ-016-Q09,Identify the college dean,FAQ-016,validation,English,AI-assisted constructed example; not a student transcript
+FAQ-016-Q10,Kanino nakatalaga ang pamumuno bilang dean ng CCIT?,FAQ-016,validation,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-016-Q11,Which person holds the dean role in CCIT?,FAQ-016,test,English,AI-assisted constructed example; not a student transcript
+FAQ-016-Q12,Pakilala ang pinuno ng kolehiyo na may tungkuling dean,FAQ-016,test,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-017-Q01,Who are the faculty members of the BS Information Technology program?,FAQ-017,train,English,AI-assisted constructed example; not a student transcript
+FAQ-017-Q02,Who teaches BSIT?,FAQ-017,train,English,AI-assisted constructed example; not a student transcript
+FAQ-017-Q03,List the Information Technology faculty,FAQ-017,train,English,AI-assisted constructed example; not a student transcript
+FAQ-017-Q04,Name the BSIT professors,FAQ-017,train,English,AI-assisted constructed example; not a student transcript
+FAQ-017-Q05,Who are the instructors for the IT program?,FAQ-017,train,English,AI-assisted constructed example; not a student transcript
+FAQ-017-Q06,Tell me the teaching staff for BSIT,FAQ-017,train,English,AI-assisted constructed example; not a student transcript
+FAQ-017-Q07,Sino ang mga guro sa BSIT?,FAQ-017,train,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-017-Q08,Pakilista ang faculty ng Information Technology,FAQ-017,train,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-017-Q09,Which teachers belong to the BSIT program?,FAQ-017,validation,English,AI-assisted constructed example; not a student transcript
+FAQ-017-Q10,Sino-sino ang nagtuturo sa kursong BSIT?,FAQ-017,validation,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-017-Q11,Which people comprise the Information Technology teaching faculty?,FAQ-017,test,English,AI-assisted constructed example; not a student transcript
+FAQ-017-Q12,Gusto kong makilala ang mga propesor na nakatalaga sa BSIT,FAQ-017,test,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-018-Q01,Who are the faculty members of the BS Computer Science program?,FAQ-018,train,English,AI-assisted constructed example; not a student transcript
+FAQ-018-Q02,Who teaches BSCS?,FAQ-018,train,English,AI-assisted constructed example; not a student transcript
+FAQ-018-Q03,List the Computer Science faculty,FAQ-018,train,English,AI-assisted constructed example; not a student transcript
+FAQ-018-Q04,Name the BSCS professors,FAQ-018,train,English,AI-assisted constructed example; not a student transcript
+FAQ-018-Q05,Who are the instructors for the computer science program?,FAQ-018,train,English,AI-assisted constructed example; not a student transcript
+FAQ-018-Q06,Tell me the teaching staff for BSCS,FAQ-018,train,English,AI-assisted constructed example; not a student transcript
+FAQ-018-Q07,Sino ang mga guro sa BSCS?,FAQ-018,train,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-018-Q08,Pakilista ang faculty ng Computer Science,FAQ-018,train,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-018-Q09,Which teachers belong to the BSCS program?,FAQ-018,validation,English,AI-assisted constructed example; not a student transcript
+FAQ-018-Q10,Sino-sino ang nagtuturo sa kursong BSCS?,FAQ-018,validation,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-018-Q11,Which people comprise the Computer Science teaching faculty?,FAQ-018,test,English,AI-assisted constructed example; not a student transcript
+FAQ-018-Q12,Gusto kong makilala ang mga propesor na nakatalaga sa BSCS,FAQ-018,test,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-019-Q01,Who are the faculty members of the BS Entertainment and Multimedia program?,FAQ-019,train,English,AI-assisted constructed example; not a student transcript
+FAQ-019-Q02,Who teaches BSEMC?,FAQ-019,train,English,AI-assisted constructed example; not a student transcript
+FAQ-019-Q03,List the Entertainment and Multimedia Computing faculty,FAQ-019,train,English,AI-assisted constructed example; not a student transcript
+FAQ-019-Q04,Name the BSEMC professors,FAQ-019,train,English,AI-assisted constructed example; not a student transcript
+FAQ-019-Q05,Who are the instructors for the multimedia computing program?,FAQ-019,train,English,AI-assisted constructed example; not a student transcript
+FAQ-019-Q06,Tell me the teaching staff for BSEMC,FAQ-019,train,English,AI-assisted constructed example; not a student transcript
+FAQ-019-Q07,Sino ang mga guro sa BSEMC?,FAQ-019,train,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-019-Q08,Pakilista ang faculty ng Entertainment and Multimedia Computing,FAQ-019,train,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-019-Q09,Which teachers belong to the BSEMC program?,FAQ-019,validation,English,AI-assisted constructed example; not a student transcript
+FAQ-019-Q10,Sino-sino ang nagtuturo sa kursong BSEMC?,FAQ-019,validation,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-019-Q11,Which people comprise the Entertainment and Multimedia Computing teaching faculty?,FAQ-019,test,English,AI-assisted constructed example; not a student transcript
+FAQ-019-Q12,Gusto kong makilala ang mga propesor na nakatalaga sa BSEMC,FAQ-019,test,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-020-Q01,What facilities are available for CCIT students?,FAQ-020,train,English,AI-assisted constructed example; not a student transcript
+FAQ-020-Q02,Which computer laboratories does CCIT have?,FAQ-020,train,English,AI-assisted constructed example; not a student transcript
+FAQ-020-Q03,List the college laboratories,FAQ-020,train,English,AI-assisted constructed example; not a student transcript
+FAQ-020-Q04,What labs can computing students use?,FAQ-020,train,English,AI-assisted constructed example; not a student transcript
+FAQ-020-Q05,Does the college have an AI Laboratory?,FAQ-020,train,English,AI-assisted constructed example; not a student transcript
+FAQ-020-Q06,Tell me the laboratory names,FAQ-020,train,English,AI-assisted constructed example; not a student transcript
+FAQ-020-Q07,Anong mga laboratoryo ang mayroon sa CCIT?,FAQ-020,train,Filipino,AI-assisted constructed example; not a student transcript
+FAQ-020-Q08,Ano ang mga pasilidad para sa computing students?,FAQ-020,train,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-020-Q09,Describe the computer lab facilities,FAQ-020,validation,English,AI-assisted constructed example; not a student transcript
+FAQ-020-Q10,Anu-ano ang pangalan ng mga laboratoryo ng kolehiyo?,FAQ-020,validation,Filipino,AI-assisted constructed example; not a student transcript
+FAQ-020-Q11,Which laboratory spaces support practical learning in the department?,FAQ-020,test,English,AI-assisted constructed example; not a student transcript
+FAQ-020-Q12,Pakibigay ang mga pasilidad na ginagamit para sa hands-on computing,FAQ-020,test,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-021-Q01,Does CCIT accept students who have DOST Scholarship?,FAQ-021,train,English,AI-assisted constructed example; not a student transcript
+FAQ-021-Q02,Can a DOST scholar take BSCS at CCIT?,FAQ-021,train,English,AI-assisted constructed example; not a student transcript
+FAQ-021-Q03,Does BSIT accept DOST scholars?,FAQ-021,train,English,AI-assisted constructed example; not a student transcript
+FAQ-021-Q04,Which programs accept DOST scholarship holders?,FAQ-021,train,English,AI-assisted constructed example; not a student transcript
+FAQ-021-Q05,What conditions apply to DOST scholars entering CCIT?,FAQ-021,train,English,AI-assisted constructed example; not a student transcript
+FAQ-021-Q06,Is DOST scholarship accepted for the computing programs?,FAQ-021,train,English,AI-assisted constructed example; not a student transcript
+FAQ-021-Q07,Tumatanggap ba ng DOST scholars ang CCIT?,FAQ-021,train,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-021-Q08,Puwede bang mag-BSIT ang isang DOST scholar?,FAQ-021,train,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-021-Q09,Explain DOST scholarship acceptance in the college,FAQ-021,validation,English,AI-assisted constructed example; not a student transcript
+FAQ-021-Q10,Anong programa ang maaaring kunin ng may DOST scholarship?,FAQ-021,validation,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-021-Q11,Can a student holding a DOST scholarship enter the IT or CS program?,FAQ-021,test,English,AI-assisted constructed example; not a student transcript
+FAQ-021-Q12,Pakilinaw kung tinatanggap ang iskolar ng DOST sa kolehiyong ito,FAQ-021,test,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-022-Q01,"Does CCIT offer any non-academic programs, activities for students?",FAQ-022,train,English,AI-assisted constructed example; not a student transcript
+FAQ-022-Q02,What student activities does CCIT organize?,FAQ-022,train,English,AI-assisted constructed example; not a student transcript
+FAQ-022-Q03,Tell me about CCIT Camp and CCIT Night,FAQ-022,train,English,AI-assisted constructed example; not a student transcript
+FAQ-022-Q04,What non-academic events can students join?,FAQ-022,train,English,AI-assisted constructed example; not a student transcript
+FAQ-022-Q05,How often is CCIT Camp held?,FAQ-022,train,English,AI-assisted constructed example; not a student transcript
+FAQ-022-Q06,Does the college organize spiritual activities?,FAQ-022,train,English,AI-assisted constructed example; not a student transcript
+FAQ-022-Q07,Anong mga aktibidad ang mayroon sa CCIT?,FAQ-022,train,Filipino,AI-assisted constructed example; not a student transcript
+FAQ-022-Q08,May camp at night activities ba sa kolehiyo?,FAQ-022,train,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-022-Q09,List the social and spiritual activities for students,FAQ-022,validation,English,AI-assisted constructed example; not a student transcript
+FAQ-022-Q10,Gaano kadalas ginaganap ang CCIT Camp?,FAQ-022,validation,Taglish,AI-assisted constructed example; not a student transcript
+FAQ-022-Q11,Which events support student camaraderie outside academic work?,FAQ-022,test,English,AI-assisted constructed example; not a student transcript
+FAQ-022-Q12,Anong pagtitipon ang inihahanda para sa samahan at personal na paglago ng mga mag-aaral?,FAQ-022,test,Filipino,AI-assisted constructed example; not a student transcript
