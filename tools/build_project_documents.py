@@ -402,7 +402,7 @@ def write_markdown(blocks, path):
             lines.append('| ' + ' | '.join(block['headers']) + ' |\n| ' + ' | '.join('---' for _ in block['headers']) + ' |')
             lines.extend('| ' + ' | '.join(map(str, row)) + ' |' for row in block['rows'])
         elif kind == 'figure':
-            relative = Path('../../research/results/figures') / block['path'].name
+            relative = Path('../..') / block['path'].relative_to(ROOT)
             lines.append(f"![{block['caption']}]({relative.as_posix()})")
         lines.append('')
     path.write_text('\n'.join(lines), encoding='utf-8')
@@ -642,10 +642,8 @@ def main():
     OUT.mkdir(parents=True, exist_ok=True)
     register_pdf_fonts()
     parts = content(report)
-    imrad = cover('IMRaD research manuscript') + parts['abstract'] + [head('Introduction')] + parts['intro'] + parts['related']
-    imrad += [head('Methods')] + parts['methods'] + [head('Results')] + parts['results']
-    imrad += [head('Discussion')] + parts['discussion'] + [head('Conclusion')] + parts['conclusion']
-    imrad += [{'kind': 'pagebreak'}] + parts['references'] + parts['appendices']
+    from build_imrad import manuscript
+    imrad = manuscript(json.loads((ROOT / 'research/results-v3/report.json').read_text(encoding='utf-8')))
     technical = cover('Five-chapter technical documentation') + parts['abstract']
     chapters = [('Chapter 1: Introduction', parts['intro']),
                 ('Chapter 2: Review of Related Systems and Concepts', parts['related']),
@@ -658,8 +656,8 @@ def main():
     for name, markdown_name, blocks in [('CCIThink_IMRaD_Draft', 'imrad.md', imrad),
                                         ('CCIThink_Technical_Report_Draft', 'technical-report.md', technical)]:
         write_markdown(blocks, OUT / markdown_name)
-        write_docx(blocks, OUT / (name + '.docx'))
-        write_pdf(blocks, OUT / (name + '.pdf'))
+        write_docx(blocks, OUT / (name + '.docx'), document_title=blocks[0]['text'])
+        write_pdf(blocks, OUT / (name + '.pdf'), document_title=blocks[0]['text'])
         print(f'Built {name}: Markdown, DOCX and PDF')
     slides(report)
     print('Built 12-slide defense presentation: PPTX, PDF and Markdown speaker notes')

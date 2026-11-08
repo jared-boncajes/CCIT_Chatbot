@@ -12,6 +12,7 @@ from chatbot.answers import format_faq, source_metadata
 from chatbot.conversation import is_private_question, read_context, resolve_question
 from chatbot.intent_model import load_model
 from chatbot.scope import scope_candidates
+from chatbot.roster import focus_roster, is_roster_request
 from research.web import analysis_blueprint
 
 ROOT = Path(__file__).parent
@@ -230,12 +231,15 @@ def create_app(test_config=None):
                 ), 503
 
         # 8. Build a local FAQ answer or ask the configured AI to phrase the sources.
+        answer_records = focus_roster(records, resolved)
+        if is_roster_request(resolved):
+            next_context['topic'] = 'representatives'
         try:
             if mode == 'faq':
-                reply = format_faq(records, resolved)
+                reply = format_faq(answer_records, resolved)
             else:
                 reply = generate(
-                    resolved, records, app.config['API_KEY'],
+                    resolved, answer_records, app.config['API_KEY'],
                     app.config['MODEL'], app.config['AI_PROVIDER'],
                 )
         except Exception as error:

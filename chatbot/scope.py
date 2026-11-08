@@ -66,6 +66,20 @@ def scope_candidates(question, records):
         return [], prompts[topic], {'pending_topic': topic}
     if 'hours' in generic and not topics and not codes:
         return [], prompts['hours'], {'pending_topic': 'hours'}
+    from chatbot.roster import is_roster_request, roster_records, selectors, selected_entries
+    if is_roster_request(question):
+        candidates = roster_records(reviewed)
+        if 'representatives' in query and 'officers' not in query:
+            programs, year, section = selectors(question)
+            if (year and year not in range(1, 5)) or (not year and re.search(r'\b(?:[5-9](?:st|nd|rd|th)?|fifth|sixth)\s*(?:year|yr)\b', question, re.I)):
+                return [], None, {}
+            if year and not programs:
+                pending = {'pending_topic': 'representatives', 'pending_year': year}
+                if section:
+                    pending['pending_section'] = section
+                return [], 'Which program are those class representatives for: BSCS, BSIT, or BSEMC?', pending
+            candidates = [r for r in candidates if selected_entries(r, question)]
+        return candidates, None, {}
     if codes and (not topics or topics == ['description']):
         if not codes <= known_codes:
             return [], None, {}
@@ -109,7 +123,7 @@ def scope_candidates(question, records):
         return candidates, None, {}
 
     if topics == ['curriculum']:
-        subject_list = bool(re.search(r'\bsubjects\b', question, re.I)) and not re.search(r'\bcurricul(?:um|a)|study plan|checklist\b', question, re.I)
+        subject_list = 'subjects' in query and not re.search(r'\bcurricul(?:um|a)|study plan|checklist\b', question, re.I)
         pending['pending_topic'] = 'subjects' if subject_list else 'curriculum'
         year = curriculum_year(question)
         if not year and re.search(r'\b(?:\d+(?:st|nd|rd|th)?|fifth|sixth)\s*(?:year|yr)\b', question, re.I):

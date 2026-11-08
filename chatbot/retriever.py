@@ -11,6 +11,9 @@ MINIMUM_COVERAGE = .6
 MODEL_RANK_BONUS = .25
 MODEL_MIN_RANK_SCORE = .5
 PHRASES = [
+    (r'\bpre[ -]reqs?\b', 'prerequisites'),
+    (r'\bco[ -]reqs?\b', 'corequisites'),
+    (r'\b(cs|it|emc)([1-4])([ab]?)\b', r'\1 \2\3'),
     (r'\bcourse[\s-]+specific\b', 'course_specific'),
     (r'\bprogram[\s-]+specific scholarships?\b', 'scholarships'),
     (r'\b50[\s-]*tag\b', '50tag'),
@@ -28,6 +31,12 @@ PHRASES = [
     (r'\banu[\s-]*anong\b', 'ano'),
 ]
 ALIASES = {
+    'rep': 'representatives', 'reps': 'representatives', 'representative': 'representatives',
+    'officer': 'officers', 'org': 'organizations', 'orgs': 'organizations',
+    'pres': 'president', 'prez': 'president', 'vp': 'vice_president',
+    'sec': 'secretary', 'treas': 'treasurer',
+    'subj': 'subjects', 'subjs': 'subjects', 'prof': 'faculty', 'profs': 'faculty',
+    'yr': 'year', 'yrs': 'year',
     'prereq': 'prerequisites', 'prereqs': 'prerequisites',
     'coreq': 'corequisites', 'coreqs': 'corequisites',
     'course': 'programs', 'courses': 'programs', 'program': 'programs',
@@ -111,13 +120,24 @@ def tokens(text):
 
 
 def program_entities(text):
-    return tokens(text) & PROGRAMS
+    query = tokens(text)
+    named = query & PROGRAMS
+    # Lowercase "it" is usually a pronoun. Beside a representative lookup,
+    # however, it is the common IT program abbreviation.
+    if 'representatives' in query and re.search(r'\bit(?:\s+[1-4](?:st|nd|rd|th)?[a-z]?(?:\s*(?:year|yr))?)?\s+(?:reps?|representatives?)\b', normalize(text)):
+        named.add('bsit')
+    return named
 
 
 def intents(text):
     """Identify requested topics using the documented keyword lists above."""
-    if tokens(text) & {'prerequisite', 'prerequisites', 'corequisite', 'corequisites'}:
+    if (tokens(text) & {'prerequisite', 'prerequisites', 'corequisite', 'corequisites'}
+            or re.search(EXTENDED_INTENTS['prerequisites'], text, re.I)):
         return ['prerequisites']
+    if tokens(text) & {'representatives', 'officers', 'president', 'vice_president', 'secretary', 'treasurer', 'auditor', 'organizations'}:
+        return ['organizations']
+    if 'subjects' in tokens(text):
+        return ['curriculum']
     for category in ('community-service', 'prerequisites', 'ojt', 'organizations', 'curriculum'):
         if re.search(EXTENDED_INTENTS[category], text, re.I):
             return [category]

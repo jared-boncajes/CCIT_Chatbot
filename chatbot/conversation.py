@@ -2,8 +2,8 @@
 import re
 from chatbot.retriever import PROGRAMS, intents, program_entities, tokens
 
-PENDING_TOPICS = {'description', 'academic_programs', 'careers', 'faculty', 'accreditation', 'prerequisites', 'curriculum', 'subjects', 'ojt'}
-SCOPED_TOPICS = {'prerequisites', 'curriculum', 'subjects', 'ojt'}
+PENDING_TOPICS = {'description', 'academic_programs', 'careers', 'faculty', 'accreditation', 'prerequisites', 'curriculum', 'subjects', 'ojt', 'representatives'}
+SCOPED_TOPICS = {'prerequisites', 'curriculum', 'subjects', 'ojt', 'representatives'}
 GENERIC_TOPICS = {'requirements', 'hours', 'contact', 'schedule', 'community-service'}
 PENDING_TOPICS |= GENERIC_TOPICS
 
@@ -15,7 +15,7 @@ def read_context(value):
     if not isinstance(value, dict):
         raise ValueError('Invalid conversation context')
     for key in value:
-        if key not in {'programs', 'pending_topic', 'pending_subject', 'pending_year'}:
+        if key not in {'programs', 'pending_topic', 'pending_subject', 'pending_year', 'pending_section', 'topic'}:
             raise ValueError('Invalid conversation context')
     programs = value.get('programs', [])
     if not isinstance(programs, list) or len(programs) > 3:
@@ -36,9 +36,18 @@ def read_context(value):
         result['pending_subject'] = subject
     year = value.get('pending_year')
     if year is not None:
-        if pending not in {'curriculum', 'subjects'} or type(year) is not int or year not in range(1, 5):
+        if pending not in {'curriculum', 'subjects', 'representatives'} or type(year) is not int or year not in range(1, 5):
             raise ValueError('Invalid year context')
         result['pending_year'] = year
+    section = value.get('pending_section')
+    if section is not None:
+        if pending != 'representatives' or not isinstance(section, str) or not re.fullmatch(r'[A-Z]', section):
+            raise ValueError('Invalid section context')
+        result['pending_section'] = section
+    if value.get('topic') is not None:
+        if value['topic'] != 'representatives':
+            raise ValueError('Invalid topic context')
+        result['topic'] = value['topic']
     return result
 
 
@@ -48,6 +57,15 @@ def resolve_question(message, context):
     from chatbot.scope import curriculum_year, subject_codes
     pending = context.get('pending_topic')
     current_topics = set(intents(message))
+    if context.get('topic') == 'representatives' and not pending:
+        # Retain the roster topic for selector follow-ups, not unrelated questions.
+        selector_words = tokens(message) - named - {'and', 'year', 'yr', 'first', 'second', 'third', 'fourth', '1st', '2nd', '3rd', '4th', '1', '2', '3', '4'}
+        if not selector_words and (named or curriculum_year(message)):
+            previous = named or set(context['programs'])
+            message += ' representatives'
+            if not named and len(previous) == 1:
+                message += ' ' + next(iter(previous)).upper()
+            return message, {'programs': sorted(previous)}, False
     generic_replies = {
         'contact': {'facts', 'department', 'office', 'faculty'},
         'hours': {'ojt', 'facilities', 'community', 'service'},
@@ -76,6 +94,8 @@ def resolve_question(message, context):
             year = answer_year or context.get('pending_year')
             if year and not curriculum_year(message):
                 message += ' year ' + str(year)
+            if context.get('pending_section') and year:
+                message += f' {year}{context["pending_section"]}'
             return message, {'programs': sorted(previous)}, False
     if current_topics & SCOPED_TOPICS and not named and len(context['programs']) == 1:
         message += ' ' + context['programs'][0].upper()

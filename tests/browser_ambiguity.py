@@ -48,9 +48,18 @@ def main():
             final = ask('BSCS')
             assert [s['id'] for s in final['sources']] == ['FAQ-030']
             expect(page.locator('.message.assistant').last).to_contain_text('ITECC02')
+            roster = ask('CS reps')
+            assert [s['id'] for s in roster['sources']] == ['FAQ-186']
+            expect(page.locator('.message.assistant').last).to_contain_text('Voltaire Jan O. Punzalan')
+            narrowed = ask('and 2nd yr?')
+            assert narrowed['mode'] == 'faq'
+            expect(page.locator('.message.assistant').last).to_contain_text('Dominic G. Gutierrez')
+            expect(page.locator('.message.assistant').last).not_to_contain_text('Voltaire')
+            expect(page.locator('.message.assistant').last).to_contain_text('2025-2026')
+            page.screenshot(path=str(args.output / f'representatives-{width}.png'), full_page=True)
             assert page.evaluate('document.documentElement.scrollWidth <= innerWidth')
             assert not errors, errors
-            print(f'PASS {width}px: clarification, course reply, program reply, correct answer, no overflow or JS errors')
+            print(f'PASS {width}px: clarification, course/program replies, abbreviated reps/year follow-up, dated names, no overflow or JS errors')
             context.close()
         browser.close()
 
