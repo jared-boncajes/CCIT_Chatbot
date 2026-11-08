@@ -194,9 +194,10 @@ def test_missing_currency_metadata_keeps_a_backend_warning(client):
     assert any('not been independently confirmed' in note for note in data['warnings'])
 
 
-def test_college_name_does_not_establish_a_program_head(client):
+def test_supplied_program_chair_is_now_supported(client):
     data = client.post('/api/chat', json={'message': 'Who heads BSIT?'}).get_json()
-    assert data['mode'] == 'fallback' and data['sources'] == []
+    assert data['mode'] == 'faq'
+    assert [row['id'] for row in data['sources']] == ['FAQ-219']
 
 
 @pytest.mark.parametrize('question,fact', [

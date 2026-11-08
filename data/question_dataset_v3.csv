@@ -922,12 +922,27 @@ FAQ-017-V3-TRAIN-03,Who are the professors under BSIT?,FAQ-017,train,English,Use
 FAQ-209-V3-TRAIN-05,Who finds the company for OJT?,FAQ-209,train,English,User-supplied database_v3.json alternative question; authorship not independently established
 FAQ-187-V3-TRAIN-01,Who guides the FACTS student organization?,FAQ-187,train,English,User-supplied database_v3.json alternative question; authorship not independently established
 FAQ-016-V3-TRAIN-01,Who heads the College of Computing and Information Technology?,FAQ-016,train,English,User-supplied database_v3.json alternative question; authorship not independently established
+FAQ-220-V3-TRAIN-01,Who heads the Computer Science program?,FAQ-220,train,English,User-supplied database_v3.json alternative question; authorship not independently established
+FAQ-221-V3-TRAIN-01,Who heads the Entertainment and Multimedia Computing program?,FAQ-221,train,English,User-supplied database_v3.json alternative question; authorship not independently established
+FAQ-219-V3-TRAIN-01,Who heads the Information Technology program?,FAQ-219,train,English,User-supplied database_v3.json alternative question; authorship not independently established
+FAQ-220-V3-TRAIN-02,Who is Dr. Farley L. Abrigo?,FAQ-220,train,English,User-supplied database_v3.json alternative question; authorship not independently established
 FAQ-016-V3-TRAIN-02,Who is Dr. Maricel M. Gaspar?,FAQ-016,train,English,User-supplied database_v3.json alternative question; authorship not independently established
+FAQ-221-V3-TRAIN-02,Who is John Benedict Palomeno?,FAQ-221,train,English,User-supplied database_v3.json alternative question; authorship not independently established
+FAQ-219-V3-TRAIN-02,Who is Judith G. Elic?,FAQ-219,train,English,User-supplied database_v3.json alternative question; authorship not independently established
 FAQ-187-V3-TRAIN-02,Who is the adviser of FACTS?,FAQ-187,train,English,User-supplied database_v3.json canonical question; authorship not independently established
+FAQ-220-V3-TRAIN-03,Who is the Computer Science Department Chair?,FAQ-220,train,English,User-supplied database_v3.json canonical question; authorship not independently established
+FAQ-220-V3-TRAIN-04,Who is the CS chair?,FAQ-220,train,English,User-supplied database_v3.json alternative question; authorship not independently established
+FAQ-220-V3-TRAIN-05,Who is the CS program chair?,FAQ-220,train,English,User-supplied database_v3.json alternative question; authorship not independently established
 FAQ-016-V3-TRAIN-03,Who is the current CCIT dean?,FAQ-016,train,English,User-supplied database_v3.json alternative question; authorship not independently established
 FAQ-016-V3-TRAIN-04,Who is the dean of CCIT?,FAQ-016,train,English,User-supplied database_v3.json canonical question; authorship not independently established
+FAQ-221-V3-TRAIN-03,Who is the EMC chair?,FAQ-221,train,English,User-supplied database_v3.json alternative question; authorship not independently established
+FAQ-221-V3-TRAIN-04,Who is the EMC Department Chair?,FAQ-221,train,English,User-supplied database_v3.json canonical question; authorship not independently established
+FAQ-221-V3-TRAIN-05,Who is the EMC program chair?,FAQ-221,train,English,User-supplied database_v3.json alternative question; authorship not independently established
 FAQ-186-V3-TRAIN-05,Who is the FACTS president?,FAQ-186,train,English,User-supplied database_v3.json alternative question; authorship not independently established
 FAQ-187-V3-TRAIN-03,Who is the faculty adviser of Faith Computer Technology Society?,FAQ-187,train,English,User-supplied database_v3.json alternative question; authorship not independently established
+FAQ-219-V3-TRAIN-03,Who is the IT chair?,FAQ-219,train,English,User-supplied database_v3.json alternative question; authorship not independently established
+FAQ-219-V3-TRAIN-04,Who is the IT Department Chair?,FAQ-219,train,English,User-supplied database_v3.json canonical question; authorship not independently established
+FAQ-219-V3-TRAIN-05,Who is the IT program chair?,FAQ-219,train,English,User-supplied database_v3.json alternative question; authorship not independently established
 FAQ-187-V3-TRAIN-04,Who is the professor in charge of FACTS?,FAQ-187,train,English,User-supplied database_v3.json alternative question; authorship not independently established
 FAQ-011-V3-TRAIN-05,Who qualifies for a course-specific scholarship?,FAQ-011,train,English,User-supplied database_v3.json alternative question; authorship not independently established
 FAQ-018-V3-TRAIN-04,Who teaches in the Computer Science program?,FAQ-018,train,English,User-supplied database_v3.json alternative question; authorship not independently established
@@ -1807,3 +1822,15 @@ FAQ-218-V3-VALIDATION-01,What steps do I follow to complete assigned community s
 FAQ-218-V3-VALIDATION-02,How do students fulfill community service obligations in CCIT?,FAQ-218,validation,English,AI-authored constructed question; frozen before v3 evaluation; not a student transcript
 FAQ-218-V3-TEST-01,Explain the procedure for rendering my community service.,FAQ-218,test,English,AI-authored constructed question; frozen before v3 evaluation; not a student transcript
 FAQ-218-V3-TEST-02,How can I finish the community service hours I have been assigned?,FAQ-218,test,English,AI-authored constructed question; frozen before v3 evaluation; not a student transcript
+FAQ-219-V3-VALIDATION-01,Name the department chair assigned to BSIT.,FAQ-219,validation,English,AI-authored constructed question; frozen before expanded chair evaluation; not a student transcript
+FAQ-219-V3-VALIDATION-02,Which person leads the Information Technology degree at FAITH?,FAQ-219,validation,English,AI-authored constructed question; frozen before expanded chair evaluation; not a student transcript
+FAQ-219-V3-TEST-01,Who currently serves as chair of the BSIT department?,FAQ-219,test,English,AI-authored constructed question; frozen before expanded chair evaluation; not a student transcript
+FAQ-219-V3-TEST-02,What leadership position does Judith G. Elic hold at FAITH Colleges?,FAQ-219,test,English,AI-authored constructed question; frozen before expanded chair evaluation; not a student transcript
+FAQ-220-V3-VALIDATION-01,Name the department chair assigned to BSCS.,FAQ-220,validation,English,AI-authored constructed question; frozen before expanded chair evaluation; not a student transcript
+FAQ-220-V3-VALIDATION-02,Which person leads the Computer Science degree at FAITH?,FAQ-220,validation,English,AI-authored constructed question; frozen before expanded chair evaluation; not a student transcript
+FAQ-220-V3-TEST-01,Who currently serves as chair of the BSCS department?,FAQ-220,test,English,AI-authored constructed question; frozen before expanded chair evaluation; not a student transcript
+FAQ-220-V3-TEST-02,What leadership position does Dr. Farley L. Abrigo hold at FAITH Colleges?,FAQ-220,test,English,AI-authored constructed question; frozen before expanded chair evaluation; not a student transcript
+FAQ-221-V3-VALIDATION-01,Name the department chair assigned to BSEMC.,FAQ-221,validation,English,AI-authored constructed question; frozen before expanded chair evaluation; not a student transcript
+FAQ-221-V3-VALIDATION-02,Which person leads the Entertainment and Multimedia Computing degree at FAITH?,FAQ-221,validation,English,AI-authored constructed question; frozen before expanded chair evaluation; not a student transcript
+FAQ-221-V3-TEST-01,Who currently serves as chair of the BSEMC department?,FAQ-221,test,English,AI-authored constructed question; frozen before expanded chair evaluation; not a student transcript
+FAQ-221-V3-TEST-02,What leadership position does John Benedict Palomeno hold at FAITH Colleges?,FAQ-221,test,English,AI-authored constructed question; frozen before expanded chair evaluation; not a student transcript

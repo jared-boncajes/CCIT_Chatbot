@@ -54,3 +54,13 @@ No successful live generation has been confirmed here. The user separately repor
 ## Limits
 
 Source transcription is checked against the supplied PDF; current department facts remain unconfirmed. Firefox, Safari, actual mobile devices, screen readers, deployment/load testing and broad independently collected language evaluation remain unrun. JavaScript syntax and Git whitespace checks passed. Runtime dependencies remain unchanged; optional chart/document-generation dependencies are pinned in requirements-research.txt.
+
+## Department-chair and shorthand update (2026-11-08)
+
+The expanded knowledge base has 221 records, including the three user-supplied department chairs. Validation of this update passed 832 pytest cases, including a texting-form variant of every canonical FAQ, 726 supplied alternative questions, chair identity/scope checks, privacy wording, and unsupported-detail guards. The original 218 source records and their frozen validation/test questions were checked for preservation.
+
+A fresh FAQ-mode server passed all 95 existing HTTP source-support checks, 14 chat browser checks across six viewport sizes, and 6 analysis browser scenarios. Additional Chromium requests confirmed that `it dept chair` and `cs dept chrmn` display the supplied names. The browser scripts now use current suggestions and report-driven analysis metrics instead of historical dataset constants. Simulated failure scenarios remain identified in their runner output.
+
+The retrained classifier used 951 training, 442 validation, and 442 test examples. Test performance was 365/442 (82.6%), macro F1 0.822. These constructed-data scores are separate from application regression results. The original holdouts were retained; the three new labels received AI-authored holdouts before the expanded experiment. This is not independent student validation.
+
+The IMRaD Word file was checked for its two-column section and Roman-numbered headings. The generated five-page PDF was rendered for visual inspection of its first and final pages; title, abstract, columns, references, and current metrics were checked. The layout follows the supplied Klarify example while preserving CCIThink authorship and measured findings. Reproduction: `python tools/build_imrad.py`.

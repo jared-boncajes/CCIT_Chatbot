@@ -13,9 +13,9 @@ ROWS = json.loads((Path(__file__).resolve().parents[1] / 'data/knowledge.json').
 
 
 def test_database_integrity():
-    assert len(ROWS) == 218
-    assert len({row['id'] for row in ROWS}) == 218
-    assert {row['source_id'] for row in ROWS} == set(range(1, 219))
+    assert len(ROWS) == 221
+    assert len({row['id'] for row in ROWS}) == 221
+    assert {row['source_id'] for row in ROWS} == set(range(1, 222))
     source = json.loads((Path(__file__).resolve().parents[1] / 'data/sources/database_v3.json').read_text())
     by_id = {r['id']: r for r in source}
     for row in ROWS:
@@ -81,4 +81,4 @@ def test_alternative_questions_retrieve_the_authored_record_or_request_missing_y
             else:
                 assert [r['id'] for r in retrieve(question, ROWS)] == [expected]
             checked += 1
-    assert checked == 714
+    assert checked == 726

@@ -15,11 +15,11 @@ def test_all_labels_have_training_and_frozen_holdout_examples():
     knowledge = json.loads((ROOT / 'data/knowledge.json').read_text())
     ids = {r['id'] for r in knowledge}
     rows, profile = load_dataset(ROOT / 'data/question_dataset_v3.csv', ids)
-    assert len(ids) == 218
-    assert profile['split_counts'] == {'train': 936, 'validation': 436, 'test': 436}
+    assert len(ids) == 221
+    assert profile['split_counts'] == {'train': 951, 'validation': 442, 'test': 442}
     for split in ('train', 'validation', 'test'):
         assert {r['faq_id'] for r in rows if r['split'] == split} == ids
-    assert profile['quality']['retained_rows'] == profile['quality']['input_rows'] == 1808
+    assert profile['quality']['retained_rows'] == profile['quality']['input_rows'] == 1835
     assert not profile['quality']['duplicate_rows_removed']
     assert not profile['quality']['missing_rows_removed']
     assert not profile['quality']['invalid_rows_removed']
@@ -48,8 +48,8 @@ def test_app_loads_expanded_model_and_serves_current_analysis():
     client = app.test_client()
     assert client.get('/api/health').get_json()['intent_model_ready']
     report = client.get('/api/analysis').get_json()['report']
-    assert len(report['labels']) == 218
-    assert report['dataset']['quality']['retained_rows'] == 1808
+    assert len(report['labels']) == 221
+    assert report['dataset']['quality']['retained_rows'] == 1835
     for question, expected in [('Who teaches BSCS?', 'FAQ-018'), ('BSCS OJT hours', 'FAQ-207')]:
         prediction = client.post('/api/classify', json={'message': question})
         assert prediction.status_code == 200

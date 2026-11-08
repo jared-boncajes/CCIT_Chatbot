@@ -2,7 +2,7 @@
 import re
 from chatbot.retriever import PROGRAMS, intents, program_entities, tokens
 
-PENDING_TOPICS = {'description', 'academic_programs', 'careers', 'faculty', 'accreditation', 'prerequisites', 'curriculum', 'subjects', 'ojt', 'representatives'}
+PENDING_TOPICS = {'chair', 'description', 'academic_programs', 'careers', 'faculty', 'accreditation', 'prerequisites', 'curriculum', 'subjects', 'ojt', 'representatives'}
 SCOPED_TOPICS = {'prerequisites', 'curriculum', 'subjects', 'ojt', 'representatives'}
 GENERIC_TOPICS = {'requirements', 'hours', 'contact', 'schedule', 'community-service'}
 PENDING_TOPICS |= GENERIC_TOPICS
@@ -140,6 +140,8 @@ def resolve_question(message, context):
 
 def is_private_question(message):
     """Detect requests for personal grades/passwords; no record database exists."""
+    from chatbot.retriever import expand_shorthand
+    message = expand_shorthand(message)
     sensitive = re.search(r'\b(?:grades?|grado|marka|password|student records?|transcript|gpa)\b', message, re.I)
     personal = re.search(r"\b(?:my|his|her|their|your|student|aking|ko|ni|nya|namin|kaniya|kanyang|show|see|forgot|reset)\b|\b\w+'s\b", message, re.I)
     return bool(sensitive and personal)

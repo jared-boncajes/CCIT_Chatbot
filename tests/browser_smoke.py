@@ -118,7 +118,7 @@ def main():
             pending = []
             page.route('**/api/chat', lambda route: pending.append(route))
             page.locator('[data-topic="academics"]').click()
-            page.locator('#question-list').get_by_role('button', name='What programs does CCIT offer?', exact=True).click()
+            page.locator('#question-list').get_by_role('button', name='What academic programs does CCIT offer?', exact=True).click()
             expect(page.locator('.typing')).to_be_visible()
             expect(page.locator('#send')).to_be_disabled()
             expect(page.locator('#clear')).to_be_disabled()

@@ -4098,5 +4098,61 @@
         "CCIT event no attendance"
     ]
 }
-
+,
+  {
+    "id": 219,
+    "category": "faculty",
+    "question": "Who is the IT Department Chair?",
+    "alternative_questions": [
+      "Who heads the Information Technology program?",
+      "Who is the IT program chair?",
+      "Who is Judith G. Elic?",
+      "Who is the IT chair?"
+    ],
+    "answer": "Judith G. Elic is the Department Chair for the Bachelor of Science in Information Technology (BSIT) program at FAITH Colleges.",
+    "keywords": [
+      "IT chair",
+      "Information Technology chair",
+      "Judith G. Elic",
+      "Judith Elic",
+      "BSIT chair"
+    ]
+  },
+  {
+    "id": 220,
+    "category": "faculty",
+    "question": "Who is the Computer Science Department Chair?",
+    "alternative_questions": [
+      "Who heads the Computer Science program?",
+      "Who is the CS program chair?",
+      "Who is Dr. Farley L. Abrigo?",
+      "Who is the CS chair?"
+    ],
+    "answer": "Dr. Farley L. Abrigo is the Department Chair for the Bachelor of Science in Computer Science (BSCS) program at FAITH Colleges.",
+    "keywords": [
+      "CS chair",
+      "Computer Science chair",
+      "Dr. Farley L. Abrigo",
+      "Farley Abrigo",
+      "BSCS chair"
+    ]
+  },
+  {
+    "id": 221,
+    "category": "faculty",
+    "question": "Who is the EMC Department Chair?",
+    "alternative_questions": [
+      "Who heads the Entertainment and Multimedia Computing program?",
+      "Who is the EMC program chair?",
+      "Who is John Benedict Palomeno?",
+      "Who is the EMC chair?"
+    ],
+    "answer": "John Benedict Palomeno is the Department Chair for the Bachelor of Science in Entertainment and Multimedia Computing (BSEMC) program at FAITH Colleges.",
+    "keywords": [
+      "EMC chair",
+      "Entertainment and Multimedia Computing chair",
+      "John Benedict Palomeno",
+      "BSEMC chair"
+    ]
+  }
 ]

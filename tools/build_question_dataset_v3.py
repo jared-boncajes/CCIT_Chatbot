@@ -67,7 +67,7 @@ def build():
             if len(holdouts[label][split]) != 2:
                 raise ValueError('Expected two frozen authored questions per holdout split')
             for question in holdouts[label][split]:
-                add(label, question, split, 'AI-authored constructed question; frozen before v3 evaluation; not a student transcript')
+                add(label, question, split, ('AI-authored constructed question; frozen before expanded chair evaluation; not a student transcript' if int(label.split('-')[1]) >= 219 else 'AI-authored constructed question; frozen before v3 evaluation; not a student transcript'))
 
     output = ROOT / 'data/question_dataset_v3.csv'
     with output.open('w', newline='', encoding='utf-8') as stream:

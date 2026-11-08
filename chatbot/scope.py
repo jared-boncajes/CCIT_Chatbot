@@ -39,6 +39,8 @@ def scope_candidates(question, records):
     Identity comes from the record's question, never incidental answer mentions
     or a classifier prediction. Unknown explicit selectors produce no match.
     """
+    from chatbot.retriever import expand_shorthand
+    question = expand_shorthand(question)
     topics = intents(question)
     named = program_entities(question)
     query = tokens(question)
@@ -46,6 +48,11 @@ def scope_candidates(question, records):
     reviewed = [r for r in records if r.get('verification_status') == 'verified']
     if not reviewed:
         return records, None, pending
+    if 'chair' in query:
+        chairs = [r for r in reviewed if 'chair' in tokens(r['question'])]
+        if not named:
+            return [], 'Which department chair do you mean: BSIT, BSCS, or BSEMC?', {'pending_topic': 'chair'}
+        return [r for r in chairs if program_entities(r['question']) == named], None, {}
     identities = [(r, course_identity(r)) for r in reviewed if r.get('category') == 'prerequisites']
     identities = [(r, match) for r, match in identities if match]
     known_codes = {match[1].casefold() for _, match in identities}

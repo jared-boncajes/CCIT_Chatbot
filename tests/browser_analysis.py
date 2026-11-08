@@ -29,9 +29,10 @@ def main():
         try:
             page.goto(args.base_url + '/analysis')
             expect(page.get_by_role('heading', name='Project analysis', exact=True)).to_be_visible()
-            expect(page.locator('.metrics')).to_contain_text('264')
-            expect(page.locator('.metrics')).to_contain_text('63.6%')
-            expect(page.locator('.metrics')).to_contain_text('0.595')
+            report = page.request.get(args.base_url + '/api/analysis').json()['report']
+            expect(page.locator('.metrics')).to_contain_text(str(report['dataset']['quality']['retained_rows']))
+            expect(page.locator('.metrics')).to_contain_text(f"{report['test']['accuracy'] * 100:.1f}%")
+            expect(page.locator('.metrics')).to_contain_text(f"{report['test']['macro_f1']:.3f}")
             for figure in page.locator('figure img').all():
                 figure.scroll_into_view_if_needed()
                 expect(figure).to_be_visible()

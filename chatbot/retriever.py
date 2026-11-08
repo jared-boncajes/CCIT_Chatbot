@@ -71,7 +71,7 @@ INTENT_TERMS = {
     'vision': {'vision'}, 'mission': {'mission'}, 'goals': {'goals'},
     'academic_programs': {'programs', 'offer', 'study', 'graduate'},
     'scholarships': {'scholarships', 'discount', '50tag', 'course_specific', 'eligibility'},
-    'dean': {'dean'}, 'faculty': {'faculty'}, 'careers': {'careers', 'graduates'},
+    'dean': {'dean'}, 'faculty': {'faculty', 'chair'}, 'careers': {'careers', 'graduates'},
     'facilities': {'facilities'}, 'accreditation': {'accreditation', 'pacucoa', 'level'},
     'dost': {'dost'}, 'activities': {'activities', 'camp', 'night', 'frequency'},
 }
@@ -87,7 +87,46 @@ EXTENDED_INTENTS = {
 }
 
 
+# Explicit texting forms apply to every topic, without guessing arbitrary names,
+# unknown degree codes, or missing facts. Preserve negations and course numbers.
+SHORTHAND = {
+    'whats': 'what is', 'wats': 'what is', 'wat': 'what', 'wht': 'what',
+    'whos': 'who is', 'hu': 'who', 'whre': 'where', 'wher': 'where',
+    'pls': 'please', 'plz': 'please', 'abt': 'about', 'ab': 'about',
+    'dept': 'department', 'dep': 'department', 'depmt': 'department',
+    'chrmn': 'chair', 'chairperson': 'chair', 'chairman': 'chair',
+    'schlrshp': 'scholarship', 'schlrshps': 'scholarships',
+    'prgrm': 'program', 'prgrms': 'programs', 'fclty': 'faculty',
+    'faclty': 'faculty', 'crriclm': 'curriculum',
+    'schlrship': 'scholarship', 'schlrships': 'scholarships',
+    'scholarshp': 'scholarship', 'scholarshps': 'scholarships',
+    'curric': 'curriculum', 'curr': 'curriculum', 'prereqs': 'prerequisites',
+    'req': 'requirements', 'reqs': 'requirements', 'r': 'are', 'u': 'you',
+    'ur': 'your', 'n': 'and', 'sinoo': 'sino', 'cno': 'sino', 'cnong': 'sino',
+    'anu': 'ano', 'anung': 'anong', 'pde': 'pwede', 'pano': 'paano',
+    'grdes': 'grades', 'pwd': 'password', 'dpt': 'department', 'fac': 'faculty', 'hrs': 'hours', 'hr': 'hours',
+}
+
+
+def expand_shorthand(text):
+    text = unicodedata.normalize('NFKC', text).replace('’', "'")
+    text = re.sub(r"\b(what|who|where|how)'?s\b", r'\1 is', text, flags=re.I)
+    text = re.sub(r"\b(dont|cant|isnt|arent|wont)\b", lambda m: {
+        'dont': 'do not', 'cant': 'cannot', 'isnt': 'is not',
+        'arent': 'are not', 'wont': 'will not'}[m[0].lower()], text, flags=re.I)
+    text = re.sub(r'\bpre[ -]reqs?\b', 'prerequisites', text, flags=re.I)
+    text = re.sub(r'\bco[ -]reqs?\b', 'corequisites', text, flags=re.I)
+    text = re.sub(r'\bcollege of (?:computing|computer) and information technology\b', 'CCIT', text, flags=re.I)
+    text = re.sub(r'\b[a-zA-Z]+\b', lambda m: SHORTHAND.get(m[0].lower(), m[0]), text)
+    # Lowercase it is a degree only beside an explicit program/role term.
+    text = re.sub(r'\bit(?=\s+(?:department|program|chair|faculty)\b)', 'bsit', text)
+    text = re.sub(r'\bchair\s+(?:(?:of|for)\s+)?it\b', 'chair bsit', text)
+    text = re.sub(r'\b(heads?|namumuno)\b(?=.{0,80}\b(?:program|bsit|bscs|bsemc|computer science|information technology|multimedia)\b)', 'chair', text, flags=re.I)
+    return text
+
+
 def normalize(text):
+    text = expand_shorthand(text)
     text = re.sub(r'\bIT\b', 'bsit', text)
     text = unicodedata.normalize('NFKC', text).casefold().replace('’', "'")
     # The college's name contains Information Technology; that alone is not
@@ -131,6 +170,7 @@ def program_entities(text):
 
 def intents(text):
     """Identify requested topics using the documented keyword lists above."""
+    text = normalize(text)
     if (tokens(text) & {'prerequisite', 'prerequisites', 'corequisite', 'corequisites'}
             or re.search(EXTENDED_INTENTS['prerequisites'], text, re.I)):
         return ['prerequisites']
@@ -227,6 +267,17 @@ def retrieve(question, records, model=None):
                 exact.append(record)
         if len(exact) == 1:
             return exact
+    for record in records:
+        if record.get('verification_status') != 'verified' or not _supported_detail(question, record):
+            continue
+        if 'chair' not in tokens(record['question']):
+            continue
+        person = record['answer'].split(' is the Department Chair')[0]
+        name_words = tokens(person) - {'dr'}
+        name_words = {word for word in name_words if len(word) > 1}
+        query_names = tokens(question) - {'role', 'position', 'hold'}
+        if len(name_words & query_names) >= 2 and query_names <= (name_words | {'chair'}):
+            return [record]
     # Step 1: recognize the words, program abbreviations and requested topics.
     query = tokens(question)
     if not query:

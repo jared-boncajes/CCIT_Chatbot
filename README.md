@@ -1,4 +1,4 @@
-> Knowledge and training update: the chatbot loads 218 FAQs from `database_v3.json` and a matching model from `research/results-v3`. Training uses 936 supplied questions; 436 validation and 436 test questions were newly AI-authored and frozen before evaluation. Test accuracy is 364/436 (83.5%), macro F1 0.833, on constructed examples only. See [data documentation](data/README.md) for source mapping, reproduction, and limitations. The original 22-class dataset and results remain available as historical artifacts; older counts and metrics below refer to that experiment.
+> Knowledge and training update: the chatbot loads 221 FAQs from `database_v3.json` and a matching model from `research/results-v3`. Training uses 951 supplied questions; 442 validation and 442 test questions were newly AI-authored and frozen before evaluation. Test accuracy is 365/442 (82.6%), macro F1 0.822, on constructed examples only. See [data documentation](data/README.md) for source mapping, reproduction, and limitations. The original 22-class dataset and results remain available as historical artifacts; older counts and metrics below refer to that experiment.
 
 # CCIThink
 

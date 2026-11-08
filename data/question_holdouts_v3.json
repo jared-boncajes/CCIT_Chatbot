@@ -1,5 +1,5 @@
 {
-  "description": "AI-authored constructed validation/test questions, frozen before the first v3 training run. Not independent student data; shared subject templates can inflate metrics. All English.",
+  "description": "AI-authored constructed validation/test questions. Original 218-label holdouts are unchanged; three chair-label holdouts were added before the expanded experiment. Not independent student data; shared templates can inflate metrics. All English.",
   "examples": {
     "FAQ-001": {
       "validation": [
@@ -2179,6 +2179,36 @@
       "test": [
         "Explain the procedure for rendering my community service.",
         "How can I finish the community service hours I have been assigned?"
+      ]
+    },
+    "FAQ-219": {
+      "validation": [
+        "Name the department chair assigned to BSIT.",
+        "Which person leads the Information Technology degree at FAITH?"
+      ],
+      "test": [
+        "Who currently serves as chair of the BSIT department?",
+        "What leadership position does Judith G. Elic hold at FAITH Colleges?"
+      ]
+    },
+    "FAQ-220": {
+      "validation": [
+        "Name the department chair assigned to BSCS.",
+        "Which person leads the Computer Science degree at FAITH?"
+      ],
+      "test": [
+        "Who currently serves as chair of the BSCS department?",
+        "What leadership position does Dr. Farley L. Abrigo hold at FAITH Colleges?"
+      ]
+    },
+    "FAQ-221": {
+      "validation": [
+        "Name the department chair assigned to BSEMC.",
+        "Which person leads the Entertainment and Multimedia Computing degree at FAITH?"
+      ],
+      "test": [
+        "Who currently serves as chair of the BSEMC department?",
+        "What leadership position does John Benedict Palomeno hold at FAITH Colleges?"
       ]
     }
   }
