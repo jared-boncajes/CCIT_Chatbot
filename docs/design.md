@@ -23,7 +23,7 @@ The supplied file has no visible conversation, error, loading, dialog or mobile 
 
 The sample person's name/email are replaced by Guest and an optional preferred name stored only in sessionStorage for the current tab. The profile chip opens this small personalization dialog; there are no accounts or authentication claims. The plus control starts a new chat, with confirmation before clearing messages. Source-document question choices appear when a topic card is opened. Missing enrollment forms, detailed requirements, contact information and office locations are stated explicitly instead of inferred from the design's marketing descriptions.
 
-The send control is disabled for empty input or while a response is pending. FAQ disclosures and source-currency notices are additions needed to accurately describe the current retrieval-only mode. Conversation messages, source labels and errors are rendered as text. Layout switches to stacked cards and an avatar-sized profile button on small screens, while preserving keyboard access and a 44-pixel send target. Reduced-motion settings are respected.
+The send control is disabled for empty input or while a response is pending. A small FAQ-mode label distinguishes retrieved answers from AI generation. Replies use safe text elements, lists and bold key facts; source labels, record IDs, verification notices and original-source disclosures are omitted from chat bubbles. Layout switches to stacked cards and an avatar-sized profile button on small screens, while preserving keyboard access and a 44-pixel send target. Reduced-motion settings are respected.
 
 ## Actual screenshots
 
@@ -33,4 +33,4 @@ These are Chromium captures of the running application in explicitly labeled FAQ
 
 ## Conversation improvements
 
-The home/header retain the inspected Figma dimensions. Conversation states now include focused lists, a visible source-currency warning, native expandable original-source details, Copy answer, and Retry/Read FAQ answer instead controls. These extend states missing from the source frame using the existing font, colors and rounded surfaces. Current focused-answer and follow-up screenshots are under screenshots/improvements/.
+The home/header retain the inspected Figma dimensions. Conversation states include direct answers, focused lists, bold key facts, Copy answer, and Retry/Read FAQ answer instead controls. Source and verification metadata remain available through the backend/API. These extend states missing from the source frame using the existing font, colors and rounded surfaces. Current focused-answer and follow-up screenshots are under screenshots/improvements/.

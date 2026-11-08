@@ -10,7 +10,7 @@ Unsupported-detail checks remain in place for exact fees, deadlines, contacts, o
 
 ## Answer presentation and source review
 
-FAQ summaries are extractive and generated without an AI API call. They use source-based program lists, scholarship discount bullets, named laboratory lists and readable career/faculty lists. Focused BSCS availability answers are under 180 characters in the regression test. Full original answers remain available in `details` and in the native View source and full details disclosure. Currency warnings and the official-name contradiction remain visible. Copy answer copies the displayed answer; source/currency information remains visible beside it.
+FAQ summaries are extractive and generated without an AI API call. They use direct program lists, scholarship discount bullets, named laboratory lists and readable career/faculty lists, with key facts in bold. Focused BSCS availability answers are under 180 characters in the regression test. At the user's request, source labels, FAQ IDs, verification notices and full-source disclosures have been removed from chat bubbles. Full original answers remain in API `details`, alongside source/currency metadata and the official-name contradiction. The AI prompt also requests concise answers with bold key facts and no provenance boilerplate. Copy answer copies plain text without bold markers. The small FAQ label remains to distinguish retrieval from AI generation.
 
 The institution's actual current facts were not changed. See department-verification.md for the unresolved college-name discrepancy, time-sensitive details and missing official contact/admissions information.
 
@@ -24,9 +24,9 @@ Failed requests show Retry and, when source information is available, Read FAQ a
 
 ## Actual validation
 
-- 230 automated tests passed.
+- 240 automated tests passed.
 - 14 existing browser scenarios passed across six viewport sizes.
-- 6 new browser scenarios passed for source details/copy, follow-ups/reset/clarification, Retry, FAQ fallback, old-turn context and safe rendering of model/source text.
+- 6 browser scenarios cover direct answers/bold/copy, follow-ups/reset/clarification, Retry, FAQ fallback, old-turn context and safe rendering with hidden metadata.
 - 95 HTTP source-support/mode checks passed: 22 original FAQs, 33 review phrasing cases, 22 additional variations, 12 unsupported questions and 6 privacy cases.
 - The 33 review phrasing cases changed from 8 expected-source matches to 33. These cases were used to guide implementation and are not a held-out estimate of general accuracy. Additional negative-detail and context tests are in the automated suite.
 

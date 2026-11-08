@@ -1,9 +1,9 @@
 {
-  "executed_at": "2026-11-07T16:03:17.566960+00:00",
+  "executed_at": "2026-11-08T01:48:32.811546+00:00",
   "mode": "FAQ answers from the running app; simulated provider errors/safety fixture; no live AI calls",
   "checks": [
     {
-      "check": "Focused source answer, visible currency warning, expandable full source, and copy",
+      "check": "Direct answer, bold key fact, no source/verification clutter, and plain-text copy",
       "passed": true
     },
     {
@@ -23,7 +23,7 @@
       "passed": true
     },
     {
-      "check": "Reply, warning and source details remain plain text without HTML execution",
+      "check": "AI bold/list rendering is safe, unmatched markers and user text stay literal, and metadata stays hidden",
       "passed": true
     }
   ]

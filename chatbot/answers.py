@@ -12,6 +12,10 @@ def _summary(record, question):
     category = record.get('category')
     query = tokens(question)
     named = program_entities(question)
+    if category == 'overview':
+        meaning = re.fullmatch(r'FAITH-\s*(College of .+)', answer)
+        if meaning:
+            return 'CCIT stands for ' + meaning[1].rstrip('.') + '.'
     if category == 'academic_programs':
         programs = re.findall(r'Bachelor of Science in [^(]+\((?:BSIT|BSCS|BSEMC)\)', answer)
         if programs:
@@ -19,12 +23,12 @@ def _summary(record, question):
                 program = next((name for name in programs if f'({next(iter(named)).upper()})' in name), None)
                 if program:
                     lead = '' if re.search(r"\bnot\b|n't\b", question, re.I) else 'Yes. '
-                    return f'{lead}The supplied document lists {program} as an undergraduate program.'
+                    return f'{lead}CCIT offers {program}.'
             graduate = next((s for s in _sentences(answer) if re.search(r'\bgraduate programs\b', s, re.I)), '')
             graduate = re.split(r',?\s+to support\b', graduate, maxsplit=1)[0].rstrip(' ,.')
             if 'graduate' in query and graduate:
                 return graduate + '.'
-            reply = 'Programs listed in the supplied document:\n' + '\n'.join('• ' + name for name in programs)
+            reply = 'CCIT offers:\n' + '\n'.join('• ' + name for name in programs)
             if graduate:
                 reply += '\n\n' + graduate + '.'
             return reply
@@ -37,19 +41,19 @@ def _summary(record, question):
                 parts = [part for part in parts if '50-TAG' in part]
             elif 'course_specific' in query and '50tag' not in query:
                 parts = [part for part in parts if 'Course-Specific' in part]
-            return 'Scholarship discounts listed in the document:\n' + '\n'.join('• ' + part for part in parts)
+            return '\n'.join('• ' + part for part in parts)
     if category in {'careers', 'faculty'} and ' - ' in answer:
         items = [part.strip(' ,.;-') for part in answer.split(' - ')[1:] if part.strip(' ,.;-')]
         source_programs = program_entities(record['question'])
         label = '/'.join(p.upper() for p in sorted(source_programs))
         title = ('Careers' if category == 'careers' else 'Faculty') + (f' for {label}' if label else '')
-        return title + ' listed in the document:\n' + '\n'.join('• ' + item for item in items)
+        return title + ':\n' + '\n'.join('• ' + item for item in items)
     if category == 'facilities':
         labs = list(dict.fromkeys(re.findall(r'\b(?:the|The) ([A-Z0-9][A-Za-z0-9 ]{0,40} Laboratory)\b', answer)))
         if labs:
-            return 'Laboratories listed in the document:\n' + '\n'.join('• ' + lab for lab in labs)
+            return 'CCIT laboratories:\n' + '\n'.join('• ' + lab for lab in labs)
     if category == 'dean' and ' is the current Dean' in answer:
-        return 'The supplied document lists ' + answer.split(' is the current Dean', 1)[0] + ' as the CCIT dean.'
+        return answer.split(' is the current Dean', 1)[0] + ' is the CCIT dean.'
     if category == 'goals':
         return re.sub(r'\s+([1-7])\.\s+', r'\n\1. ', answer)
     sentences = _sentences(answer)
@@ -62,13 +66,37 @@ def _summary(record, question):
     return answer
 
 
+def _emphasize(text, record):
+    """Mark key facts already present in the extractive reply, without adding facts."""
+    phrases = re.findall(
+        r'Bachelor of Science in [^(\n]+\((?:BSIT|BSCS|BSEMC)\)'
+        r'|(?:Information Technology|Computer Science|Entertainment and Multimedia Computing) \((?:IT|CS|BSEMC)\)'
+        r'|College of (?:Computer|Computing) and Information Technology(?: \(CCIT\))?'
+        r'|(?:Course-Specific|50-TAG|DOST) Scholarship'
+        r'|\d+% discount on tuition fees|Level [IVX]+ accreditation'
+        r'|Master[’\']s and Doctorate degree in Information Technology'
+        r'|Center of Excellence in Information Technology Education'
+        r'|globally competent, committed and compassionate IT professionals'
+        r'|academic performance in senior high school'
+        r'|CCITITE|CCIT Camp|CCIT Night', text,
+    )
+    if record.get('category') in {'careers', 'faculty', 'facilities'}:
+        phrases.extend(re.findall(r'^• (.+)$', text, re.M))
+    if record.get('category') == 'dean' and ' is the CCIT dean.' in text:
+        phrases.append(text.split(' is the CCIT dean.', 1)[0])
+    if not phrases:
+        return text
+    pattern = '|'.join(re.escape(phrase) for phrase in sorted(set(phrases), key=len, reverse=True))
+    return re.sub(pattern, lambda match: '**' + match[0] + '**', text)
+
+
 def format_faq(records, question):
     parts = []
     for record in records:
         summary = _summary(record, question)
         if len(records) > 1 and record.get('category') in {'bsit', 'bscs', 'bsemc'}:
             summary = record['category'].upper() + ': ' + summary
-        parts.append(summary)
+        parts.append(_emphasize(summary, record))
     return '\n\n'.join(parts)
 
 

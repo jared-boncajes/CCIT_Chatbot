@@ -1,12 +1,12 @@
 # Department confirmation checklist
 
-All 22 FAQs remain faithful to the user-supplied About CCIT.pdf. No institutional facts, names, contact details, policies or discounts were independently confirmed during this coding task. `verified` in the JSON records means checked against that source; `currency_status` remains `unconfirmed`. The app displays that distinction and preserves the full original source text under each answer.
+All 22 FAQs remain faithful to the user-supplied About CCIT.pdf. No institutional facts, names, contact details, policies or discounts were independently confirmed during this coding task. `verified` in the JSON records means checked against that source; `currency_status` remains `unconfirmed`. The backend/API preserves that distinction and the full original source text. At the user's request, chat bubbles show direct answers without source or verification notices; this presentation change does not confirm the underlying facts.
 
 Ask the department or project adviser to confirm these items against a dated official source:
 
 | Source records | Item to confirm |
 | --- | --- |
-| FAQ-001 and FAQ-002 | Official college name: the document uses both “College of Computer” and “College of Computing”. The app continues to flag this conflict. |
+| FAQ-001 and FAQ-002 | Official college name: the document uses both “College of Computer” and “College of Computing”. The conflict remains recorded in backend metadata. |
 | FAQ-006 | Current undergraduate offerings and the exact names/status of graduate IT degrees. |
 | FAQ-010 | Current BSIT/BSCS PACUCOA levels and BSEMC accreditation status. |
 | FAQ-011 and FAQ-012 | Current scholarship names, tuition discount rates, eligibility and application process. The source does not specify exact grade cutoffs or deadlines. |

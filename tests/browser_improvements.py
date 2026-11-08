@@ -53,23 +53,23 @@ def main():
             reply = page.locator('.message.assistant').last
             expect(reply.locator('.message-text')).to_contain_text('Yes.')
             assert len(reply.locator('.message-text').inner_text()) < 180
-            expect(reply.locator('.message-sources')).to_contain_text('FAQ-006')
-            expect(reply.locator('.source-warning')).to_be_visible()
+            expect(reply.locator('.message-text strong')).to_have_text('Bachelor of Science in Computer Science (BSCS)')
+            expect(reply.locator('.message-sources, .source-warning, .source-details, .source-provenance')).to_have_count(0)
+            assert not any(value in reply.inner_text() for value in ['FAQ-006', 'Source:', 'unconfirmed', 'Checked against', 'supplied document'])
+            assert reply.locator('strong').evaluate('(element) => getComputedStyle(element).fontWeight') == '600'
             page.screenshot(path=str(args.output / 'mobile-focused-answer.png'), full_page=True)
-            reply.locator('summary').click()
-            expect(reply.locator('.source-quote')).to_contain_text('graduate programs')
-            expect(reply.locator('.source-provenance')).to_contain_text('unconfirmed')
             reply.locator('.copy-answer').click()
             expect(reply.locator('.copy-answer')).to_have_text('Copied')
-            assert 'Bachelor of Science in Computer Science' in page.evaluate('navigator.clipboard.readText()')
+            copied = page.evaluate('navigator.clipboard.readText()')
+            assert 'Bachelor of Science in Computer Science' in copied and '**' not in copied
             assert page.evaluate('document.documentElement.scrollWidth <= innerWidth')
-            passed('Focused source answer, visible currency warning, expandable full source, and copy')
+            passed('Direct answer, bold key fact, no source/verification clutter, and plain-text copy')
 
             home()
             ask('What is BSCS?')
             ask('What jobs can I get after this program?')
             reply = page.locator('.message.assistant').last
-            expect(reply.locator('.message-sources')).to_contain_text('FAQ-013')
+            expect(reply.locator('.message-text strong').filter(has_text='Machine Learning Engineer')).to_have_count(1)
             assert reply.locator('.message-text li').count() > 3
             page.screenshot(path=str(args.output / 'mobile-careers-followup.png'), full_page=True)
             page.locator('#clear').click()
@@ -77,7 +77,7 @@ def main():
             ask('What jobs can I get after this program?')
             expect(page.locator('.message.assistant').last).to_contain_text('Which program do you mean')
             ask('BSIT')
-            expect(page.locator('.message.assistant').last.locator('.message-sources')).to_contain_text('FAQ-014')
+            expect(page.locator('.message.assistant').last.locator('.message-text')).to_contain_text('Network Administrator')
             passed('Program follow-up, New chat context reset, and clarification completion')
 
             home()
@@ -98,7 +98,7 @@ def main():
             expect(page.get_by_role('button', name='Read FAQ answer instead')).to_be_visible()
             page.locator('#question').fill('Keep this draft')
             page.get_by_role('button', name='Retry', exact=True).click()
-            expect(page.locator('.message-sources')).to_contain_text('FAQ-006')
+            expect(page.locator('.message.assistant .message-text')).to_contain_text('Bachelor of Science in Computer Science (BSCS)')
             expect(page.locator('.message.error')).to_have_count(0)
             expect(page.locator('.message.user')).to_have_count(1)
             assert len(requests) == 2 and requests[0] == requests[1]
@@ -122,7 +122,7 @@ def main():
             ask('What programs does CCIT offer?')
             page.get_by_role('button', name='Read FAQ answer instead').click()
             expect(page.locator('.message-mode')).to_have_text('FAQ retrieval only · not AI generated')
-            expect(page.locator('.message-sources')).to_contain_text('FAQ-006')
+            expect(page.locator('.message.assistant .message-text')).to_contain_text('Bachelor of Science in Computer Science (BSCS)')
             expect(page.locator('.message.user')).to_have_count(1)
             expect(page.locator('.message.error')).to_have_count(0)
             assert requests[-1]['mode'] == 'faq'
@@ -148,22 +148,28 @@ def main():
             page.get_by_role('button', name='Retry', exact=True).click()
             expect(page.locator('.message.error')).to_have_count(0)
             ask('What jobs can I get after this program?')
-            expect(page.locator('.message.assistant').last.locator('.message-sources')).to_contain_text('FAQ-014')
+            expect(page.locator('.message.assistant').last.locator('.message-text')).to_contain_text('Network Administrator')
             passed('Retrying an old turn preserves the newer program context')
 
             home()
             attack = '<img src=x onerror="window.ccitInjected=1">'
             page.route('**/api/chat', lambda route: route.fulfill(status=200, content_type='application/json', body=json.dumps({
-                'success': True, 'reply': attack, 'mode': 'faq', 'context': {'programs': []},
+                'success': True, 'reply': '**Important**\n• **' + attack + '**\n1. **Numbered fact**\nUnmatched ** stays literal.',
+                'mode': 'ai', 'context': {'programs': []},
                 'sources': [{'id': 'TEST', 'title': 'Synthetic safety fixture', 'source': 'Fixture', 'currency_status': 'unconfirmed'}],
                 'details': [{'id': 'TEST', 'answer': attack}], 'warnings': [attack],
             })))
-            ask('Safety fixture')
-            page.locator('.source-details summary').click()
-            expect(page.locator('.source-quote')).to_have_text(attack)
+            ask('**Safety fixture**')
+            reply = page.locator('.message.assistant').last
+            expect(reply.locator('.message-text strong')).to_have_text(['Important', attack, 'Numbered fact'])
+            expect(reply.locator('.message-text ul li strong')).to_have_text(attack)
+            expect(reply.locator('.message-text ol li strong')).to_have_text('Numbered fact')
+            expect(reply.locator('.message-text')).to_contain_text('Unmatched ** stays literal.')
+            expect(page.locator('.message.user .message-text')).to_have_text('**Safety fixture**')
+            expect(page.locator('.message.user strong, .source-warning, .source-details, .message-sources')).to_have_count(0)
             assert page.locator('.message img').count() == 0
             assert page.evaluate('window.ccitInjected === undefined')
-            passed('Reply, warning and source details remain plain text without HTML execution')
+            passed('AI bold/list rendering is safe, unmatched markers and user text stay literal, and metadata stays hidden')
 
             assert not errors, errors
         finally:

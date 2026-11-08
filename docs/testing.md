@@ -1,6 +1,6 @@
 # Validation evidence
 
-The latest automated run completed with **230 passed** (`.venv/bin/python -m pytest -q`). It covers the original 94 checks and 136 new regression checks for the reviewed question variants, additional English/Tagalog phrasing, unsupported facts, focused summaries, source warnings, context/clarification validation, explicit FAQ override, privacy handling and provider-free recovery. No test uses a real AI credential.
+The latest automated run completed with **240 passed** (`.venv/bin/python -m pytest -q`). It covers the original 94 checks and 146 regression checks for the reviewed question variants, additional English/Tagalog phrasing, unsupported facts, direct summaries and bold key facts, backend source metadata, context/clarification validation, explicit FAQ override, privacy handling and provider-free recovery. No test uses a real AI credential.
 
 ## Actual HTTP question evaluation
 
@@ -22,12 +22,12 @@ Actual replies, selected source IDs, modes, warnings and timings are recorded in
 
 `python tests/browser_improvements.py` passed **6 additional scenarios**:
 
-1. Focused answer, visible source-currency warning, expandable full source and actual clipboard copy.
+1. Direct answer, bold key fact, absence of source/verification clutter and actual plain-text clipboard copy.
 2. Program follow-up, New chat context reset and completing a program clarification.
 3. Retry with original request/context, no duplicate user message and preservation of an unsent draft.
 4. Explicit mode=faq fallback, labeled source answer and replacement of the error.
 5. Retrying an older turn while preserving the newer program context.
-6. Safe plain-text rendering of reply, warning and original-source content.
+6. Safe bold/list rendering for AI replies, literal unmatched markers and user text, and hidden source metadata.
 
 Successful source replies come from the actual local Flask server in FAQ mode. Provider failures and safety payloads are deliberately simulated; they are not live AI responses. No unexpected JavaScript page errors occurred. Current screenshots and timestamped reports are in screenshots/ and screenshots/improvements/.
 

@@ -47,20 +47,23 @@ def test_bscs_availability_has_no_unrelated_faculty_or_careers(client):
     data = client.post('/api/chat', json={'message': 'Do you guys offer BSCS?'}).get_json()
     assert [source['id'] for source in data['sources']] == ['FAQ-006']
     assert data['reply'].startswith('Yes.') and 'Computer Science' in data['reply']
+    assert 'supplied document' not in data['reply']
     assert len(data['reply']) < 180
     assert 'Faculty' not in data['reply'] and 'Developer' not in data['reply']
     assert data['details'][0]['answer']  # Full unedited source remains available.
 
 
-def test_scholarships_are_focused_bullets_with_source_warnings(client):
+def test_scholarships_are_focused_bullets_with_backend_currency_metadata(client):
     data = client.post('/api/chat', json={'message': 'What is the 50-TAG scholarship?'}).get_json()
     assert '•' in data['reply'] and '50%' in data['reply']
     assert '100%' not in data['reply']
+    assert '**50-TAG Scholarship**' in data['reply']
+    assert '**50% discount on tuition fees**' in data['reply']
     assert data['warnings'] and data['sources'][0]['currency_status'] == 'unconfirmed'
     assert '100%' in data['details'][0]['answer']
 
 
-def test_source_name_conflict_is_still_visible(client):
+def test_source_name_conflict_is_preserved_in_backend_metadata(client):
     data = client.post('/api/chat', json={'message': 'What is the meaning of CCIT?'}).get_json()
     assert any('both' in note and 'Computing' in note for note in data['warnings'])
     assert data['sources'][0]['reviewed_at']
@@ -180,7 +183,7 @@ def test_typo_correction_preserves_topic_intent(client, question, source):
     assert data['sources'][0]['id'] == source
 
 
-def test_missing_currency_metadata_keeps_a_visible_warning(client):
+def test_missing_currency_metadata_keeps_a_backend_warning(client):
     client.application.config['KNOWLEDGE'] = [{
         'id': 'TEST-METADATA', 'question': 'What programs exist?', 'answer': 'Synthetic source answer',
         'keywords': ['programs'], 'verification_status': 'verified',
@@ -193,3 +196,24 @@ def test_missing_currency_metadata_keeps_a_visible_warning(client):
 def test_college_name_does_not_establish_a_program_head(client):
     data = client.post('/api/chat', json={'message': 'Who heads BSIT?'}).get_json()
     assert data['mode'] == 'fallback' and data['sources'] == []
+
+
+@pytest.mark.parametrize('question,fact', [
+    ('What is the meaning of CCIT?', 'College of Computer and Information Technology'),
+    ('What is the vision of CCIT?', 'Center of Excellence in Information Technology Education'),
+    ('What is the mission of CCIT?', 'globally competent, committed and compassionate IT professionals'),
+    ('Does CCIT offer scholarships?', 'academic performance in senior high school'),
+    ('Do you offer BSCS?', 'Bachelor of Science in Computer Science (BSCS)'),
+    ('What is BSIT?', 'Information Technology (IT)'),
+    ('Who is the dean of CCIT?', 'Dr. Maricel M. Gaspar'),
+    ('What facilities are available?', 'Programming Laboratory'),
+    ('What careers can I pursue after BSCS?', 'Machine Learning Engineer'),
+    ('Who are the BSCS faculty?', 'Farley Abrigo'),
+])
+def test_key_facts_are_bold_in_direct_faq_answers(client, question, fact):
+    data = client.post('/api/chat', json={'message': question}).get_json()
+    assert f'**{fact}**' in data['reply']
+    assert not any(boilerplate in data['reply'] for boilerplate in [
+        'supplied document', 'listed in the document', 'Source:', 'FAQ-', 'verification', 'reviewed_at',
+    ])
+    assert data['sources'] and data['details']  # Grounding remains available to the backend.

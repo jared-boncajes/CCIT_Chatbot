@@ -54,7 +54,20 @@ function beginConversation() {
   messages.hidden = false;
 }
 
-// Build text/list elements without inserting user, model or source HTML.
+// Support only **bold** in assistant replies. All content remains text nodes.
+function renderEmphasis(container, text) {
+  let end = 0;
+  for (const match of text.matchAll(/\*\*([^*\n]+)\*\*/g)) {
+    container.append(document.createTextNode(text.slice(end, match.index)));
+    const strong = document.createElement('strong');
+    strong.textContent = match[1];
+    container.append(strong);
+    end = match.index + match[0].length;
+  }
+  container.append(document.createTextNode(text.slice(end)));
+}
+
+// Build text/list elements without inserting user or model HTML.
 function renderText(container, text, useLists = false) {
   if (!useLists) {
     const paragraph = document.createElement('p');
@@ -73,13 +86,13 @@ function renderText(container, text, useLists = false) {
         container.append(list);
       }
       const item = document.createElement('li');
-      item.textContent = (bullet || numbered)[1];
+      renderEmphasis(item, (bullet || numbered)[1]);
       list.append(item);
     } else {
       list = null;
       if (line.trim()) {
         const paragraph = document.createElement('p');
-        paragraph.textContent = line;
+        renderEmphasis(paragraph, line);
         container.append(paragraph);
       }
     }
@@ -110,44 +123,6 @@ function addMessage(text, kind = 'assistant', data = {}, replacing = null) {
     modeLabel.textContent = 'FAQ retrieval only · not AI generated';
     item.append(modeLabel);
   }
-  for (const warning of data.warnings || []) {
-    const note = document.createElement('small');
-    note.className = 'source-warning';
-    note.textContent = warning;
-    item.append(note);
-  }
-  if ((data.sources || []).length) {
-    const sourceLabel = document.createElement('small');
-    sourceLabel.className = 'message-sources';
-    sourceLabel.textContent = 'Source: ' + data.sources.map(source => `${source.source || 'About CCIT'} · ${source.id}`).join('; ');
-    item.append(sourceLabel);
-
-    const disclosure = document.createElement('details');
-    disclosure.className = 'source-details';
-    const summary = document.createElement('summary');
-    summary.textContent = 'View source and full details';
-    disclosure.append(summary);
-    for (const source of data.sources) {
-      const heading = document.createElement('h3');
-      heading.textContent = source.title;
-      disclosure.append(heading);
-      const detail = (data.details || []).find(entry => entry.id === source.id);
-      if (detail) {
-        const quote = document.createElement('p');
-        quote.className = 'source-quote';
-        quote.textContent = detail.answer;
-        disclosure.append(quote);
-      }
-      const provenance = document.createElement('p');
-      provenance.className = 'source-provenance';
-      provenance.textContent = [
-        source.reviewed_at ? `Checked against source: ${source.reviewed_at}.` : '',
-        source.currency_status === 'unconfirmed' ? 'Current department details are unconfirmed.' : '',
-      ].filter(Boolean).join(' ');
-      disclosure.append(provenance);
-    }
-    item.append(disclosure);
-  }
   if (kind === 'assistant' && text) {
     const copy = document.createElement('button');
     copy.type = 'button';
@@ -155,7 +130,7 @@ function addMessage(text, kind = 'assistant', data = {}, replacing = null) {
     copy.textContent = 'Copy answer';
     copy.addEventListener('click', async () => {
       try {
-        await navigator.clipboard.writeText(text);
+        await navigator.clipboard.writeText(text.replace(/\*\*([^*\n]+)\*\*/g, '$1'));
         copy.textContent = 'Copied';
       } catch {
         const range = document.createRange();
