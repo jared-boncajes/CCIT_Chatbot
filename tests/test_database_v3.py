@@ -60,7 +60,7 @@ def test_stale_classifier_is_not_loaded():
     assert load_model(legacy, ROWS) is None
 
 
-def test_unambiguous_alternative_questions_retrieve_the_authored_record():
+def test_alternative_questions_retrieve_the_authored_record_or_request_missing_year():
     def key(q):
         return normalize(q).strip(' ?.\n')
     canonical = {key(r['question']): r['id'] for r in ROWS}
@@ -72,6 +72,13 @@ def test_unambiguous_alternative_questions_retrieve_the_authored_record():
             if counts[query] > 1 and query not in canonical:
                 continue  # Shared variants do not establish a unique target.
             expected = canonical.get(query, row['id'])
-            assert [r['id'] for r in retrieve(question, ROWS)] == [expected]
+            if question in {'What subjects are in BSCS?', 'What subjects are in BSEMC?'}:
+                # These supplied aliases omit the year needed for a subject
+                # list. Do not let exact matching bypass scope clarification.
+                from chatbot.scope import scope_candidates
+                assert retrieve(question, ROWS) == []
+                assert 'year level' in scope_candidates(question, ROWS)[1]
+            else:
+                assert [r['id'] for r in retrieve(question, ROWS)] == [expected]
             checked += 1
     assert checked == 714

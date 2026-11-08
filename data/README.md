@@ -8,6 +8,8 @@ The runtime keeps string IDs `FAQ-001` through `FAQ-218`. Existing topic IDs `FA
 
 Each record includes `source=database_v3.json`, `verification_status=verified` (import/transcription only), `verification_scope`, `reviewed_at` (import review date), and `currency_status=unconfirmed`. This does not certify department policies, current staff, or academic requirements. The officers entry explicitly covers A.Y. 2025–2026; do not treat it as a current-year roster.
 
+Requests are checked for missing scope before exact matching, ranking, or AI generation. A bare “prerequisites” asks for the subject and program; a course shared by several programs asks which program. Curriculum subject lists require a program and year; OJT requirements require a program. Unknown course codes, mismatched programs, and unsupported year levels fall back rather than fuzzy-matching a different course. General “events” and “FACTS” questions use overview records. Clarification context retains only bounded program, topic, subject-code, and year selectors; changing topics clears the pending selection.
+
 Exact canonical questions take precedence over overlapping alternatives. Authored alternatives participate in retrieval; prerequisite searches keep course codes and program scope separate. Curriculum, prerequisite, OJT, organization, event, and service responses retain the complete supplied answer.
 
 ## Active 218-class training dataset

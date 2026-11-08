@@ -11,6 +11,7 @@ from chatbot.errors import diagnose
 from chatbot.answers import format_faq, source_metadata
 from chatbot.conversation import is_private_question, read_context, resolve_question
 from chatbot.intent_model import load_model
+from chatbot.scope import scope_candidates
 from research.web import analysis_blueprint
 
 ROOT = Path(__file__).parent
@@ -197,6 +198,10 @@ def create_app(test_config=None):
             )
 
         # 6. Select reviewed, source-supported records. No source means no answer.
+        _, clarification, pending = scope_candidates(resolved, app.config['KNOWLEDGE'])
+        if clarification:
+            return jsonify(success=True, reply=clarification, sources=[], mode='clarification',
+                           context={**next_context, **pending})
         records = retrieve(resolved, app.config['KNOWLEDGE'], app.config['INTENT_MODEL'])
         if not records:
             return jsonify(success=True, reply=FALLBACK, sources=[], mode='fallback', context=next_context)

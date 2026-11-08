@@ -2,7 +2,10 @@
 import re
 from chatbot.retriever import PROGRAMS, intents, program_entities, tokens
 
-PENDING_TOPICS = {'description', 'academic_programs', 'careers', 'faculty', 'accreditation'}
+PENDING_TOPICS = {'description', 'academic_programs', 'careers', 'faculty', 'accreditation', 'prerequisites', 'curriculum', 'subjects', 'ojt'}
+SCOPED_TOPICS = {'prerequisites', 'curriculum', 'subjects', 'ojt'}
+GENERIC_TOPICS = {'requirements', 'hours', 'contact', 'schedule', 'community-service'}
+PENDING_TOPICS |= GENERIC_TOPICS
 
 
 def read_context(value):
@@ -12,7 +15,7 @@ def read_context(value):
     if not isinstance(value, dict):
         raise ValueError('Invalid conversation context')
     for key in value:
-        if key not in {'programs', 'pending_topic'}:
+        if key not in {'programs', 'pending_topic', 'pending_subject', 'pending_year'}:
             raise ValueError('Invalid conversation context')
     programs = value.get('programs', [])
     if not isinstance(programs, list) or len(programs) > 3:
@@ -26,12 +29,57 @@ def read_context(value):
     result = {'programs': sorted(set(programs))}
     if pending:
         result['pending_topic'] = pending
+    subject = value.get('pending_subject')
+    if subject is not None:
+        if pending != 'prerequisites' or not isinstance(subject, str) or len(subject) > 32 or not re.fullmatch(r'[A-Za-z][A-Za-z0-9+-]*', subject):
+            raise ValueError('Invalid subject context')
+        result['pending_subject'] = subject
+    year = value.get('pending_year')
+    if year is not None:
+        if pending not in {'curriculum', 'subjects'} or type(year) is not int or year not in range(1, 5):
+            raise ValueError('Invalid year context')
+        result['pending_year'] = year
     return result
 
 
 def resolve_question(message, context):
     """Add the previous program name to a follow-up, or ask the user to choose."""
     named = program_entities(message)
+    from chatbot.scope import curriculum_year, subject_codes
+    pending = context.get('pending_topic')
+    current_topics = set(intents(message))
+    generic_replies = {
+        'contact': {'facts', 'department', 'office', 'faculty'},
+        'hours': {'ojt', 'facilities', 'community', 'service'},
+        'requirements': {'scholarships', 'ojt', 'enrollment', 'prerequisites'},
+        'schedule': {'camp', 'night', 'codequest', 'artventure', 'activities', 'facilities'},
+        'community-service': {'render', 'complete', 'missing', 'event', 'activities', 'consequences'},
+    }
+    if pending in GENERIC_TOPICS and tokens(message) and (not current_topics or tokens(message) <= generic_replies.get(pending, set())):
+        return message + ' ' + pending.replace('-', ' '), {'programs': sorted(named)}, False
+    if pending in SCOPED_TOPICS:
+        answer_year = curriculum_year(message)
+        program_reply = bool(named and not (tokens(message) - named - {'programs', 'da'}))
+        # Only selector replies or the same topic continue a clarification.
+        # A fresh question such as "Who is the dean?" discards pending state.
+        selector_reply = bool(subject_codes(message) or curriculum_year(message))
+        selector_reply |= program_reply
+        selector_reply |= tokens(message) <= {'hours', 'company', 'companies', 'placement'}
+        if selector_reply or pending in current_topics or not current_topics:
+            previous = named or set(context['programs'])
+            if pending not in current_topics:
+                message += ' ' + pending
+            if not named and len(previous) == 1:
+                message += ' ' + next(iter(previous)).upper()
+            if context.get('pending_subject') and program_reply:
+                message += ' ' + context['pending_subject']
+            year = answer_year or context.get('pending_year')
+            if year and not curriculum_year(message):
+                message += ' year ' + str(year)
+            return message, {'programs': sorted(previous)}, False
+    if current_topics & SCOPED_TOPICS and not named and len(context['programs']) == 1:
+        message += ' ' + context['programs'][0].upper()
+        return message, {'programs': context['programs']}, False
     if named:
         extra_words = tokens(message) - PROGRAMS - {'programs'}
         if context.get('pending_topic') and not extra_words:

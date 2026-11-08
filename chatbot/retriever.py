@@ -28,6 +28,8 @@ PHRASES = [
     (r'\banu[\s-]*anong\b', 'ano'),
 ]
 ALIASES = {
+    'prereq': 'prerequisites', 'prereqs': 'prerequisites',
+    'coreq': 'corequisites', 'coreqs': 'corequisites',
     'course': 'programs', 'courses': 'programs', 'program': 'programs',
     'degree': 'programs', 'degrees': 'programs', 'kurso': 'programs', 'kursong': 'programs',
     'offered': 'offer', 'offers': 'offer', 'offering': 'offer', 'inooffer': 'offer', 'inaalok': 'offer',
@@ -65,9 +67,10 @@ INTENT_TERMS = {
     'dost': {'dost'}, 'activities': {'activities', 'camp', 'night', 'frequency'},
 }
 INTENT_VOCABULARY = set(ALIASES) | set(ALIASES.values()) | {term for group in INTENT_TERMS.values() for term in group}
+INTENT_VOCABULARY |= {'prerequisite', 'prerequisites', 'corequisite', 'corequisites', 'curriculum', 'subjects'}
 
 EXTENDED_INTENTS = {
-    'prerequisites': r'\b(?:pre[ -]?requisites?|co[ -]?requisites?)\b|\btake before\b',
+    'prerequisites': r'\b(?:pre[ -]?requisites?|co[ -]?requisites?)\b|\btake before\b|\bbefore (?:taking|enrolling|studying)\b|\benrollment requirements? (?:of|for)\b',
     'ojt': r'\b(?:ojt|internship|practicum)\b',
     'curriculum': r'\b(?:curricul(?:um|a)|subjects|study plan|checklist)\b',
     'organizations': r'\b(?:facts|organizations?|officers?|representatives?|adviser)\b',
@@ -113,6 +116,8 @@ def program_entities(text):
 
 def intents(text):
     """Identify requested topics using the documented keyword lists above."""
+    if tokens(text) & {'prerequisite', 'prerequisites', 'corequisite', 'corequisites'}:
+        return ['prerequisites']
     for category in ('community-service', 'prerequisites', 'ojt', 'organizations', 'curriculum'):
         if re.search(EXTENDED_INTENTS[category], text, re.I):
             return [category]
@@ -184,6 +189,10 @@ def _supported_detail(question, record):
 
 def retrieve(question, records, model=None):
     """Filter sources first, then rank eligible records by topic and word support."""
+    from chatbot.scope import scope_candidates
+    records, clarification, _ = scope_candidates(question, records)
+    if clarification or not records:
+        return []
     # Authored question variants are explicit source support, including questions
     # whose wording predates the generic detail guards below. Prefer canonical
     # titles when an alternative also appears in a broader overview record.
